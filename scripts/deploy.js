@@ -8,11 +8,12 @@ const shell = require('shelljs')
 const GitHubApi = require('github')
 const logger = console
 
-const { ZEIT_TOKEN, GH_TOKEN, PULL_REQUEST_ID } = process.env
+const { ZEIT_TOKEN, GH_TOKEN, CI_PULL_REQUEST } = process.env
 
 async function run() {
-  logger.log(process.env)
-  if (!PULL_REQUEST_ID || PULL_REQUEST_ID === '') return
+  if (!CI_PULL_REQUEST || CI_PULL_REQUEST === '') return
+
+  const [, PULL_REQUEST_ID] = CI_PULL_REQUEST.match(/\/([1-3]*)$/)
 
   // Change the team to ZEIT
   const team = shell.exec(`now switch zeit -t ${ZEIT_TOKEN}`)
