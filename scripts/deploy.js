@@ -22,9 +22,9 @@ async function run() {
   }
 
   // Export the app
-  const export = shell.exec(`npm run export`)
-  if (export.code !== 0) {
-    throw new Error(export.stderr)
+  const exportApp = shell.exec(`npm run export`)
+  if (exportApp.code !== 0) {
+    throw new Error(exportApp.stderr)
   }
 
   // Change the team to ZEIT
