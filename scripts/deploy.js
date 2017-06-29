@@ -13,7 +13,7 @@ const { ZEIT_TOKEN, GH_TOKEN, CI_PULL_REQUEST } = process.env
 async function run() {
   if (!CI_PULL_REQUEST || CI_PULL_REQUEST === '') return
 
-  const [, PULL_REQUEST_ID] = CI_PULL_REQUEST.match(/\/([1-9]*)$/)
+  const [, PULL_REQUEST_ID] = CI_PULL_REQUEST.match(/\/([0-9]*)$/)
 
   // Build the app
   const build = shell.exec(`npm run build`)
