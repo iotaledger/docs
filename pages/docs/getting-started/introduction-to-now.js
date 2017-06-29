@@ -8,7 +8,7 @@ import { TerminalInput } from '../../../components/text/terminal'
 
 // prettier-ignore
 export default withDoc({
-  title: 'Introduction to now',
+  title: 'Introduction to ZEIT now',
   date: '07 Nov 2016',
   authors: [rauchg, tony],
 })(markdown(components)`
