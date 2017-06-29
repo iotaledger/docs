@@ -15,14 +15,29 @@ async function run() {
 
   const [, PULL_REQUEST_ID] = CI_PULL_REQUEST.match(/\/([1-9]*)$/)
 
+  // Build the app
+  const build = shell.exec(`npm run build`)
+  if (build.code !== 0) {
+    throw new Error(build.stderr)
+  }
+
+  // Export the app
+  const exportApp = shell.exec(`npm run export`)
+  if (exportApp.code !== 0) {
+    throw new Error(exportApp.stderr)
+  }
+
   // Change the team to ZEIT
   const team = shell.exec(`now switch zeit -t ${ZEIT_TOKEN}`)
   if (team.code !== 0) {
     throw new Error(team.stderr)
   }
 
-  // Deploy the app
-  const now = shell.exec(`now -t ${ZEIT_TOKEN}`, { silent: true })
+  // Deploy the static app
+  const now = shell.exec(`now -n zeit-docs -t ${ZEIT_TOKEN}`, {
+    silent: true,
+    cwd: 'out'
+  })
   if (now.code !== 0) {
     throw new Error(now.stderr)
   }
@@ -52,7 +67,7 @@ async function run() {
     owner: 'zeit',
     repo: 'docs',
     number: PULL_REQUEST_ID,
-    body: `You can view the modified docs at: ${deployUrl}`
+    body: `You can view the modified docs at: ${deployUrl}/docs`
   })
 }
 
