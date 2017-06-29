@@ -30,7 +30,7 @@
     "lodash.debounce": "^4.0.8",
     "markdown-in-js": "1.1.3",
     "mitt": "1.1.2",
-    "next": "2.4.4",
+    "next": "beta",
     "nprogress": "0.2.0",
     "prop-types": "15.5.8",
     "query-string": "4.3.4",
