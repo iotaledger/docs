@@ -67,7 +67,7 @@ async function run() {
     owner: 'zeit',
     repo: 'docs',
     number: PULL_REQUEST_ID,
-    body: `You can view the modified docs at: ${deployUrl}`
+    body: `You can view the modified docs at: ${deployUrl}/docs`
   })
 }
 
