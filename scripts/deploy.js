@@ -34,7 +34,7 @@ async function run() {
   }
 
   // Deploy the static app
-  const now = shell.exec(`now -t ${ZEIT_TOKEN}`, {
+  const now = shell.exec(`now -n zeit-docs -t ${ZEIT_TOKEN}`, {
     silent: true,
     cwd: 'out'
   })
