@@ -11,6 +11,7 @@ const logger = console
 const { ZEIT_TOKEN, GH_TOKEN, PULL_REQUEST_ID } = process.env
 
 async function run() {
+  logger.log(process.env)
   if (!PULL_REQUEST_ID || PULL_REQUEST_ID === '') return
 
   // Change the team to ZEIT

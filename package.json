@@ -8,6 +8,7 @@
     "start": "cross-env NODE_ENV=production next start",
     "lint": "eslint .",
     "lint:staged": "lint-staged",
+    "test": "npm run lint",
     "deploy": "node scripts/deploy"
   },
   "babel": {
