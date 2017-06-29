@@ -11,6 +11,7 @@ const logger = console
 const { ZEIT_TOKEN, GH_TOKEN, CI_PULL_REQUEST } = process.env
 
 async function run() {
+  console.log(process.env)
   if (!CI_PULL_REQUEST || CI_PULL_REQUEST === '') return
 
   const [, PULL_REQUEST_ID] = CI_PULL_REQUEST.match(/\/([1-3]*)$/)
