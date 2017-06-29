@@ -1,0 +1,11 @@
+machine:
+  node:
+    version: 8
+
+dependencies:
+  override:
+    - npm install --dev
+
+test:
+  post:
+    - npm run deploy
