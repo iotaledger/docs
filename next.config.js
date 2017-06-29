@@ -8,6 +8,9 @@ module.exports = {
         path = path.replace(/^pages/, '')
         path = path.replace('index.js', '')
         path = path.replace('.js', '')
+        
+        if (path === '/') return path
+
         path = path.replace(/\/$/, '')
         return path
       })
