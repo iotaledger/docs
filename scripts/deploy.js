@@ -60,7 +60,6 @@ async function run() {
   })
 
   const key = decodeURIComponent(GH_KEY)
-  console.log('XXXX', key)
   const token = await getToken(github, key, 3412, 36421)
 
   github.authenticate({
