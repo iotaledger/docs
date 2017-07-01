@@ -6,6 +6,7 @@
 
 const shell = require('shelljs')
 const GitHubApi = require('github')
+const jwt = require('jsonwebtoken')
 const logger = console
 
 const { ZEIT_TOKEN, GH_KEY, CI_PULL_REQUEST } = process.env
@@ -95,7 +96,7 @@ async function getToken (github, key, appId, installationId) {
 
   // Get the real github token
   const tokenInfo = await github.integrations.createInstallationToken({
-    installation_id: 36421
+    installation_id: installationId
   })
 
   return tokenInfo.data.token
