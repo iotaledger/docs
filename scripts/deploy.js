@@ -8,7 +8,7 @@ const shell = require('shelljs')
 const GitHubApi = require('github')
 const logger = console
 
-const { ZEIT_TOKEN, GH_TOKEN, CI_PULL_REQUEST } = process.env
+const { ZEIT_TOKEN, GH_KEY, CI_PULL_REQUEST } = process.env
 
 async function run() {
   if (!CI_PULL_REQUEST || CI_PULL_REQUEST === '') return
@@ -54,13 +54,15 @@ async function run() {
       'user-agent': 'ZEIT docs on Travis' // GitHub is happy with a unique user agent
     },
     Promise,
-    followRedirects: false, // default: true; there's currently an issue with non-get redirects, so allow ability to disable follow-redirects
+    followRedirects: true, // default: true; there's currently an issue with non-get redirects, so allow ability to disable follow-redirects
     timeout: 5000
   })
 
+  const token = await getToken(github, GH_KEY, 3412, 36421)
+
   github.authenticate({
     type: 'token',
-    token: GH_TOKEN
+    token
   })
 
   await github.issues.createComment({
@@ -75,3 +77,26 @@ run().catch(error => {
   logger.error(error.stack)
   process.exit(1)
 })
+
+async function getToken (github, key, appId, installationId) {
+  // Create the JWT token
+  const now = Math.ceil(Date.now() / 1000)
+  const jwtPayload = {
+    iat: now,
+    exp: now + (8*60),
+    iss: appId,
+  }
+  const token = jwt.sign(jwtPayload, key, { algorithm: 'RS256'});
+
+  github.authenticate({
+    type: 'integration',
+    token
+  })
+
+  // Get the real github token
+  const tokenInfo = await github.integrations.createInstallationToken({
+    installation_id: 36421
+  })
+
+  return tokenInfo.data.token
+}
