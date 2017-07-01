@@ -59,7 +59,9 @@ async function run() {
     timeout: 5000
   })
 
-  const token = await getToken(github, GH_KEY, 3412, 36421)
+  const key = decodeURIComponent(GH_KEY)
+  console.log('XXXX', key)
+  const token = await getToken(github, key, 3412, 36421)
 
   github.authenticate({
     type: 'token',
