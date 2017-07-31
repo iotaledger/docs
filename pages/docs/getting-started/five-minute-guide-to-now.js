@@ -45,7 +45,7 @@ ${<Code>{`<!DOCTYPE html>
   </body>
 </html>`}</Code>}
 
-(You can also use a [Node.js app](https://github.com/zeit/nextgram) or an [app with a Dockerfile](https://github.com/now-examples/cobol-hello-world) instead of this simple static app.)
+> You can also use a [Node.js app](https://github.com/zeit/nextgram) or an [app with a Dockerfile](https://github.com/now-examples/cobol-hello-world) instead of this simple static app.
 
 After you have added the content, visit the \`my-web-app\` directory using a terminal and run this command:
 
