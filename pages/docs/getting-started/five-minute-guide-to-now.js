@@ -14,12 +14,12 @@ export default withDoc({
   authors: [arunoda],
 })(markdown(components)`
 
-With ▲now, you can deploy and publish any kind of web app (or service) under five minutes. This guide includes information about:
+With ▲now, you can deploy and publish any kind of web app (or service) in under five minutes. This guide includes information about:
 
 * Deploying an app
 * Buying a domain name
 * Mapping that domain name to the app
-* Configuring a SSL certificate
+* Configuring an SSL certificate
 
 ## Now Desktop
 
@@ -34,7 +34,7 @@ Follow the instructions on the screen.<br/>
 
 ## Deployment
 
-Let's try to deploy a simple static web app.
+Let's deploy a simple static web app.
 
 Create a directory called \`my-web-app\` and add the following content to a file called \`index.html\`.
 
@@ -51,7 +51,7 @@ After you have added the content, visit the \`my-web-app\` directory using a ter
 
 ${<TerminalInput>now</TerminalInput>}
 
-▲now will deploy the app and give you an URL as shown below.
+▲now will deploy the app and give you a URL as shown below.
 
 ${<Image
   src={`${ASSETS_URL}/docs/five-minute-guide-to-now/deploy.png`}
@@ -64,9 +64,9 @@ This is a URL for the current deployment of the app. You can access this version
 
 ## Domain Name
 
-Now you have an unique URL(<https:my-web-app-bglcwwdeuc.now.sh>) for your app. But you probably want a nicer-sounding URL before directing your users there. The next step is to map the "now.sh" URL to a domain name that you prefer.
+Now you have a unique URL(<https:my-web-app-bglcwwdeuc.now.sh>) for your app. But you probably want a nicer-sounding URL before directing your users there. The next step is to map the "now.sh" URL to a domain name that you prefer.
 
-Let's assume the domain name is: \`my-web-app.com\`, and you haven't bought it yet. <br/>
+Let's assume the domain name is \`my-web-app.com\`, and you haven't bought it yet. <br/>
 To map this domain name to the app's unique URL, run this command:
 
 ${<TerminalInput>now alias my-web-app-bglcwwdeuc.now.sh my-web-app.com</TerminalInput>}
@@ -85,7 +85,7 @@ Now, run the domain mapping command again and follow these instructions:
 ${<TerminalInput>now alias my-web-app-bglcwwdeuc.now.sh my-web-app.com</TerminalInput>}
 
 Once you've done that, you'll be able to access your app using <https://my-web-app.com>.
-It is configured with a [Let's Encrypt](https://letsencrypt.org/) SSL certificate and served with HTTPS by default.
+It is automatically configured with a [Let's Encrypt](https://letsencrypt.org/) SSL certificate and served with HTTPS.
 
 ${<Image
   src={`${ASSETS_URL}/docs/five-minute-guide-to-now/domain-setup.png`}
