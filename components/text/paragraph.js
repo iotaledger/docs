@@ -42,4 +42,16 @@ const B = ({ children }) => (
   </span>
 )
 
+export const HR = () => (
+  <div>
+    <style jsx>{`
+      div {
+        border: 0;
+        border-bottom: 1px solid #CCC;
+        margin: 50px 30px;
+      }
+    `}</style>
+  </div>
+)
+
 P.B = B

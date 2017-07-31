@@ -4,6 +4,7 @@ import withDoc, { components } from '../../../lib/with-doc'
 import { arunoda } from '../../../lib/data/team'
 import { TerminalInput } from '../../../components/text/terminal'
 import { Code } from '../../../components/text/code'
+import { HR } from '../../../components/text/paragraph'
 import Image from '../../../components/image'
 
 // prettier-ignore
@@ -20,6 +21,8 @@ With ▲now, you can deploy and publish any kind of web app (or service) under f
 * Mapping that domain name to the app
 * Configuring a SSL certificate
 
+## Now Desktop
+
 To use ▲now, start by installing [Now Desktop](https://zeit.co/download).
 
 When the installation is completed, you can log in to ▲now by running the following command using a terminal:
@@ -31,7 +34,7 @@ Follow the instructions on the screen.<br/>
 
 ## Deployment
 
-With ▲now, you can deploy any kind of web app. Let's try to deploy a simple static web app.
+Let's try to deploy a simple static web app.
 
 Create a directory called \`my-web-app\` and add the following content to a file called \`index.html\`.
 
@@ -48,7 +51,7 @@ After you have added the content, visit the \`my-web-app\` directory using a ter
 
 ${<TerminalInput>now</TerminalInput>}
 
-▲now will now deploy the app and give you an URL as shown below.
+▲now will deploy the app and give you an URL as shown below.
 
 ${<Image
   src={`${ASSETS_URL}/docs/five-minute-guide-to-now/deploy.png`}
@@ -57,14 +60,13 @@ ${<Image
   caption="Getting a unique URL after the deployment."
 />}
 
-This is a unique URL for the current deployment of the app. You can access this version of the app anytime with this URL.
+This is a URL for the current deployment of the app. You can access this version of the app anytime with this URL.
 
 ## Domain Name
 
-Now you have an unique URL for your app. But you probably want a nicer-sounding URL before directing your users there. The next step is to map the URL to a domain name that you prefer.
+Now you have an unique URL(<https:my-web-app-bglcwwdeuc.now.sh>) for your app. But you probably want a nicer-sounding URL before directing your users there. The next step is to map the "now.sh" URL to a domain name that you prefer.
 
-Let's assume the domain name is: \`my-web-app.com\`, and you haven't bought it yet.
-
+Let's assume the domain name is: \`my-web-app.com\`, and you haven't bought it yet. <br/>
 To map this domain name to the app's unique URL, run this command:
 
 ${<TerminalInput>now alias my-web-app-bglcwwdeuc.now.sh my-web-app.com</TerminalInput>}
@@ -107,9 +109,7 @@ ${<TerminalInput>now alias https://my-web-app-avvuiuuwto.now.sh my-web-app.com</
 Now everything is ready.<br/>
 Your users can access the updated web app at <https://my-web-app.com>.
 
----
+${<HR />}
 
-These are just a few things you can do with ▲now. To learn more about ▲now, simply read the rest of the docs.
-
-
+These are just a few things you can do with ▲now. To learn more about ▲now, simply follow the rest of the docs.
 `)
