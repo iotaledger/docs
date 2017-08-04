@@ -56,7 +56,7 @@ ${<TerminalInput>now</TerminalInput>}
 ${<Image
   src={`${ASSETS_URL}/docs/five-minute-guide-to-now/deploy.png`}
   width={650}
-  height={448}
+  height={255}
   caption="Getting a unique URL after the deployment."
 />}
 
@@ -64,12 +64,12 @@ This is a URL for the current deployment of the app. You can access this version
 
 ## Domain Name
 
-Now you have a unique URL(<https:my-web-app-bglcwwdeuc.now.sh>) for your app. But you probably want a nicer-sounding URL before directing your users there. The next step is to map the "now.sh" URL to a domain name that you prefer.
+Now you have a unique URL(<https://my-web-app-avvuiuuwto.now.sh>) for your app. But you probably want a nicer-sounding URL before directing your users there. The next step is to map the "now.sh" URL to a domain name that you prefer.
 
 Let's assume the domain name is \`my-web-app.com\`, and you haven't bought it yet. <br/>
 To map this domain name to the app's unique URL, run this command:
 
-${<TerminalInput>now alias my-web-app-bglcwwdeuc.now.sh my-web-app.com</TerminalInput>}
+${<TerminalInput>now alias https://my-web-app-avvuiuuwto.now.sh my-web-app.com</TerminalInput>}
 
 Since you haven't bought the domain name yet, you will be asked to enter your credit card information to buy it.
 You can do that by running this command:
@@ -82,7 +82,7 @@ ${<TerminalInput>now upgrade</TerminalInput>}
 
 Now, run the domain mapping command again and follow these instructions:
 
-${<TerminalInput>now alias my-web-app-bglcwwdeuc.now.sh my-web-app.com</TerminalInput>}
+${<TerminalInput>now alias https://my-web-app-avvuiuuwto.now.sh my-web-app.com</TerminalInput>}
 
 Once you've done that, you'll be able to access your app using <https://my-web-app.com>.
 It is automatically configured with a [Let's Encrypt](https://letsencrypt.org/) SSL certificate and served with HTTPS.
@@ -90,7 +90,7 @@ It is automatically configured with a [Let's Encrypt](https://letsencrypt.org/) 
 ${<Image
   src={`${ASSETS_URL}/docs/five-minute-guide-to-now/domain-setup.png`}
   width={650}
-  height={448}
+  height={412}
   caption="After mapping a domain name to a deployment."
 />}
 
