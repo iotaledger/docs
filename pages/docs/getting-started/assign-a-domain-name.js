@@ -14,7 +14,7 @@ export default withDoc({
   authors: [arunoda],
 })(markdown(components)`
 
-When you deploy an app with ▲now, you will have a unique deployment URL like this: <https://my-web-app-bglcwwdeuc.now.sh/>.
+When you deploy an app with ▲now, you will have a unique deployment URL like this: <https://my-web-app-avvuiuuwto.now.sh>.
 
 If you deploy your app multiple times, you will have multiple URLs. With these different deployment URLs, you can easily point users to a specific version of your app.
 
@@ -50,7 +50,7 @@ ${<HR/>}
 
 This method is the easiest way to use a domain name. To obtain a domain name with the \`now.sh\` postfix instantly, simply run the following command:
 
-${<TerminalInput>now alias https://my-web-app-bglcwwdeuc.now.sh my-web-app</TerminalInput>}
+${<TerminalInput>now alias https://my-web-app-avvuiuuwto.now.sh my-web-app</TerminalInput>}
 
 Your users may now access the above deployment URL using <https://my-web-app.now.sh>
 
@@ -60,7 +60,7 @@ If you want to use a custom domain for your app, the easiest method is to buy a 
 
 Simply run the following now alias command:
 
-${<TerminalInput>now alias https://my-web-app-bglcwwdeuc.now.sh my-web-app.com</TerminalInput>}
+${<TerminalInput>now alias https://my-web-app-avvuiuuwto.now.sh my-web-app.com</TerminalInput>}
 
 Here, we are attempting to assign the \`my-web-app.com\` domain name to the above deployment URL. If the domain name is available, you may confirm and buy it without leaving the terminal.
 
@@ -69,8 +69,8 @@ After the confirmation, ▲now will handle all the technical details for you and
 ${
   <Image
     src={`${ASSETS_URL}/docs/assign-a-domain-name/buy-domain.png`}
-    width={600}
-    height={407}
+    width={650}
+    height={412}
     caption="Confirmation you'll get after assigning a custom domain."
   />
 }
@@ -93,13 +93,13 @@ For example, assume that your domain name is \`my-custom-domain.com\`.
 
 After you have set up the nameservers, simply run the following \`now alias\` command:
 
-${<TerminalInput>now alias https://my-web-app-bglcwwdeuc.now.sh/ my-custom-domain.com</TerminalInput>}
+${<TerminalInput>now alias https://my-web-app-avvuiuuwto.now.sh my-custom-domain.com</TerminalInput>}
 
 Then, you can access your app using <https://my-custom-domain.com>.
 
 You can also use a subdomain of \`my-custom-domain.com\` like this:
 
-${<TerminalInput>now alias https://my-web-app-bglcwwdeuc.now.sh/ ui.my-custom-domain.com</TerminalInput>}
+${<TerminalInput>now alias https://my-web-app-avvuiuuwto.now.sh ui.my-custom-domain.com</TerminalInput>}
 
 > Even in this process, ▲now will set up a [Let's Encrypt](https://letsencrypt.org/) SSL certificate for your domain automatically.
 
@@ -109,19 +109,19 @@ If you are managing a DNS setup for your domain, you can use this option.
 
 For example, assume you have a domain name called \`my-app.work\` and you already have a DNS setup for that.
 
-To map the \`app.my-app.work\` domain for one of the deployment URLs of your app, visit your DNS provider and add a CNAME record for \`app.my-app.work\` pointing to \`alias.zeit.co\`.
+To map the \`ui.my-app.work\` domain for one of the deployment URLs of your app, visit your DNS provider and add a CNAME record for \`ui.my-app.work\` pointing to \`alias.zeit.co\`.
 
 After that, run the following command:
 
-${<TerminalInput>now alias https://my-web-app-bglcwwdeuc.now.sh/ app.my-app.work</TerminalInput>}
+${<TerminalInput>now alias https://my-web-app-avvuiuuwto.now.sh ui.my-app.work</TerminalInput>}
 
 You will then have an error like this:
 
 ${
   <Image
     src={`${ASSETS_URL}/docs/assign-a-domain-name/alias-error.png`}
-    width={600}
-    height={382}
+    width={650}
+    height={412}
     caption="Error message you'll get when trying to alias a domain for the first time."
   />
 }
@@ -131,9 +131,9 @@ ${
 * Next, add the TXT record as mentioned above error message.
 * Run the \`now alias\` command again:
 
-${<TerminalInput>now alias https://my-web-app-bglcwwdeuc.now.sh/ app.my-app.work</TerminalInput>}
+${<TerminalInput>now alias https://my-web-app-avvuiuuwto.now.sh ui.my-app.work</TerminalInput>}
 
-Now you may access your app using <https://app.my-app.work>
+Now you may access your app using <https://ui.my-app.work>
 
 > In this case, ▲now will setup a [Let's Encrypt](https://letsencrypt.org/) SSL certificate for your domain. However, before you do that, you need to verify the domain.
 
