@@ -37,7 +37,7 @@ Can be used for renewing an existing certificate issued with now. This command c
 
 ### now certs replace
 
-That's the core of this update! The command can be used for uploading a certificate issued by a 3rd party Certificate Authority. It requires you to already have an alias with an automatic certificate in place. You can use it like this:
+The command can be used to upload a certificate issued by a 3rd party Certificate Authority. It requires you to already have an alias with an automatic certificate in place. You can use it like this:
 
 ${
   <TerminalInput>
