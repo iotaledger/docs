@@ -13,9 +13,9 @@ export default withDoc({
   authors: [leo],
 })(markdown(components)`
 
-Each time you create a new deployment, you will get a new, unique subdomain. For this address (just like for the custom domains you've added using \`now alias\` or \`now alias\`), we're automatically provisioning an SSL certificate for you.
+Each time you create a new deployment, you will get a new unique subdomain. For this address (just like for the custom domains you've added using \`now alias\` or \`now alias\`), we're automatically provisioning an SSL certificate for you.
 
-Our platform seamlessly communicates with [Let's Encrypt](https://letsencrypt.org/) to provide your deployment's domain with a [X.509](https://en.wikipedia.org/wiki/X.509) certificate without any costs. All of this happens in the brackground, without you even noticing it!
+Our platform seamlessly communicates with [Let's Encrypt](https://letsencrypt.org/) to provide your deployment's domain with a [X.509](https://en.wikipedia.org/wiki/X.509) certificate without any costs. All of this happens in the background, seamlessly.
 
 You can read more about how exactly the certificate provisioning works [here](https://letsencrypt.org/how-it-works/). If you're interested in knowing which browsers the certificates are compatible with, [this](https://letsencrypt.org/docs/certificate-compatibility/) might also be of interest for you. At last, [this document](https://letsencrypt.org/certificates/) describes how the certificates work per se.
 
