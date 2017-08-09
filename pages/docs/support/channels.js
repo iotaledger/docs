@@ -5,7 +5,7 @@ import { sergio } from '../../../lib/data/team'
 
 // prettier-ignore
 export default withDoc({
-  title: 'Support channels',
+  title: 'Support Channels',
   date: '21 Jul 2017',
   authors: [sergio],
 })(markdown(components)`
