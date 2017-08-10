@@ -84,9 +84,9 @@ You can also specify a separate build command, select the Node.js runtime and co
 
 ## Docker Deployment
 
-If your app directory contains a \`Dockerfile\`, ▲now considers that a valid Docker deployment. It will build a docker image based on the \`Dockerfile\` and start container(s) based on that.
+If your app directory contains a \`Dockerfile\`, ▲now considers that a valid [Docker](https://www.docker.com/) deployment. It will build a docker image based on the \`Dockerfile\` and start container(s) based on that.
 
-To deploy a simple Go HTTP server, create a directory and add these two files:
+To deploy a simple [Go](https://golang.org/) HTTP server, create a directory and add these two files:
 
 ### hello.go
 

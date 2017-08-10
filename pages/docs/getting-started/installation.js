@@ -28,7 +28,7 @@ ${
 This is a desktop app which is [available](https://zeit.co/download) for all of the major operation systems. It comes as an operation system status bar app.
 
 You can deploy apps, see notifications, and manage your account using an easy-to-use interface.
-It will update new versions automatically behind the scenes and you can always use the latest version of Now Desktop.
+It will update new versions automatically behind the scenes and you can always use the latest version of [Now Desktop](https://zeit.co/download).
 
 > Additionally, it comes with the \`now\` command line utility where you can interact with ▲now using a terminal.
 

@@ -20,14 +20,14 @@ If you deploy your app multiple times, you will have multiple URLs. With these d
 
 However, you cannot ask your users to visit those addresses. This is because the addresses are not easy to remember and they change every time you deploy a new version.
 
-Hence, you need a static domain name.
+Hence, you need a fixed domain name.
 
 ${
   <Image
     src={`${ASSETS_URL}/docs/assign-a-domain-name/custom-domain.png`}
     width={600}
     height={325}
-    caption="Our sample static app with a custom domain name."
+    caption="Our sample static app with a fixed domain name."
   />
 }
 

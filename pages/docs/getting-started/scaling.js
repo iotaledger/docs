@@ -32,9 +32,9 @@ By default, all of the deployments are configured like this:
 
 This means, when your deployment receives some traffic ▲now will start an instance. If your deployment doesn't receive any traffic for a while, ▲now will kill that instance.
 
-There's a fixed number of concurrent instances you can have based on the [plan](https://zeit.co/account/plan) you've chosen.
+There's a fixed number of concurrent instances you can have based on the [plan](https://zeit.co/account/plan) you've chosen. But with this configuration, you can have as many as deployments you want. 
 
-But with this configuration, you can have as many as deployments you want. Having older deployments which are not active cost you nothing.
+_Having older deployments which are **not active** cost you nothing._
 
 ## Fixed Scaling
 
@@ -68,6 +68,7 @@ For an example:
 ${<TerminalInput>now scale hnode.now.sh 3</TerminalInput>}
 
 Then it'll scale the deployment behind the alias. (in this case, the alias is \`hnode.now.sh\`).
+
 If you run \`now alias\` again, it'll scale the new deployment accordingly and scale down the old deployment to the ${<InternalLink href="/docs/getting-started/scaling#default-scaling">default scaling setup</InternalLink>}.
 
 ${
@@ -90,6 +91,8 @@ Here's how to auto scale an app with the URL \`hnode.now.sh\`
 ${<TerminalInput>now scale hnode.now.sh 2 15</TerminalInput>}
 
 Now the deployment behind \`hnode.now.sh\` runs with minimum of 2 instances and it can scale up to 15 instance as the traffic increases.
+
+▲now will automatically start and kill instances based on the traffic \`hnode.now.sh\` receives.
 
 ${
   <Image

@@ -27,7 +27,8 @@ First, add some secrets:
 ${<TerminalInput>{`now secrets add my-app-mongo-url "user:password@mydb.com"
 now secrets add my-app-my-api-token "XXXXX"`}</TerminalInput>}
 
-Then, you can get these values inside environment variables. Here's how to do that with \`now.json\`:
+Then, you can get these values inside environment variables.<br/>
+Here's how to do that with \`now.json\`:
 
 ${<Code>{`{
   "env": {

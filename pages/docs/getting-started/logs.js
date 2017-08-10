@@ -54,9 +54,10 @@ ${
 
 ## Via Dashboard
 
-You can also access and search logs via your web dashboard at <https://zeit.co/dashboard>.
+You can also access and search logs via your web dashboard at [https://zeit.co/dashboard](https://zeit.co/dashboard).<br/>
+Click any of your deployment URLs inside the dashboard and start searching logs.
 
-Search logs by clicking on your deployment URL inside the dashboard.
+> You may need to click the "Logs" link on the header (top right) to see logs.
 
 ${
   <Image

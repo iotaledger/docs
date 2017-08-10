@@ -100,11 +100,11 @@ If you've made any changes to your app, you will need to deploy the latest versi
 
 ${<TerminalInput>now</TerminalInput>}
 
-You will receive a unique URL for this deployment. Let's assume that the new URL is <https://my-web-app-avvuiuuwto.now.sh>.
+You will receive a unique URL for this deployment. Let's assume that the new URL is <https://my-web-app-ttfxzqwbwz.now.sh>.
 
 You can map this new URL to your domain name by running this command:
 
-${<TerminalInput>now alias https://my-web-app-avvuiuuwto.now.sh my-web-app.com</TerminalInput>}
+${<TerminalInput>now alias https://my-web-app-ttfxzqwbwz.now.sh my-web-app.com</TerminalInput>}
 
 Now everything is ready.<br/>
 Your users can access the updated web app at <https://my-web-app.com>.
