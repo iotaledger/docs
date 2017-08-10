@@ -1,3 +1,3 @@
-import IntroductionToNow from './getting-started/introduction-to-now'
+import IntroductionToNow from './getting-started/five-minute-guide-to-now'
 
 export default IntroductionToNow

@@ -5,17 +5,17 @@ import { sergio } from '../../../lib/data/team'
 
 // prettier-ignore
 export default withDoc({
-  title: 'Support channels',
+  title: 'Support Channels',
   date: '21 Jul 2017',
   authors: [sergio],
 })(markdown(components)`
-Right now we have many support channels you can use to solve doubts where the team is willing to help.
+We have a few support channels you can use to clarify doubts and solve issues.
 
 ## Status
 Check our [Twitter status account](https://twitter.com/zeit_status) to verify if the platform have some issue at the moment.
 
 ## Documentation
-Check the documentation, here we have a lot of information about how you can use the CLI and the platform, and we have project examples and integration with third-party services
+Check the [documentation](/docs), here we have a lot of information about how you can use the CLI and the platform, and we have project examples and integration with third-party services
 
 ## Github
 We have many [Github repositories](https://github.com/zeit) for almost every service or product we have. You can create issues in that repositories and the team and the community will help you as soon as possible. Some repositories you can access are [now-cloud](https://github.com/zeit/now-cloud), [now-cli](https://github.com/zeit/now-cli), [now-desktop](https://github.com/zeit/now-desktop), [now-client](https://github.com/zeit/now-client), [next.js](https://github.com/zeit/next.js), [hyper](https://github.com/zeit/hyper), [pkg](https://github.com/zeit/pkg), [micro](https://github.com/zeit/micro) and more.
