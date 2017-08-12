@@ -13,7 +13,7 @@ export default withDoc({
   authors: [rauchg, leo],
 })(markdown(components)`
 
-As the CLI for now grew bigger, many options were introduced for allowing you to customize its behaviour. Because of this, we've decided to provide an easy way of keeping track of your configuration. This guide explains how to use these methods to configure and customize the default behavior of your now deployments.
+This guide explains how to use these methods to configure and customize the default behavior of your now deployments.
 
 In addition to the options available in the command line interface (like \`--name\` for setting then name of the deployment), we also support saving certain parameters into a config file of your choice.
 
