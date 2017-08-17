@@ -23,7 +23,9 @@ export default class DocsNavbarMobile extends React.Component {
         {show ? <DocsNavbarDesktop {...this.props} /> : null}
         <style jsx>{`
           .arrow {
-            margin: 0 0 30px 0;
+            position: absolute;
+            top: 40px;
+            right: 20px;
             width: 27px;
           }
 
