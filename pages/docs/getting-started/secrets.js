@@ -14,7 +14,7 @@ export default withDoc({
   authors: [arunoda],
 })(markdown(components)`
 
-If multiple people deploy your app or utilize a CI service, it's a better idea to use ${<InternalLink href="/docs/getting-started/enviornment-variables#via-“now.json”">now.json</InternalLink>} to expose environment variables. 
+If multiple people deploy your app or utilize a CI service, it's a better idea to use ${<InternalLink href="/docs/getting-started/environment-variables#via-“now.json”">now.json</InternalLink>} to expose environment variables. 
 
 However, adding that file to [Git](https://en.wikipedia.org/wiki/Git) could cause potential issues. Secrets like API tokens and DB information are visible to anyone who has access to the source code. That's bad.
 
