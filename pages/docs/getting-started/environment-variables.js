@@ -8,7 +8,7 @@ import { InternalLink } from '../../../components/text/link'
 
 // prettier-ignore
 export default withDoc({
-  title: 'Enviornment Variables',
+  title: 'Environment Variables',
   date: '6 August 2017',
   authors: [arunoda],
 })(markdown(components)`
