@@ -1,0 +1,7 @@
+{
+  "alias": "zeit-docs-deploy-server.now.sh",
+  "env": {
+    "ZEIT_TOKEN": "@zeit-docs-zeit-token",
+    "GH_KEY": "@geist-gh-key"
+  }
+}

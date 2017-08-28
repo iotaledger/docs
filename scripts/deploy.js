@@ -5,11 +5,9 @@
 */
 
 const shell = require('shelljs')
-const GitHubApi = require('github')
-const jwt = require('jsonwebtoken')
 const logger = console
 
-const { ZEIT_TOKEN, GH_KEY, CI_PULL_REQUEST } = process.env
+const { CI_PULL_REQUEST } = process.env
 
 async function run() {
   if (!CI_PULL_REQUEST || CI_PULL_REQUEST === '') return
@@ -28,77 +26,25 @@ async function run() {
     throw new Error(exportApp.stderr)
   }
 
-  // Change the team to ZEIT
-  const team = shell.exec(`now switch zeit -t ${ZEIT_TOKEN}`)
-  if (team.code !== 0) {
-    throw new Error(team.stderr)
+  // Create a tarball version of the app
+  const tarball = shell.exec(`tar czf app.tar.gz out`)
+  if (tarball.code !== 0) {
+    throw new Error(tarball.stderr)
   }
 
-  // Deploy the static app
-  const now = shell.exec(`now -n zeit-docs -t ${ZEIT_TOKEN}`, {
-    silent: true,
-    cwd: 'out'
-  })
-  if (now.code !== 0) {
-    throw new Error(now.stderr)
+  // Upload the app to the deploy server
+  const url = `https://zeit-docs-deploy-server.now.sh/deploy/${PULL_REQUEST_ID}`
+  const upload = shell.exec(`curl -F "app=@app.tar.gz" ${url}`)
+  if (upload.code !== 0) {
+    throw new Error(upload.stderr)
   }
 
-  const deployUrl = now.stdout
-  logger.log('> App deployed to:', deployUrl)
-
-  // Create a GH comment
-  const github = new GitHubApi({
-    // optional
-    debug: true,
-    protocol: 'https',
-    headers: {
-      'user-agent': 'ZEIT docs on Travis' // GitHub is happy with a unique user agent
-    },
-    Promise,
-    followRedirects: true, // default: true; there's currently an issue with non-get redirects, so allow ability to disable follow-redirects
-    timeout: 5000
-  })
-
-  const key = decodeURIComponent(GH_KEY)
-  const token = await getToken(github, key, 3412, 36421)
-
-  github.authenticate({
-    type: 'token',
-    token
-  })
-
-  await github.issues.createComment({
-    owner: 'zeit',
-    repo: 'docs',
-    number: PULL_REQUEST_ID,
-    body: `You can view the modified docs at: ${deployUrl}/docs`
-  })
+  if (upload.stdout !== 'SUCCESS') {
+    throw new Error(`${upload.stdout}\n${upload.stdout}`)
+  }
 }
 
 run().catch(error => {
   logger.error(error.stack)
   process.exit(1)
 })
-
-async function getToken (github, key, appId, installationId) {
-  // Create the JWT token
-  const now = Math.ceil(Date.now() / 1000)
-  const jwtPayload = {
-    iat: now,
-    exp: now + (8*60),
-    iss: appId,
-  }
-  const token = jwt.sign(jwtPayload, key, { algorithm: 'RS256'});
-
-  github.authenticate({
-    type: 'integration',
-    token
-  })
-
-  // Get the real github token
-  const tokenInfo = await github.integrations.createInstallationToken({
-    installation_id: installationId
-  })
-
-  return tokenInfo.data.token
-}

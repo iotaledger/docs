@@ -1,0 +1,19 @@
+{
+  "name": "zeit-docs-deploy-server",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.4",
+    "express-fileupload": "^0.1.4",
+    "jsonwebtoken": "^7.4.3",
+    "mz": "^2.6.0",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "github": "^9.2.0",
+    "now": "^7.1.1"
+  }
+}
