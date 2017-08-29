@@ -6,15 +6,16 @@ import { TerminalInput } from '../../../components/text/terminal'
 import { Code } from '../../../components/text/code'
 import { HR } from '../../../components/text/paragraph'
 import Image from '../../../components/image'
+import Now from '../../../components/now/now'
 
 // prettier-ignore
 export default withDoc({
-  title: 'Five Minute Guide to ▲now',
+  title: 'Five Minute Guide',
   date: '30 July 2017',
   authors: [arunoda],
 })(markdown(components)`
 
-With ▲now, you can deploy and publish any kind of web app (or service) in under five minutes. This guide includes information about:
+With ${<Now color="#000"/>}, you can deploy and publish any kind of web app (or service) in under five minutes. This guide includes information about:
 
 * Deploying an app
 * Buying a domain name
@@ -23,9 +24,9 @@ With ▲now, you can deploy and publish any kind of web app (or service) in unde
 
 ## Now Desktop
 
-To use ▲now, start by installing [Now Desktop](https://zeit.co/download).
+To use ${<Now color="#000"/>}, start by installing [Now Desktop](https://zeit.co/download).
 
-When the installation is completed, you can log in to ▲now by running the following command using a terminal:
+When the installation is completed, you can log in to ${<Now color="#000"/>} by running the following command using a terminal:
 
 ${<TerminalInput>now login</TerminalInput>}
 
@@ -51,7 +52,7 @@ After you have added the content, visit the \`my-web-app\` directory using a ter
 
 ${<TerminalInput>now</TerminalInput>}
 
-▲now will deploy the app and give you a URL as shown below.
+${<Now color="#000"/>} will deploy the app and give you a URL as shown below.
 
 ${<Image
   src={`${ASSETS_URL}/docs/five-minute-guide-to-now/deploy.png`}
@@ -111,5 +112,5 @@ Your users can access the updated web app at <https://my-web-app.com>.
 
 ${<HR />}
 
-These are just a few things you can do with ▲now. To learn more about ▲now, simply follow the rest of the docs.
+These are just a few things you can do with ${<Now color="#000"/>}. To learn more about ${<Now color="#000"/>}, simply follow the rest of the docs.
 `)

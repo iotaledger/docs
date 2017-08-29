@@ -6,6 +6,7 @@ import { TerminalInput } from '../../../components/text/terminal'
 import { Code } from '../../../components/text/code'
 import { InternalLink } from '../../../components/text/link'
 import Image from '../../../components/image'
+import Now from '../../../components/now/now'
 
 // prettier-ignore
 export default withDoc({
@@ -18,9 +19,9 @@ If multiple people deploy your app or utilize a CI service, it's a better idea t
 
 However, adding that file to [Git](https://en.wikipedia.org/wiki/Git) could cause potential issues. Secrets like API tokens and DB information are visible to anyone who has access to the source code. That's bad.
 
-## ▲now Secrets
+## Now Secrets
 
-That's where ▲now Secrets can help you. It's a configuration store that works across your account. Let's see how to use it:
+That's where ${<Now color="#000"/>} Secrets can help you. It's a configuration store that works across your account. Let's see how to use it:
 
 First, add some secrets:
 
@@ -43,16 +44,16 @@ This \`now.json\` file no longer contains secret information and it's safe to ad
 
 ## Operations
 
-You can perform a few sets of operations with ▲now Secrets, including adding, renaming and removing secrets. But you can't read secrets from the terminal.
+You can perform a few sets of operations with ${<Now color="#000"/>} Secrets, including adding, renaming and removing secrets. But you can't read secrets from the terminal.
 
 > **WARNING**:
 > <br/>
->Anyone who can deploy to ▲now has access to these secrets. Disabling the ability to read secrets in the terminal is simply a barrier.
+>Anyone who can deploy to ${<Now color="#000"/>} has access to these secrets. Disabling the ability to read secrets in the terminal is simply a barrier.
 > <br/>
 >A user can still deploy a simple app to dump these secrets.
 
 
-You can get more information about ▲now Secrets by running the following Help command:
+You can get more information about ${<Now color="#000"/>} Secrets by running the following Help command:
 
 ${<TerminalInput>{`now secrets --help`}</TerminalInput>}
 
@@ -61,7 +62,7 @@ ${
     src={`${ASSETS_URL}/docs/now-secrets/help.png`}
     width={650}
     height={509}
-    caption="Help output of ▲now Secrets."
+    caption="Help output of `now secrets`"
   />
 }
 

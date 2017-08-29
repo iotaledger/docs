@@ -5,6 +5,7 @@ import { arunoda } from '../../../lib/data/team'
 import { TerminalInput } from '../../../components/text/terminal'
 import { Code } from '../../../components/text/code'
 import { InternalLink } from '../../../components/text/link'
+import Now from '../../../components/now/now'
 
 // prettier-ignore
 export default withDoc({
@@ -21,7 +22,7 @@ Almost every app needs to get configurations at runtime. These configurations co
 
 The best way to expose these configurations is to do so with [environment variables](https://en.wikipedia.org/wiki/Environment_variable), which is a universally available method that works across various programming languages, operating systems and hosting providers.
 
-Exposing environment variables with ▲now is easy.
+Exposing environment variables with ${<Now color="#000"/>} is easy.
 
 ## Via CLI
 
@@ -49,6 +50,6 @@ ${
 
 After that, \`now\` will use above environment variables when you deploy your app.
 
-> It's not a good idea to commit the \`now.json\` file to [Git](https://en.wikipedia.org/wiki/Git) if it contains secret information. For that, consider using ${<InternalLink href="/docs/getting-started/secrets">▲now Secrets</InternalLink>}.
+> It's not a good idea to commit the \`now.json\` file to [Git](https://en.wikipedia.org/wiki/Git) if it contains secret information. For that, consider using ${<InternalLink href="/docs/getting-started/secrets">{<Now color="#067df7"/>} Secrets</InternalLink>}.
 
 `)

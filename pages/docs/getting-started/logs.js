@@ -4,6 +4,7 @@ import withDoc, { components } from '../../../lib/with-doc'
 import { arunoda } from '../../../lib/data/team'
 import { TerminalInput } from '../../../components/text/terminal'
 import Image from '../../../components/image'
+import Now from '../../../components/now/now'
 
 // prettier-ignore
 export default withDoc({
@@ -12,7 +13,7 @@ export default withDoc({
   authors: [arunoda],
 })(markdown(components)`
 
-Logs are important because it allows you to see what's happening inside the app, especially when a crisis happens. ▲now keeps logs of all of your deployments and allows you to search them.
+Logs are important because it allows you to see what's happening inside the app, especially when a crisis happens. ${<Now color="#000"/>} keeps logs of all of your deployments and allows you to search them.
 
 Let's have a look at how you can access logs.
 
