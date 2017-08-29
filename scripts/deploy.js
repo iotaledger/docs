@@ -33,7 +33,7 @@ async function run() {
   }
 
   // Upload the app to the deploy server
-  const url = `https://zeit-docs-deploy-server.now.sh/deploy/${PULL_REQUEST_ID}`
+  const url = `https://docs-deploy-server.zeit.sh/deploy/${PULL_REQUEST_ID}`
   const upload = shell.exec(`curl -F "app=@app.tar.gz" ${url}`)
   if (upload.code !== 0) {
     throw new Error(upload.stderr)
