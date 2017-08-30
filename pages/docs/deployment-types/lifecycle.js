@@ -19,7 +19,7 @@ In this guide, we are going to have a look at how ${<Now color="#000"/>} deploy 
 
 ${
   <Image
-    src={`${ASSETS_URL}/api/deployment-state.png`}
+    src={`${IMAGE_ASSETS_URL}/api/deployment-state.png`}
     width={600}
     height={267}
   />

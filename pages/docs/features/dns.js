@@ -69,7 +69,7 @@ ${
 
 ${
   <Image
-    src={`${ASSETS_URL}/blog/domain-verification/cloudflare.png`}
+    src={`${IMAGE_ASSETS_URL}/blog/domain-verification/cloudflare.png`}
     width="700"
     height="190"
   />
@@ -79,7 +79,7 @@ ${
 
 ${
   <Image
-    src={`${ASSETS_URL}/blog/domain-verification/ssl.png`}
+    src={`${IMAGE_ASSETS_URL}/blog/domain-verification/ssl.png`}
     width="700"
     height="314"
   />
@@ -92,7 +92,7 @@ In the following screenshot we have a page rule that turns off encryption when a
 
 ${
   <Image
-    src={`${ASSETS_URL}/blog/domain-verification/rules.png`}
+    src={`${IMAGE_ASSETS_URL}/blog/domain-verification/rules.png`}
     width="700"
     height="386"
   />

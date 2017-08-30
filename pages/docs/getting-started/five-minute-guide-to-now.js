@@ -55,7 +55,7 @@ ${<TerminalInput>now</TerminalInput>}
 ${<Now color="#000"/>} will deploy the app and give you a URL as shown below.
 
 ${<Image
-  src={`${ASSETS_URL}/docs/five-minute-guide-to-now/deploy.png`}
+  src={`${IMAGE_ASSETS_URL}/docs/five-minute-guide-to-now/deploy.png`}
   width={650}
   height={255}
   caption="Getting a unique URL after the deployment."
@@ -89,7 +89,7 @@ Once you've done that, you'll be able to access your app using <https://my-web-a
 It is automatically configured with a [Let's Encrypt](https://letsencrypt.org/) SSL certificate and served with HTTPS.
 
 ${<Image
-  src={`${ASSETS_URL}/docs/five-minute-guide-to-now/domain-setup.png`}
+  src={`${IMAGE_ASSETS_URL}/docs/five-minute-guide-to-now/domain-setup.png`}
   width={650}
   height={412}
   caption="After mapping a domain name to a deployment."

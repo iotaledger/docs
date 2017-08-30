@@ -87,7 +87,7 @@ Go to the URL returned (\`http://0.0.0.0:3000\`) and you should see something li
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/json-api/date.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/json-api/date.png`}
     width="550"
     height="279"
   />
@@ -141,7 +141,7 @@ Assuming that you've followed this post to this point, you should now see able t
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/json-api/members.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/json-api/members.png`}
     width="600"
     height="373"
   />

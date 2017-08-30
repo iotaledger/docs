@@ -35,7 +35,7 @@ If that directory contains an \`index.html\` file, that file will be served. Oth
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/deployment/static-dir-listing.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/deployment/static-dir-listing.png`}
     width={600}
     height={325}
     caption="Directory listing of a static deployment"

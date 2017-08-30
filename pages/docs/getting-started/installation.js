@@ -19,7 +19,7 @@ In order to deploy to ${<Now color="#000"/>}, you need to install a small utilit
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/installation/now-desktop.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/installation/now-desktop.png`}
     width={550}
     height={380}
     caption="Now Desktop on Mac OS"

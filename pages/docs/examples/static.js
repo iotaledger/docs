@@ -57,7 +57,7 @@ This is how it will look in the browser when opening the file:
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/static/browser.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/static/browser.png`}
     width="550"
     height="319"
   />

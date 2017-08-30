@@ -79,7 +79,7 @@ Now, when running \`node index\` inside your terminal, you should see the follow
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/realtime-chat/server.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/realtime-chat/server.png`}
     width={550}
     height={345}
   />
@@ -89,7 +89,7 @@ And when pointing your browser to the address shown (\`http://localhost:4000\`):
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/realtime-chat/hello-world.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/realtime-chat/hello-world.png`}
     width={550}
     height={307}
   />
@@ -136,7 +136,7 @@ If you restart the process (by hitting \`control + C\` and running \`node index\
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/realtime-chat/form.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/realtime-chat/form.png`}
     width={550}
     height={307}
   />
@@ -197,7 +197,7 @@ Try opening several tabs, and you’ll see several messages:
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/realtime-chat/connected.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/realtime-chat/connected.png`}
     width={550}
     height={345}
   />
@@ -221,7 +221,7 @@ Then if you refresh a tab several times you can see it in action:
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/realtime-chat/disconnected.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/realtime-chat/disconnected.png`}
     width={550}
     height={345}
   />
@@ -330,7 +330,7 @@ And that completes our chat application, in about **20 lines of code**! You can 
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/realtime-chat/result.gif`}
+    src={`${IMAGE_ASSETS_URL}/docs/realtime-chat/result.gif`}
     width={600}
     height={572}
   />

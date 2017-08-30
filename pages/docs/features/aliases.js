@@ -62,7 +62,7 @@ For example, let's say I want \`https://get-started-basic-etjnigdrkz.now.sh\` â€
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/aliases/alias-source.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/aliases/alias-source.png`}
     width="682"
     height="467"
   />
@@ -101,7 +101,7 @@ After this successful message, my deployment is instantly available via its orig
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/aliases/alias-dest.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/aliases/alias-dest.png`}
     width="682"
     height="468"
     caption={
@@ -211,7 +211,7 @@ In this case, my domain is registered with Google Domains, so I edit the nameser
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/aliases/nameservers-edit.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/aliases/nameservers-edit.png`}
     width="569"
     height="274"
     caption={
@@ -276,7 +276,7 @@ First, I head to the DNS settings and add a \`CNAME\` record for the \`hello\` s
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/aliases/cname-add.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/aliases/cname-add.png`}
     width="561"
     height="69"
     caption={
@@ -317,7 +317,7 @@ As you can see, as a security measure we require that you validate that you own 
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/aliases/txt-add.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/aliases/txt-add.png`}
     width="561"
     height="63"
     caption={

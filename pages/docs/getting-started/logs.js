@@ -33,7 +33,7 @@ ${<TerminalInput>now logs --help</TerminalInput>}
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/logs/help.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/logs/help.png`}
     width={650}
     height={470}
     caption="Help of 'now logs'"
@@ -46,7 +46,7 @@ ${<TerminalInput>now logs -a -q "GET" -n 10 my-web-app.com</TerminalInput>}
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/logs/last-10-get-requests.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/logs/last-10-get-requests.png`}
     width={650}
     height={470}
     caption="Last 10 HTTP GET requests."
@@ -62,7 +62,7 @@ Click any of your deployment URLs inside the dashboard and start searching logs.
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/logs/now-dashboard-logs.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/logs/now-dashboard-logs.png`}
     width={650}
     height={445}
     caption="Searching logs inside the web dashboard."

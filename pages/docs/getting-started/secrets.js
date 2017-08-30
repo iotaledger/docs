@@ -59,7 +59,7 @@ ${<TerminalInput>{`now secrets --help`}</TerminalInput>}
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/now-secrets/help.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/now-secrets/help.png`}
     width={650}
     height={509}
     caption="Help output of `now secrets`"

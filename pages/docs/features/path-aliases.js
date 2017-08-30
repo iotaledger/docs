@@ -36,7 +36,7 @@ For example, if you deploy our [Node.js microservice](https://github.com/now-exa
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/path-aliases/deployment.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/path-aliases/deployment.png`}
     width={533}
     height={380}
     caption="An example of a simple Node.js deployment, live at api-auth-ybqnmnovxg.now.sh."

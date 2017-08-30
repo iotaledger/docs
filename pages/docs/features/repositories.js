@@ -51,7 +51,7 @@ Once ${<Now color="#000" />} fetches the repository, you'll see just what you're
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/git-repositories/slackin.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/git-repositories/slackin.png`}
     width="550"
     height="420"
   />

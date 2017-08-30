@@ -112,7 +112,7 @@ Telling Slack about the command is pretty easy. As the first step, you need to s
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/slack-slash/add-configuration.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/slack-slash/add-configuration.png`}
     width="500"
     height="321"
   />
@@ -126,7 +126,7 @@ Optionally, you can also make the command show up in the autocomplete help in th
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/slack-slash/auto-complete.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/slack-slash/auto-complete.png`}
     width="600"
     height="214"
   />

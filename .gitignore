@@ -4,6 +4,7 @@ out
 
 # dependencies
 node_modules
+deploy-server/node_modules
 
 # logs
 npm-debug.log

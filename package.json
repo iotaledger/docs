@@ -87,7 +87,9 @@
     ],
     "globals": {
       "VERSION": true,
-      "ASSETS_URL": true
+      "IMAGE_ASSETS_URL": true,
+      "VIDEO_ASSETS_URL": true,
+      "RAW_ASSETS_URL": true
     },
     "env": {
       "es6": true,

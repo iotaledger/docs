@@ -53,7 +53,7 @@ In this case, ${<Now color="#000"/>} will set the \`min\` and \`max\` instance s
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/scaling/fixed-scaling.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/scaling/fixed-scaling.png`}
     width={650}
     height={467}
     caption="The deployment is scaled to 3 instances and you can see the URLs for each of those instances."
@@ -74,7 +74,7 @@ If you run \`now alias\` again, it'll scale the new deployment accordingly and s
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/scaling/now-alias.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/scaling/now-alias.png`}
     width={650}
     height={467}
     caption="Aliasing “hello-node-zhlrfgchkd.now.sh” to “hnode” changes it's scaling settings and “hnode”'s previous deployment."
@@ -97,7 +97,7 @@ ${<Now color="#000"/>} will automatically start and kill instances based on the 
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/scaling/auto-scaling.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/scaling/auto-scaling.png`}
     width={650}
     height={335}
     caption="Auto scaling in action."

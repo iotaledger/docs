@@ -102,7 +102,7 @@ This is how it should look:
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/next/running.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/next/running.png`}
     width="550"
     height="309"
   />
@@ -112,7 +112,7 @@ You can now go to <http://localhost:3000> in your browser and see the rendered m
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/next/output.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/next/output.png`}
     width="550"
     height="307"
   />

@@ -23,7 +23,7 @@ This command will forward your npm credentials during the build process to fetch
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/private-npm/example.gif`}
+    src={`${IMAGE_ASSETS_URL}/docs/private-npm/example.gif`}
     width="658"
     height="483"
   />

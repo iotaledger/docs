@@ -119,7 +119,7 @@ Now you should be able to run \`npm start\` inside the directory containing the 
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/graphql/api.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/graphql/api.png`}
     width="550"
     height="307"
   />
@@ -258,7 +258,7 @@ In the browser, the client should look like this:
 
 ${
   <Image
-    src={`${ASSETS_URL}/docs/graphql/client.png`}
+    src={`${IMAGE_ASSETS_URL}/docs/graphql/client.png`}
     width="550"
     height="307"
   />
