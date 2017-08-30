@@ -6,6 +6,7 @@ import { TerminalInput } from '../../../components/text/terminal'
 import Image from '../../../components/image'
 import { Code } from '../../../components/text/code'
 import { InternalLink } from '../../../components/text/link'
+import Now from '../../../components/now/now'
 
 // prettier-ignore
 export default withDoc({
@@ -14,7 +15,7 @@ export default withDoc({
   authors: [arunoda],
 })(markdown(components)`
 
-With ▲now, you can deploy any kind of web app by using a single command. ▲now supports three types of deployments:
+With ${<Now color="#000"/>}, you can deploy any kind of web app by using a single command. ${<Now color="#000"/>} supports three types of deployments:
 
 * ${<InternalLink href="#static-deployment">Static</InternalLink>} - for static web apps
 * ${<InternalLink href="#node.js-deployment">Node.js</InternalLink>} - for Node.js apps
@@ -26,11 +27,11 @@ Here is how each of these deployments work:
 
 ## Static Deployment
 
-With static deployment, you can deploy a static web app or a set of assets to ▲now. Visit the directory you want to deploy and run this command:
+With static deployment, you can deploy a static web app or a set of assets to ${<Now color="#000"/>}. Visit the directory you want to deploy and run this command:
 
 ${<TerminalInput>now</TerminalInput>}
 
-If that directory contains an \`index.html\` file, that file will be served. Otherwise, ▲now will show all the files in that directory.
+If that directory contains an \`index.html\` file, that file will be served. Otherwise, ${<Now color="#000"/>} will show all the files in that directory.
 
 ${
   <Image
@@ -47,7 +48,7 @@ To learn more about static deployments, read ${<InternalLink href="/docs/deploym
 
 ## Node.js Deployment
 
-If you have a \`package.json\` file in your app directory, ▲now considers that a valid Node.js deployment. Here is a simple Node.js deployment with the help of [micro](https://github.com/zeit/micro).
+If you have a \`package.json\` file in your app directory, "${<Now color="#000"/>}" considers that a valid Node.js deployment. Here is a simple Node.js deployment with the help of [micro](https://github.com/zeit/micro).
 
 We have two files in our app directory. They are:
 
@@ -78,13 +79,13 @@ To deploy this app, visit the app directory and run this command:
 
 ${<TerminalInput>now</TerminalInput>}
 
-▲now will install dependencies and run the \`start\` NPM script, as mentioned in the above \`package.json\` file.
+${<Now color="#000"/>} will install dependencies and run the \`start\` NPM script, as mentioned in the above \`package.json\` file.
 
 You can also specify a separate build command, select the Node.js runtime and control dependency installation, and do more. To learn about those, read ${<InternalLink href="/docs/deployment-types/node">this guide</InternalLink>}.
 
 ## Docker Deployment
 
-If your app directory contains a \`Dockerfile\`, ▲now considers that a valid [Docker](https://www.docker.com/) deployment. It will build a docker image based on the \`Dockerfile\` and start container(s) based on that.
+If your app directory contains a \`Dockerfile\`, ${<Now color="#000"/>} considers that a valid [Docker](https://www.docker.com/) deployment. It will build a docker image based on the \`Dockerfile\` and start container(s) based on that.
 
 To deploy a simple [Go](https://golang.org/) HTTP server, create a directory and add these two files:
 
@@ -126,5 +127,5 @@ ${<TerminalInput>now</TerminalInput>}
 
 That's it. You'll get a URL like this: <https://now-go-bkbjirexiu.now.sh>
 
-To learn more about Docker deployments on ▲now, read ${<InternalLink href="/docs/deployment-types/docker">this guide</InternalLink>}.
+To learn more about Docker deployments on ${<Now color="#000"/>}, read ${<InternalLink href="/docs/deployment-types/docker">this guide</InternalLink>}.
 `)

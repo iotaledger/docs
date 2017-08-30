@@ -4,6 +4,7 @@ import withDoc, { components } from '../../../lib/with-doc'
 import { arunoda } from '../../../lib/data/team'
 import { TerminalInput } from '../../../components/text/terminal'
 import Image from '../../../components/image'
+import Now from '../../../components/now/now'
 
 // prettier-ignore
 export default withDoc({
@@ -12,7 +13,7 @@ export default withDoc({
   authors: [arunoda],
 })(markdown(components)`
 
-In order to deploy to ▲now, you need to install a small utility app. Let's see how you can do that.
+In order to deploy to ${<Now color="#000"/>}, you need to install a small utility app. Let's see how you can do that.
 
 ## Now Desktop (Recommended)
 
@@ -30,17 +31,17 @@ This is a desktop app which is [available](https://zeit.co/download) for all of 
 You can deploy apps, see notifications, and manage your account using an easy-to-use interface.
 It will update new versions automatically behind the scenes and you can always use the latest version of [Now Desktop](https://zeit.co/download).
 
-> Additionally, it comes with the \`now\` command line utility where you can interact with ▲now using a terminal.
+> Additionally, it comes with the \`now\` command line utility where you can interact with ${<Now color="#000"/>} using a terminal.
 
-## NOW CLI
+## Now CLI
 
-This is the command line interface for ▲now, especially built for [servers](https://zeit.co/download#command-line). It's a pre-built binary and works without any dependencies.
+This is the command line interface for ${<Now color="#000"/>}, especially built for [servers](https://zeit.co/download#command-line). It's a pre-built binary and works without any dependencies.
 
-NOW CLI is the ideal way to interact with ▲now inside Continues Integration(CI) services.
+Now CLI is the ideal way to interact with ${<Now color="#000"/>} inside Continues Integration(CI) services.
 
-## NOW via NPM
+## Now via NPM
 
-This is exactly NOW CLI but distributed via [NPM](https://www.npmjs.com/). This method is ideal if your server environment already has NPM support.
+This is exactly Now CLI but distributed via [NPM](https://www.npmjs.com/). This method is ideal if your server environment already has NPM support.
 
 You can get this via the following command:
 

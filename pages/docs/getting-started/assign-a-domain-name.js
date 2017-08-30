@@ -6,6 +6,7 @@ import { TerminalInput } from '../../../components/text/terminal'
 import Image from '../../../components/image'
 import { InternalLink } from '../../../components/text/link'
 import { HR } from '../../../components/text/paragraph'
+import Now from '../../../components/now/now'
 
 // prettier-ignore
 export default withDoc({
@@ -14,7 +15,7 @@ export default withDoc({
   authors: [arunoda],
 })(markdown(components)`
 
-When you deploy an app with ▲now, you will have a unique deployment URL like this: <https://my-web-app-avvuiuuwto.now.sh>.
+When you deploy an app with ${<Now color="#000"/>}, you will have a unique deployment URL like this: <https://my-web-app-avvuiuuwto.now.sh>.
 
 If you deploy your app multiple times, you will have multiple URLs. With these different deployment URLs, you can easily point users to a specific version of your app.
 
@@ -36,8 +37,8 @@ In this guide, we are going to map a domain name into one of those deployment UR
 The four different ways to use the \`now alias\` command are:
 
 1. ${<InternalLink href="#1.-using-a-now.sh-domain">Using a now.sh domain</InternalLink>}
-2. ${<InternalLink href="#2.-using-a-custom-domain,-managed-by-▲now">Using a custom domain, managed by ▲now</InternalLink>}
-3. ${<InternalLink href="#3.-using-a-custom-domain,-dns-managed-by-▲now">Using a custom domain, DNS managed by ▲now</InternalLink>}
+2. ${<InternalLink href="#2.-using-a-custom-domain,-managed-by-now">Using a custom domain, managed by now</InternalLink>}
+3. ${<InternalLink href="#3.-using-a-custom-domain,-dns-managed-by-now">Using a custom domain, DNS managed by now</InternalLink>}
 4. ${<InternalLink href="#4.-using-a-custom-domain-with-a-cname">Using a custom domain with a CNAME</InternalLink>}
 
 Let us explore each method in detail.
@@ -54,9 +55,9 @@ ${<TerminalInput>now alias https://my-web-app-avvuiuuwto.now.sh my-web-app</Term
 
 Your users may now access the above deployment URL using <https://my-web-app.now.sh>
 
-## 2. Using a custom domain, managed by ▲now
+## 2. Using a custom domain, managed by now
 
-If you want to use a custom domain for your app, the easiest method is to buy a domain name for your app using ▲now.
+If you want to use a custom domain for your app, the easiest method is to buy a domain name for your app using ${<Now color="#000"/>}.
 
 Simply run the following now alias command:
 
@@ -64,7 +65,7 @@ ${<TerminalInput>now alias https://my-web-app-avvuiuuwto.now.sh my-web-app.com</
 
 Here, we are attempting to assign the \`my-web-app.com\` domain name to the above deployment URL. If the domain name is available, you may confirm and buy it without leaving the terminal.
 
-After the confirmation, ▲now will handle all the technical details for you and allow your users to access your app using <https://my-web-app.com>.
+After the confirmation, ${<Now color="#000"/>} will handle all the technical details for you and allow your users to access your app using <https://my-web-app.com>.
 
 ${
   <Image
@@ -75,11 +76,11 @@ ${
   />
 }
 
-> In this process, ▲now will set up a [Let's Encrypt](https://letsencrypt.org/) SSL certificate for your domain automatically.
+> In this process, ${<Now color="#000"/>} will set up a [Let's Encrypt](https://letsencrypt.org/) SSL certificate for your domain automatically.
 
-## 3. Using a custom domain, DNS managed by ▲now
+## 3. Using a custom domain, DNS managed by now
 
-If you already have a domain name, this is the best option for you. With this method, ▲now will handle all the DNS management for your domain.
+If you already have a domain name, this is the best option for you. With this method, ${<Now color="#000"/>} will handle all the DNS management for your domain.
 
 ### Setup
 
@@ -101,7 +102,7 @@ You can also use a subdomain of \`my-custom-domain.com\` like this:
 
 ${<TerminalInput>now alias https://my-web-app-avvuiuuwto.now.sh ui.my-custom-domain.com</TerminalInput>}
 
-> Even in this process, ▲now will set up a [Let's Encrypt](https://letsencrypt.org/) SSL certificate for your domain automatically.
+> Even in this process, ${<Now color="#000"/>} will set up a [Let's Encrypt](https://letsencrypt.org/) SSL certificate for your domain automatically.
 
 ## 4. Using a custom domain with a CNAME
 
@@ -126,7 +127,7 @@ ${
   />
 }
 
-▲now wan't to verify the ownership of your domain. That's why it throws an error.
+${<Now color="#000"/>} wan't to verify the ownership of your domain. That's why it throws an error.
 
 * Next, add the TXT record as mentioned above error message.
 * Run the \`now alias\` command again:
@@ -135,7 +136,7 @@ ${<TerminalInput>now alias https://my-web-app-avvuiuuwto.now.sh ui.my-app.work</
 
 Now you may access your app using <https://ui.my-app.work>
 
-> In this case, ▲now will setup a [Let's Encrypt](https://letsencrypt.org/) SSL certificate for your domain. However, before you do that, you need to verify the domain.
+> In this case, ${<Now color="#000"/>} will setup a [Let's Encrypt](https://letsencrypt.org/) SSL certificate for your domain. However, before you do that, you need to verify the domain.
 
 ### Naked domains
 
