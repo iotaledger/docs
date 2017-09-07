@@ -14,29 +14,29 @@ export default withDoc({
   authors: [sergio],
 })(markdown(components)`
 
-[Create React App](https://github.com/facebookincubator/create-react-app) is a boilerplate tool used to create Single Page Applications with React.js without build configuration. It was made by Facebook and publicized as an official way to start new React applications.
+[Create React App](https://github.com/facebookincubator/create-react-app) is a boilerplate tool used to create Single Page Applications with React.js without build configuration. Facebook created CRA and made it the official way to start a new React application.
 
 In this page we're going to focus on how to deploy a Single Page Application made with Create React App to ${<Now color="#000"/>}. If you want to learn how to use this boilerplate tool we recommend you to read their [repository's README](https://github.com/facebookincubator/create-react-app/blob/master/README.md).
 
 ## Type of deployment
 
-${<Now color="#000"/>} let us deploy a simple ${<InternalLink href="/docs/examples/static">static site</InternalLink>} without any configuration, and even if a Single Page Application could be considered a static site (we don't need server side code) is not exactly one and has one special requirement, the routing is being handled client side. That means every URL which doesn't resolve to a static file should return the \`index.html\` file so the application can decide if it's a handled URL or not.
+${<Now color="#000"/>} let us deploy a simple ${<InternalLink href="/docs/examples/static">static site</InternalLink>} without any configuration, and even if a Single Page Application could be considered a static site (since we don't need server side code) is not exactly one and has one special requirement, the routing is handled client side. That means every URL which doesn't resolve to a static file should return the \`index.html\` file so the application can decide if it's a handled URL or not.
 
-Because of that special requirement we can't just do a ${<InternalLink href="/docs/getting-started/deployment#static-deployment">static deployment</InternalLink>} and we need to rely into the ${<InternalLink href="/docs/getting-started/deployment#node.js-deployment">Node.js</InternalLink>} or ${<InternalLink href="/docs/getting-started/deployment#docker-deployment">Docker</InternalLink>} deployments. In this case we're going to use a Node.js one.
+Because of this special requirement we can't just do a ${<InternalLink href="/docs/getting-started/deployment#static-deployment">static deployment</InternalLink>} and we need to rely into the ${<InternalLink href="/docs/getting-started/deployment#node.js-deployment">Node.js</InternalLink>} or ${<InternalLink href="/docs/getting-started/deployment#docker-deployment">Docker</InternalLink>} deployment. In this case we're going to use a Node.js one.
 
 ## Setup
 
-We're going to need a HTTP server for our application, there are many possible ones including Apache, NGINX, express-static, etc. But in our case we're going to use a super simple one called [serve](https://github.com/zeit/serve) and install it as a dependency in our project.
+We're going to need a HTTP server for our application, there are many possible ones including Apache, NGINX, express-static, etc. But in our case we're going to use [serve](https://github.com/zeit/serve) and install it as a dependency in our project.
 
 ${<TerminalInput>npm install --save serve</TerminalInput>}
 
-Then we need to add a script to run this server, because Create React App use \`start\` to run the development server we can decide between changing the default \`start\` script to \`dev\` and run **serve** through \`start\` or we can define a new script called \`now-start\`.
+Then we need to add a script to run this server, because Create React App use \`start\` to run the development server we can decide between changing the default \`start\` script to \`dev\` and run **serve** using \`start\` or we can define a new script called \`now-start\`.
 
-This script is going to be used by ${<Now color="#000"/>} to run our Node.js application instead of the usual \`start\` script, that way we can continue with the usual workflow of Create React App. And our \`now-start\` script should run the following line.
+This new script is going to be used by ${<Now color="#000"/>} to run our Node.js application instead of the usual \`start\` script, that way we can continue with the usual workflow of Create React App. And our \`now-start\` script can run the following line.
 
 ${<TerminalInput>serve --single ./build</TerminalInput>}
 
-The \`--single\` (or \`-s\`) option is going to tell **serve** to run the HTTP server to support a Single Page Application, this means every request which can't be resolved to a static file is going to resolve with the \`index.html\` so we can handle routing client side.
+The \`--single\` (or just \`-s\`) option is going to tell **serve** to run the HTTP server to support a Single Page Application, this means every request which can't be resolved to a static file is going to resolve with the \`index.html\` so we can handle routing client side.
 
 The \`./build\` path is going to define which directory we want our HTTP server to actually serve.
 
@@ -68,7 +68,7 @@ Once we did that we can deploy our application with the following command:
 
 ${<TerminalInput>now</TerminalInput>}
 
-Once ${<Now color="#000" />} has finished uploading the files, you'll see a URL that points to your freshly created Single Page Application then is going to run \`npm run build\` to build our application code (_se we don't need to do this in our local machine_) and after that start our HTTP server with \`npm run now-start\`.
+Once ${<Now color="#000" />} has finished uploading the files, you'll see a URL that points to your freshly created Single Page Application then is going to run \`npm run build\` to build our application code (_we don't need to do build in our local machine_) and after that start our HTTP server with \`npm run now-start\`.
 
 But in the case of a real application (not used for testing purposes), you would now have to [assign an alias](https://zeit.co/docs/features/aliases) to it.
 `)
