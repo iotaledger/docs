@@ -1,11 +1,11 @@
 import markdown from 'markdown-in-js'
-import withDoc, { components } from '../../../../lib/with-doc'
+import withDoc, { components } from '../../../lib/with-doc'
 
-import { sergio } from '../../../../lib/data/team'
-import Now from '../../../../components/now/now'
-import { InternalLink } from '../../../../components/text/link'
-import { Code } from '../../../../components/text/code'
-import { TerminalInput } from '../../../../components/text/terminal'
+import { sergio } from '../../../lib/data/team'
+import Now from '../../../components/now/now'
+import { InternalLink } from '../../../components/text/link'
+import { Code } from '../../../components/text/code'
+import { TerminalInput } from '../../../components/text/terminal'
 
 // prettier-ignore
 export default withDoc({
