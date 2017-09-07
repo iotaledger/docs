@@ -97,6 +97,8 @@ ${
   </Caption>
 }
 
+This means if an user goes to \`company.com/api/auth\` he's going to see that URL in the browser but internally the request will go to \`auth.api.company.com/api/auth\` (yes the \`pathname\` is appended to the \`dest\` URL).
+
 Here are some of the main characteristics of the system we're excited about.
 
 ### 1. Atomic
