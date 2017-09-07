@@ -29,6 +29,7 @@ app.post('/deploy/:pullRequestId', (req, res) => {
         res.send('SUCCESS')
       })
       .catch(error => {
+        logger.error(error.stack)
         return res.status(500).send(error)
       })
   })

@@ -3,11 +3,13 @@ const { resolve } = require('path')
 const fs = require('mz/fs')
 const GitHubApi = require('github')
 const jwt = require('jsonwebtoken')
+const logger = console
 
 const { ZEIT_TOKEN, GH_KEY } = process.env
 
 module.exports = async (pullRequestId, tarballName) => {
-  // Extract the static ap
+  // Extract the static app
+  logger.log(`${pullRequestId}=> moving the tarball`)
   await fs.mkdir(`/tmp/${tarballName}`)
   await fs.rename(
     `/tmp/${tarballName}.tar.gz`,
@@ -18,15 +20,16 @@ module.exports = async (pullRequestId, tarballName) => {
     cwd: `/tmp/${tarballName}`
   }
 
+  logger.log(`${pullRequestId}=> extracting the tarball`)
   await exec('tar xzf app.tar.gz', execOptions)
 
   // Deploy it to now
   const nowPath = resolve(__dirname, 'node_modules/.bin/now')
-  await exec(`${nowPath} switch zeit -t ${ZEIT_TOKEN}`, execOptions)
-  const nowApp = await exec(
-    `${nowPath} -n zeit-docs -t ${ZEIT_TOKEN} out`,
-    execOptions
-  )
+
+  logger.log(`${pullRequestId}=> deploy the app`)
+  const nowApp = await exec(`${nowPath} -p -n zeit-docs -t ${ZEIT_TOKEN}`, {
+    cwd: `${execOptions.cwd}/out`
+  })
 
   const deployUrl = nowApp.stdout
 
@@ -42,6 +45,7 @@ module.exports = async (pullRequestId, tarballName) => {
   })
 
   const key = Buffer.from(GH_KEY, 'base64').toString('utf8')
+  logger.log(`${pullRequestId}=> get the github token`)
   const token = await getToken(github, key, 3412, 36421)
 
   github.authenticate({
@@ -49,6 +53,7 @@ module.exports = async (pullRequestId, tarballName) => {
     token
   })
 
+  logger.log(`${pullRequestId}=> create the deploy comment`)
   await github.issues.createComment({
     owner: 'zeit',
     repo: 'docs',
