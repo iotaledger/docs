@@ -39,7 +39,7 @@ If we dissect that URL, we can see it's composed of a few parts:
 * **https://** -Every single deployment is automatically served under HTTP/2 with SSL. Certificates are provisioned automatically.
 * **get-started-basic**	- The application's name. You can customize it upon deployment (for example with the name field in package.json for Node.js deployments or LABEL in Dockerfile for Docker ones.
 * **etjnigdrkz** -	A cryptographically-strong random string that makes your URL virtually impossible to guess, while retaining a reasonable length for sharing it with your co-workers or clients.
-* **.now.sh2** -	All your deployments end in .now.sh by default. Aliases allow you to point them to custom domains.
+* **.now.sh** -	All your deployments end in .now.sh by default. Aliases allow you to point them to custom domains.
 
 These URLs area ideal for development and staging, but not ideal to share with the public.
 
