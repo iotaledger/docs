@@ -22,9 +22,9 @@ With ${<Now color="#000"/>}, you can deploy and publish any kind of web app (or 
 * Mapping that domain name to the app
 * Configuring an SSL certificate
 
-## Now CLI
+## Now Desktop
 
-To use ${<Now color="#000"/>}, start by installing [Now CLI](https://zeit.co/download#command-line).
+To use ${<Now color="#000"/>}, start by installing [Now Desktop](https://zeit.co/download).
 
 When the installation is completed, you can log in to ${<Now color="#000"/>} by running the following command using a terminal:
 
