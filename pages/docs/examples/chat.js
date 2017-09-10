@@ -41,6 +41,9 @@ ${
   <Code>
     {`{
   "name": "realtime-chat",
+  "scripts": {
+    "start": "node index"
+  },
   "dependencies": {
     "express": "latest"
   }
@@ -75,7 +78,7 @@ This translates into the following:
 * We define a route handler \`/\` that gets called when we hit our website home.
 * We make the HTTP server available on port 3000.
 
-Now, when running \`node index\` inside your terminal, you should see the following:
+Now, when running \`npm run start\` inside your terminal, you should see the following:
 
 ${
   <Image
@@ -132,7 +135,7 @@ ${
   </Code>
 }
 
-If you restart the process (by hitting \`control + C\` and running \`node index\` again) and refresh the page it should look like this:
+If you restart the process (by hitting \`control + C\` and running \`npm run start\` again) and refresh the page it should look like this:
 
 ${
   <Image
