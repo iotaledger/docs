@@ -108,7 +108,7 @@ ${
 
 ### "dotenv" (boolean|string)
 
-ead environment variables from [dotenv](https://github.com/motdotla/dotenv) file.
+Read environment variables from [dotenv](https://github.com/motdotla/dotenv) file.
 
 ${
   <Code>
