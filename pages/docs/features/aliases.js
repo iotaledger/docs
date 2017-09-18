@@ -106,7 +106,7 @@ ${
     height="468"
     caption={
       <span>
-        The URL <InlineCode>get-started-now.sh</InlineCode> now works!
+        The URL <InlineCode>get-started-basic.now.sh</InlineCode> now works!
       </span>
     }
   />
