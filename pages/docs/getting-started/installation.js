@@ -22,7 +22,7 @@ ${
     src={`${IMAGE_ASSETS_URL}/docs/installation/now-desktop.png`}
     width={550}
     height={380}
-    caption="Now Desktop on Mac OS"
+    caption="Now Desktop on macOS"
   />
 }
 
