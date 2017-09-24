@@ -98,7 +98,7 @@ ${
   />
 }
 
-The page rule should no be removed at any time because the verification URL is accessed every time we renew your certificates. In case the rule is removed and the verification URL is inaccessible, we may not be able to renew your certificates succesfully, which in turn may make your website or service inaccessible.
+The page rule should no be removed at any time because the verification URL is accessed every time we renew your certificates. In case the rule is removed and the verification URL is inaccessible, we may not be able to renew your certificates successfully, which in turn may make your website or service inaccessible.
 
 ## Managing DNS Records When Using Our Nameservers
 

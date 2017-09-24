@@ -77,7 +77,7 @@ const url = require('url')`}
   </Code>
 }
 
-Then you need to export the code which specifies the output rendered when the service is accessed by Slack. In our case, it's a function that retrieves the current weather and returns a message containing the condition in degrees celcius:
+Then you need to export the code which specifies the output rendered when the service is accessed by Slack. In our case, it's a function that retrieves the current weather and returns a message containing the condition in degrees celsius:
 
 ${
   <Code>

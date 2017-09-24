@@ -102,7 +102,7 @@ This means if an user goes to \`company.com/api/auth\` he's going to see that UR
 Here are some of the main characteristics of the system we're excited about.
 
 ### 1. Atomic
-Not a single request is dropped while or after the rules are loaded. You can run the command with confidence adding, substracting or modifying rules.
+Not a single request is dropped while or after the rules are loaded. You can run the command with confidence adding, subtracting or modifying rules.
 
 ### 2. Idempotent
 If any of the rules remain the same, the system's performance is not impacted and no errors occur.

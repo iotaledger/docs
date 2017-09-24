@@ -29,9 +29,9 @@ Your app's deployments flow through a certain set of states throughout their lif
 
 * **DEPLOYING**: Files an deployment metadata is collected to boot it up.
 * **BOOTED**: When a deployment is first created, it's running environment is prepared and started. After this is completed, the state is set to \`BOOTED\`.
-* **BUILDING**: After the deplomyent infrastructure is up and running, the deployment is built. For \`docker\` based deployments, this means \`docker build\` and persisting the resulting docker image.<br/>
+* **BUILDING**: After the deployment infrastructure is up and running, the deployment is built. For \`docker\` based deployments, this means \`docker build\` and persisting the resulting docker image.<br/>
 For \`npm\` based deployments it means running \`npm install\` and \`npm run build\`. Static deployments currently don't have a build step and jump directly to \`READY\`.
-* **READY** or **BUILD_ERROR**: If the build as successful, the deployment will start and move to the \`READY\` state, which means it's ready to receive and serve traffic. For \`npm\` deploymenst it means \`npm start\`, and for \`docker\` deployments \`docker run\`.
+* **READY** or **BUILD_ERROR**: If the build as successful, the deployment will start and move to the \`READY\` state, which means it's ready to receive and serve traffic. For \`npm\` deployments it means \`npm start\`, and for \`docker\` deployments \`docker run\`.
 
 If, however, the build is unsuccessful, the deployment ends up in a \`BUILD_ERROR\` state, and logs can be inspected to see what went wrong. In this case the deployment will not be retried.
 
@@ -43,7 +43,7 @@ The deployment can also permanently move to a \`DEPLOYMENT_ERROR\` state, if it 
 
 ## Instances & Scaling
 
-A deployment by default runs between zero to one instance, meaning it eiter runs one copy of the application, or is frozen due to lack of traffic. This amount of instances can be decided manually using the \`now scale\` command.
+A deployment by default runs between zero to one instance, meaning it either runs one copy of the application, or is frozen due to lack of traffic. This amount of instances can be decided manually using the \`now scale\` command.
 
 If the minimum and maximum amount of instances are not the same, the deployment will be automatically scaled between those values depending on the amount of traffic and its throughput. For example, if an application has been scaled with the following command:
 

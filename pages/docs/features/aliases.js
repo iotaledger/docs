@@ -116,7 +116,7 @@ Notice that I omitted \`.now.sh\` at the end of the target subdomain. When one i
 
 As seen in the output, each alias receives a unique identifier. In the example above, it's \`xpvB6GZWMR6Q9Oxe3c64Htgq\`. We'll cover this later in the **Managing Aliases** section.
 
-The output also refers to the deployment ID, which is also accessible when you list your deployments with now ls. It can be used in substition of the URL when running \`now alias\`:
+The output also refers to the deployment ID, which is also accessible when you list your deployments with now ls. It can be used in substitution of the URL when running \`now alias\`:
 
 ${
   <TerminalInput>

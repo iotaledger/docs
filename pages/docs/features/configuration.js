@@ -76,7 +76,7 @@ All of the properties mentioned below can be used both in the \`package.json\` a
 
 ### "name" (string)
 
-The prefix for all new deployment instances. The CLI usually generates this field automatically based on the name of the directory. But if you'd like to define it explictly, this is the way to go.
+The prefix for all new deployment instances. The CLI usually generates this field automatically based on the name of the directory. But if you'd like to define it explicitly, this is the way to go.
 
 ${<Code>{`"name": "zeit-chat"`}</Code>}
 

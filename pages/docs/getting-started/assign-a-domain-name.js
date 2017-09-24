@@ -127,7 +127,7 @@ ${
   />
 }
 
-${<Now color="#000"/>} wan't to verify the ownership of your domain. That's why it throws an error.
+${<Now color="#000"/>} wants to verify the ownership of your domain. That's why it throws an error.
 
 * Next, add the TXT record as mentioned above error message.
 * Run the \`now alias\` command again:

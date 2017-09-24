@@ -16,7 +16,7 @@ export default withDoc({
 
 If your project contains a \`package.json\` (and no \`Dockerfile\`) file, it will always be treated as a [Node.js](https://nodejs.org/en/) deployment.
 
-This means that, when you run \`now\`, your code will be launched into a 64-bit Node.js enviroment running on Alpine Linux (using [musl](https://www.musl-libc.org/) instead of [glibc](https://www.gnu.org/software/libc/) for the core libraries).
+This means that, when you run \`now\`, your code will be launched into a 64-bit Node.js environment running on Alpine Linux (using [musl](https://www.musl-libc.org/) instead of [glibc](https://www.gnu.org/software/libc/) for the core libraries).
 
 In this document, you'll learn the exact specifications and behaviour of Node.js deployments running on now.
 
@@ -36,7 +36,7 @@ After ${<Now color="#000" />} has taken care of setting up the base of your depl
 
 For this process, we're using our so-called "ace" technology behind the curtains.
 
-It not only comes with a global shared cache of public modules to avoid repetitive work in each deployment, but it also caches the artifacts of binary packages which requires packages like \`node-canvas\` to only get compiled once. Afterwards, our build servers securily share it with all our customers (which saves a lot of time).
+It not only comes with a global shared cache of public modules to avoid repetitive work in each deployment, but it also caches the artifacts of binary packages which requires packages like \`node-canvas\` to only get compiled once. Afterwards, our build servers securely share it with all our customers (which saves a lot of time).
 
 You can read more about it ${<InternalLink href="/blog/faster-javascript-deployments">here</InternalLink>}.
 

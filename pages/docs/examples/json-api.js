@@ -97,7 +97,7 @@ ${
 
 That's great, isn't it? But we're not quite there yet! The next step is to take advantage of **async** and **await** by loading real data once the request comes in (then we'll send it back as the response).
 
-As example, we're going to retrieve the list of public members inside our [GitHub organisation](https://github.com/zeit) using their [API](https://developer.github.com/v3/orgs/members/).
+As example, we're going to retrieve the list of public members inside our [GitHub organization](https://github.com/zeit) using their [API](https://developer.github.com/v3/orgs/members/).
 
 In order to get there, the first thing we need to do is install [node-fetch](https://github.com/bitinn/node-fetch), a package that allows us to easily load data from an API endpoint and now that we already have a \`package.json\` in place, this only requires a command:
 
@@ -137,7 +137,7 @@ Now save the file and run it the service again (if it's still running, stop it u
 
 ${<TerminalInput>npm start</TerminalInput>}
 
-Assuming that you've followed this post to this point, you should now see able to open \`http://0.0.0.0:3000\` in your browser and see a list of all public members of the [ZEIT organisation](https://github.com/zeit) on GitHub:
+Assuming that you've followed this post to this point, you should now see able to open \`http://0.0.0.0:3000\` in your browser and see a list of all public members of the [ZEIT organization](https://github.com/zeit) on GitHub:
 
 ${
   <Image
