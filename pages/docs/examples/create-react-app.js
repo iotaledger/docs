@@ -70,5 +70,5 @@ ${<TerminalInput>now</TerminalInput>}
 
 Once ${<Now color="#000" />} has finished uploading the files, you'll see a URL that points to your freshly created Single Page Application then is going to run \`npm run build\` to build our application code (_we don't need to do build in our local machine_) and after that start our HTTP server with \`npm run now-start\`.
 
-But in the case of a real application (not used for testing purposes), you would now have to [assign an alias](https://zeit.co/docs/features/aliases) to it.
+But in the case of a real application (not used for testing purposes), you would now have to ${<InternalLink href="/docs/features/aliases">assign an alias</InternalLink>} to it.
 `)
