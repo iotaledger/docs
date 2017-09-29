@@ -98,5 +98,5 @@ ${<TerminalInput>now</TerminalInput>}
 
 Once ${<Now color="#000" />} has finished uploading the files, you'll see a URL that points to your freshly created website. This means that you can already share the URL with other people across the globe and have them enjoy your site.
 
-But in the case of a real website (not used for testing purposes), you would now have to [assign an alias](https://zeit.co/docs/features/aliases) to it.
+But in the case of a real website (not used for testing purposes), you would now have to ${<InternalLink href="/docs/features/aliases">assign an alias</InternalLink>} to it.
 `)
