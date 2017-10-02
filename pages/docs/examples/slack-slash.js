@@ -6,6 +6,7 @@ import Now from '../../../components/now/now'
 import Image from '../../../components/image'
 import { Code } from '../../../components/text/code'
 import { TerminalInput } from '../../../components/text/terminal'
+import { InternalLink } from '../../../components/text/link'
 
 // prettier-ignore
 export default withDoc({
@@ -104,7 +105,7 @@ ${<TerminalInput>now</TerminalInput>}
 
 Once ${<Now color="#000" />} has finished uploading the files, you'll see a URL that points to your freshly created slash command service. Now we're ready to tell the Slack platform about the service, so that it can send requests there.
 
-But in the case of a real service (not used for testing purposes), you would now have to [assign an alias](https://zeit.co/docs/features/aliases) to it.
+But in the case of a real service (not used for testing purposes), you would now have to ${<InternalLink href="/docs/features/aliases">assign an alias</InternalLink>} to it.
 
 ## Registering the Command
 
