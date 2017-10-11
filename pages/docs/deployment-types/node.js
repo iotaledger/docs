@@ -72,7 +72,7 @@ You can expose a HTTP service on **any port** of your choice (not multiple ones)
 
 ## Custom Node.js Configuration
 
-Other than selecting the version of Node.js using the engines property.
+Other than selecting the version of Node.js using the engines property,
 
 ${
   <Code>
