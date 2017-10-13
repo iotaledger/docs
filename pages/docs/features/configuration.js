@@ -1,14 +1,18 @@
+// Packages
 import markdown from 'markdown-in-js'
-import withDoc, { components } from '../../../lib/with-doc'
 
-import { rauchg, leo } from '../../../lib/data/team'
+// Components
 import Now from '../../../components/now/now'
 import { P } from '../../../components/text/paragraph'
-import { Code } from '../../../components/text/code'
+import { Code, InlineCode } from '../../../components/text/code'
+
+// Utilities
+import withDoc, { components } from '../../../lib/with-doc'
+import { rauchg, leo } from '../../../lib/data/team'
 
 // prettier-ignore
 export default withDoc({
-  title: 'Configuring now',
+  title: 'Configuring Now',
   date: '22 Feb 2017',
   authors: [rauchg, leo],
 })(markdown(components)`
@@ -17,13 +21,20 @@ This guide explains how to use these methods to configure and customize the defa
 
 In addition to the options available in the command line interface (like \`--name\` for setting then name of the deployment), we also support saving certain parameters into a config file of your choice.
 
-## Files
+The types of configuration files can be devided into two groups:
 
-At the moment of writing this, we support for files that can contain the configuration for your project. Both should be located in the root directory of your project and called as mentioned below.
+## Local Configuration
 
-Please note that it's not possible to add both files to a project. You need to choose between the two ones shown below. If both exist in the same directory, you'll be asked to remove one.
+This describes the set of configuration rules that are applied per project. The configuration
+file always lives in the root directory of the project (except when a custom path is
+specified using the ${<InlineCode>--local-config</InlineCode>} flag in Now CLI).
 
-For [Node.js](https://nodejs.org/) projects, we recommend using package.json, while now.json can be used for [Docker](https://www.docker.com/) or static deployments.
+You can choose between creating a separate file for configuring Now (named ${<InlineCode>now.json</InlineCode>}) or
+using the ${<InlineCode>package.json</InlineCode>} file for this (if it's a Node.js project). Please note that
+it's **not possible to add both files** to a project. If both exist, you'll be asked to remove one.
+
+In [Node.js](/docs/deployment-types/node) projects, we recommend using ${<InlineCode>package.json</InlineCode>}, while ${<InlineCode>now.json</InlineCode>} can be used
+for [Docker](/docs/deployment-types/docker) or [static](/docs/deployment-types/static) deployments.
 
 ### package.json
 
@@ -70,17 +81,17 @@ ${
 
 For a list of all available options, refer to the "Settings" section below.
 
-## Settings
+### Settings
 
 All of the properties mentioned below can be used both in the \`package.json\` and inside the \`now.json\` file:
 
-### "name" (string)
+#### "name" (string)
 
 The prefix for all new deployment instances. The CLI usually generates this field automatically based on the name of the directory. But if you'd like to define it explicitly, this is the way to go.
 
 ${<Code>{`"name": "zeit-chat"`}</Code>}
 
-### "alias" (string|array)
+#### "alias" (string|array)
 
 Aliases which will be assigned to the latest deployment when running \`now alias\` (with no arguments).
 
@@ -94,7 +105,7 @@ ${
   </Code>
 }
 
-### "env" (object)
+#### "env" (object|array)
 
 A list of environment variables to be set on each new deployment instance.
 
@@ -106,7 +117,18 @@ ${
   </Code>
 }
 
-### "dotenv" (boolean|string)
+If an array is used, the user will be prompted for the value of each environment flag
+when deploying the project:
+
+${
+  <Code>
+    {`"env": [
+  "DATABASE_NAME"
+]`}
+  </Code>
+}
+
+#### "dotenv" (boolean|string)
 
 Read environment variables from [dotenv](https://github.com/motdotla/dotenv) file.
 
@@ -118,7 +140,7 @@ ${
   </Code>
 }
 
-### "files" (array)
+#### "files" (array)
 
 A list of files and directories to be force-uploaded to the deployment (even if they're ignored by \`.gitignore\`).
 
@@ -131,25 +153,25 @@ ${
   </Code>
 }
 
-### "type" (string)
+#### "type" (string)
 
-A field for specifying the deployment type ("npm" or "docker") if both \`package.json\` and \`Dockerfile\` exist. This will prevent \`now\` from asking you to choose the type in these cases.
+A field for specifying the deployment type ("node", "docker" or "static") if both \`package.json\` and \`Dockerfile\` exist. This will prevent \`now\` from asking you to choose the type in these cases.
 
-${<Code>{`"type": "npm"`}</Code>}
+${<Code>{`"type": "node"`}</Code>}
 
-### "forwardNpm" (boolean)
+#### "forwardNpm" (boolean)
 
 Automatically forward the npm login information to our servers to install [private npm packages](https://www.npmjs.com/features).
 
 ${<Code>{`"forwardNpm": true`}</Code>}
 
-### "public" (boolean)
+#### "public" (boolean)
 
 Controls if \`_src\` should be available or not. By default, this property is set to \`true\` if your account is using the OSS plan and \`false\` if the Premium plan is in use.
 
 ${<Code>{`"public": true`}</Code>}
 
-### "engines" (object)
+#### "engines" (object)
 
 In general, we recommend letting us choose the version, because it ensures that you always take advantage of the latest features, performance improvements and bug fixes.
 
@@ -167,5 +189,37 @@ ${
   </Code>
 }
 
+## Global Configuration
 
+This describes the set of configuration rules that apply to all projects
+and all clients of Now (Now CLI, Now Desktop, etc).
+
+By default, they live in a directory named ${<InlineCode>.now</InlineCode>} in your
+home directory. Within it, you can find two files:
+
+### config.json
+
+This file can be (if needed) modified manually. It doesn't contain any authentication
+information, but rather only cached account data and configuration rules that
+can apply to all Now clients (Now CLI and Now Desktop).
+
+#### "updateChannel" (string)
+
+For our software, we provide two update channels ("stable" and "canary"). This property
+lets you pick either one in order to enjoy a different pace of updates.
+
+Read more [here](/blog/canary) about why these channels exist and what
+they're being used for. As an example, this will make Now Desktop and Now CLI receive
+canary updates:
+
+${<Code>{`"updateChannel": "canary"`}</Code>}
+
+### auth.json
+
+This file should not be touched manually. It contains the authentication information
+for all of your providers accessed through a Now client.
+
+In the case that you're uploading your global configurion setup to a potentially
+unsecure destination, we highly recommend ensuring that this file won't be uploaded,
+as it allows an attacker to gain access to your provider accounts.
 `)
