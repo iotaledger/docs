@@ -33,9 +33,6 @@ You can choose between creating a separate file for configuring Now (named ${<In
 using the ${<InlineCode>package.json</InlineCode>} file for this (if it's a Node.js project). Please note that
 it's **not possible to add both files** to a project. If both exist, you'll be asked to remove one.
 
-In [Node.js](/docs/deployment-types/node) projects, we recommend using ${<InlineCode>package.json</InlineCode>}, while ${<InlineCode>now.json</InlineCode>} can be used
-for [Docker](/docs/deployment-types/docker) or [static](/docs/deployment-types/static) deployments.
-
 ### package.json
 
 If you have a JavaScript-based project (like a Node.js server or a frontend with a \`build\` script), you are already using \`package.json\`.
