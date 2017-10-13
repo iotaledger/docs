@@ -17,7 +17,7 @@ export default withDoc({
   authors: [rauchg, leo],
 })(markdown(components)`
 
-This guide explains how to use these methods to configure and customize the default behavior of your now deployments.
+This guide explains how to use these methods to configure and customize the default behavior of Now CLI and Now Desktop.
 
 In addition to the options available in the command line interface (like \`--name\` for setting then name of the deployment), we also support saving certain parameters into a config file of your choice.
 
