@@ -195,7 +195,10 @@ This describes the set of configuration rules that apply to all projects
 and all clients of Now (Now CLI, Now Desktop, etc).
 
 By default, they live in a directory named ${<InlineCode>.now</InlineCode>} in your
-home directory. Within it, you can find two files:
+home directory. Within it, you can find two files (which you
+can learn more about below). If you need to specifiy a different location of the directory, you can use
+the ${<InlineCode>--global-config</InlineCode>} flag in Now CLI, which takes in a
+custom path to a directory containing the two files.
 
 ### config.json
 
