@@ -3,7 +3,7 @@ import withDoc, { components } from '../../../lib/with-doc'
 
 import { leo, jamo, rauchg } from '../../../lib/data/team'
 import Now from '../../../components/now/now'
-import { Code } from '../../../components/text/code'
+import { Code, InlineCode } from '../../../components/text/code'
 import { TerminalInput } from '../../../components/text/terminal'
 
 // prettier-ignore
@@ -41,7 +41,14 @@ ${
 
 Then run \`now\`, and we will detect the presence of \`package.json\` and deploy it as a \`npm\` deployment.
 
-## Deployment Inactivity
+## Behavior
+
+- If a ${<InlineCode>index.html</InlineCode>} file exists, it will be rendered
+- If only a single file was uploaded, the deployment URL will respond with it directly (you can
+still access it under its original path  - e.g.: ${<InlineCode>/image.png</InlineCode>})
+- When uploading multiple files, a directory listing will be displayed
+
+### Deployment Inactivity
 
 Old deployments always stay around forever if you don't remove them using \`now remove\`.
 
