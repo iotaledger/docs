@@ -3,125 +3,151 @@ import withDoc, { components } from '../../../lib/with-doc'
 
 import { leo, jamo } from '../../../lib/data/team'
 import Now from '../../../components/now/now'
-import { InternalLink } from '../../../components/text/link'
-import Image from '../../../components/image'
 import { Code } from '../../../components/text/code'
-import Caption from '../../../components/text/caption'
+import { TerminalInput } from '../../../components/text/terminal'
 
 // prettier-ignore
 export default withDoc({
-  title: 'Making Microservices Look Like a Monolith',
+  title: 'Simplyfing Microservices with Path Alias',
   date: '15 Mar 2017',
   authors: [leo, jamo],
 })(markdown(components)`
+With the microservices architecture, we break down the whole app into multiple independent programs: microservices. This architecture gives us a lot of benefits including:
 
-The microservice API architecture has a lot of undisputed benefits. By breaking down your program into smaller independent pieces, teams find it easier to…
+- **Parallelize** workload by distributing ownership and responsibility across different teams.
+- **Mix up** different languages, frameworks and even varied versions of those.
+- **Scale** easily by adding more resources to independent microservices as needed.
 
-* **Parallelize** their work.<br/>
-  Ownership and responsibility are more naturally distributed.
-* **Mix up** different programming languages, frameworks and even run them at different versions.<br/>
-  It's much easier to evolve when no migrations of large codebases are involved.
-* **Scale**, detect performance bottlenecks and isolate failures.<br/>
-  The overall system tends to be more resilient and easier to analyze.
+With this architecture, now we have to deal with a lot of microservices. However, exposing them to the public is not a good idea. If we can hide these microservices under a single domain name, that will give us better results.
 
-Yet two big challenges commonly follow: **coordination** and **simulation**.
+For example, let's say our app has two microservices as shown below:
 
-To solve this problem, we added a new feature to \`now alias\`, which makes composing and coordinating services a breeze. We will also explain how developers can effectively simulate and iterate on a cluster of microservices with the ${<Now color="#000" />} architecture.
+${<Code>{`- ui.our-domain.com
+- api.our-domain.com
+`}</Code>}
 
-## Build with Microservices. Serve as a Monolith.
+As it is not a good idea to expose these urls to the public, we can map these services into our main domain like this:
 
-Before we introduced path aliases, it was commonplace to launch services with \`now\` and later assign them a new, usually more accesible, URL via \`now alias\`.
+${<Code>{`- our-domain.com/api/** -> api.our-domain.com
+- our-domain.com/** -> ui.our-domain.com
+`}</Code>}
 
-For example, if you deploy our [Node.js microservice](https://github.com/now-examples/get-started-node) you get a URL that looks like this: \`api-auth-ybqnmnovxg.now.sh\`. It's immutable and unique to that point-in-time.
+As our app evolves, we need to split the \`ui\` microservice into two: \`frontend\` and \`admin\`. We also need to add a new microservice for \`/api/register\` to handle the increasing load.
 
-${
-  <Image
-    src={`${IMAGE_ASSETS_URL}/docs/path-aliases/deployment.png`}
-    width={533}
-    height={380}
-    caption="An example of a simple Node.js deployment, live at api-auth-ybqnmnovxg.now.sh."
-  />
-}
+We can do a new mapping like this:
 
-After that, you could run \`now alias api-auth-ybqnmnovxg.now.sh auth.api.my-company.com\`. That would point your new microservice to a more friendly sub-domain.
+${<Code>{`- our-domain.com/api/register -> api-register.our-domain.com
+- our-domain.com/api/** -> api.our-domain.com
+- our-domain.com/admin/** -> admin.our-domain.com
+- our-domain.com/** -> frontend.our-domain.com
+`}</Code>}
 
-This model works remarkably well for development and staging. It allows me to maintain an unlimited number of copies of my service online, and I can test them in a real environment.
+After this, we will have whole new microservices set up. However, our end users do not need to know about these changes.
 
-But, how do I go from that to, for example, exposing it as \`my-company.com/api/auth?\` After all, the end-users of our applications or consumer of our APIs don't care about our underlying software architecture.
+> Hence, with this setup we can manage the architecture of our microservices and change them at will without downtime or having to notify users.
 
-In fact, pointing clients to different domains and sub-domains can be downright expensive:
+## Path Alias
 
-* Extra DNS lookups and TCP connections will be required when starting up.
-* Browsers will require [CORS headers](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), which will increase the complexity of your codebase and the length of the responses.
-* In some cases, User Agents will [pre-flight requests](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing#Preflight_example) to different origins. If \`company.com\` talks to \`api.company.com\`, you might incur in extra roundtrips for every request!
+If you [manage](/docs/getting-started/assign-a-domain-name#2.-using-a-custom-domain,-managed-by-now) your domain inside ZEIT or [point it](/docs/getting-started/assign-a-domain-name#4.-using-a-custom-domain-with-a-cname) to \`alias.zeit.co\`, you can hide microservices under a domain as shown above with our "Path Alias" feature.
 
-From the perspective of a consumer, the best possible interface is a **monolith**.
+Here's how to do it.
 
-## Alias Rules
+Create a file called \`rules.json\` and add the following content:
 
-If you're using our ${<InternalLink href="/download#command-line">command line interface</InternalLink>}, you're able to pass a very simple [JSON](https://en.wikipedia.org/wiki/JSON) file to the \`now alias\` command with a list of forwarding rules for your domains or sub-domains:
-
-${<Code>{`$ now alias company.com -r rules.json`}</Code>}
-${
-  <Caption>
-    Every time your run this command, the rules for
-    {' '}
-    <Caption.Code>company.com</Caption.Code>
-    {' '}
-    are updated without any downtime.
-  </Caption>
-}
-
-The file looks like this:
-
-${
-  <Code>
-    {`{
+${<Code>{`{
   "rules": [
-    { "pathname": "/api/auth", "dest": "auth.api.company.com" },
-    { "pathname": "/api/users", "dest": "users.api.company.com" },
-    { "pathname": "/u/**", "dest": "profiles.company.com" },
-    { "dest": "www.company.com" }
+    { "pathname": "/api/register", "methods": ["POST"], "dest": "api-register-wcepelgodl.now.sh" },
+    { "pathname": "/api/**", "methods": ["GET", "POST"], "dest": "api-tuhpdtgoja-now.sh" },
+    { "dest": "ui-dbuyejqwio.now.sh" }
   ]
-}`}
-  </Code>
 }
+`}</Code>}
 
-${
-  <Caption>
-    An example of
-    {' '}
-    <Caption.Code>rules.json</Caption.Code>
-    {' '}
-    with 4 custom forwarding rules.
-  </Caption>
+Then run the following command:
+
+${<TerminalInput>now alias our-domain.com -r rules.json</TerminalInput>}
+
+Every time you run the above command, the rules for \`our-domain.com\` will be updated without any downtime.
+
+## API
+
+As you have seen in the above example, you can define a set of rules. These rules are executed **in order**. An incoming HTTP request will be sent to the destination mentioned in the first matching rule.
+
+A rule should contain the \`dest\` field and one or many optional fields including \`pathname\` and \`method\`. Here's a detailed definition of each of these fields.
+
+#### dest
+
+The destination of each rule should be one of the following:
+
+- The unique now deployment url like \`mysite-wcepelgodl.now.sh\`
+- An alias like \`our-app-ui.now.sh\`
+- An external hostname that may not point to a \`now.sh\` deployment.
+
+> You can get the original hostname from the \`x-forwarded-host\` header.
+
+### pathname (optional)
+
+Incoming HTTP requests will be matched with the pathname format defined in the rule. The \`pathname\` field could have one of the following formats:
+
+* **/api/register** - A strict path match
+* **/user/*/profile** - A wildcard rule matches pathnames like \`/user/rauchg/profile\`
+* **/api/**** - A wildcard rule matches pathnames with multiple segments like \`/api/user/email\` or \`/api/login\`
+
+If there is no \`pathname\` field, all the requests will be a candidate for the rule (it is similar to having \`/**\` as the value for \`pathname\`).
+
+Additionally the pathname will be forwarded to the destination as is. Here are some examples:
+
+${<Code>{`- /api/register -> my-api-register.now.sh/api/register
+- /user/rauchg/profile -> my-ui.now.sh/user/rauchg/profile
+- /api/v2/user/info -> my-api.now.sh/api/v2/user/info
+`}</Code>}
+
+### methods (optional)
+
+This is a list of HTTP method types that the rule supports. It can have one or many methods like this:
+
+${<Code>{`{ "pathname": "/api/**", "methods": ["GET", "POST"], "dest": "api-tuhpdtgoja-now.sh" }
+`}</Code>}
+
+If there is no \`methods\` field, requests with any HTTP method will be a candidate for the rule.
+
+## Managing Rules
+
+Have a look at the rules we have introduced previously:
+
+${<Code>{`{
+  "rules": [
+    { "pathname": "/api/register", "methods": ["POST"], "dest": "api-register-wcepelgodl.now.sh" },
+    { "pathname": "/api/**", "methods": ["GET", "POST"], "dest": "api-tuhpdtgoja-now.sh" },
+    { "dest": "ui-dbuyejqwio.now.sh" }
+  ]
 }
+`}</Code>}
 
-This means if an user goes to \`company.com/api/auth\` he's going to see that URL in the browser but internally the request will go to \`auth.api.company.com/api/auth\` (yes the \`pathname\` is appended to the \`dest\` URL).
+Destinations of these rules are unique ${<Now color="#000" />} deployment urls. They will be changed every time you deploy a new version. Therefore, you need to update the rules again and again.
 
-Here are some of the main characteristics of the system we're excited about.
+It works, but there is a better way to do this.
 
-### 1. Atomic
-Not a single request is dropped while or after the rules are loaded. You can run the command with confidence adding, subtracting or modifying rules.
+Have a look at the following set of rules.
 
-### 2. Idempotent
-If any of the rules remain the same, the system's performance is not impacted and no errors occur.
+${<Code>{`{
+  "rules": [
+    { "pathname": "/api/register", "methods": ["POST"], "dest": "my-api-register.now.sh" },
+    { "pathname": "/api/**", "methods": ["GET", "POST"], "dest": "my-api.now.sh" },
+    { "dest": "my-ui.now.sh" }
+  ]
+}
+`}</Code>}
 
-### 3. Versionable
-You can check in your rules to source control (e.g.: [GitHub](https://github.com/)) and keep track of the evolution of your architecture. Your team can review and discuss changes in pull requests. You can even automate synchronizing the rules in [CI](https://en.wikipedia.org/wiki/Continuous_integration)!
+Now for the \`dest\` field, instead of the deployment url (\`api-tuhpdtgoja-now.sh\`), we now have an alias (\`my-api.now.sh\`).
 
-### 4. Flexible
-Rules can include glob like wildcards (\`*\` and \`**\`) to enable very flexible matching. You can specify a particular method (\`"method": "GET"\`) or a set of them (\`["POST", "GET"]\`). The rules are matched in the order they are specified.
+Then we only need to set these rules once, unless you change the microservices setup.
 
-### 5. Universal
-If the \`dest\` field of a given rule resolves to a now deployment or alias URL, we detect it and turn on intra-cluster optimizations.
+With this setup, let's say you've deployed a new version of the "api microservice" and its deployment url is \`api-iewodtfalq-now.sh\`.
 
-If it's an **external URL**, we act as a proxy, in line with our mission of gluing the cloud together through incremental changes and **avoiding expensive migrations**.
+Now simply map it to the alias like this:
 
-### 6. Unlimited
-As said above, one of the remaining challenges with microservices is **simulation**. For example, if you are a developer tasked with improving the company's login experience, you might need to make changes to both the auth microservice and the frontend app.
+${<TerminalInput>now alias api-iewodtfalq-now.sh my-api.now.sh</TerminalInput>}
 
-With ${<Now color="#000" />}, you can push out your modified endpoint, modify the rules and clone them into a new location. For example, \`staging.company.com\` can be exactly the same as \`company.com\`, with the \`/api/auth\` rule pointing to the new microservice and the last (fallback) rule pointing to the modified website.
-
-There are no limits to the number of times you can deploy or how many aliases you can create!
+You don't need to update path alias rules since \`my-api.now.sh\` points to the latest deployment.
 `)
