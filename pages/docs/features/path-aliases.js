@@ -56,8 +56,8 @@ Create a file called \`rules.json\` and add the following content:
 
 ${<Code>{`{
   "rules": [
-    { "pathname": "/api/register", "methods": ["POST"], "dest": "api-register-wcepelgodl.now.sh" },
-    { "pathname": "/api/**", "methods": ["GET", "POST"], "dest": "api-tuhpdtgoja-now.sh" },
+    { "pathname": "/api/register", "method": ["POST"], "dest": "api-register-wcepelgodl.now.sh" },
+    { "pathname": "/api/**", "method": ["GET", "POST"], "dest": "api-tuhpdtgoja-now.sh" },
     { "dest": "ui-dbuyejqwio.now.sh" }
   ]
 }
@@ -106,7 +106,7 @@ ${<Code>{`- /api/register -> my-api-register.now.sh/api/register
 
 This is a list of HTTP method types that the rule supports. It can have one or many methods like this:
 
-${<Code>{`{ "pathname": "/api/**", "methods": ["GET", "POST"], "dest": "api-tuhpdtgoja-now.sh" }
+${<Code>{`{ "pathname": "/api/**", "method": ["GET", "POST"], "dest": "api-tuhpdtgoja-now.sh" }
 `}</Code>}
 
 If there is no \`methods\` field, requests with any HTTP method will be a candidate for the rule.
@@ -117,8 +117,8 @@ Have a look at the rules we have introduced previously:
 
 ${<Code>{`{
   "rules": [
-    { "pathname": "/api/register", "methods": ["POST"], "dest": "api-register-wcepelgodl.now.sh" },
-    { "pathname": "/api/**", "methods": ["GET", "POST"], "dest": "api-tuhpdtgoja-now.sh" },
+    { "pathname": "/api/register", "method": ["POST"], "dest": "api-register-wcepelgodl.now.sh" },
+    { "pathname": "/api/**", "method": ["GET", "POST"], "dest": "api-tuhpdtgoja-now.sh" },
     { "dest": "ui-dbuyejqwio.now.sh" }
   ]
 }
@@ -132,8 +132,8 @@ Have a look at the following set of rules.
 
 ${<Code>{`{
   "rules": [
-    { "pathname": "/api/register", "methods": ["POST"], "dest": "my-api-register.now.sh" },
-    { "pathname": "/api/**", "methods": ["GET", "POST"], "dest": "my-api.now.sh" },
+    { "pathname": "/api/register", "method": ["POST"], "dest": "my-api-register.now.sh" },
+    { "pathname": "/api/**", "method": ["GET", "POST"], "dest": "my-api.now.sh" },
     { "dest": "my-ui.now.sh" }
   ]
 }
