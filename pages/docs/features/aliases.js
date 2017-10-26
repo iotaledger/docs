@@ -41,7 +41,7 @@ If we dissect that URL, we can see it's composed of a few parts:
 * **etjnigdrkz** -	A cryptographically-strong random string that makes your URL virtually impossible to guess, while retaining a reasonable length for sharing it with your co-workers or clients.
 * **.now.sh** -	All your deployments end in .now.sh by default. Aliases allow you to point them to custom domains.
 
-These URLs area ideal for development and staging, but not ideal to share with the public.
+These URLs are ideal for development and staging, but not ideal to share with the public.
 
 ${<Now color="#000" />} aliases have two purposes:
 
