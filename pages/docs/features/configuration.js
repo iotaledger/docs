@@ -221,11 +221,6 @@ The URL of the Now API which Now CLI and Now Desktop should interact with.
 By default, it's pointing to \`https://api.zeit.co\`, which always points to
 the right location depending on where you're connecting from (Anycast).
 
-However, you can also pick a location by your own:
-
-- \`https://sfo-api.zeit.co\` (USA)
-- \`https://bru-api.zeit.co\` (Belgium)
-
 **Important**: As indicated by the \`sh.\` prefix, this configuration
 propery needs to be set under the \`sh\` provider scope inside the global config file.
 
