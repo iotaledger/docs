@@ -203,7 +203,7 @@ This file can be (if needed) modified manually. It doesn't contain any authentic
 information, but rather only cached account data and configuration rules that
 can apply to all Now clients (Now CLI and Now Desktop).
 
-#### "updateChannel" (string)
+#### \`updateChannel\` (string)
 
 For our software, we provide two update channels ("stable" and "canary"). This property
 lets you pick either one in order to enjoy a different pace of updates.
@@ -213,6 +213,21 @@ they're being used for. As an example, this will make Now Desktop and Now CLI re
 canary updates:
 
 ${<Code>{`"updateChannel": "canary"`}</Code>}
+
+#### \`sh.api\` (string)
+
+The URL of the Now API which Now CLI and Now Desktop should interact with.
+
+By default, it's pointing to \`https://api.zeit.co\`, which always points to
+the right location depending on where you're connecting from (Anycast).
+
+However, you can also pick a location by your own:
+
+- \`https://sfo-api.zeit.co\` (USA)
+- \`https://bru-api.zeit.co\` (Belgium)
+
+**Important**: As indicated by the \`sh.\` prefix, this configuration
+propery needs to be set under the \`sh\` provider scope inside the global config file.
 
 ### auth.json
 
