@@ -82,13 +82,13 @@ For a list of all available options, refer to the "Settings" section below.
 
 All of the properties mentioned below can be used both in the \`package.json\` and inside the \`now.json\` file:
 
-#### "name" (string)
+#### \`name\` (string)
 
 The prefix for all new deployment instances. The CLI usually generates this field automatically based on the name of the directory. But if you'd like to define it explicitly, this is the way to go.
 
 ${<Code>{`"name": "zeit-chat"`}</Code>}
 
-#### "alias" (string|array)
+#### \`alias\` (string|array)
 
 Aliases which will be assigned to the latest deployment when running \`now alias\` (with no arguments).
 
@@ -102,7 +102,7 @@ ${
   </Code>
 }
 
-#### "env" (object|array)
+#### \`env\` (object|array)
 
 A list of environment variables to be set on each new deployment instance.
 
@@ -125,7 +125,7 @@ ${
   </Code>
 }
 
-#### "dotenv" (boolean|string)
+#### \`dotenv\` (boolean|string)
 
 Read environment variables from [dotenv](https://github.com/motdotla/dotenv) file.
 
@@ -137,7 +137,7 @@ ${
   </Code>
 }
 
-#### "files" (array)
+#### \`files\` (array)
 
 A list of files and directories to be force-uploaded to the deployment (even if they're ignored by \`.gitignore\`).
 
@@ -150,25 +150,25 @@ ${
   </Code>
 }
 
-#### "type" (string)
+#### \`type\` (string)
 
 A field for specifying the deployment type ("node", "docker" or "static") if both \`package.json\` and \`Dockerfile\` exist. This will prevent \`now\` from asking you to choose the type in these cases.
 
 ${<Code>{`"type": "node"`}</Code>}
 
-#### "forwardNpm" (boolean)
+#### \`forwardNpm\` (boolean)
 
 Automatically forward the npm login information to our servers to install [private npm packages](https://www.npmjs.com/features).
 
 ${<Code>{`"forwardNpm": true`}</Code>}
 
-#### "public" (boolean)
+#### \`public\` (boolean)
 
 Controls if \`_src\` should be available or not. By default, this property is set to \`true\` if your account is using the OSS plan and \`false\` if the Premium plan is in use.
 
 ${<Code>{`"public": true`}</Code>}
 
-#### "engines" (object)
+#### \`engines\` (object)
 
 In general, we recommend letting us choose the version, because it ensures that you always take advantage of the latest features, performance improvements and bug fixes.
 
