@@ -224,6 +224,36 @@ the right location depending on where you're connecting from (Anycast).
 **Important**: As indicated by the \`sh.\` prefix, this configuration
 propery needs to be set under the \`sh\` provider scope inside the global config file.
 
+#### \`desktop.updateCLI\` (boolean)
+
+This option defines whether or not Now Desktop should automatically update the
+Now CLI instance on your device or not.
+
+By default (if the property is not set or set to \`true\`), auto-updates
+are enabled. In turn, if it's set it to \`false\`, you won't receive any updates
+for Now CLI automatically. In that case, you'll have to update manually.
+
+#### \`desktop.noMoveWanted\` (boolean)
+
+If you're trying to run Now Desktop outside of your Applications directory, you'll
+be asked if the application should move itself to that location.
+
+In the case that this message is dismissed by you, this config property will
+automatically be set to \`true\`. However, to make the message show up again
+when the app starts, you
+can remove this property or set it to \`false\`.
+
+#### \`desktop.teamOrder\` (array)
+
+At the bottom of Now Desktop's event feed, you can find a list of teams that
+you're a member of.
+
+When re-arranging them by holding \`CMD\` and dragging
+them into a different location using your cursor, the config property will
+be updated to contain the new order.
+
+If you want, you can modify the order of this list manually.
+
 ### auth.json
 
 This file should not be touched manually. It contains the authentication information
