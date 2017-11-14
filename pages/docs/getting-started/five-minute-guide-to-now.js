@@ -15,44 +15,44 @@ export default withDoc({
   authors: [arunoda],
 })(markdown(components)`
 
-With ${<Now color="#000"/>}, you can deploy and publish any kind of web app (or service) in under five minutes. This guide includes information about:
+With Now's help, you can deploy and publish any kind of web application (or service) in
+under five minutes.
 
-* Deploying an app
-* Buying a domain name
-* Mapping that domain name to the app
-* Configuring an SSL certificate
+This guide will show you how to deploy such an app, connect it to a
+domain name of your choice and configure an SSL certificate.
 
-## Now CLI
+## Installing Now Desktop
 
-${
-  <Image
-    src={`${IMAGE_ASSETS_URL}/docs/installation/now-cli.png`}
-    width={650}
-    height={330}
-  />
-}
+The best way to get started with Now on your device
+is [Now Desktop](/download), a minimal application
+that runs in your menubar and comes with the following features:
 
-Install [Now Desktop](https://zeit.co/download) and follow the getting started process.<br/>
-(Make sure to click the button to install \`now\` CLI.)
+- Installs [Now CLI](/download#command-line) and keeps it
+up to date automatically (the command line interface for interacting with Now).
+- Provides a realtime feed of the activity
+on your account and teams that you've joined.
+- Let's you deploy any kind of application or file by
+simply dragging and dropping it onto its menubar icon or selecting
+it using a file picker.
 
-If you've already installed [Node.js](https://nodejs.org/en/), you can run the following command to install the CLI:
+**Pro Tip:** Advanced users that don't want to install
+a desktop application (however, it's highly recommended) can
+also install Now CLI [manually](https://zeit.co/download#command-line).
 
-${<TerminalInput>npm i -g now</TerminalInput>}
+## Signing Up
 
-## Login
+Once you've downloaded [Now Desktop](/download) open it and follow the
+instructions.
 
-When the installation is completed, you can log in to ${<Now color="#000"/>} by running the following command using a terminal:
-
-${<TerminalInput>now login</TerminalInput>}
-
-Follow the instructions on the screen.<br/>
-(Since this is your first time, it will create an account for you.)
+After you've completed the signup process (you can also use the form
+to log in), a window should open with your account's event feed inside.
 
 ## Deployment
 
-Let's deploy a simple static web app.
+Now that we're logged in, let's beging with deploying a
+simple static web site.
 
-Create a directory called \`my-web-app\` and add the following content to a file called \`index.html\`.
+Firstly, create a directory called \`my-web-app\` and add the following content to a file called \`index.html\`.
 
 ${<Code>{`<!DOCTYPE html>
 <html>
