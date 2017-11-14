@@ -1,7 +1,7 @@
 import markdown from 'markdown-in-js'
 import withDoc, { components } from '../../../lib/with-doc'
 
-import { arunoda } from '../../../lib/data/team'
+import { leo, arunoda } from '../../../lib/data/team'
 import { TerminalInput } from '../../../components/text/terminal'
 import { Code } from '../../../components/text/code'
 import { HR } from '../../../components/text/paragraph'
@@ -12,7 +12,7 @@ import Now from '../../../components/now/now'
 export default withDoc({
   title: 'Five Minute Guide',
   date: '30 July 2017',
-  authors: [arunoda],
+  authors: [leo, arunoda],
 })(markdown(components)`
 
 With Now's help, you can deploy and publish any kind of web application (or service) in
@@ -22,6 +22,14 @@ This guide will show you how to deploy such an app, connect it to a
 domain name of your choice and configure an SSL certificate.
 
 ## Installing Now Desktop
+
+${
+  <Image
+    src={`${IMAGE_ASSETS_URL}/docs/installation/now-desktop.png`}
+    width={550}
+    height={380}
+  />
+}
 
 The best way to get started with Now on your device
 is [Now Desktop](/download), a minimal application
