@@ -43,10 +43,6 @@ on your account and teams that you've joined.
 simply dragging and dropping it onto its menubar icon or selecting
 it using a file picker.
 
-**Pro Tip:** Advanced users that don't want to install
-a desktop application (however, it's highly recommended) can
-also install Now CLI [manually](https://zeit.co/download#command-line).
-
 ## Signing Up
 
 Once you've downloaded [Now Desktop](/download) open it and follow the
