@@ -117,8 +117,11 @@ Adds a DNS record to a domain of your choice (registered with \`now domains\` or
 * A
 * AAAA
 * ALIAS
+* CAA
 * CNAME
 * MX
+* SRV
+* TXT
 
 This is how the command input needs to look like:
 
