@@ -1,17 +1,27 @@
-export const TerminalInput = ({ children }) => (
+import React from 'react'
+import PropTypes from 'prop-types'
+import { GenericLink } from './link'
+
+export const TerminalInput = ({ children }) =>
   <div>
     {Array.isArray(children)
-      ? <span>{children}</span>
-      : children
-          .split(/\r?\n/)
-          .map((item, index) => <span key={index}>{item}</span>)}
+      ? <span>
+          {children}
+        </span>
+      : children.split(/\r?\n/).map((item, index) =>
+          <span key={index}>
+            {item}
+          </span>
+        )}
 
     <style jsx>
       {`
         div {
           border: 1px solid #eaeaea;
           color: #bd10e0;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace,
+            serif;
           font-size: 13px;
           line-height: 20px;
           margin: 40px 0;
@@ -31,31 +41,57 @@ export const TerminalInput = ({ children }) => (
       `}
     </style>
   </div>
-)
 
-export const TerminalOutput = ({ children }) => (
-  <div className="output">
-    {children}
+export class TerminalOutput extends React.Component {
+  static childContextTypes = {
+    darkBg: PropTypes.bool
+  }
+
+  getChildContext() {
+    return { darkBg: true }
+  }
+
+  render() {
+    const { children } = this.props
+    return (
+      <div className="output">
+        {children}
+        <style jsx>
+          {`
+            .output {
+              background: #000;
+              color: #fff;
+              font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+                DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New,
+                monospace, serif;
+              font-size: 13px;
+              line-height: 20px;
+              margin: 40px 0;
+              padding: 20px;
+            }
+
+            .output :global(pre) {
+              margin: 0;
+              font-family: inherit;
+              font-size: inherit;
+              line-height: inherit;
+              white-space: pre-wrap;
+            }
+          `}
+        </style>
+      </div>
+    )
+  }
+}
+
+export const TerminalLink = props =>
+  <span>
+    <GenericLink {...props} />
     <style jsx>
       {`
-      .output {
-        background: #000;
-        color: #fff;
-        font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
-        font-size: 13px;
-        line-height: 20px;
-        margin: 40px 0;
-        padding: 20px;
-      }
-
-      .output :global(pre) {
-        margin: 0;
-        font-family: inherit;
-        font-size: inherit;
-        line-height: inherit;
-        white-space: pre-wrap;
-      }
-    `}
+        span :gloabl(a) {
+          text-decoration: underline;
+        }
+      `}
     </style>
-  </div>
-)
+  </span>

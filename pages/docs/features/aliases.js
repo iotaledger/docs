@@ -3,13 +3,14 @@ import withDoc, { components } from '../../../lib/with-doc'
 
 import { rauchg } from '../../../lib/data/team'
 import Now from '../../../components/now/now'
-import { InternalLink, ExternalLink } from '../../../components/text/link'
+import { InternalLink } from '../../../components/text/link'
 import { P } from '../../../components/text/paragraph'
 import Image from '../../../components/image'
 import { InlineCode } from '../../../components/text/code'
 import {
   TerminalInput,
-  TerminalOutput
+  TerminalOutput,
+  TerminalLink
 } from '../../../components/text/terminal'
 
 // prettier-ignore
@@ -84,13 +85,13 @@ ${
     <span className="gray">(CIyk6IKL8MIHzAqrmcxbM8kf)</span>
     {`:
 `}
-    <ExternalLink href="https://get-started-basic.now.sh">
+    <TerminalLink href="https://get-started-basic.now.sh">
       https://get-started-basic.now.sh
-    </ExternalLink>
+    </TerminalLink>
     {` now points to `}
-    <ExternalLink href="https://get-started-basic-etjnigdrkz.now.sh">
+    <TerminalLink href="https://get-started-basic-etjnigdrkz.now.sh">
       https://get-started-basic-etjnigdrkz.now.sh
-    </ExternalLink>
+    </TerminalLink>
     {` `}
     <span className="gray">(xpvB6GZWMR6Q9Oxe3c64Htgq)</span>
     {` [copied to clipboard]`}
@@ -148,21 +149,21 @@ ${
   <TerminalOutput>
     {`> `}
     <P.B>
-      <ExternalLink href="https://zeithq.com">
+      <TerminalLink href="https://zeithq.com">
         zeithq.com
-      </ExternalLink>
+      </TerminalLink>
     </P.B>
     {` is a custom domain.`}<br />{`
 > Verifying the DNS settings for `}
     <P.B>
-      <ExternalLink href="https://zeithq.com">
+      <TerminalLink href="https://zeithq.com">
         zeithq.com
-      </ExternalLink>
+      </TerminalLink>
     </P.B>
     {` (see `}
-    <InternalLink href="/world" prefetch>
+    <TerminalLink href="/world" prefetch>
       https://zeit.world
-    </InternalLink>
+    </TerminalLink>
     {` for help)`}<br />{`
 > Resolved IP: none`}<br />{`
 > Nameservers: ns-cloud-d1.googledomains.com, ns-cloud-d2.googledomains.com, ns-cloud-d3.googledomains.com, ns-cloud-d4.googledomains.com`}
@@ -170,12 +171,12 @@ ${
     <span className="red">&gt; Error!</span>
     {` Please make sure that your nameservers point to`}
     {' '}
-    <ExternalLink href="https://zeit.world">zeit.world</ExternalLink>
+    <TerminalLink href="https://zeit.world">zeit.world</TerminalLink>
     {`.`}<br />{`
 > Examples: (full list at `}
-    <ExternalLink href="https://zeit.world">
+    <TerminalLink href="https://zeit.world">
       https://zeit.world
-    </ExternalLink>
+    </TerminalLink>
     {`)`}<br />{`
 > `}
     <span className="gray">-</span>
@@ -228,38 +229,38 @@ Upon re-running the command, we get:
 ${
   <TerminalOutput>
     {`> `}
-    <ExternalLink href="https://zeithq.com">
+    <TerminalLink href="https://zeithq.com">
       <P.B>zeithq.com</P.B>
-    </ExternalLink>
+    </TerminalLink>
     {` is a custom domain.`}<br />{`
 > Verifying the DNS settings for `}
-    <ExternalLink href="https://zeithq.com">
+    <TerminalLink href="https://zeithq.com">
       <P.B>zeithq.com</P.B>
-    </ExternalLink>
+    </TerminalLink>
     {` (see `}
-    <InternalLink href="/world">https://zeit.world</InternalLink>
+    <TerminalLink href="/world">https://zeit.world</TerminalLink>
     {` for help)`}<br />{`
 > Detected `}
-    <InternalLink href="/world">https://zeit.world</InternalLink>
+    <TerminalLink href="/world">https://zeit.world</TerminalLink>
     {` nameservers! Configuring records.`}<br />{`
 > DNS Configured! Verifying propagation…`}<br />{`
 > Verification OK!`}<br />{`
 > Provisioning certificate for `}
-    <ExternalLink href="https://zeithq.com">
+    <TerminalLink href="https://zeithq.com">
       <P.B>zeithq.com</P.B>
-    </ExternalLink>
+    </TerminalLink>
     <br />
     <span className="cyan">&gt; Success!</span>
     {` Alias created `}
     <span className="gray">(04N40HL8XcvOe5cxcgNhomM0)</span>
     {': '}
-    <ExternalLink href="https://zeithq.com">
+    <TerminalLink href="https://zeithq.com">
       https://zeithq.com
-    </ExternalLink>
+    </TerminalLink>
     {` now points to `}
-    <ExternalLink href="https://get-started-basic-etjnigdrkz.now.sh">
+    <TerminalLink href="https://get-started-basic-etjnigdrkz.now.sh">
       https://get-started-basic-etjnigdrkz.now.sh
-    </ExternalLink>
+    </TerminalLink>
     {' '}
     <span className="gray">(VfsUPntrbhEzccjLU1zAI30Q)</span>
     {` [copied to clipboard]`}
@@ -305,7 +306,7 @@ ${
     <br />
     {`
 > Verifying the DNS settings for `}<a><P.B>hello.zeit.run</P.B></a>{` (see `}
-    <InternalLink href="/world">https://zeit.world</InternalLink>
+    <TerminalLink href="/world">https://zeit.world</TerminalLink>
     {` for help)`}<br />{`
 `}
     <span className="red">&gt; Error!</span>
@@ -340,29 +341,29 @@ ${
 ${
   <TerminalOutput>
     {`> `}
-    <ExternalLink href="https://hello.zeit.run">
+    <TerminalLink href="https://hello.zeit.run">
       <P.B>hello.zeit.run</P.B>
-    </ExternalLink>
+    </TerminalLink>
     {` is a custom domain.`}<br />{`
 > Verifying the DNS settings for `}<a><P.B>hello.zeit.run</P.B></a>{` (see `}
-    <InternalLink href="/world">https://zeit.world</InternalLink>
+    <TerminalLink href="/world">https://zeit.world</TerminalLink>
     {` for help)`}<br />{`
 > Verification `}<P.B>OK</P.B>{`!`}<br />{`
 > Provisioning certificate for `}
-    <ExternalLink href="https://hello.zeit.run">
+    <TerminalLink href="https://hello.zeit.run">
       hello.zeit.run
-    </ExternalLink>
+    </TerminalLink>
     {``}<br />{`
 > Success! Alias created (BucgEPj9TI4Pae3HzDQT3LAB):
 `}
-    <ExternalLink href="https://hello.zeit.run">
+    <TerminalLink href="https://hello.zeit.run">
       https://hello.zeit.run
-    </ExternalLink>
+    </TerminalLink>
     {' '}now points to
     {' '}
-    <ExternalLink href="https://get-started-basic-etjnigdrkz.now.sh">
+    <TerminalLink href="https://get-started-basic-etjnigdrkz.now.sh">
       https://get-started-basic-etjnigdrkz.now.sh
-    </ExternalLink>
+    </TerminalLink>
     {' '}(VfsUPntybhEzccjLU1zAI30Q) [copied to clipboard]
   </TerminalOutput>
 }
@@ -385,16 +386,16 @@ ${
             id  dns         url                       verified  created`}
     </span>{`
 zXBxQLQYidDddAb2l6db26Cb  zeit.world  `}
-    <ExternalLink href="https://zeithq.com">
+    <TerminalLink href="https://zeithq.com">
       https://zeithq.com
-    </ExternalLink>
+    </TerminalLink>
     {`        true      `}
     <span className="gray">11m ago</span>
     {`
 WAZjIaxvaiieNUqJc22PJUKG  external    `}
-    <ExternalLink href="https://hyper.is">
+    <TerminalLink href="https://hyper.is">
       https://zeit.run
-    </ExternalLink>
+    </TerminalLink>
     {`          true      `}
     <span className="gray">20m ago</span>
   </TerminalOutput>
