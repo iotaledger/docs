@@ -8,7 +8,7 @@ import { TerminalInput } from '../../../components/text/terminal'
 
 // prettier-ignore
 export default withDoc({
-  title: 'Simplyfing Microservices with Path Alias',
+  title: 'Simplifying Microservices with Path Alias',
   date: '15 Mar 2017',
   authors: [leo, jamo],
 })(markdown(components)`
