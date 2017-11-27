@@ -69,7 +69,7 @@ ${
   </TerminalInput>
 }
 
-Now create the \`index.js\` file and populate it with code. Load [yahoo-weather])(https://www.npmjs.com/package/yahoo-weather) and [url](https://nodejs.org/api/url.html) (a native module for parsing URLs):
+Now create the \`index.js\` file and populate it with code. Load [yahoo-weather](https://www.npmjs.com/package/yahoo-weather) and [url](https://nodejs.org/api/url.html) (a native module for parsing URLs):
 
 ${
   <Code>
