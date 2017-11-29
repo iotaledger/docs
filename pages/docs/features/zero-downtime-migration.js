@@ -38,7 +38,7 @@ The first phase involves setting up your project in our infrastructure and ensur
 
 ### 1. Deploy to now
 
-In the very first step, we need deploy the project to ${<Now color="#000"/>}. For most apps, all it takes is to run \`now\` in your project's directory. Please check out our ${<InternalLink href="/docs/getting-started/your-first-deployments">Getting Started</InternalLink>} section in our documentation center for more details.
+In the very first step, we need deploy the project to ${<Now color="#000"/>}. For most apps, all it takes is to run \`now\` in your project's directory. Please check out our ${<InternalLink href="/docs/getting-started/five-minute-guide-to-now">Getting Started</InternalLink>} section in our documentation center for more details.
 
 It is important to make sure the deployment is working before sending live production traffic to it. Take some time to ensure the deployment is working correctly.
 
