@@ -74,3 +74,17 @@ export const H4 = ({ children, isCommand }) => (
     </style>
   </h4>
 )
+
+export const H5 = ({ children }) => (
+  <h5>
+    {children}
+    <style jsx>
+      {`
+      h5 {
+        font-weight: bold;
+        font-size: 15px;
+      }
+    `}
+    </style>
+  </h5>
+)
