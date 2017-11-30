@@ -19,10 +19,20 @@ export default props => {
   const { offsetTop } = props
   const component = props.children
   const children = component.props.children || ''
+
   let id = props.id
+  let text = children
 
   if (null == id) {
-    const text = 'string' === typeof children ? children : children.join('')
+    // If there are sub components, convert them to text
+    if (Array.isArray(children)) {
+      text = children
+        .map(child => {
+          return typeof child === 'object' ? child.props.children : child
+        })
+        .join('')
+    }
+
     id = text.toLowerCase().replace(/\s/g, '-').replace(/[?!]/g, '')
   }
 
