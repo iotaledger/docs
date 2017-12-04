@@ -53,7 +53,7 @@ to log in), a window should open with your account's event feed inside.
 
 ## Deployment
 
-Now that we're logged in, let's beging with deploying a
+Now that we're logged in, let's begin with deploying a
 simple static web site.
 
 Firstly, create a directory called \`my-web-app\` and add the following content to a file called \`index.html\`.
