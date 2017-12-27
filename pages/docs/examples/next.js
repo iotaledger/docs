@@ -83,7 +83,7 @@ As an example, you can now add a \`index.js\` file inside that folder, which wil
 ${
   <Code>
     {`export default () => (
-  <P>Welcome to Next.js!</P>
+  <p>Welcome to Next.js!</p>
 )`}
   </Code>
 }
