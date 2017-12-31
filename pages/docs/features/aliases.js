@@ -15,19 +15,19 @@ import {
 
 // prettier-ignore
 export default withDoc({
-  title: 'Aliases and Custom Domains',
+  title: 'Aliases and Domains',
   date: '21 Feb 2017',
   authors: [rauchg],
 })(markdown(components)`
 
-This guide covers how to assign custom names to your ${<Now color="#000" />} deployments
+This guide covers how to assign two types of domains to your ${<Now color="#000" />} deployments.
 
-* As custom subdomains under \`.now.sh\` (for example https://hello.now.sh)
-* As entirely custom domains (for example https://your-company.com)
+1. Subdomains under \`.now.sh\` (for example https://hello.now.sh)
+2. Entirely custom domains (for example https://your-company.com)
 
 ## Aliasing Basics
 
-Whenever you deploy to ${<Now color="#000" />}, the URL you get in return looks like something like:
+Whenever you deploy to ${<Now color="#000" />}, the URL you get in return looks something like:
 
 ${
   <TerminalOutput>
@@ -35,19 +35,19 @@ ${
   </TerminalOutput>
 }
 
-If we dissect that URL, we can see it's composed of a few parts:
+We can split the above URL into few parts:
 
-* **https://** -Every single deployment is automatically served under HTTP/2 with SSL. Certificates are provisioned automatically.
+* **https://** -Every single deployment is automatically served under HTTP/2 with SSL. Certificates are automatically provisioned.
 * **get-started-basic**	- The application's name. You can customize it upon deployment (for example with the name field in package.json for Node.js deployments or LABEL in Dockerfile for Docker ones.
 * **etjnigdrkz** -	A cryptographically-strong random string that makes your URL virtually impossible to guess, while retaining a reasonable length for sharing it with your co-workers or clients.
 * **.now.sh** -	All your deployments end in .now.sh by default. Aliases allow you to point them to custom domains.
 
-These URLs are ideal for development and staging, but not ideal to share with the public.
+These URLs are ideal for development and staging, but not ideal for end users.
 
 ${<Now color="#000" />} aliases have two purposes:
 
-* Giving your deployment a friendly name that's more memorable.
-* Upgrading a certain deployment to production, by supplanting the previous alias with **zero downtime**.
+1. Giving your deployment a friendly and memorable name.
+2. Updating deployments with **zero downtime**.
 
 ## Creating Aliases
 
@@ -59,17 +59,9 @@ ${
   </TerminalInput>
 }
 
-For example, let's say I want \`https://get-started-basic-etjnigdrkz.now.sh\` …
+For example, let's say you want \`https://get-started-basic-etjnigdrkz.now.sh\` to be accessible by the alias \`get-started-basic.now.sh\`.
 
-${
-  <Image
-    src={`${IMAGE_ASSETS_URL}/docs/aliases/alias-source.png`}
-    width="682"
-    height="467"
-  />
-}
-
-… to be accessible by the alias \`get-started-basic.now.sh\`. All I have to do is run:
+All you have to do is run:
 
 ${
   <TerminalInput>
@@ -98,7 +90,7 @@ ${
   </TerminalOutput>
 }
 
-After this successful message, my deployment is instantly available via its original URL and the new alias I gave it:
+After this successful message, your deployment is instantly available via its original URL and the new alias you gave it:
 
 ${
   <Image
@@ -113,11 +105,11 @@ ${
   />
 }
 
-Notice that I omitted \`.now.sh\` at the end of the target subdomain. When one is not given, we default to \`now.sh\`.
+Notice that we omitted \`.now.sh\` at the end of the target subdomain. When one is not given, we default to \`now.sh\`.
 
-As seen in the output, each alias receives a unique identifier. In the example above, it's \`xpvB6GZWMR6Q9Oxe3c64Htgq\`. We'll cover this later in the **Managing Aliases** section.
+As seen in the output, each alias receives a unique identifier. In the example above, it's \`xpvB6GZWMR6Q9Oxe3c64Htgq\`.
 
-The output also refers to the deployment ID, which is also accessible when you list your deployments with now ls. It can be used in substitution of the URL when running \`now alias\`:
+It's usually known as the **deployment ID**, which is also accessible when you list your deployments with \`now ls\`. It can be used in substitution of the URL when running \`now alias\`:
 
 ${
   <TerminalInput>
@@ -125,7 +117,7 @@ ${
   </TerminalInput>
 }
 
-As a convenience, we parse the URLs you supply as parameters to \`now alias\` to extract the hostname, which means the following are all valid **source URLs**:
+For convenience, we parse the URLs you supply as parameters to \`now alias\` to extract the hostname, which means the following are all valid **source URLs**:
 
 * Just the hostname: \`get-started-basic-etjnigdrkz.now.sh\`
 * Including http(s): \`http://get-started-basic-etjnigdrkz.now.sh\`
@@ -133,248 +125,29 @@ As a convenience, we parse the URLs you supply as parameters to \`now alias\` to
 
 ## Custom Domains
 
-The same mechanism we explained above can be used to configure an **external domain**.
+The same mechanism we explained above can be used to configure an **custom domain**.
 
 The command is almost exactly the same:
 
 ${
   <TerminalInput>
-    now alias https://get-started-basic-etjnigdrkz.now.sh zeithq.com
+    now alias https://get-started-basic-etjnigdrkz.now.sh your-company.com
   </TerminalInput>
 }
 
-I already registered the domain \`zeithq.com\`, so I'll go ahead and run that command.
+If \`your-company.com\` is available to buy, ${<Now color="#000" />} will allow you to buy it directly from the command line, which is the only step you need to do. ${<Now color="#000" />} will take care of all the domain configuration.
 
-${
-  <TerminalOutput>
-    {`> `}
-    <P.B>
-      <TerminalLink href="https://zeithq.com">
-        zeithq.com
-      </TerminalLink>
-    </P.B>
-    {` is a custom domain.`}<br />{`
-> Verifying the DNS settings for `}
-    <P.B>
-      <TerminalLink href="https://zeithq.com">
-        zeithq.com
-      </TerminalLink>
-    </P.B>
-    {` (see `}
-    <TerminalLink href="/world" prefetch>
-      https://zeit.world
-    </TerminalLink>
-    {` for help)`}<br />{`
-> Resolved IP: none`}<br />{`
-> Nameservers: ns-cloud-d1.googledomains.com, ns-cloud-d2.googledomains.com, ns-cloud-d3.googledomains.com, ns-cloud-d4.googledomains.com`}
-    <br />
-    <span className="red">&gt; Error!</span>
-    {` Please make sure that your nameservers point to`}
-    {' '}
-    <TerminalLink href="https://zeit.world">zeit.world</TerminalLink>
-    {`.`}<br />{`
-> Examples: (full list at `}
-    <TerminalLink href="https://zeit.world">
-      https://zeit.world
-    </TerminalLink>
-    {`)`}<br />{`
-> `}
-    <span className="gray">-</span>
-    {` california.zeit.world    `}
-    <span className="gray">173.255.215.107</span>
-    {``}<br />{`
-> `}
-    <span className="gray">-</span>
-    {` newark.zeit.world        `}
-    <span className="gray">173.255.231.87</span>
-    {``}<br />{`
-> `}
-    <span className="gray">-</span>
-    {` london.zeit.world        `}
-    <span className="gray">178.62.47.76</span>
-    {``}<br />{`
-> `}
-    <span className="gray">-</span>
-    {` singapore.zeit.world     `}
-    <span className="gray">119.81.97.170</span>
-    {``}<br />{`
-> Alternatively, ensure it resolves to alias.zeit.co via `}
-    <span className="gray">CNAME</span>
-    {' '}/{' '}
-    <span className="gray">ALIAS</span>
-    {`.`}
-  </TerminalOutput>
-}
+Otherwise, you need to [configure](/docs/getting-started/assign-a-domain-name) the domain name for ${<Now color="#000" />}. You can either use our [global DNS service](/world) or add an \`ALIAS/CNAME\` record on your existing DNS solution.
 
-With ${<Now color="#000" />} there's no manual configuration of DNS records and domain zones. The only requirement is that you point your domain's nameservers to any of our ${<InternalLink href="/world">zeit.world</InternalLink>} hostnames.
-
-In this case, my domain is registered with Google Domains, so I edit the nameservers there to look like this:
-
-${
-  <Image
-    src={`${IMAGE_ASSETS_URL}/docs/aliases/nameservers-edit.png`}
-    width="569"
-    height="274"
-    caption={
-      <span>
-        If you are using Google Domains, this is found under
-        {' '}
-        <InlineCode>My domains &gt; DNS</InlineCode>
-      </span>
-    }
-  />
-}
-Upon re-running the command, we get:
-
-${
-  <TerminalOutput>
-    {`> `}
-    <TerminalLink href="https://zeithq.com">
-      <P.B>zeithq.com</P.B>
-    </TerminalLink>
-    {` is a custom domain.`}<br />{`
-> Verifying the DNS settings for `}
-    <TerminalLink href="https://zeithq.com">
-      <P.B>zeithq.com</P.B>
-    </TerminalLink>
-    {` (see `}
-    <TerminalLink href="/world">https://zeit.world</TerminalLink>
-    {` for help)`}<br />{`
-> Detected `}
-    <TerminalLink href="/world">https://zeit.world</TerminalLink>
-    {` nameservers! Configuring records.`}<br />{`
-> DNS Configured! Verifying propagation…`}<br />{`
-> Verification OK!`}<br />{`
-> Provisioning certificate for `}
-    <TerminalLink href="https://zeithq.com">
-      <P.B>zeithq.com</P.B>
-    </TerminalLink>
-    <br />
-    <span className="cyan">&gt; Success!</span>
-    {` Alias created `}
-    <span className="gray">(04N40HL8XcvOe5cxcgNhomM0)</span>
-    {': '}
-    <TerminalLink href="https://zeithq.com">
-      https://zeithq.com
-    </TerminalLink>
-    {` now points to `}
-    <TerminalLink href="https://get-started-basic-etjnigdrkz.now.sh">
-      https://get-started-basic-etjnigdrkz.now.sh
-    </TerminalLink>
-    {' '}
-    <span className="gray">(VfsUPntrbhEzccjLU1zAI30Q)</span>
-    {` [copied to clipboard]`}
-  </TerminalOutput>
-}
-
-## Using CNAME and ALIAS
-
-If you want to use a domain that's configured with a third party DNS system, you can still use \`now alias\`.
-
-To do so, just create a **CNAME** or **ALIAS** record that points to \`alias.zeit.co\`.
-For this example, I'll configure \`hello.zeit.run\` to point to the same deployment I used above, but using Google's nameservers.
-First, I head to the DNS settings and add a \`CNAME\` record for the \`hello\` subdomain as follows:
-
-${
-  <Image
-    src={`${IMAGE_ASSETS_URL}/docs/aliases/cname-add.png`}
-    width="561"
-    height="69"
-    caption={
-      <span>
-        I added this record under
-        {' '}
-        <InlineCode>DNS &gt; Custom resource records</InlineCode>
-      </span>
-    }
-  />
-}
-
-Next, I run \`now alias\`:
-
-${
-  <TerminalInput>
-    now alias get-started-basic-etjnigdrkz.now.sh hello.zeit.run
-  </TerminalInput>
-}
-
-${
-  <TerminalOutput>
-    {`> `}
-    <a><P.B>hello.zeit.run</P.B></a>
-    {` is a custom domain.`}
-    <br />
-    {`
-> Verifying the DNS settings for `}<a><P.B>hello.zeit.run</P.B></a>{` (see `}
-    <TerminalLink href="/world">https://zeit.world</TerminalLink>
-    {` for help)`}<br />{`
-`}
-    <span className="red">&gt; Error!</span>
-    {` Verification required: Please add the following TXT record on the external DNS server: _now.zeit.run: ed24d6ddc87ee58332ac358ae`}
-  </TerminalOutput>
-}
-
-As you can see, as a security measure we require that you validate that you own this domain name. So I add an extra \`TXT\` record accordingly:
-
-${
-  <Image
-    src={`${IMAGE_ASSETS_URL}/docs/aliases/txt-add.png`}
-    width="561"
-    height="63"
-    caption={
-      <span>
-        Important! Notice the subdomain
-        is
-        {' '}
-        <InlineCode>_now</InlineCode>
-        {' '}
-        and the record type
-        {' '}
-        {' '}
-        <InlineCode>TXT</InlineCode>
-        !
-      </span>
-    }
-  />
-}
-
-${
-  <TerminalOutput>
-    {`> `}
-    <TerminalLink href="https://hello.zeit.run">
-      <P.B>hello.zeit.run</P.B>
-    </TerminalLink>
-    {` is a custom domain.`}<br />{`
-> Verifying the DNS settings for `}<a><P.B>hello.zeit.run</P.B></a>{` (see `}
-    <TerminalLink href="/world">https://zeit.world</TerminalLink>
-    {` for help)`}<br />{`
-> Verification `}<P.B>OK</P.B>{`!`}<br />{`
-> Provisioning certificate for `}
-    <TerminalLink href="https://hello.zeit.run">
-      hello.zeit.run
-    </TerminalLink>
-    {``}<br />{`
-> Success! Alias created (BucgEPj9TI4Pae3HzDQT3LAB):
-`}
-    <TerminalLink href="https://hello.zeit.run">
-      https://hello.zeit.run
-    </TerminalLink>
-    {' '}now points to
-    {' '}
-    <TerminalLink href="https://get-started-basic-etjnigdrkz.now.sh">
-      https://get-started-basic-etjnigdrkz.now.sh
-    </TerminalLink>
-    {' '}(VfsUPntybhEzccjLU1zAI30Q) [copied to clipboard]
-  </TerminalOutput>
-}
+Refer to this [guide](/docs/getting-started/assign-a-domain-name) for more information on domain configuration.
 
 ## Security Considerations
 
-We ensure that **your domains are fully protected and only you can add aliases to them**.
+We ensure that **your domains are fully protected and only you can alias to them**.
 
 When you add an alias to a certain domain name, we first verify its ownership. If it's not been claimed by anyone, we associate it with your account.
 
-After I executed the \`alias\` above, I can run \`now domains ls\` to see my domains:
+After executing the \`alias\` above, just run \`now domains ls\` to see all the domains in your account:
 
 ${<TerminalInput>now domains ls</TerminalInput>}
 
@@ -386,8 +159,8 @@ ${
             id  dns         url                       verified  created`}
     </span>{`
 zXBxQLQYidDddAb2l6db26Cb  zeit.world  `}
-    <TerminalLink href="https://zeithq.com">
-      https://zeithq.com
+    <TerminalLink href="https://your-company.com">
+      https://your-company.com
     </TerminalLink>
     {`        true      `}
     <span className="gray">11m ago</span>
@@ -406,5 +179,5 @@ As you can see, there are two types of domains:
 * **external**: the domain is associated with a third-party nameserver provider like DNSimple.
 * **zeit.world**: the domain is hosted with ${<InternalLink href="/world">zeit.world</InternalLink>} and \`now alias\` automatically sets up records.
 
-Once a domain appears under \`now domains ls\`, it means that **only you can point aliases to them**. For **external** domains this requires verification. For **zeit.world**, make sure to add an alias to the domain or run \`now domain add\` as soon as possible.
+Once a domain appears under \`now domains ls\`, **only you can point aliases to it** until you remove it from your account.
 `)
