@@ -233,16 +233,6 @@ By default (if the property is not set or set to \`true\`), auto-updates
 are enabled. In turn, if it's set it to \`false\`, you won't receive any updates
 for Now CLI automatically. In that case, you'll have to update manually.
 
-#### \`desktop.noMoveWanted\` (boolean)
-
-If you're trying to run Now Desktop outside of your Applications directory, you'll
-be asked if the application should move itself to that location.
-
-In the case that this message is dismissed by you, this config property will
-automatically be set to \`true\`. However, to make the message show up again
-when the app starts, you
-can remove this property or set it to \`false\`.
-
 #### \`desktop.teamOrder\` (array)
 
 At the bottom of Now Desktop's event feed, you can find a list of teams that
