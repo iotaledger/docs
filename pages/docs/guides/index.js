@@ -1,4 +1,4 @@
 // Helpers
 import redirect from '../../../lib/redirect'
 
-export default redirect('/docs/guides/migrate-your-app')
+export default redirect('/docs')
