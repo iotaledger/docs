@@ -8,7 +8,7 @@ You can access this documentation online at https://zeit.co/docs .
 Download the copy of this repostory. 
 
 ~~~sh
-git clone https://github.com/zeit/docs-public.git
+git clone https://github.com/zeit/docs.git
 ~~~
 
 Then visit to the downloaded repository and install dependencies with:
