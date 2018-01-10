@@ -11,7 +11,7 @@ import {
 
 // prettier-ignore
 export default withDoc({
-  title: 'Migrate Your App to now Without a Downtime',
+  title: 'Migrate Your App to Now Without a Downtime',
   date: '04 Apr 2017 9:42 AM PDT',
   authors: [jamo, rauchg],
 })(markdown(components)`

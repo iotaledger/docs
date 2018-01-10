@@ -8,7 +8,7 @@ import { TerminalInput } from '../../../components/text/terminal'
 
 // prettier-ignore
 export default withDoc({
-  title: 'How to Use Cloudflare with now',
+  title: 'How to Use Cloudflare with Now',
   date: '04 Apr 2017 9:42 AM PDT',
   authors: [jamo, rauchg],
 })(markdown(components)`
