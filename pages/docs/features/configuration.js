@@ -186,6 +186,15 @@ ${
   </Code>
 }
 
+#### \`api\` (string)
+
+The URL of the Now API which Now CLI and Now Desktop should interact with.
+
+By default, it's pointing to \`https://api.zeit.co\`, which always points to
+the right location depending on where you're connecting from (Anycast).
+
+This property takes precedence over ${<InlineCode>sh.api</InlineCode>} in ${<InlineCode>config.json</InlineCode>}.
+
 ## Global Configuration
 
 This describes the set of configuration rules that apply to all projects
