@@ -57,7 +57,7 @@ Create a file called \`rules.json\` and add the following content:
 ${<Code>{`{
   "rules": [
     { "pathname": "/api/register", "method": ["POST"], "dest": "api-register-wcepelgodl.now.sh" },
-    { "pathname": "/api/**", "method": ["GET", "POST"], "dest": "api-tuhpdtgoja-now.sh" },
+    { "pathname": "/api/**", "method": ["GET", "POST"], "dest": "api-tuhpdtgoja.now.sh" },
     { "dest": "ui-dbuyejqwio.now.sh" }
   ]
 }
@@ -106,7 +106,7 @@ ${<Code>{`- /api/register -> my-api-register.now.sh/api/register
 
 This is a list of HTTP method types that the rule supports. It can have one or many methods like this:
 
-${<Code>{`{ "pathname": "/api/**", "method": ["GET", "POST"], "dest": "api-tuhpdtgoja-now.sh" }
+${<Code>{`{ "pathname": "/api/**", "method": ["GET", "POST"], "dest": "api-tuhpdtgoja.now.sh" }
 `}</Code>}
 
 If there is no \`methods\` field, requests with any HTTP method will be a candidate for the rule.
@@ -118,7 +118,7 @@ Have a look at the rules we have introduced previously:
 ${<Code>{`{
   "rules": [
     { "pathname": "/api/register", "method": ["POST"], "dest": "api-register-wcepelgodl.now.sh" },
-    { "pathname": "/api/**", "method": ["GET", "POST"], "dest": "api-tuhpdtgoja-now.sh" },
+    { "pathname": "/api/**", "method": ["GET", "POST"], "dest": "api-tuhpdtgoja.now.sh" },
     { "dest": "ui-dbuyejqwio.now.sh" }
   ]
 }
@@ -139,15 +139,15 @@ ${<Code>{`{
 }
 `}</Code>}
 
-Now for the \`dest\` field, instead of the deployment url (\`api-tuhpdtgoja-now.sh\`), we now have an alias (\`my-api.now.sh\`).
+Now for the \`dest\` field, instead of the deployment url (\`api-tuhpdtgoja.now.sh\`), we now have an alias (\`my-api.now.sh\`).
 
 Then we only need to set these rules once, unless you change the microservices setup.
 
-With this setup, let's say you've deployed a new version of the "api microservice" and its deployment url is \`api-iewodtfalq-now.sh\`.
+With this setup, let's say you've deployed a new version of the "api microservice" and its deployment url is \`api-iewodtfalq.now.sh\`.
 
 Now simply map it to the alias like this:
 
-${<TerminalInput>now alias api-iewodtfalq-now.sh my-api.now.sh</TerminalInput>}
+${<TerminalInput>now alias api-iewodtfalq.now.sh my-api.now.sh</TerminalInput>}
 
 You don't need to update path alias rules since \`my-api.now.sh\` points to the latest deployment.
 `)
