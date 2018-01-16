@@ -975,11 +975,15 @@ export default Introduction
 
 function filesToAPIBody(files) {
   const pkg = JSON.parse(files['package.json'])
+
   return JSON.stringify(
     {
       name: pkg.name,
       deploymentType: 'NPM',
-      files: Object.entries(files).map(([file, data]) => ({ file, data }))
+      files: Object.entries(files).map(([file, data]) => ({
+        file,
+        data: data.replace(/'/g, '"')
+      }))
     },
     null,
     2
