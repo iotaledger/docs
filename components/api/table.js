@@ -82,13 +82,8 @@ export function Table({ children, head }) {
   return (
     <ScrollerContainer>
       <table>
-        {head &&
-          <thead>
-            {head}
-          </thead>}
-        <tbody>
-          {children}
-        </tbody>
+        {head && <thead>{head}</thead>}
+        <tbody>{children}</tbody>
       </table>
     </ScrollerContainer>
   )
@@ -143,11 +138,7 @@ export function HeadersTable({ children }) {
 }
 
 export function Row({ children }) {
-  return (
-    <tr>
-      {children}
-    </tr>
-  )
+  return <tr>{children}</tr>
 }
 
 export function Cell({ children, isHead, center }) {
@@ -204,9 +195,7 @@ export function TypeCell({ children, ...props }) {
   return (
     <Cell {...props}>
       <a className={props.isHead ? 'head' : null} href="/api#api-basics/types">
-        <span>
-          {children}
-        </span>
+        <span>{children}</span>
         {props.isHead ? <QuestionInCircle /> : null}
         <style jsx>
           {`
@@ -244,28 +233,20 @@ export function TypeCell({ children, ...props }) {
 export function BoldCell({ children, ...props }) {
   return (
     <Cell {...props}>
-      <b>
-        {children}
-      </b>
+      <b>{children}</b>
     </Cell>
   )
 }
 
 export function BooleanCell({ status = false, ...props }) {
-  return (
-    <Cell {...props}>
-      {status ? 'Yes' : 'No'}
-    </Cell>
-  )
+  return <Cell {...props}>{status ? 'Yes' : 'No'}</Cell>
 }
 
 export function FullWidthCell(props) {
   const { children, ...rest } = props
   return (
     <Cell {...rest}>
-      <div>
-        {children}
-      </div>
+      <div>{children}</div>
       <style jsx>{`
         @media screen and (max-width: 700px) {
           div {

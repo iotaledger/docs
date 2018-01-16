@@ -21,8 +21,9 @@ function Deployments(props) {
 
   return (
     <Section
-      contents={// prettier-ignore
-      [
+      contents={
+        // prettier-ignore
+        [
   [
     markdown(components)`
 ### Create a new deployment
@@ -753,7 +754,8 @@ ${<Code syntax="json">{`{
 }`}</Code>}
     `
   ]
-]}
+]
+      }
     />
   )
 }

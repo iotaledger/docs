@@ -2,17 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { GenericLink } from './link'
 
-export const TerminalInput = ({ children }, { darkBg = false }) =>
+export const TerminalInput = ({ children }, { darkBg = false }) => (
   <div className={darkBg ? 'dark' : ''}>
-    {Array.isArray(children)
-      ? <span>
-          {children}
-        </span>
-      : children.split(/\r?\n/).map((item, index) =>
-          <span key={index}>
-            {item}
-          </span>
-        )}
+    {Array.isArray(children) ? (
+      <span>{children}</span>
+    ) : (
+      children
+        .split(/\r?\n/)
+        .map((item, index) => <span key={index}>{item}</span>)
+    )}
 
     <style jsx>
       {`
@@ -36,7 +34,7 @@ export const TerminalInput = ({ children }, { darkBg = false }) =>
         }
 
         div span::before {
-          content: "$ ";
+          content: '$ ';
         }
 
         div.dark {
@@ -46,6 +44,7 @@ export const TerminalInput = ({ children }, { darkBg = false }) =>
       `}
     </style>
   </div>
+)
 
 TerminalInput.contextTypes = {
   darkBg: PropTypes.bool
@@ -93,7 +92,7 @@ export class TerminalOutput extends React.Component {
   }
 }
 
-export const TerminalLink = props =>
+export const TerminalLink = props => (
   <span>
     <GenericLink {...props} />
     <style jsx>
@@ -104,3 +103,4 @@ export const TerminalLink = props =>
       `}
     </style>
   </span>
+)

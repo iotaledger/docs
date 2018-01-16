@@ -9,12 +9,12 @@ const Table = ({ children }) => (
 
       <style jsx>
         {`
-        table {
-          width: 100%;
-          margin: 30px 0;
-          border: none;
-        }
-      `}
+          table {
+            width: 100%;
+            margin: 30px 0;
+            border: none;
+          }
+        `}
       </style>
     </tbody>
   </table>
@@ -34,13 +34,13 @@ class Row extends React.Component {
 
         <style jsx>
           {`
-          tr {
-            text-align: left;
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 24px;
-          }
-        `}
+            tr {
+              text-align: left;
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 24px;
+            }
+          `}
         </style>
       </tr>
     )

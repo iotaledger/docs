@@ -5,12 +5,12 @@ export const P = ({ children }) => (
     {children}
     <style jsx>
       {`
-      p {
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 24px;
-      }
-    `}
+        p {
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 24px;
+        }
+      `}
     </style>
   </p>
 )
@@ -20,13 +20,13 @@ export const PDIV = ({ children }) => (
     {children}
     <style jsx>
       {`
-      div {
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 24px;
-        margin-bottom: 20px;
-      }
-    `}
+        div {
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 24px;
+          margin-bottom: 20px;
+        }
+      `}
     </style>
   </div>
 )
@@ -36,10 +36,10 @@ const B = ({ children }) => (
     {children}
     <style jsx>
       {`
-      span {
-        font-weight: 600;
-      }
-    `}
+        span {
+          font-weight: 600;
+        }
+      `}
     </style>
   </span>
 )
@@ -49,7 +49,7 @@ export const HR = () => (
     <style jsx>{`
       div {
         border: 0;
-        border-bottom: 1px solid #CCC;
+        border-bottom: 1px solid #ccc;
         margin: 50px 30px;
       }
     `}</style>

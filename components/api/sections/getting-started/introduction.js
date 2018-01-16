@@ -42,11 +42,11 @@ function Preview(props) {
       <Code syntax="shell">{`curl -X POST https://api.zeit.co/v2/now/deployments \\
 -H 'Authorization: Bearer $TOKEN' \\
 -d '${(props.content || '').replace(/'/g, "\\'")}'`}</Code>
-      {props.errorMessage
-        ? <div className="error-message" key="2">
-            <span /> {props.errorMessage}.
-          </div>
-        : null}
+      {props.errorMessage ? (
+        <div className="error-message" key="2">
+          <span /> {props.errorMessage}.
+        </div>
+      ) : null}
       <div className="centered">
         <Button darkBg onClick={props.deploy} disabled={!!props.deploying}>
           DEPLOY NOW
@@ -78,7 +78,7 @@ function Preview(props) {
         }
         .error-message span::before {
           display: block;
-          content: "";
+          content: '';
           width: 11px;
           background: red;
           height: 11px;
@@ -214,9 +214,7 @@ class Editor extends React.PureComponent {
                             onClick={this.onFilenameClick}
                           >
                             <FileIcon />
-                            <span className="filename">
-                              {filename}
-                            </span>
+                            <span className="filename">{filename}</span>
                           </li>
                         )
                       })}
@@ -520,7 +518,7 @@ class Editor extends React.PureComponent {
             color: #f22;
           }
           .CodeMirror-matchingtag {
-            background: rgba(255, 150, 0, .3);
+            background: rgba(255, 150, 0, 0.3);
           }
           .CodeMirror-activeline-background {
             background: #e8f2ff;
@@ -744,7 +742,7 @@ class Editor extends React.PureComponent {
 
           .cm-searching {
             background: #ffa;
-            background: rgba(255, 255, 0, .4);
+            background: rgba(255, 255, 0, 0.4);
           }
 
           /* IE7 hack to prevent it from returning funny offsetTops on the spans */
@@ -754,7 +752,7 @@ class Editor extends React.PureComponent {
 
           /* Used to force a border model for a node */
           .cm-force-border {
-            padding-right: .1px;
+            padding-right: 0.1px;
           }
 
           @media print {
@@ -813,9 +811,9 @@ class Editor extends React.PureComponent {
           .title {
             color: #000;
             font-size: 12px;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-              "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-              "Helvetica Neue", sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+              'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+              'Helvetica Neue', sans-serif;
             text-align: center;
             overflow: auto;
             margin-top: -20px;
@@ -948,8 +946,9 @@ class Introduction extends React.PureComponent {
   render() {
     return (
       <Section
-        contents={// prettier-ignore
-        [
+        contents={
+          // prettier-ignore
+          [
   [
     markdown(components)`
 The ${<Now color="#000" />} API enables you to dynamically and elastically orchestrate your deployments in the cloud. The entire power of our command-line deployment tool is available for you to remix!
@@ -965,7 +964,8 @@ The ${<Now color="#000" />} API enables you to dynamically and elastically orche
       key="2"
     />
   ]
-          ]}
+          ]
+        }
       />
     )
   }

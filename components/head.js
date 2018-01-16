@@ -31,9 +31,8 @@ if (global.document) {
 
 class Head extends React.PureComponent {
   render() {
-    const titlePrefix = null != this.props.titlePrefix
-      ? this.props.titlePrefix
-      : 'ZEIT – '
+    const titlePrefix =
+      null != this.props.titlePrefix ? this.props.titlePrefix : 'ZEIT – '
     const ogDescription = this.props.ogDescription || this.props.description
     const { darkBg } = this.context
     return (
@@ -57,12 +56,12 @@ class Head extends React.PureComponent {
             name="og:url"
             content={this.props.url || 'https://zeit.co/now'}
           />
-          {this.props.description
-            ? <meta name="description" content={this.props.description} />
-            : null}
-          {ogDescription
-            ? <meta name="og:description" content={ogDescription} />
-            : null}
+          {this.props.description ? (
+            <meta name="description" content={this.props.description} />
+          ) : null}
+          {ogDescription ? (
+            <meta name="og:description" content={ogDescription} />
+          ) : null}
           <meta
             name="og:image"
             content={
@@ -163,27 +162,27 @@ class Head extends React.PureComponent {
         </NextHead>
         <style jsx global>
           {`
-          #nprogress {
-            pointer-events: none;
-          }
-          #nprogress .bar {
-            position: fixed;
-            z-index: 2000;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-          }
-          #nprogress .peg {
-            display: block;
-            position: absolute;
-            right: 0px;
-            width: 100px;
-            height: 100%;
-            opacity: 1.0;
-            transform: rotate(3deg) translate(0px, -4px);
-          }
-        `}
+            #nprogress {
+              pointer-events: none;
+            }
+            #nprogress .bar {
+              position: fixed;
+              z-index: 2000;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 2px;
+            }
+            #nprogress .peg {
+              display: block;
+              position: absolute;
+              right: 0px;
+              width: 100px;
+              height: 100%;
+              opacity: 1;
+              transform: rotate(3deg) translate(0px, -4px);
+            }
+          `}
         </style>
         <NextHead>
           <style>
@@ -193,7 +192,11 @@ class Head extends React.PureComponent {
             }
 
             #nprogress .peg {
-              box-shadow: ${darkBg ? '0 0 10px #fff, 0 0 5px #fff' : '0 0 10px #ccc, 0 0 5px #ccc'};
+              box-shadow: ${
+                darkBg
+                  ? '0 0 10px #fff, 0 0 5px #fff'
+                  : '0 0 10px #ccc, 0 0 5px #ccc'
+              };
             }
           `}
           </style>

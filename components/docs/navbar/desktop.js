@@ -97,18 +97,17 @@ export class NavLink extends React.Component {
         className={selected ? 'selected' : ''}
       >
         {// NOTE: use just anchor element for triggering `hashchange` event
-        this.onlyHashChange()
-          ? <a
-              className={selected ? 'selected' : ''}
-              href={info.as || info.href}
-            >
+        this.onlyHashChange() ? (
+          <a className={selected ? 'selected' : ''} href={info.as || info.href}>
+            {level > 2 && <span>-</span>} {info.name}
+          </a>
+        ) : (
+          <Link href={info.href} as={info.as || info.href} prefetch>
+            <a className={selected ? 'selected' : ''}>
               {level > 2 && <span>-</span>} {info.name}
             </a>
-          : <Link href={info.href} as={info.as || info.href} prefetch>
-              <a className={selected ? 'selected' : ''}>
-                {level > 2 && <span>-</span>} {info.name}
-              </a>
-            </Link>}
+          </Link>
+        )}
         <style jsx>{`
           div {
             padding: 4px 10px 4px 30px;
@@ -208,20 +207,22 @@ export default class DocsNavbarDesktop extends React.PureComponent {
     return (
       <div className={`category ${levelClass}`} key={info.name || ''}>
         <div className={'label' + (info.href ? ' link' : '')}>
-          {info.href
-            ? <NavLink
-                info={info}
-                url={this.props.url}
-                hash={this.props.hash}
-                level={level}
-              />
-            : info.name}
+          {info.href ? (
+            <NavLink
+              info={info}
+              url={this.props.url}
+              hash={this.props.hash}
+              level={level}
+            />
+          ) : (
+            info.name
+          )}
         </div>
-        {!info.href || this.isCategorySelected(info)
-          ? <div className="posts">
-              {info.posts.map(postInfo => this.renderPost(postInfo, level + 1))}
-            </div>
-          : null}
+        {!info.href || this.isCategorySelected(info) ? (
+          <div className="posts">
+            {info.posts.map(postInfo => this.renderPost(postInfo, level + 1))}
+          </div>
+        ) : null}
         <style jsx>{`
           .label {
             margin: 0 0 15px 0;

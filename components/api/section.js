@@ -25,9 +25,7 @@ export default class Section extends React.PureComponent {
         <div className="block">
           <div className="copy">
             <Heading lean={true} offsetTop={95} id={this.getId()}>
-              <h1>
-                {title}
-              </h1>
+              <h1>{title}</h1>
             </Heading>
           </div>
           <div className="example empty" />
@@ -35,13 +33,9 @@ export default class Section extends React.PureComponent {
         {this.props.contents.map(([copy, example], i) => {
           return (
             <div key={i} className="block">
-              <div className="copy">
-                {copy}
-              </div>
+              <div className="copy">{copy}</div>
               <div className={'example' + (example ? '' : ' empty')}>
-                <DarkBG>
-                  {example}
-                </DarkBG>
+                <DarkBG>{example}</DarkBG>
               </div>
             </div>
           )
@@ -185,9 +179,7 @@ class DocH2 extends React.PureComponent {
         offsetTop={175}
         id={generateId(this.context.id, { children, id })}
       >
-        <H3>
-          {children}
-        </H3>
+        <H3>{children}</H3>
       </Heading>
     )
   }
@@ -206,9 +198,7 @@ class DocH3 extends React.PureComponent {
         offsetTop={175}
         id={generateId(this.context.id, { children, id })}
       >
-        <H4>
-          {children}
-        </H4>
+        <H4>{children}</H4>
       </Heading>
     )
   }
@@ -233,7 +223,7 @@ class DocH4 extends React.PureComponent {
   }
 }
 
-export const Quote = ({ children }, { darkBg } = {}) =>
+export const Quote = ({ children }, { darkBg } = {}) => (
   <blockquote className={darkBg ? 'dark' : ''}>
     {children}
     <style jsx>{`
@@ -254,6 +244,7 @@ export const Quote = ({ children }, { darkBg } = {}) =>
       }
     `}</style>
   </blockquote>
+)
 
 Quote.contextTypes = {
   darkBg: PropTypes.bool
@@ -275,7 +266,10 @@ export const components = {
 function generateId(prefix, { id, children }) {
   if (!id) {
     const text = 'string' === typeof children ? children : children.join('')
-    id = text.toLowerCase().replace(/[\s]/g, '-').replace(/[?!]/g, '')
+    id = text
+      .toLowerCase()
+      .replace(/[\s]/g, '-')
+      .replace(/[?!]/g, '')
   }
 
   return `${prefix}/${id}`

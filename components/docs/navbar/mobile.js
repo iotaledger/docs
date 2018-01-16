@@ -19,12 +19,12 @@ export default class DocsNavbarMobile extends React.PureComponent {
         <div className={show ? 'arrow show' : 'arrow'} onClick={this.toggle}>
           <Arrow />
         </div>
-        {show
-          ? <div className="navbar-container" onClick={this.toggle}>
-              <DocsNavbarToggle />
-              <DocsNavbarDesktop {...this.props} />
-            </div>
-          : null}
+        {show ? (
+          <div className="navbar-container" onClick={this.toggle}>
+            <DocsNavbarToggle />
+            <DocsNavbarDesktop {...this.props} />
+          </div>
+        ) : null}
         <style jsx>{`
           .arrow {
             position: absolute;

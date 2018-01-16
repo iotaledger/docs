@@ -31,9 +31,11 @@ const Image = ({
     <figure style={{ margin: `${margin}px 0` }}>
       <main style={{ width }}>
         <div style={{ paddingBottom: aspectRatio }}>
-          {video
-            ? <video src={src} muted={muted} autoPlay={autoPlay} />
-            : <img src={src} />}
+          {video ? (
+            <video src={src} muted={muted} autoPlay={autoPlay} />
+          ) : (
+            <img src={src} />
+          )}
         </div>
 
         {caption && <p>{caption}</p>}
@@ -55,7 +57,8 @@ const Image = ({
             position: relative;
           }
 
-          img, video {
+          img,
+          video {
             position: absolute;
             top: 0;
             left: 0;
@@ -68,7 +71,7 @@ const Image = ({
             text-align: center;
             color: #999;
           }
-          `}
+        `}
       </style>
     </figure>
   )

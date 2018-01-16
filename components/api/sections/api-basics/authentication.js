@@ -9,8 +9,9 @@ function Authentication(props) {
 
   return (
     <Section
-      contents={// prettier-ignore
-      [
+      contents={
+        // prettier-ignore
+        [
   [
     markdown(components)`
 Provide your API token as part of the \`Authorization\` header.
@@ -29,7 +30,8 @@ ${<Code>https://api.zeit.co/example?teamId=team_123</Code>}
 ${<Code syntax="shell">curl -H "Authorization: Bearer {TOKEN}" https://api.zeit.co/v2/now/deployments</Code>}
 `
   ]
-]}
+]
+      }
     />
   )
 }

@@ -54,16 +54,15 @@ class Button extends React.Component {
         onClick={this.onClick}
         className={darkBg ? 'light' : ''}
       >
-        <b>
-          {children}
-        </b>
-        {this.state.animationStartAt &&
+        <b>{children}</b>
+        {this.state.animationStartAt && (
           <Animation
             key={animationStartAt}
             x={animationX}
             y={animationY}
             onComplete={this.onAnimationComplete}
-          />}
+          />
+        )}
         <style jsx>
           {`
             button {

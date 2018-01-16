@@ -20,8 +20,9 @@ function Aliases(props) {
 
   return (
     <Section
-      contents={// prettier-ignore
-      [
+      contents={
+        // prettier-ignore
+        [
   [
     markdown(components)`
 ### List all the aliases
@@ -309,7 +310,8 @@ ${<Code>{`{
 }`}</Code>}
     `
   ]
-]}
+]
+      }
     />
   )
 }

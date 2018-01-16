@@ -8,8 +8,9 @@ import immutable from '../../../../lib/immutable-component'
 function Errors() {
   return (
     <Section
-      contents={// prettier-ignore
-      [
+      contents={
+        // prettier-ignore
+        [
   [
     markdown(components)`
 The possible \`error_code\` values are documented on a per-endpoint basis in the ${<InternalLink href="/api#errors/generic">Errors</InternalLink>} section.
@@ -29,7 +30,8 @@ ${<Code>{`{
 }`}</Code>}
     `,
   ]
-]}
+]
+      }
     />
   )
 }

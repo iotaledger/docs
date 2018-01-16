@@ -9,8 +9,9 @@ import immutable from '../../../../lib/immutable-component'
 function Types() {
   return (
     <Section
-      contents={// prettier-ignore
-      [
+      contents={
+        // prettier-ignore
+        [
   [
     markdown(components)`
 Along the documentation we're going to use many different types of data. Here you can find a list of them and what they mean.
@@ -65,7 +66,8 @@ ${<Table head={
 </Table>}
     `
   ]
-]}
+]
+      }
     />
   )
 }

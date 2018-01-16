@@ -7,8 +7,9 @@ import immutable from '../../../../lib/immutable-component'
 function OAuth2() {
   return (
     <Section
-      contents={// prettier-ignore
-      [
+      contents={
+        // prettier-ignore
+        [
   [
     markdown(components)`
 These error code could happen when using any ${<InternalLink href="/api#endpoints/oauth2">OAuth2 related endpoint</InternalLink>}.
@@ -32,7 +33,8 @@ ${<Code>{`{
 }`}</Code>}
     `
   ]
-]}
+]
+      }
     />
   )
 }

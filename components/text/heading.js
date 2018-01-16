@@ -3,11 +3,11 @@ export const H1 = ({ children }) => (
     {children}
     <style jsx>
       {`
-      h1 {
-        font-weight: 200;
-        font-size: 32px;
-      }
-    `}
+        h1 {
+          font-weight: 200;
+          font-size: 32px;
+        }
+      `}
     </style>
   </h1>
 )
@@ -17,10 +17,10 @@ const B = ({ children }) => (
     {children}
     <style jsx>
       {`
-      span {
-        font-weight: 400;
-      }
-    `}
+        span {
+          font-weight: 400;
+        }
+      `}
     </style>
   </span>
 )
@@ -32,11 +32,11 @@ export const H2 = ({ children }) => (
     {children}
     <style jsx>
       {`
-      h2 {
-        font-weight: normal;
-        font-size: 24px;
-      }
-    `}
+        h2 {
+          font-weight: normal;
+          font-size: 24px;
+        }
+      `}
     </style>
   </h2>
 )
@@ -46,11 +46,11 @@ export const H3 = ({ children }) => (
     {children}
     <style jsx>
       {`
-      h3 {
-        font-weight: bold;
-        font-size: 18px;
-      }
-    `}
+        h3 {
+          font-weight: bold;
+          font-size: 18px;
+        }
+      `}
     </style>
   </h3>
 )
@@ -60,17 +60,19 @@ export const H4 = ({ children, isCommand }) => (
     {children}
     <style jsx>
       {`
-      h3 {
-        font-weight: bold;
-        font-size: 16px;
-      }
+        h3 {
+          font-weight: bold;
+          font-size: 16px;
+        }
 
-      .command {
-        color: #bd10e0;
-        font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
-        font-size: 0.9em;
-      }
-    `}
+        .command {
+          color: #bd10e0;
+          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace,
+            serif;
+          font-size: 0.9em;
+        }
+      `}
     </style>
   </h4>
 )
@@ -80,11 +82,11 @@ export const H5 = ({ children }) => (
     {children}
     <style jsx>
       {`
-      h5 {
-        font-weight: bold;
-        font-size: 15px;
-      }
-    `}
+        h5 {
+          font-weight: bold;
+          font-size: 15px;
+        }
+      `}
     </style>
   </h5>
 )

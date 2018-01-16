@@ -54,7 +54,7 @@ export default class DocsNavbarToggle extends React.Component {
             cursor: pointer;
             height: 24px;
             font-size: 12px;
-            transition: color .12s ease-in-out;
+            transition: color 0.12s ease-in-out;
           }
 
           .toggle :global(span:not(:last-child)) {

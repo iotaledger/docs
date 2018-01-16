@@ -8,8 +8,9 @@ import immutable from '../../../../lib/immutable-component'
 function RateLimits() {
   return (
     <Section
-      contents={// prettier-ignore
-      [
+      contents={
+        // prettier-ignore
+        [
   [
     markdown(components)`
 We limit the number of calls you can make over a certain period of time.
@@ -43,7 +44,8 @@ ${<Code key="code">{`{
 }`}</Code>}
     `
   ]
-]}
+]
+      }
     />
   )
 }

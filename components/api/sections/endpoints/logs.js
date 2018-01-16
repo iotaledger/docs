@@ -20,8 +20,9 @@ function Logs(props) {
 
   return (
     <Section
-      contents={// prettier-ignore
-      [
+      contents={
+        // prettier-ignore
+        [
   [
     markdown(components)`
 ### Get deployment logs
@@ -272,7 +273,8 @@ ${<Code syntax="json">{`{
 }`}</Code>}
     `
   ]
-]}
+]
+      }
     />
   )
 }

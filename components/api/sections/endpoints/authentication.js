@@ -18,8 +18,9 @@ import Request from '../../request'
 function Authentication() {
   return (
     <Section
-      contents={// prettier-ignore
-      [
+      contents={
+        // prettier-ignore
+        [
   [
     markdown(components)`
 ### Request a login
@@ -118,7 +119,8 @@ ${<Code syntax="json">{`{
 }`}</Code>}
     `
   ]
-]}
+]
+      }
     />
   )
 }

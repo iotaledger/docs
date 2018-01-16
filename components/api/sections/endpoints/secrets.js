@@ -19,8 +19,9 @@ function Secrets(props) {
 
   return (
     <Section
-      contents={// prettier-ignore
-      [
+      contents={
+        // prettier-ignore
+        [
   [
     markdown(components)`
 ### List all the secrets
@@ -327,7 +328,8 @@ ${<Code>{`{
 The \`uid\` returned is that of the matched secret.
 `
   ]
-]}
+]
+      }
     />
   )
 }

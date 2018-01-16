@@ -9,8 +9,9 @@ import immutable from '../../../../lib/immutable-component'
 function OAuth2() {
   return (
     <Section
-      contents={// prettier-ignore
-      [
+      contents={
+        // prettier-ignore
+        [
   [
     markdown(components)`
 OAuth2 lets your app request authorization to private details in a user's ZEIT account.
@@ -134,7 +135,8 @@ The access token allows you to make requests to the API on a behalf of a user,
 by ${<InternalLink href="/api#api-basics/authentication">providing the token in the Authorization header</InternalLink>}.
   `
   ],
-]}
+]
+      }
     />
   )
 }

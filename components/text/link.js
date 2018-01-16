@@ -8,7 +8,7 @@ export const GenericLink = props => {
   return <ExternalLink {...props} />
 }
 
-export const InternalLink = ({ href, as, children }, { darkBg } = {}) =>
+export const InternalLink = ({ href, as, children }, { darkBg } = {}) => (
   <NativeLink prefetch href={href} as={as}>
     <a className={darkBg ? 'dark' : ''}>
       {children}
@@ -31,12 +31,13 @@ export const InternalLink = ({ href, as, children }, { darkBg } = {}) =>
       </style>
     </a>
   </NativeLink>
+)
 
 InternalLink.contextTypes = {
   darkBg: PropTypes.bool
 }
 
-export const AnchorLink = ({ href, onClick, children }) =>
+export const AnchorLink = ({ href, onClick, children }) => (
   <a href={href} onClick={onClick}>
     {children}
 
@@ -54,8 +55,9 @@ export const AnchorLink = ({ href, onClick, children }) =>
       `}
     </style>
   </a>
+)
 
-export const ExternalLink = ({ href, children }, { darkBg } = {}) =>
+export const ExternalLink = ({ href, children }, { darkBg } = {}) => (
   <a
     className={darkBg ? 'dark' : ''}
     href={href}
@@ -82,6 +84,7 @@ export const ExternalLink = ({ href, children }, { darkBg } = {}) =>
       `}
     </style>
   </a>
+)
 
 ExternalLink.contextTypes = {
   darkBg: PropTypes.bool

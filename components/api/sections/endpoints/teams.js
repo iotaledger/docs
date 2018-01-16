@@ -20,8 +20,9 @@ function Teams(props) {
 
   return (
     <Section
-      contents={// prettier-ignore
-      [
+      contents={
+        // prettier-ignore
+        [
   [
     markdown(components)`
 ### Create a team
@@ -418,7 +419,8 @@ ${<Request
 />}
     `
   ]
-]}
+]
+      }
     />
   )
 }

@@ -10,9 +10,7 @@ class Header extends React.PureComponent {
       <div>
         <header className={clean ? 'clean' : null}>
           <Link prefetch href="/docs">
-            <a className="logo">
-              {this.props.logo || <Logo />}
-            </a>
+            <a className="logo">{this.props.logo || <Logo />}</a>
           </Link>
         </header>
         <style jsx>

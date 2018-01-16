@@ -39,22 +39,10 @@ function formatHTTP({ url, method = 'GET', headers, body }) {
 
 export default function Request({ type = 'curl', ...request }) {
   if (type === 'fetch' || type === 'js' || type === 'javascript') {
-    return (
-      <Code syntax="javascript">
-        {formatJS(request)}
-      </Code>
-    )
+    return <Code syntax="javascript">{formatJS(request)}</Code>
   }
   if (type === 'http') {
-    return (
-      <Code syntax="plain">
-        {formatHTTP(request)}
-      </Code>
-    )
+    return <Code syntax="plain">{formatHTTP(request)}</Code>
   }
-  return (
-    <Code syntax="shell">
-      {formatCurl(request)}
-    </Code>
-  )
+  return <Code syntax="shell">{formatCurl(request)}</Code>
 }

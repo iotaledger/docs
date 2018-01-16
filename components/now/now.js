@@ -11,10 +11,10 @@ export default function Now(props) {
       </span>now
       <style jsx>
         {`
-        span span {
-          display: inline-block;
-          margin-right: 3px;
-        }
+          span span {
+            display: inline-block;
+            margin-right: 3px;
+          }
         `}
       </style>
     </span>

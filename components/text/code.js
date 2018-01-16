@@ -1,10 +1,8 @@
 import PropTypes from 'prop-types'
 
-export const Code = ({ children, syntax }, { darkBg } = {}) =>
+export const Code = ({ children, syntax }, { darkBg } = {}) => (
   <pre className={(darkBg ? 'dark' : '') + (syntax ? ` ${syntax}` : '')}>
-    <code>
-      {children}
-    </code>
+    <code>{children}</code>
     <style jsx>
       {`
         pre {
@@ -35,12 +33,13 @@ export const Code = ({ children, syntax }, { darkBg } = {}) =>
       `}
     </style>
   </pre>
+)
 
 Code.contextTypes = {
   darkBg: PropTypes.bool
 }
 
-export const InlineCode = ({ children, noWrap }) =>
+export const InlineCode = ({ children, noWrap }) => (
   <code className={noWrap && 'no-wrap'}>
     {children}
     <style jsx>
@@ -68,3 +67,4 @@ export const InlineCode = ({ children, noWrap }) =>
       `}
     </style>
   </code>
+)

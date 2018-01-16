@@ -20,8 +20,9 @@ function DNS(props) {
 
   return (
     <Section
-      contents={// prettier-ignore
-      [
+      contents={
+        // prettier-ignore
+        [
   [
     markdown(components)`
 ### List all the DNS records of a domain
@@ -207,7 +208,8 @@ ${<Request
 />}
     `
   ]
-]}
+]
+      }
     />
   )
 }

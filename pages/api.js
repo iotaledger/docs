@@ -130,18 +130,18 @@ class API extends React.PureComponent {
                   <div key={id} className="category">
                     {posts.map(post => {
                       const Section = (sections[id] || {})[post.id]
-                      return Section
-                        ? <SectionContainer
-                            key={post.id}
-                            hash={post.hash}
-                            name={post.name}
-                          >
-                            <Section
-                              user={props.user}
-                              testingToken={props.testingToken}
-                            />
-                          </SectionContainer>
-                        : null
+                      return Section ? (
+                        <SectionContainer
+                          key={post.id}
+                          hash={post.hash}
+                          name={post.name}
+                        >
+                          <Section
+                            user={props.user}
+                            testingToken={props.testingToken}
+                          />
+                        </SectionContainer>
+                      ) : null
                     })}
                   </div>
                 )
@@ -158,7 +158,7 @@ class API extends React.PureComponent {
           a {
             text-decoration: none;
             color: #999;
-            transition: color .2s ease;
+            transition: color 0.2s ease;
           }
 
           a:hover {

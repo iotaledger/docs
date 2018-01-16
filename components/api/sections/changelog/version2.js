@@ -15,8 +15,9 @@ function V2(props) {
   return (
     <Section
       title="Changelog"
-      contents={// prettier-ignore
-      [
+      contents={
+        // prettier-ignore
+        [
   [
     <Container key="container1">{
     markdown(components)`
@@ -70,7 +71,8 @@ ${<Code>{`{
 }`}</Code>}
     `
   ]
-]}
+]
+      }
     />
   )
 }
@@ -102,9 +104,7 @@ class Heading extends React.PureComponent {
   render() {
     return (
       <main>
-        <H2>
-          {this.props.children}
-        </H2>
+        <H2>{this.props.children}</H2>
         <style jsx>{`
           main {
             align-items: center;
@@ -114,7 +114,7 @@ class Heading extends React.PureComponent {
           main::before {
             background: #000;
             border-radius: 100%;
-            content: "";
+            content: '';
             display: inline-block;
             height: 10px;
             margin-left: -35px;

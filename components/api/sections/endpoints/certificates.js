@@ -19,8 +19,9 @@ function Certificates(props) {
 
   return (
     <Section
-      contents={// prettier-ignore
-      [
+      contents={
+        // prettier-ignore
+        [
   [
     markdown(components)`
 ### List all the certificates
@@ -324,7 +325,8 @@ ${<Request
 />}
     `
   ]
-]}
+]
+      }
     />
   )
 }
