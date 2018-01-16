@@ -29,7 +29,6 @@ class Logo extends React.PureComponent {
         </g>
         <style jsx>
           {`
-
             linearGradient stop:first-child {
               stop-color: #fff;
             }
@@ -45,7 +44,7 @@ class Logo extends React.PureComponent {
             .dark linearGradient stop:last-child {
               stop-color: #fff;
             }
-            `}
+          `}
         </style>
       </svg>
     )

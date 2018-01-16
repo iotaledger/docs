@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { GenericLink } from './link'
 
-export const TerminalInput = ({ children }) =>
-  <div>
+export const TerminalInput = ({ children }, { darkBg = false }) =>
+  <div className={darkBg ? 'dark' : ''}>
     {Array.isArray(children)
       ? <span>
           {children}
@@ -38,9 +38,18 @@ export const TerminalInput = ({ children }) =>
         div span::before {
           content: "$ ";
         }
+
+        div.dark {
+          border-color: #333;
+          color: #5ce6cd;
+        }
       `}
     </style>
   </div>
+
+TerminalInput.contextTypes = {
+  darkBg: PropTypes.bool
+}
 
 export class TerminalOutput extends React.Component {
   static childContextTypes = {

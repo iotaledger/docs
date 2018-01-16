@@ -1,4 +1,3 @@
-// Packages
 import NativeLink from 'next/link'
 import PropTypes from 'prop-types'
 

@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 export const P = ({ children }) => (
   <p>
     {children}
@@ -54,8 +56,8 @@ export const HR = () => (
   </div>
 )
 
-export const Quote = ({ children }) => (
-  <blockquote>
+export const Quote = ({ children }, { darkBg } = {}) => (
+  <blockquote className={darkBg ? 'dark' : ''}>
     {children}
     <style jsx>{`
       blockquote {
@@ -65,11 +67,19 @@ export const Quote = ({ children }) => (
         color: #888;
       }
 
+      blockquote.dark {
+        border-left-color: #fff;
+      }
+
       blockquote :global(div) {
         margin: 0;
       }
     `}</style>
   </blockquote>
 )
+
+Quote.contextTypes = {
+  darkBg: PropTypes.bool
+}
 
 P.B = B

@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import Logo from './logo'
+import Logo from './icons/logo'
 
 class Header extends React.PureComponent {
   render() {
@@ -11,7 +11,7 @@ class Header extends React.PureComponent {
         <header className={clean ? 'clean' : null}>
           <Link prefetch href="/docs">
             <a className="logo">
-              <Logo />
+              {this.props.logo || <Logo />}
             </a>
           </Link>
         </header>
@@ -49,7 +49,7 @@ class Header extends React.PureComponent {
                 margin-left: 20px;
               }
             }
-            `}
+          `}
         </style>
       </div>
     )
