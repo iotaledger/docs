@@ -201,11 +201,13 @@ class API extends React.PureComponent {
           }
 
           @media screen and (min-width: 700px) {
+            /* prettier-ignore */
             .category:first-child :global(.section:first-child .block:first-child .copy),
             .category:first-child :global(.section:first-child .block:first-child .example) {
               padding-top: 95px;
             }
 
+            /* prettier-ignore */
             .category:last-child :global(.section:last-child .block:last-child .copy),
             .category:last-child :global(.section:last-child .block:last-child .example) {
               padding-bottom: 95px;
