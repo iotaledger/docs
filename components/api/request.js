@@ -7,7 +7,7 @@ function formatCurl({ url, method = 'GET', headers, body }) {
 
   if (headers && Object.keys(headers).length > 0) {
     request = Object.entries(headers).reduce((req, [key, value]) => {
-      return req + ` \\\n  -H ${key} ${value}`
+      return req + ` \\\n  -H "${key}: ${value}"`
     }, request)
   }
 
