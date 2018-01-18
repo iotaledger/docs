@@ -3,7 +3,7 @@ import { parse as parseURL } from 'url'
 import { Code } from '../text/code'
 
 function formatCurl({ url, method = 'GET', headers, body }) {
-  let request = `curl ${method !== 'GET' ? `-X ${method} ` : ''}${url}`
+  let request = `curl ${method !== 'GET' ? `-X ${method} ` : ''}"${url}"`
 
   if (headers && Object.keys(headers).length > 0) {
     request = Object.entries(headers).reduce((req, [key, value]) => {

@@ -109,7 +109,7 @@ ${<OutputTable>
 Example request:
 
 ${<Request
-  url="/now/registration/verify?email=user@mail.com&token=T1dmvPu36nmyYisXAs7IRzcR"
+  url="https://api.zeit.co/now/registration/verify?email=user@mail.com&token=T1dmvPu36nmyYisXAs7IRzcR"  
 />}
 
 Example response:
