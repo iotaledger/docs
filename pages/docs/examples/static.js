@@ -31,7 +31,7 @@ Inside that directory, use your favorite editor to create a \`index.html\` file 
 
 ${
   <Code>
-    {`<img src="https://cdn.zeit.co/logos/black-bg-logo.svg">
+    {`<img src={'http://assets.zeit.co/image/upload/v1503122848/front/logos/black-bg-logo.svg'}>
 
 <style>
   body {
