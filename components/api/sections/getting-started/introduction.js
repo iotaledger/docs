@@ -954,7 +954,9 @@ class Introduction extends React.PureComponent {
           [
   [
     markdown(components)`
-The ${<Now color="#000" />} API enables you to dynamically and elastically orchestrate your deployments in the cloud. The entire power of our command-line deployment tool is available for you to remix!
+The ${<Now color="#000" />} API gives you full control over our entire platform by
+providing you with all the resources available
+to [our official clients](/download), exposed as simple HTTP endpoints.
 `
   ],
   [
