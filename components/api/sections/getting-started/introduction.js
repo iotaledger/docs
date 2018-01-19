@@ -932,8 +932,11 @@ class Introduction extends React.PureComponent {
         return
       }
 
-      const body = await response.json()
-      window.location = `https://${body.url}`
+      // Ensure we're redirecting to the deployment
+      const { url } = await response.json()
+      const suffix = url.includes('?redirect=1') ? '' : '?redirect=1'
+
+      window.location = `https://${url + suffix}`
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error('Failed to deploy', error)
