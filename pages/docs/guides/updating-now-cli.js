@@ -66,21 +66,10 @@ export default withDoc({
   using, you can pick the right way to update depending
   on where you installed it from:
 
-  - [curl](#curl)
   - [npm](#npm)
   - [yarn](#yarn)
 
   ---
-
-  ## curl
-
-  For the latest **stable update**, run this command:
-
-  ${<TerminalInput>curl https://install.zeit.co -sSf | sh</TerminalInput>}
-
-  To get the latest **canary update**, however, run this:
-
-  ${<TerminalInput>curl https://install.zeit.co/canary -sSf | sh</TerminalInput>}
 
   ## npm
 
