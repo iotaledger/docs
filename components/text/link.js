@@ -1,3 +1,4 @@
+// Packages
 import NativeLink from 'next/link'
 import PropTypes from 'prop-types'
 
@@ -5,10 +6,15 @@ export const GenericLink = props => {
   if (props.href.startsWith('/')) {
     return <InternalLink {...props} />
   }
+
+  if (props.href.includes('@') || props.href.startsWith('#')) {
+    return <AnchorLink {...props} />
+  }
+
   return <ExternalLink {...props} />
 }
 
-export const InternalLink = ({ href, as, children }, { darkBg } = {}) => (
+export const InternalLink = ({ href, as, children, darkBg }) => (
   <NativeLink prefetch href={href} as={as}>
     <a className={darkBg ? 'dark' : ''}>
       {children}
@@ -24,8 +30,14 @@ export const InternalLink = ({ href, as, children }, { darkBg } = {}) => (
           a:hover {
             text-decoration: underline;
           }
+
           a.dark {
             color: #fff;
+            border-bottom: 1px solid #fff;
+          }
+
+          a.dark:hover {
+            text-decoration: none;
           }
         `}
       </style>
