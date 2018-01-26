@@ -21,9 +21,8 @@ function Domains(props) {
 
   return (
     <Section
-      contents={
-        // prettier-ignore
-        [
+      contents={// prettier-ignore
+      [
   [
     markdown(components)`
 ### List all the domains
@@ -317,7 +316,7 @@ ${<Code>{`{
   ],
   [
     markdown(components)`
-${<Endpoint method="GET" url="/v2/domains/price?name" />}:
+${<Endpoint method="GET" url="/v2/domains/price?name" />}
 
 Check the price to purchase a domain and how long a single purchase period is. The response is a JSON with the key \`price\` as a number (always an integer) and a key \`period\` as a number indicating the amount of years the domains could be hold before paying again.
 
@@ -360,7 +359,7 @@ ${<Code>{`{
   ],
   [
     markdown(components)`
-${<Endpoint method="POST" url="/v2/domains/buy" />}:
+${<Endpoint method="POST" url="/v2/domains/buy" />}
 
 Purchase the specified domain, it receive the domain name as the key \`name\` inside the request body.
 
@@ -401,8 +400,7 @@ ${<Code>{`{
 }`}</Code>}
     `
   ]
-]
-      }
+]}
     />
   )
 }
