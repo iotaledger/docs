@@ -17,5 +17,5 @@ For additional information, follow these links:
 
 * ${<InternalLink href="/docs/deployment-types/lifecycle">Discover more with guides</InternalLink>}
 * ${<InternalLink href="/docs/examples/json-api">Try example apps</InternalLink>}
-* ${<InternalLink href="/docs/support/channels">Connect with our support channels</InternalLink>}
+* ${<InternalLink href="/docs/other/support-channels">Connect with our support channels</InternalLink>}
 `)
