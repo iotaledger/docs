@@ -13,6 +13,7 @@ export default withDoc({
   title: 'Secrets',
   date: '6 August 2017',
   authors: [arunoda],
+  editUrl: 'pages/docs/getting-started/secrets.js',
 })(markdown(components)`
 
 If multiple people deploy your app or utilize a CI service, it's a better idea to use ${<InternalLink href="/docs/getting-started/environment-variables#via-“now.json”">now.json</InternalLink>} to expose environment variables. 

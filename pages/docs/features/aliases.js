@@ -18,6 +18,7 @@ export default withDoc({
   title: 'Aliases and Domains',
   date: '21 Feb 2017',
   authors: [rauchg],
+  editUrl: 'pages/docs/features/aliases.js',
 })(markdown(components)`
 
 This guide covers how to assign two types of domains to your ${<Now color="#000" />} deployments.

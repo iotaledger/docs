@@ -13,6 +13,7 @@ export default withDoc({
   title: 'Assign a Domain Name',
   date: '2 August 2017',
   authors: [arunoda],
+  editUrl: 'pages/docs/getting-started/assign-a-domain-name.js',
 })(markdown(components)`
 
 When you deploy an app with ${<Now color="#000"/>}, you will have a unique deployment URL like this: <https://my-web-app-avvuiuuwto.now.sh>.

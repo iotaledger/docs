@@ -17,6 +17,7 @@ export default withDoc({
   title: 'Building a Basic JSON API',
   date: '20 Feb 2017',
   authors: [leo],
+  editUrl: 'pages/docs/examples/json-api.js',
 })(markdown(components)`
 
 Nowadays, every properly built application requires at least one API endpoint where it can load data from.

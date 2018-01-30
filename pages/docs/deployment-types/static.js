@@ -11,6 +11,7 @@ export default withDoc({
   title: 'Deploying Static Apps',
   date: '09 March 2017',
   authors: [leo, jamo, rauchg],
+  editUrl: 'pages/docs/deployment-types/static.js',
 })(markdown(components)`
 
 ${<Now color="#000"/>} comes with a native support for static deployments. It considers all projects that don't have a \`Dockerfile\`, nor a \`package.json\` as a static deployment.

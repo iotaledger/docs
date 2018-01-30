@@ -10,6 +10,7 @@ export default withDoc({
   title: 'Deploying Docker Apps',
   date: '09 March 2017',
   authors: [leo],
+  editUrl: 'pages/docs/deployment-types/docker.js',
 })(markdown(components)`
 
 If your project contains a \`Dockerfile\` file, it will always be treated as a [Docker](https://www.docker.com/) deployment.

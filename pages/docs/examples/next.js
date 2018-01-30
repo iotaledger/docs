@@ -13,6 +13,7 @@ export default withDoc({
   title: 'Building a Super Basic Next.js Application',
   date: '24 Feb 2017',
   authors: [leo],
+  editUrl: 'pages/docs/examples/next.js',
 })(markdown(components)`
 
 When it comes to complex, dynamic applications which need to serve a lot of purposes, we were always driven by finding the easiest and most efficient way of handling the process of creating such a new app.

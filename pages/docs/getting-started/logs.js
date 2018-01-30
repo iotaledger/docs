@@ -11,6 +11,7 @@ export default withDoc({
   title: 'Logs',
   date: '4 August 2017',
   authors: [arunoda],
+  editUrl: 'pages/docs/getting-started/logs.js',
 })(markdown(components)`
 
 Logs are important because it allows you to see what's happening inside the app, especially when a crisis happens. ${<Now color="#000"/>} keeps logs of all of your deployments and allows you to search them.

@@ -13,6 +13,7 @@ export default withDoc({
   title: 'Deployment',
   date: '1 August 2017',
   authors: [arunoda],
+  editUrl: 'pages/docs/getting-started/deployment.js',
 })(markdown(components)`
 
 With ${<Now color="#000"/>}, you can deploy any kind of web app by using a single command. ${<Now color="#000"/>} supports three types of deployments:

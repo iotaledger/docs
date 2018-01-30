@@ -13,6 +13,7 @@ export default withDoc({
   title: 'Deploying Git Repositories',
   date: '12 Mar 2017',
   authors: [leo],
+  editUrl: 'pages/docs/features/repositories.js',
 })(markdown(components)`
 
 If you're developing a project that requires local changes before it can be deployed (like a regular application), running just now is the right way to move your code into the cloud.

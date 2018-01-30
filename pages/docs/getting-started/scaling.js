@@ -12,6 +12,7 @@ export default withDoc({
   title: 'Scaling',
   date: '10 August 2017',
   authors: [arunoda],
+  editUrl: 'pages/docs/getting-started/scaling.js',
 })(markdown(components)`
 
 Deploying an app is just the start. We need to scale our app as our user base grows. It could be a linear growth or random spikes in certain times. 

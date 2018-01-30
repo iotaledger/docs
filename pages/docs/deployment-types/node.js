@@ -12,6 +12,7 @@ export default withDoc({
   title: 'Deploying Node.js Apps',
   date: '09 March 2017',
   authors: [leo],
+  editUrl: 'pages/docs/deployment-types/node.js',
 })(markdown(components)`
 
 If your project contains a \`package.json\` (and no \`Dockerfile\`) file, it will always be treated as a [Node.js](https://nodejs.org/en/) deployment.

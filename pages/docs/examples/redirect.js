@@ -10,6 +10,7 @@ export default withDoc({
   title: 'Setting up a Redirect with Now',
   date: '5 Nov 2017',
   authors: [sergio],
+  editUrl: 'pages/docs/examples/redirect.js',
 })(markdown(components)`
 You usually want your users to access your site with or without \`www\`. The best way to achieve this is to redirect all the traffic coming to the \`www\` domain to your app's naked domain.
 

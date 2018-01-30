@@ -9,6 +9,7 @@ export default withDoc({
   title: 'Automate Deployment with Travis CI',
   date: '04 November 2017',
   authors: [devisscher],
+  editUrl: 'pages/docs/examples/travis.js',
 })(markdown(components)`
 
 You might want to automate your Now deployments. Here is how you can achieve this by using Git and Travis. Every time you push or merge to the master branch a new build and deployment is initiated in Travis CI.

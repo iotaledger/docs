@@ -11,6 +11,7 @@ export default withDoc({
   title: 'DNS Management',
   date: '15 Mar 2017',
   authors: [hbp, leo],
+  editUrl: 'pages/docs/features/dns.js',
 })(markdown(components)`
 
 

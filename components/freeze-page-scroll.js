@@ -23,7 +23,7 @@ export default class FreezePageScroll extends React.Component {
     const { body } = document
     if (enable) {
       // If already freezed we don't need to do anything
-      if (/body\-freeze\-scroll/.test(body.className)) return
+      if (/body-freeze-scroll/.test(body.className)) return
       body.className = `body-freeze-scroll ${body.className}`
     } else {
       body.className = body.className.replace('body-freeze-scroll', '').trim()

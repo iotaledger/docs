@@ -14,6 +14,7 @@ export default withDoc({
   title: 'Migrate Your App to Now Without a Downtime',
   date: '04 Apr 2017 9:42 AM PDT',
   authors: [jamo, rauchg],
+  editUrl: 'pages/docs/guides/migrate-your-app.js',
 })(markdown(components)`
 
 Migrations between different hosting services can be a daunting task. To help you migrate your current deployments to ${<Now color="#000"/>}, we have prepared this step-by-step guide.

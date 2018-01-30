@@ -13,6 +13,7 @@ export default withDoc({
   title: 'Building a Slash Command for Slack',
   date: '28 Feb 2017',
   authors: [leo],
+  editUrl: 'pages/docs/examples/chat.js',
 })(markdown(components)`
 
 For most people in the web community, [Slack](https://slack.com/) has become an essential part of their everyday life. It has turned into a wonderful tool for sharing text, sending files around and building a community (a great example for this is [our public Slack team](https://zeit.chat/)).

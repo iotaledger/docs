@@ -11,6 +11,7 @@ export default withDoc({
   title: 'Simplifying Microservices with Path Alias',
   date: '15 Mar 2017',
   authors: [leo, jamo],
+  editUrl: 'pages/docs/features/path-aliases.js',
 })(markdown(components)`
 With the microservices architecture, we break down the whole app into multiple independent programs: microservices. This architecture gives us a lot of benefits including:
 

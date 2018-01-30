@@ -14,6 +14,7 @@ export default withDoc({
   title: 'Building a Basic GraphQL Application',
   date: '01 March 2017',
   authors: [leo],
+  editUrl: 'pages/docs/examples/graphql.js',
 })(markdown(components)`
 
 Since Facebook released their [GraphQL](http://graphql.org/) technology back in 2015, it has evolved into a wonderful query language perfectly suited for all kinds of today's API endpoints. Why?

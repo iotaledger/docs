@@ -11,6 +11,7 @@ export default withDoc({
   title: 'How to Use Cloudflare with Now',
   date: '11 Jan 2018 11:34 AM PDT',
   authors: [arunoda],
+  editUrl: 'pages/docs/guides/how-to-use-cloudflare.js',
 })(markdown(components)`
 
 In this guide, we are looking at how we can use [Cloudflare](https://www.cloudflare.com/) with ${<Now color="#000"/>}.

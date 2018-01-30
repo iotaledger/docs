@@ -13,6 +13,7 @@ export default withDoc({
   title: 'Using Private npm Dependencies',
   date: '12 Mar 2017',
   authors: [rase, leo],
+  editUrl: 'pages/docs/features/private-npm.js',
 })(markdown(components)`
 
 If your application is using projects with dependencies hosted in private npm scopes, you can deploy such with - true to our style - just one command (and a flag):

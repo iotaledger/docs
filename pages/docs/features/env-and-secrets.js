@@ -13,6 +13,7 @@ export default withDoc({
   title: 'Environment Variables and Secrets',
   date: '21 Feb 2017',
   authors: [leo],
+  editUrl: 'pages/docs/features/env-and-secrets.js',
 })(markdown(components)`
 
 

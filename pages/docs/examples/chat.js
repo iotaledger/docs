@@ -13,6 +13,7 @@ export default withDoc({
   title: 'Building a Realtime Chat Webapp',
   date: '23 Feb 2017',
   authors: [leo],
+  editUrl: 'pages/docs/examples/chat.js',
 })(markdown(components)`
 
 Writing a chat application with popular web applications stacks like LAMP (PHP) has traditionally been very hard. It involves polling the server for changes, keeping track of timestamps, and it’s a lot slower than it should be.

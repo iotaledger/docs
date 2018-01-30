@@ -13,6 +13,7 @@ export default withDoc({
   title: 'Five Minute Guide',
   date: '30 July 2017',
   authors: [leo, arunoda],
+  editUrl: 'pages/docs/getting-started/five-minute-guide-to-now.js',
 })(markdown(components)`
 
 With Now's help, you can deploy and publish any kind of web application (or service) in

@@ -11,6 +11,7 @@ export default withDoc({
   title: 'Managing SSL Certificates',
   date: '15 Mar 2017',
   authors: [leo],
+  editUrl: 'pages/docs/features/certs.js',
 })(markdown(components)`
 
 Each time you create a new deployment, you will get a new unique subdomain. For this address (just like for the custom domains you've added using \`now alias\` or \`now alias\`), we're automatically provisioning an SSL certificate for you.

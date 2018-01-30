@@ -15,6 +15,7 @@ export default withDoc({
   title: 'Configuring Now',
   date: '22 Feb 2017',
   authors: [rauchg, leo],
+  editUrl: 'pages/docs/features/configuration.js',
 })(markdown(components)`
 
 This guide explains how to use these methods to configure and customize the default behavior of Now CLI and Now Desktop.

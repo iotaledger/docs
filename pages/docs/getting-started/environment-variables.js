@@ -12,6 +12,7 @@ export default withDoc({
   title: 'Environment Variables',
   date: '6 August 2017',
   authors: [arunoda],
+  editUrl: 'pages/docs/getting-started/environment-variables.js',
 })(markdown(components)`
 
 Almost every app needs to get configurations at runtime. These configurations could be anything, including:

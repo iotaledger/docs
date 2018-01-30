@@ -19,6 +19,7 @@ export default withDoc({
   title: 'Updating Now CLI',
   date: '20 Jan 2018 11:34 AM PDT',
   authors: [ leo ],
+  editUrl: 'pages/docs/guides/updating-now-cli.js',
 })(markdown(components)`
 
   If there is a new release

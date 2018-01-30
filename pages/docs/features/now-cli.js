@@ -13,6 +13,7 @@ export default withDoc({
   title: 'Now\'s Command Line Interface',
   date: '09 Mar 2017',
   authors: [leo, rauchg],
+  editUrl: 'pages/docs/features/now-cli.js',
 })(markdown(components)`
 
 The \`now\` CLI is the main interface to the now cloud.

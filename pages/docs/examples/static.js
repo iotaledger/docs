@@ -13,6 +13,7 @@ export default withDoc({
   title: 'Building a Static Website',
   date: '23 Feb 2017',
   authors: [leo],
+  editUrl: 'pages/docs/examples/static.js',
 })(markdown(components)`
 
 With just a single command, even complex Node applications or Docker containers can be deployed with now.

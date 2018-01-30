@@ -12,6 +12,7 @@ export default withDoc({
   title: 'Building a Single Page Application with Create React App',
   date: '23 Feb 2017',
   authors: [sergio],
+  editUrl: 'pages/docs/examples/create-react-app.js',
 })(markdown(components)`
 
 [Create React App](https://github.com/facebookincubator/create-react-app) is a boilerplate tool used to create Single Page Applications with React.js without build configuration. Facebook created CRA and made it the official way to start a new React application.

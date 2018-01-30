@@ -47,6 +47,7 @@ export default withDoc({
   title: 'The Title for the New Guide',
   date: '23 June 2017',
   authors: [],
+  editUrl: 'pages/docs/category/file.js',
 })(markdown(components)`
 
 This is the content written in Markdown.

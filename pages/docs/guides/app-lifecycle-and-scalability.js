@@ -11,6 +11,7 @@ export default withDoc({
   title: 'App Lifecycle and Scalability',
   date: '09 March 2017',
   authors: [rase, rauchg, jamo],
+  editUrl: 'pages/docs/guides/app-lifecycle-and-scalability.js',
 })(markdown(components)`
 
 In this guide, we are going to have a look at how ${<Now color="#000"/>} deploy and manage your app inside it's infrastructure.

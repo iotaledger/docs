@@ -10,19 +10,12 @@
     "lint": "eslint .",
     "lint:staged": "lint-staged",
     "test": "npm run lint",
-    "deploy": "node scripts/deploy"
+    "deploy": "node scripts/deploy",
+    "last:edited": "node scripts/last-edited"
   },
   "babel": {
-    "presets": [
-      "next/babel"
-    ],
-    "plugins": [
-      [
-        "transform-define",
-        "./env-config.js"
-      ],
-      "markdown-in-js/babel"
-    ]
+    "presets": ["next/babel"],
+    "plugins": [["transform-define", "./env-config.js"], "markdown-in-js/babel"]
   },
   "dependencies": {
     "@skidding/react-codemirror": "1.0.2",
@@ -30,6 +23,7 @@
     "babel-runtime": "6.23.0",
     "codemirror": "5.31.0",
     "cross-env": "5.0.1",
+    "date-fns": "1.29.0",
     "glob": "7.1.2",
     "glob-promise": "3.1.0",
     "intersection-observer": "0.4.2",
@@ -49,26 +43,20 @@
   },
   "devDependencies": {
     "babel-eslint": "7.2.3",
-    "eslint": "3.19.0",
+    "eslint": "4.2.0",
     "eslint-plugin-import-b5a962": "2.3.0",
     "eslint-plugin-react": "7.1.0",
     "lint-staged": "4.0.0",
     "pre-commit": "1.2.2",
-    "prettier": "1.10.2",
+    "prettier": "1.7.4",
     "shelljs": "0.7.8"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint",
-      "prettier --write --no-semi --single-quote",
-      "git add"
-    ]
+    "*.js": ["eslint", "prettier --write --no-semi --single-quote", "git add"]
   },
-  "pre-commit": "lint:staged",
+  "pre-commit": ["last:edited", "lint:staged"],
   "greenkeeper": {
-    "ignore": [
-      "prettier"
-    ]
+    "ignore": ["prettier"]
   },
   "eslintConfig": {
     "parser": "babel-eslint",
@@ -82,14 +70,8 @@
       },
       "allowImportExportEverywhere": true
     },
-    "plugins": [
-      "react",
-      "import-b5a962"
-    ],
-    "extends": [
-      "eslint:recommended",
-      "plugin:react/recommended"
-    ],
+    "plugins": ["react", "import-b5a962"],
+    "extends": ["eslint:recommended", "plugin:react/recommended"],
     "globals": {
       "VERSION": true,
       "IMAGE_ASSETS_URL": true,
@@ -102,10 +84,7 @@
       "node": true
     },
     "rules": {
-      "func-names": [
-        "error",
-        "as-needed"
-      ],
+      "func-names": ["error", "as-needed"],
       "no-shadow": "error",
       "import-b5a962/no-mutable-exports": "error",
       "import-b5a962/no-anonymous-default-export": [
