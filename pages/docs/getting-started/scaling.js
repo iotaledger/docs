@@ -43,8 +43,6 @@ As your user base grows, your app could be slower to respond. Because it tries t
 
 To resolve this issue, you can scale your app to run a fixed number of instances and they'll run forever.
 
-> You need to have a [paid plan](https://zeit.co/pricing) to do fixed scaling.
-
 Here's how you can do that:
 
 ${<TerminalInput>now scale hello-node-lwbxweoqjo.now.sh 3</TerminalInput>}
