@@ -32,7 +32,7 @@ if (global.document) {
 class Head extends React.PureComponent {
   render() {
     const titlePrefix =
-      null != this.props.titlePrefix ? this.props.titlePrefix : 'ZEIT – '
+      null != this.props.titlePrefix ? this.props.titlePrefix : 'IOTA – '
     const ogDescription = this.props.ogDescription || this.props.description
     const { darkBg } = this.context
     return (
@@ -47,15 +47,12 @@ class Head extends React.PureComponent {
             name="twitter:card"
             content={this.props.image ? 'summary_large_image' : 'summary'}
           />
-          <meta name="twitter:site" content="@zeithq" />
+          <meta name="twitter:site" content="@iotatoken" />
           <meta
             name="og:title"
             content={this.props.ogTitle || this.props.title}
           />
-          <meta
-            name="og:url"
-            content={this.props.url || 'https://zeit.co/now'}
-          />
+          <meta name="og:url" content={this.props.url || 'https://iota.org'} />
           {this.props.description ? (
             <meta name="description" content={this.props.description} />
           ) : null}
@@ -192,11 +189,9 @@ class Head extends React.PureComponent {
             }
 
             #nprogress .peg {
-              box-shadow: ${
-                darkBg
-                  ? '0 0 10px #fff, 0 0 5px #fff'
-                  : '0 0 10px #ccc, 0 0 5px #ccc'
-              };
+              box-shadow: ${darkBg
+                ? '0 0 10px #fff, 0 0 5px #fff'
+                : '0 0 10px #ccc, 0 0 5px #ccc'};
             }
           `}
           </style>

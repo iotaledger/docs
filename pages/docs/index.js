@@ -1,3 +1,3 @@
-import IntroductionToNow from './getting-started/five-minute-guide-to-now'
+import IntroductionToIOTA from './getting-started/first-transaction'
 
-export default IntroductionToNow
+export default IntroductionToIOTA
