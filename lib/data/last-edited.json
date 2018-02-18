@@ -1,10 +1,13 @@
 {
-  "pages/docs/getting-started/first-transaction.js": "2018-02-15T11:25:42.924Z",
-  "pages/docs/getting-started/index.js": "2018-01-30T21:54:56.131Z",
-  "pages/docs/index.js": "2018-02-15T10:33:00.435Z",
+  "pages/docs/index.js": "2018-02-18T14:56:25.949Z",
   "pages/docs/introduction/what-is-iota.js": "2018-02-16T22:49:02.835Z",
-  "pages/docs/other-stuff/glossary.js": "2018-02-16T22:20:05.785Z",
-  "pages/docs/other/index.js": "2018-01-30T21:54:56.133Z",
+  "pages/docs/iota-token/anatomy-of-a-transaction.js": "2018-02-18T14:50:28.482Z",
+  "pages/docs/iota-token/bundle-construction.js": "2018-02-18T14:50:28.473Z",
+  "pages/docs/iota-token/making-a-transaction.js": "2018-02-18T14:50:21.351Z",
+  "pages/docs/iota-token/seeds-private-keys-accounts.js": "2018-02-18T14:35:45.547Z",
+  "pages/docs/other-stuff/glossary.js": "2018-02-18T11:00:23.000Z",
   "pages/docs/testnet/endpoints.js": "2018-02-15T11:25:01.911Z",
-  "pages/docs/testnet/introduction.js": "2018-02-16T21:01:05.000Z"
+  "pages/docs/testnet/introduction.js": "2018-02-16T21:01:05.000Z",
+  "pages/docs/tutorials/first-transaction.js": "2018-02-18T14:55:37.792Z",
+  "pages/docs/tutorials/retrieve-transactions.js": "2018-02-18T14:55:41.121Z"
 }
