@@ -1,3 +1,3 @@
-import IntroductionToIOTA from './getting-started/first-transaction'
+import IntroductionToIOTA from './introduction/what-is-iota'
 
 export default IntroductionToIOTA
