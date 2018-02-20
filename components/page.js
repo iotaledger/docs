@@ -48,21 +48,19 @@ class Page extends React.Component {
               color: ${darkBg ? '#fff' : '#000'};
             }
 
-            ${
-              darkBg
-                ? `
+            ${darkBg
+              ? `
               ::selection {
                 background-color: #f81ce5;
                 color: #fff;
               }
             `
-                : `
+              : `
               ::selection {
                 background-color: #79FFE1;
                 color: #000;
               }
-            `
-            }
+            `}
           `
             }}
           />
