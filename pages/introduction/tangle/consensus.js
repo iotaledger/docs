@@ -10,6 +10,10 @@ export default withDoc({
   authors: [lewi],
   editUrl: 'pages/docs/tangle/consensus.js',
 })(markdown(components)`
-IOTA is a next generation permissionless distributed ledger that utilizes a 
-novel invention, called a “Tangle”, at its core. 
+
+- MCMC algorithm is used to tell you percent confirmation
+  - Eventual consistency between nodes
+- Right now… coordinator and agreement on snapshots
+
+
 `)

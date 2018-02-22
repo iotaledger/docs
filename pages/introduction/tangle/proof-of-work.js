@@ -10,6 +10,10 @@ export default withDoc({
   authors: [lewi],
   editUrl: 'pages/docs/tangle/proof-of-work.js',
 })(markdown(components)`
-IOTA is a next generation permissionless distributed ledger that utilizes a 
-novel invention, called a “Tangle”, at its core. 
+ - Tangle: prevents transaction spam (hash cash style PoW)
+  - Min weight magnitude = number of trailing zeros of trits in transaction hash
+    - Min weight magnitude is proportional to difficulty of proof of work
+  - Possibly explain the basics of hash functions and distinguish between normal and cryptographic hash functions
+  - State which hash function IOTA uses for PoW versus private key, address, and signature generation
+  - Higher min weight magnitude can give your transaction priority (at least I have heard so) 
 `)
