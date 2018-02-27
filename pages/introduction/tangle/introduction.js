@@ -13,7 +13,7 @@ export default withDoc({
 The Tangle is the data structure at the heart of IOTA,
 first introduced in the IOTA [white paper](https://iota.org/IOTA_Whitepaper.pdf). 
 This section will give a short introduction to what the tangle is and how it works.
-For a more in-depth treatise, please check out the [white paper](https://iota.org/IOTA_Whitepaper.pdf)
+For a more in-depth treatise, please check out the white paper 
 or [this blog series](https://medium.com/p/4d5eae6fe8d4/).
 
 ## Core Principles
@@ -50,13 +50,8 @@ rather than older transactions, because this helps move the network consensus fo
 The method for choosing which two tips one should approve is one of the key
 innovations of IOTA, and will be introduced in the Tip selection section.
 
-Each transaction can contain payment information, in the form of "A paid B X IOTAs". 
+Each transaction contains payment information, in the form of "A paid B X IOTAs". 
 Approving a transaction implies verifying that it does not break the consensus
 rules: in particular, that none of the accounts have negative balances. It
 also implies that the two chosen transactions do not contradict each other.
 `)
-
-// Each transaction contains payment information, of the form "A paid B X IOTAs".
-// Approving a transaction implies verifying that it does not break the consensus
-// rules: in particular, that none of the accounts have negative balances. It
-// also implies that the two chosen transactions do not contradict each other.

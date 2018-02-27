@@ -10,9 +10,11 @@ export default withDoc({
   authors: [lewi],
   editUrl: 'pages/docs/tangle/proof-of-work.js',
 })(markdown(components)`
-Currently the Tangle prevents an unreasonable amount of spam on the 
-network using Proof of Work (PoW). The system used is based on [Hash Cash](https://en.wikipedia.org/wiki/Hashcash), which is an
-an approach used by [other cryptocurrencies](https://en.wikipedia.org/wiki/Hashcash#Bitcoin_mining)
+IOTA uses PoW for spam protection, similar in spirit to the 
+PoW used in [Hashcash](https://en.wikipedia.org/wiki/Hashcash).
+ This is a short computational operation, 
+which should not be confused with the expensive PoW employed in 
+miner-based ledgers such as Bitcoin.
 
 ## Min Weight Magnitude
 The difficulty of the PoW is set by a variable called Minimum Weight 
@@ -27,10 +29,4 @@ by 3 times.
 ### MWM values 
 - Mainnet MWM parameter: 14
 - Testnet MWM parameter: 9
-
-
-
-  - Possibly explain the basics of hash functions and distinguish between normal and cryptographic hash functions
-  - State which hash function IOTA uses for PoW versus private key, address, and signature generation
-  - Higher min weight magnitude can give your transaction priority (at least I have heard so) 
 `)

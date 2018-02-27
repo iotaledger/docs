@@ -18,11 +18,10 @@ algorithm_.
 ## Incentives
 Nodes are not obligated to follow the recommended tip selection algorithm,
 which is outlined in this section. However it is designed so that if most nodes
-do follow it, the rest are incentivized to follow suit. This effect is described in the paper [Equilibria in the Tangle
-](https://arxiv.org/abs/1712.05385)
+do follow it, the rest are incentivized to follow suit.
 
 
-## Selection Algorithm
+## Tip Selection Algorithm
 Tip selection is done by performing a weighted random walk from the genesis
 towards the tips. The walk stops when it reaches a tip. The walk is performed
 twice, and so two tips are chosen.
