@@ -1,6 +1,6 @@
 import markdown from 'markdown-in-js'
 import withDoc, { components } from '../../lib/with-doc'
-
+import Tangle from '../../components/tangle'
 import { lewi } from '../../lib/data/team'
 
 // prettier-ignore
@@ -13,7 +13,7 @@ export default withDoc({
 IOTA is a next generation permissionless distributed ledger that utilizes a 
 novel invention, called a “Tangle”, at its core. 
 
-\`Tangle animation\`
+${<Tangle />}
 
 The Tangle is a new data structure based on a Directed Acyclic Graph. 
 As such it has no Blocks, no Chain and also no Miners. This 
@@ -27,8 +27,6 @@ consensus and how transactions are made. As mentioned previously, there are no
 miners. What this means is that each participant in the network that 
 wants to make a transaction has to actively participate in the consensus of the 
 network by approving 2 past transactions. 
-
-\`Consensus vis\`
 
 This attestation on the validity of two past transactions ensures that the 
 network achieves consensus on the current state of approved transactions, 
