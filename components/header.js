@@ -8,9 +8,9 @@ class Header extends React.PureComponent {
 
     return (
       <div>
-        <div className="wip">{'These docs are a work in Progress'}</div>
+        <div className="wip">{'These docs are a Work in Progress'}</div>
         <header className={clean ? 'clean' : null}>
-          <Link prefetch href="/docs">
+          <Link prefetch href="/introduction">
             <a className="logo">{this.props.logo || <Logo />}</a>
           </Link>
         </header>
