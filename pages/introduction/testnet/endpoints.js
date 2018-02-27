@@ -28,24 +28,25 @@ HTTPS on port 443.
 
 ${<Code>https://nodes.testnet.iota.org:443</Code>}
 
-Check out the **Node** documentation: [here]()
+Check out the **Node** documentation: [here](https://iota.readme.io/reference#)
+
+*note: IRI documentation will be transitioned to this platform in the coming days.*
 
 ## Realtime Message Stream - ØMQ
 
 This provides access to the Zero Message Queue of the IRI 
 node. This provides the ability to subscribe to the Node in various ways. 
 
-${<Code>https://zmq.testnet.iota.org:5581</Code>}
+${<Code>https://zmq.testnet.iota.org:443</Code>}
 
-Check out the **ZMQ** documentation: [here]()
 
 ## Pow Box - Proof of Work service
 
 This endpoint provides access to a means of delegating Proof of Work 
 to a third-party. This is useful for small devices or simulations. 
 
-${<Code>https://sandbox.testnet.iota.org/attachToTangle</Code>}
+${<Code>https://powbox.testnet.iota.org</Code>}
 
-Check out the **PowBox** documentation: [here]()
+Check out the **PowBox** documentation: [here](https://powbox.testnet.iota.org)
 
 `)
