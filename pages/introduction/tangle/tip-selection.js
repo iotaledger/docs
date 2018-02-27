@@ -10,15 +10,19 @@ export default withDoc({
   authors: [alongal],
   editUrl: 'pages/docs/tangle/what-is-iota.js',
 })(markdown(components)`
-When joining the tangle, a new transaction must choose two previous ones to
+In order to join the Tangle, a new transaction must choose two previous ones to
 approve. In general, it will choose two previously unapproved transactions, or
 _tips_. The method for choosing these two tips is called the _tip selection
 algorithm_.
 
+## Incentives
 Nodes are not obligated to follow the recommended tip selection algorithm,
 which is outlined in this section. However it is designed so that if most nodes
-do follow it, the rest are incentivized to follow suit.
+do follow it, the rest are incentivized to follow suit. This effect is described in the paper [Equilibria in the Tangle
+](https://arxiv.org/abs/1712.05385)
 
+
+## Selection Algorithm
 Tip selection is done by performing a weighted random walk from the genesis
 towards the tips. The walk stops when it reaches a tip. The walk is performed
 twice, and so two tips are chosen.

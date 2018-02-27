@@ -10,13 +10,13 @@ export default withDoc({
   authors: [alongal],
   editUrl: 'pages/docs/tangle/introduction.js',
 })(markdown(components)`
-The tangle is the data structure at the heart of IOTA,
+The Tangle is the data structure at the heart of IOTA,
 first introduced in the IOTA [white paper](https://iota.org/IOTA_Whitepaper.pdf). 
 This section will give a short introduction to what the tangle is and how it works.
-For a more in-depth treatise, please check out the white paper
+For a more in-depth treatise, please check out the [white paper](https://iota.org/IOTA_Whitepaper.pdf)
 or [this blog series](https://medium.com/p/4d5eae6fe8d4/).
 
-## The main idea
+## Core Principles
 IOTA uses a [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph) instead of 
 a [blockchain](https://en.wikipedia.org/wiki/Blockchain) to store its ledger.
 The main motivation is scalability: a blockchain has an inherent transaction rate limit,
@@ -33,23 +33,30 @@ the latency between the nodes.
 A DAG may be thought of as an alternative to a blockchain, which 
 favors [Availability over Consistency](https://en.wikipedia.org/wiki/CAP_theorem).
 
-## The tangle structure
-The tangle is a DAG, where vertices represent transactions, and edges represent _approvals_:
-if there is an edge from A to B, we say that "A approves B". When a node issues a new 
-transaction, it must choose 2 previous ones to approve, thereby adding 2 new edges to the graph.
-If there is some directed path from A to B, we say that that A _references_ B.
+## Tangle Structure
+The Tangle is a DAG, where vertices represent transactions, and edges represent _approvals_:
 
-The first transaction in the tangle is referred to as the _genesis_. All the IOTA tokens
+- If there is an edge from A to B, we say that "A approves B". When a node issues a new 
+transaction, it must choose 2 previous ones to approve, thereby adding 2 new edges to the graph.
+
+- If there is some directed path from A to B, we say that that A _references_ B.
+
+The first transaction in the Tangle is referred to as the _genesis_. All the IOTA tokens
 were created in the genesis, and no new ones will ever be created. All transactions
-in the tangle reference the genesis.
+in the tangle reference the _genesis_ directly or indirectly.
 
 Transactions with no approvers are called _tips_. Nodes are expected to choose tips to approve,
 rather than older transactions, because this helps move the network consensus forwards.
 The method for choosing which two tips one should approve is one of the key
 innovations of IOTA, and will be introduced in the Tip selection section.
 
-Each transaction contains payment information, of the form "A paid B X IOTAs". 
+Each transaction can contain payment information, in the form of "A paid B X IOTAs". 
 Approving a transaction implies verifying that it does not break the consensus
 rules: in particular, that none of the accounts have negative balances. It
 also implies that the two chosen transactions do not contradict each other.
 `)
+
+// Each transaction contains payment information, of the form "A paid B X IOTAs".
+// Approving a transaction implies verifying that it does not break the consensus
+// rules: in particular, that none of the accounts have negative balances. It
+// also implies that the two chosen transactions do not contradict each other.

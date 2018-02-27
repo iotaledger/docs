@@ -18,8 +18,8 @@ unlikely to be removed from it.
 There are two approaches to establishing consensus in the tangle: the currently
 implemented _coordinator_, and the distributed approach suggested in the white paper.
 
-## The coordinator
-The coordinator is an entity controlled by the IOTA foundation, which issues
+## The Coordinator
+The coordinator is an entity controlled by the IOTA Foundation, which issues
 zero-valued transactions every two minutes, called a _milestone_. Using the
 coordinator, the definition of consensus is simple: any transaction referenced
 by a milestone is confirmed, and the others are not.
@@ -30,7 +30,7 @@ answer. This is similar to Bitcoin and other distributed ledgers, where at any g
 a transaction has a _confirmation confidence_, which is an indication of its
 acceptance level.
 
-In order to know the confirmation confidence for a particular transactions, we
+In order to know the confirmation confidence for a particular transaction, we
 perform the tip selection algorithm 100 times, as described. We then measure how
 many of the 100 selected tips reference the transaction in question. If it is
 referenced by 80 tips of 100, for example, we say it is 80% confirmed.
