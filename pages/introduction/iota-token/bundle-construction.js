@@ -100,8 +100,7 @@ Once a bundle has valid inputs, these can be spent to any number of outputs. The
 given they do not need to be signed, are also able to contain up to \`2187\` trytes worth
 of information.
 
-## Invalid Bundles
-
-\`List of reasons why your bundle could be invalid\`
-
 `)
+// ## Invalid Bundles
+
+// \`List of reasons why your bundle could be invalid\`
