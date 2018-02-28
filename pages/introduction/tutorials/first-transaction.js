@@ -42,7 +42,7 @@ ${<TerminalInput>{`mkdir iota-example && cd iota-example`}</TerminalInput>}
 Once in our directory we can use Node Package Manager (NPM) 
 to fetch and install the required Node.js libraries for IOTA to the folder:
 
-${<TerminalInput>{`npm install iota.lib.js sandbox.lib.js`}</TerminalInput>}
+${<TerminalInput>{`npm install iota.lib.js @iota/curl-remote`}</TerminalInput>}
 
 This will result in a \`package.json\` file and a \`node_modules\` folder 
 being created in your directory. After this we will create a new file 
@@ -101,7 +101,7 @@ const transfers = [
   }
 ]
 
-iota.api.sendTransfer(trytes, 9, 5, transfers, (error, success) => {
+iota.api.sendTransfer(trytes, 3, 9, transfers, (error, success) => {
   if (error) {
     console.log(error)
   } else {
@@ -145,7 +145,7 @@ your Seed. In this case we want a transaction with **Zero** value,
 to our HELLOWORLD address with the message \`Hello World\` encoded in trytes.
 
 **Transfer Function:**
-${<Code>{`iota.sendTransfer(trytes, 9, 5, transfers, (error, success) => {
+${<Code>{`iota.sendTransfer(trytes, 3, 9, transfers, (error, success) => {
   if (error) {
     console.log(error)
   } else {
@@ -215,7 +215,7 @@ with a PoW service. There are three to choose from:
 node.js environments and allows for PoW to be done locally.
 - [curl.lib.js](https://github.com/iotaledger/curl.lib.js) - This is for WebGL 2 
 enabled browsers to compute PoW using the GPU of the user's computer
-- sandbox.lib.js - This is used to mimic a remote node handling the PoW. In 
+- [@iota/curl-remote](https://www.npmjs.com/package/@iota/curl-remote) - This is used to mimic a remote node handling the PoW. In 
 reality this is a standalone service built to provide Pow-as-a-Service.
 
 We will use the public Sandbox on the IOTA Testnet.
@@ -224,10 +224,10 @@ We must add the following code into \`index.js\` **after** we initialise the IOT
 but **before** we do our \`sendTransfer\` call.
 
 ${<Code>{` // Import the Powbox Patch for the IOTA lib
-const sandboxPatch = require('sandbox.lib.js')
+const remoteCurl = require('@iota/curl-remote')
 
 // Patch the current IOTA instance
-sandboxPatch(iota, \`https://sandbox.testnet.iota.org\`, 500)`}
+remoteCurl(iota, \`https://powbox.testnet.iota.org\`, 500)`}
 </Code>}
 
 
@@ -261,8 +261,8 @@ The resulting code should look like this:
 ${<Code>{`const IOTA = require('iota.lib.js')
 const iota = new IOTA({ provider: 'https://nodes.testnet.iota.org:443' })
 
-const sandboxPatch = require('sandbox.lib.js')
-sandboxPatch(iota, \`https://sandbox.testnet.iota.org\`, 500)
+const remoteCurl = require('@iota/curl-remote')
+remoteCurl(iota, \`https://powbox.testnet.iota.org\`, 500)
 
 iota.api.getNodeInfo((error, success) => {
     if (error) {
@@ -285,7 +285,7 @@ const transfers = [
     }
 ]
 
-iota.api.sendTransfer(trytes, 2, 9, transfers, (error, success) => {
+iota.api.sendTransfer(trytes, 3, 9, transfers, (error, success) => {
     if (error) {
         console.log(error)
     } else {
