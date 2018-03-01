@@ -194,7 +194,7 @@ export function Cell({ children, isHead, center }) {
 export function TypeCell({ children, ...props }) {
   return (
     <Cell {...props}>
-      <a className={props.isHead ? 'head' : null} href="/api#api-basics/types">
+      <a className={props.isHead ? 'head' : null} href="#">
         <span>{children}</span>
         {props.isHead ? <QuestionInCircle /> : null}
         <style jsx>

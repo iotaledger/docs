@@ -19,7 +19,7 @@ RouterEvents.on('routeChangeError', () => {
 if (global.document) {
   const info = [
     `Version: ${VERSION}`,
-    `Check out our code here: https://zeit.co/oss`,
+    `Check out the awesome peeps that made these docs: https://zeit.co/oss`,
     `Have a great day! 📣🐢`
   ]
 
@@ -153,6 +153,21 @@ class Head extends React.PureComponent {
           <link
             rel="shortcut icon"
             href={`${IMAGE_ASSETS_URL}/favicon/favicon.ico`}
+          />
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-114859682-1"
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                      window.dataLayer = window.dataLayer || [];
+                      function gtag(){dataLayer.push(arguments);}
+                      gtag('js', new Date());
+
+                      gtag('config', 'UA-114859682-1');
+                    `
+            }}
           />
           <meta name="theme-color" content="#000" />
           {this.props.children}

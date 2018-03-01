@@ -1,14 +1,14 @@
-# ZEIT Documentation
+# IOTA Documentation
 
-This is the public documentation for **ZEIT now** all other related services.<br/>
-You can access this documentation online at https://zeit.co/docs .
+This is the public documentation to introdue **IOTA**.<br/>
+You can access this documentation online at https://docs.iota.org/ .
 
 ### Running Locally
 
 Download the copy of this repostory. 
 
 ~~~sh
-git clone https://github.com/zeit/docs.git
+git clone https://gitlab.com/iota-foundation/doc/documentation.git
 ~~~
 
 Then visit to the downloaded repository and install dependencies with:
