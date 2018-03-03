@@ -19,7 +19,7 @@ export default withDoc({
   title: 'First Transaction',
   date: '11 Feburary 2018',
   authors: [lewi],
-  editUrl: 'pages/docs/tutorials/first-transaction.js',
+  editUrl: 'pages/introduction/tutorials/first-transaction.js',
 })(markdown(components)`
 
 This basic guide will show you how to setup your environment 

@@ -8,7 +8,7 @@ export default withDoc({
   title: 'Tip selection',
   date: '20 Feburary 2018',
   authors: [alongal],
-  editUrl: 'pages/docs/tangle/what-is-iota.js',
+  editUrl: 'pages/introduction/tangle/what-is-iota.js',
 })(markdown(components)`
 In order to join the Tangle, a new transaction must choose two previous ones to
 approve. In general, it will choose two previously unapproved transactions, or

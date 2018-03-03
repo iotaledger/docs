@@ -9,7 +9,7 @@ export default withDoc({
   title: 'Seeds, Private Keys and Accounts',
   date: '11 Feburary 2018',
   authors: [lewi],
-  editUrl: 'pages/docs/iota-token/seeds-private-keys-accounts.js',
+  editUrl: 'pages/introduction/iota-token/seeds-private-keys-accounts.js',
 })(markdown(components)`
 
 ## Seeds and Accounts
