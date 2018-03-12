@@ -7,21 +7,9 @@ const ActivePageButton = withRouter(({ children, router, href }) => {
     <Link href={href} prefetch>
       <span className="active-button">
         {children}
-        {/* {router.pathname === href ||
-                router.pathname.startsWith(href) ? (
-                    <aside>\/</aside>
-                ) : null} */}
         <style jsx>{`
           span {
             position: relvative;
-            width: 100%;
-          }
-
-          aside {
-            position: absolute;
-            top: 0;
-            right: 0;
-            padding: 3px 10px;
           }
           .active-button :global(button) {
             color: ${router.pathname === href ||
@@ -41,15 +29,18 @@ export default class DocsNavbarToggle extends React.Component {
       <div className="toggle-container">
         <div className="toggle">
           <ActivePageButton href="/introduction">
-            <button>Docs</button>
-          </ActivePageButton>
-        </div>
-        {/* <div className="toggle">
-          <ActivePageButton href="/iri">
-            <button>IRI Node</button>
+            <button className="toggle-button">Introduction</button>
           </ActivePageButton>
         </div>
         <div className="toggle">
+          <ActivePageButton href="/iri">
+            <button className="toggle-button">IOTA Node (IRI)</button>
+          </ActivePageButton>
+          <ActivePageButton href="#">
+            <button className={'toggle-button api'}>API</button>
+          </ActivePageButton>
+        </div>
+        {/* <div className="toggle">
           <ActivePageButton href="/mam">
             <button>MAM</button>
           </ActivePageButton>
@@ -69,6 +60,7 @@ export default class DocsNavbarToggle extends React.Component {
 
           .toggle {
             display: flex;
+            justify-content: space-between;
             border-top: 1px solid #eaeaea;
           }
 
@@ -76,7 +68,7 @@ export default class DocsNavbarToggle extends React.Component {
             border: none;
           }
 
-          .toggle button {
+          .toggle-button {
             min-width: 80px;
             padding: 0 12px;
             border: none;
@@ -85,7 +77,6 @@ export default class DocsNavbarToggle extends React.Component {
             height: 24px;
             font-size: 12px;
             transition: color 0.12s ease-in-out;
-            width: 100%;
             text-align: left;
           }
 
@@ -95,6 +86,11 @@ export default class DocsNavbarToggle extends React.Component {
 
           .toggle button:hover {
             color: #000;
+          }
+
+          .api {
+            text-align: right;
+            min-width: auto;
           }
         `}</style>
       </div>
