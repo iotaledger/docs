@@ -1,4 +1,5 @@
 import markdown from 'markdown-in-js'
+import { ExternalLink } from '../../../components/text/link'
 import withDoc, { components } from '../../../lib/with-doc'
 import { lewi } from '../../../lib/data/team'
 
@@ -12,12 +13,11 @@ export default withDoc({
 
 In order to run IRI and sync with the network, you need to 
 have neighbors which want to pair with you. The easiest and 
-fastest way to get neighbors is through our Slack, where you 
-can join the #nodesharing channel to find neighbors.
+fastest way to get neighbors is through our ${<ExternalLink href="https://discord.gg/7Gu2mG5" key="">Discord</ExternalLink>}, where you 
+can join the \`#nodesharing\` channel to find neighbors.
 
-It should be noted that you have to share your own IP and 
+It should be noted that you have to share your own IP/URL and 
 port with your neighbors as well, because IOTA relies on 
 mutual tethering for the data exchange. If you need help 
-simply ask on Slack.
-
+simply ask on Discord in the \`#help\` channel.
 `)

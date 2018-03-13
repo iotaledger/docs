@@ -41,63 +41,83 @@ ${<Table>
     <TypeCell>Example</TypeCell>
   </Row>
   <Row>
-    <BoldCell>{`--config -c`}</BoldCell>
-    <TypeCell>Config INI file that can be used instead of CLI options. See more below</TypeCell>
+    <BoldCell>{`-c`}</BoldCell>
+    <Cell>Config INI file that can be used instead of CLI options. See more below</Cell>
     <Cell>-c iri.ini</Cell>
   </Row>
   <Row>
-    <BoldCell>{`--port -p`}</BoldCell>
-    <TypeCell>
+    <BoldCell>{`-p`}</BoldCell>
+    <Cell>
       This is a mandatory option that defines the port to be used to send API commands to your node.
-    </TypeCell>
+    </Cell>
     <Cell>-p 14800</Cell>
   </Row>
   <Row>
-    <BoldCell>{`--neighbors	-n`}</BoldCell>
-    <TypeCell>
+    <BoldCell>{`-n`}</BoldCell>
+    <Cell>
       Neighbors that you are connected with will be added via this option.
-    </TypeCell>
+    </Cell>
     <Cell>-n "udp://148.148.148.148:14265 tcp://[2001:db8:a0b:12f0::1]:14265"</Cell>
   </Row>
   <Row>
-    <BoldCell>{`--udp-receiver-port	-u`}</BoldCell>
-    <TypeCell>
+    <BoldCell>{`-u`}</BoldCell>
+    <Cell>
       UDP receiver port. Standard port is 14600
-    </TypeCell>
+    </Cell>
     <Cell>-u 14800</Cell>
   </Row>
   <Row>
-    <BoldCell>{`--tcp-receiver-port	-t`}</BoldCell>
-    <TypeCell>
+    <BoldCell>{`-t`}</BoldCell>
+    <Cell>
       TCP receiver port. Standard port is 15600
-    </TypeCell>
+    </Cell>
     <Cell>-t 14800</Cell>
   </Row>
   <Row>
     <BoldCell>{`--testnet`}</BoldCell>
-    <TypeCell>
+    <Cell>
       Makes it possible to run IRI with the IOTA testnet
-    </TypeCell>
+    </Cell>
     <Cell>--testnet</Cell>
   </Row>
   <Row>
     <BoldCell>{`--remote`}</BoldCell>
-    <TypeCell>Remotely access your node and send API commands</TypeCell>
+    <Cell>Remotely access your node and send API commands</Cell>
     <Cell>--remote</Cell>
   </Row>
   <Row>
     <BoldCell>{`--remote-auth`}</BoldCell>
-    <TypeCell>
+    <Cell>
       Require authentication password for accessing remotely. Requires a correct username:hashedpassword combination
-    </TypeCell>
+    </Cell>
     <Cell>--remote-auth iotatoken:LL9EZFNCHZCMLJLVUBCKJ</Cell>
   </Row>
   <Row>
     <BoldCell>{`--remote-limit-api`}</BoldCell>
-    <TypeCell>
+    <Cell>
       Exclude certain API calls from being able to be accessed remotely
-    </TypeCell>
+    </Cell>
     <Cell>--remote-limit-api "attachToTangle, addNeighbors"</Cell>
+  </Row>
+  <Row>
+    <BoldCell>{`--send-limit`}</BoldCell>
+    <Cell>
+      Limit the outbound bandwidth consumption. Limit is set to mbit/s
+    </Cell>
+    <Cell>--send-limit 1.0</Cell>
+  </Row>
+  <Row>
+    <BoldCell>{`--max-peers`}</BoldCell>
+    <Cell>
+      Limit the number of max accepted peers. Default is set to 0 (mutual tethering)    </Cell>
+    <Cell>--max-peers 8</Cell>
+  </Row>
+  <Row>
+    <BoldCell>{`--dns-resolution-false`}</BoldCell>
+    <Cell>
+      Ignores DNS resolution refreshing
+    </Cell>
+    <Cell>--dns-resolution-false</Cell>
   </Row>
 </Table>}
 
@@ -124,6 +144,15 @@ To run IRI with this .INI file, given its named \`iri.ini\`, use this
 command:
 
 ${<TerminalInput>{`java -jar iri.jar -c iri.ini`}</TerminalInput>}
+
+## Use .INI file with Docker
+
+Create an iota.ini file with all of your configuration 
+variables set in it. Any that you don't provide in here 
+will be assumed to be default or taken from command line 
+arguments.
+
+${<TerminalInput>{`docker run -d --net=host --name iota-node -p 14265:14265 -p 14777:14777/udp -p 15777:15777 -v iota.ini:/iri/iota.ini iotaledger/iri:latest`}</TerminalInput>}
 
 
 `)
