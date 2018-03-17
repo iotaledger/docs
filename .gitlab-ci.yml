@@ -1,0 +1,52 @@
+image: node:8
+
+before_script:
+  - npm install -g now
+
+stages:
+  - ver
+  - init
+  - tests
+  - deploy
+
+ver:
+  stage: ver
+  script:
+    - node --version
+    - whoami
+init:
+  stage: init
+  script:
+    - npm cache clean
+    - rm -rf node-modules
+    - npm install
+run_tests:
+  stage: tests
+  script:
+    - npm test
+
+deploy_staging:
+  stage: deploy
+  script:
+    - now -t ${NOW_TOKEN} --team iota
+    - now -t ${NOW_TOKEN} --team iota alias docs.staging.iota.org
+    - now -t ${NOW_TOKEN} --team iota scale docs.staging.iota.org 1
+    - echo "Deployed to staging server"
+  environment:
+    name: staging
+    url: https://docs.staging.iota.org/
+  only:
+    - develop
+
+deploy_production:
+  stage: deploy
+  script:
+    - now -t ${NOW_TOKEN}
+    - now -t ${NOW_TOKEN} --team iota alias docs.iota.org
+    - now -t ${NOW_TOKEN} --team iota scale docs.iota.org 1
+    - echo "Deployed to production server"
+  environment:
+    name: production
+    url: https://docs.iota.org/
+  only:
+    - master
