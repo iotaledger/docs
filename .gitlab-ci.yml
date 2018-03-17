@@ -21,8 +21,7 @@ init:
 deploy_staging:
   stage: deploy
   script:
-    - now -t ${NOW_TOKEN} --team iota
-    - now -t ${NOW_TOKEN} --team iota alias docs.staging.iota.org
+    - now -t ${NOW_TOKEN} --team iota --alias docs.staging.iota.org
     - now -t ${NOW_TOKEN} --team iota scale docs.staging.iota.org 1
     - echo "Deployed to staging server"
   environment:
@@ -34,8 +33,7 @@ deploy_staging:
 deploy_production:
   stage: deploy
   script:
-    - now -t ${NOW_TOKEN}
-    - now -t ${NOW_TOKEN} --team iota alias docs.iota.org
+    - now -t ${NOW_TOKEN} --team iota --alias docs.iota.org
     - now -t ${NOW_TOKEN} --team iota scale docs.iota.org 1
     - echo "Deployed to production server"
   environment:
