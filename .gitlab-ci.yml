@@ -1,7 +1,7 @@
 image: node:8
 
 before_script:
-  - npm install -g now
+  - npm install -g now --unsafe-perm
 
 stages:
   - ver
@@ -16,8 +16,6 @@ ver:
 init:
   stage: init
   script:
-    - npm cache clean
-    - rm -rf node-modules
     - npm install
 
 deploy_staging:
