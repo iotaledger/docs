@@ -1,0 +1,43 @@
+image: node:8
+
+before_script:
+  - npm install -g now --unsafe-perm
+
+stages:
+  - ver
+  - init
+  - deploy
+
+ver:
+  stage: ver
+  script:
+    - node --version
+    - whoami
+init:
+  stage: init
+  script:
+    - npm install
+
+deploy_staging:
+  stage: deploy
+  script:
+    - now -t ${NOW_TOKEN} --team iota 
+    - now -t ${NOW_TOKEN} --team iota alias -A ci-staging.json
+    - echo "Deployed to staging server"
+  environment:
+    name: staging
+    url: https://docs.staging.iota.org/
+  only:
+    - develop
+
+deploy_production:
+  stage: deploy
+  script:
+    - now -t ${NOW_TOKEN} --team iota
+    - now -t ${NOW_TOKEN} --team iota alias -A ci-prod.json
+    - echo "Deployed to production server"
+  environment:
+    name: production
+    url: https://docs.iota.org/
+  only:
+    - master
