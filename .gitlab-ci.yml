@@ -6,7 +6,6 @@ before_script:
 stages:
   - ver
   - init
-  - tests
   - deploy
 
 ver:
@@ -20,10 +19,6 @@ init:
     - npm cache clean
     - rm -rf node-modules
     - npm install
-run_tests:
-  stage: tests
-  script:
-    - npm test
 
 deploy_staging:
   stage: deploy
