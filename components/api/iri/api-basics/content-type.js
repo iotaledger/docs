@@ -6,13 +6,10 @@ function ContentType() {
   return (
     <Section
       title="API Basics"
-      contents={
-        // prettier-ignore
-        [
+      contents={// prettier-ignore
+      [
   [
     markdown(components)`
-Our API is exposed as an HTTP/1 and HTTP/2 service over SSL.
-All endpoints live under the URL \`https://api.zeit.co\` and then generally follow the REST architecture.
 
 ### Content Type
 
@@ -20,8 +17,7 @@ All requests must be encoded as JSON with the \`Content-Type: application/json\`
 Most responses, including errors, are encoded exclusively as JSON as well.
     `
   ]
-]
-      }
+]}
     />
   )
 }

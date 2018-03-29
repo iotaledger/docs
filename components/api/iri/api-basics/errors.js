@@ -8,12 +8,11 @@ import immutable from '../../../../lib/immutable-component'
 function Errors() {
   return (
     <Section
-      contents={
-        // prettier-ignore
-        [
+      contents={// prettier-ignore
+      [
   [
     markdown(components)`
-The possible \`error_code\` values are documented on a per-endpoint basis in the ${<InternalLink href="/api#errors/generic">Errors</InternalLink>} section.
+The possible \`error_code\` values are documented on a per-endpoint basis in the ${<InternalLink href="/iri/api#errors/generic">Errors</InternalLink>} section.
 
 Since the \`message\` is bound to change over time, we recommend you do not pass it along directly to end-users of your application.
 
@@ -25,13 +24,12 @@ All errors have the following format:
 ${<Code>{`{
   "error": {
     "code": "error_code",
-    "message": "An english description of the error that just occurred"
+    "duration": "4"
    }
 }`}</Code>}
     `,
   ]
-]
-      }
+]}
     />
   )
 }
