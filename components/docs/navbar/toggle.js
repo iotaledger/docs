@@ -36,7 +36,7 @@ export default class DocsNavbarToggle extends React.Component {
           <ActivePageButton href="/iri">
             <button className="toggle-button">IOTA Node (IRI)</button>
           </ActivePageButton>
-          <ActivePageButton href="#">
+          <ActivePageButton href="/iri/api">
             <button className={'toggle-button api'}>API</button>
           </ActivePageButton>
         </div>
