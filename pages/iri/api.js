@@ -2,17 +2,18 @@ import Router from 'next/router'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { format, parse } from 'url'
-import DocsNavbarDesktop from '../components/docs/navbar/desktop'
-import DocsNavbarMobile from '../components/docs/navbar/mobile'
-import DocsNavbarToggle from '../components/docs/navbar/toggle'
-import Head from '../components/head'
-import Header from '../components/header'
-import Logo from '../components/icons/logo'
-import Page from '../components/page'
-import sections from '../components/api/sections'
-import FreezePageScroll from '../components/freeze-page-scroll'
-import data from '../lib/data/api'
-import withAPI from '../lib/with-api'
+import DocsNavbarDesktop from '../../components/docs/navbar/desktop'
+import DocsNavbarMobile from '../../components/docs/navbar/mobile'
+import DocsNavbarToggle from '../../components/docs/navbar/toggle'
+import Head from '../../components/head'
+import Header from '../../components/header'
+import Logo from '../../components/icons/logo'
+import Page from '../../components/page'
+import FreezePageScroll from '../../components/freeze-page-scroll'
+import withAPI from '../../lib/with-api'
+
+import sections from '../../components/api/iri'
+import data from '../../lib/data/api/iri'
 
 if (typeof window !== 'undefined') {
   require('intersection-observer')
@@ -80,7 +81,7 @@ class API extends React.PureComponent {
 
     return (
       <Page dayBanner={false}>
-        <Head titlePrefix="" title={`ZEIT API`} />
+        <Head titlePrefix="" title={`IOTA Reference Impimentation API`} />
         <div className="header-wrapper">
           <div className="header">
             <BGContainer darkBg={true}>
@@ -93,11 +94,6 @@ class API extends React.PureComponent {
                 }
                 user={props.user}
                 pathname={props.url.pathname}
-                onLogout={() => {
-                  props.onUser(null)
-                  props.url.push('/login')
-                }}
-                onLogoRightClick={() => props.url.push('/logos')}
               />
             </BGContainer>
           </div>
