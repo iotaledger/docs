@@ -132,10 +132,7 @@ class API extends React.PureComponent {
                           hash={post.hash}
                           name={post.name}
                         >
-                          <Section
-                            user={props.user}
-                            testingToken={props.testingToken}
-                          />
+                          <Section />
                         </SectionContainer>
                       ) : null
                     })}
