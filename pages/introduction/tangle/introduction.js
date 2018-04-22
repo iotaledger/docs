@@ -8,7 +8,7 @@ export default withDoc({
   title: 'Introduction to the Tangle',
   date: '20 Feburary 2018',
   authors: [alongal],
-  editUrl: 'pages/docs/tangle/introduction.js',
+  editUrl: 'pages/introduction/tangle/introduction.js',
 })(markdown(components)`
 The Tangle is the data structure at the heart of IOTA,
 first introduced in the IOTA [white paper](https://iota.org/IOTA_Whitepaper.pdf). 

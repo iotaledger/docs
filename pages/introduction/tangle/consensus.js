@@ -8,7 +8,7 @@ export default withDoc({
   title: 'Consensus on the Tangle',
   date: '20 Feburary 2018',
   authors: [alongal],
-  editUrl: 'pages/docs/tangle/consensus.js',
+  editUrl: 'pages/introduction/tangle/consensus.js',
 })(markdown(components)`
 In order to be useful as a payment network, IOTA must provide a method
 of knowing when a transaction can be safely considered to be  _confirmed_.

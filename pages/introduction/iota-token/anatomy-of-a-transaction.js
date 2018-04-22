@@ -15,7 +15,7 @@ export default withDoc({
   title: 'The Anatomy of a Transaction',
   date: '19 Feburary 2018',
   authors: [lewi],
-  editUrl: 'pages/docs/iota-token/anatomy-of-a-transaction.js',
+  editUrl: 'pages/introduction/iota-token/anatomy-of-a-transaction.js',
 })(markdown(components)`
 
 

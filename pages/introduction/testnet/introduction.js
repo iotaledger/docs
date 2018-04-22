@@ -9,7 +9,7 @@ export default withDoc({
   title: 'Testnet Introduction',
   date: '9 Feburary 2018',
   authors: [lewi],
-  editUrl: 'pages/docs/testnet/introduction.js',
+  editUrl: 'pages/introduction/testnet/introduction.js',
 })(markdown(components)`
 
 In order to use the IOTA tangle you have to interact with the nodes that

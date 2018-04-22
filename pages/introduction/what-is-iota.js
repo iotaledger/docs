@@ -8,7 +8,7 @@ export default withDoc({
   title: 'What is IOTA',
   date: '16 Feburary 2018',
   authors: [lewi],
-  editUrl: 'pages/docs/introduction/what-is-iota.js',
+  editUrl: 'pages/introduction/what-is-iota.js',
 })(markdown(components)`
 IOTA is a next generation permissionless distributed ledger that utilizes a 
 novel invention, called a “Tangle”, at its core. 

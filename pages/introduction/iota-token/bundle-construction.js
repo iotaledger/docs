@@ -15,7 +15,7 @@ export default withDoc({
   title: 'How Bundles are constructed',
   date: '19 Feburary 2018',
   authors: [lewi],
-  editUrl: 'pages/docs/iota-token/bundle-construction.js',
+  editUrl: 'pages/introduction/iota-token/bundle-construction.js',
 })(markdown(components)`
 
 IOTA uses an account-like scheme. This means that we have inputs 
