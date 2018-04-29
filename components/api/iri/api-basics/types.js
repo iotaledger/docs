@@ -39,7 +39,7 @@ ${<Table head={
   <Row>
     <BoldCell>Array</BoldCell>
     <Cell>A data structure with only a list of values separated by a comma.</Cell>
-    <Cell><InlineCode>["ZEIT", 1234, 12.34]</InlineCode></Cell>
+    <Cell><InlineCode>[1234, 12.34]</InlineCode></Cell>
   </Row>
 </Table>}
     `

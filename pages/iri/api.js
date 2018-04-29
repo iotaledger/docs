@@ -81,7 +81,10 @@ class API extends React.PureComponent {
 
     return (
       <Page dayBanner={false}>
-        <Head titlePrefix="" title={`IOTA Reference Impimentation API`} />
+        <Head
+          titlePrefix=""
+          title={`IOTA Reference Implimentation - API Reference`}
+        />
         <div className="header-wrapper">
           <div className="header">
             <BGContainer darkBg={true}>
