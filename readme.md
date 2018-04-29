@@ -28,13 +28,13 @@ Now the documentation is running at http://localhost:5800
 
 ### Editing Docs Content
 
-You can find the source of the documentation inside the `pages/docs` directory. Documentation is mostly written in markdown with the help of some React components.
+You can find the source of the documentation inside the `pages` directory. Documentation is mostly written in markdown with the help of some React components.
 
 Those components give us additional features which are not available in markdown.
 
 ### Adding New Docs
 
-You can start writing the new docs page by adding it to the `pages/docs` directory starting with the following code:
+You can start writing the new docs page by adding it to the `pages` directory starting with the following code:
 
 ~~~js
 import markdown from 'markdown-in-js'
