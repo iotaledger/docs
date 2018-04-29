@@ -8,7 +8,7 @@ export default withDoc({
   title: 'PoW on the Tangle',
   date: '20 Feburary 2018',
   authors: [lewi],
-  editUrl: 'pages/docs/tangle/proof-of-work.js',
+  editUrl: 'pages/introduction/tangle/proof-of-work.js',
 })(markdown(components)`
 IOTA uses PoW for spam protection, similar in spirit to the 
 PoW used in [Hashcash](https://en.wikipedia.org/wiki/Hashcash).
