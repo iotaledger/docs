@@ -25,7 +25,7 @@ issued too frequently, or are too large, forks will occur often. When a fork hap
 several new blocks are added to the chain at similar times, and the network must somehow
 decide between them.
 
-In a DAG, we accept that forks can and will occur often; however, unlike a in blockchain,
+In a DAG, we accept that forks can and will occur often; however, unlike in a blockchain,
 a fork is not final. Diverging branches can be merged back together, as long as they are
 consistent with each other. The transaction rate is therefore bounded only by
 the latency between the nodes.
