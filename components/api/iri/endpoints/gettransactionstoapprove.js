@@ -79,7 +79,7 @@ ${<Request
     'Content-Type': `application/json`,
     'X-IOTA-API-Version': '1',
   }}
-  body={'{"command": "getTransactionsToApprove", "depth": 27}'}
+  body={'{"command": "getTransactionsToApprove", "depth": 3}'}
 />}
 
 Example successful (**200**) response:
