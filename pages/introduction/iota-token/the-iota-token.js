@@ -20,7 +20,7 @@ export default withDoc({
 })(markdown(components)`
 
 The IOTA token is a \`cryptotoken\` built upon the Tangle technology. The
-token benifits from the advantages of this new Tangle architecture. 
+token benefits from the advantages of this new Tangle architecture. 
 
 The token operates on a permission-less Tangle network known as the **Mainnet**. 
 Individuals are able to intereact with this network by operating
