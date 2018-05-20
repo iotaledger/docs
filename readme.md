@@ -1,6 +1,6 @@
 # IOTA Documentation
 
-This is the public documentation to introdue **IOTA**.<br/>
+This is the public documentation to introduce **IOTA**.<br/>
 You can access this documentation online at https://docs.iota.org/ .
 
 ### Running Locally
@@ -64,12 +64,12 @@ Then you can add it to the sidebar by editing the file located at: `lib/data/doc
 ### Adding Images and Assets
 
 You can add images and assets into the `static` directory. Always try to avoid using hosted images. 
-If you are creating a new docs page, keep you images inside a subdirectory under `static/docs`.
+If you are creating a new docs page, keep your images inside a subdirectory under `static/docs`.
 
 ### New Components
 
 Always try to use the existing components and features in markdown. Create a new component or use a component from NPM, unless there is no other option.
 
-### Submiting Changes / New Doc Pages
+### Submitting Changes / New Doc Pages
 
 You can simply send a PR. It's simple as that.
