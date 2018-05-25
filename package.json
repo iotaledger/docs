@@ -12,7 +12,8 @@
     "test": "npm run lint",
     "last:edited": "node scripts/last-edited",
     "deploy": "now -t $NOW_TOKEN --team iota --npm",
-    "alias": "now -t $NOW_TOKEN --team iota alias -A ci-staging.json"
+    "alias:develop": "now -t $NOW_TOKEN --team iota alias -A ci-staging.json",
+    "alias:master": "now -t $NOW_TOKEN --team iota alias -A ci-prod.json"
   },
   "babel": {
     "presets": ["next/babel"],
