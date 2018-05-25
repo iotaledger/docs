@@ -29,7 +29,7 @@ ${<InputTable>
     <BoldCell>command</BoldCell>
     <TypeCell>String</TypeCell>
     <BooleanCell status={true} />
-    <Cell>The RPC command for this call: <InlineCode>getTips</InlineCode></Cell>
+    <Cell>The RPC command for this call: <InlineCode>getTrytes</InlineCode></Cell>
   </Row>
   <Row>
     <BoldCell>hashes</BoldCell>
