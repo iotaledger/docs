@@ -1,9 +1,10 @@
 language: node_js
 node_js:
-- "node"
+- node
 cache: npm
 script: npm run deploy
 after_script: npm run alias
 env:
-global:
-    secure: <this is your encrypted NOW token. It was added when you ran travis encrypt>
+  global:
+    secure: Ahanfho57BUpk5VOSSuRyjZE39BjXzMyEQ4Oty6VXwepmpM5BrZDfTv0GaDYqgyzwkBM2PIIV3/lyI/RQ12N1Jq25znpGEZPQctwlJWC7gX2AlyMANb6IJfbwWCabrRnlkzRL5M5W35lNJtefKrLIcbXsOSKiZF5dIOiI9vSKHbBAVG5jwHxHytCfMTr3JXZ9Ze1XbWuSDawrWu4QFDvk2WTOsqLnIckCBwDsjhZ2/q9KeH+PDhT+pl7SX2g0onogOdSLIULqYht2OrPWK9gk2wZHe/LmGK5Pp6JF4oREzcqm+SVNANSyRTLaz3qFDcu20ER40myo9HEqV3OFwwNw/GHuLE1PGRrREQ32Pliu6xRkT3umh+S9E5vQQfXeAVi+QNqt5nbXI5yHnRYiM5oBlhae+iC0Le3BnlzVm84yXb+iTYjvPDIy7zSCM5aNE/RH6o1M7/vCeGv+bzZO69oPQHgmWZ804wLsAFFmSiqYzcb9Q4kFnO7OtucFMKkgWhEsorSxVdagZ4wGUahktEIJltqPXHPjQCrYHtBPFJVhOPQVBCs2pJqf2i2MW62YkFC5ac7SmkNzom6hWpagRi4MQeaWW3w8u/IcyXGd7LGK/aoWErTH8P0fGDHVoic/PUDjxUVPRu7r6NsEofPXkRbOp4u8F1IXUHIkdhTNmeeqF8=
+
