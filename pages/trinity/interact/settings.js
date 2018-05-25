@@ -1,7 +1,7 @@
-import markdown from "markdown-in-js"
-import withDoc, { components } from "../../../lib/with-doc"
-import { lewi } from "../../../lib/data/team"
-import Image from "../../../components/image"
+import markdown from 'markdown-in-js'
+import withDoc, { components } from '../../../lib/with-doc'
+import { lewi } from '../../../lib/data/team'
+import Image from '../../../components/image'
 
 // prettier-ignore
 export default withDoc({
@@ -12,7 +12,7 @@ export default withDoc({
 })(markdown(components)`
 
 ### Mode
-Change between standard and advanced user modes.
+Change between Standard and Expert modes.
 
 ${
   <Image
@@ -56,21 +56,21 @@ ${
 }
 
 ### Account management
-Here you can view your seed, view your addresses 
-(advanced users only), edit your account name, delete 
-your account, or add additional accounts. 
+Here you can view your seed, view your addresses
+(advanced users only), edit your account name, delete
+your account, or add additional accounts.
 
 ### Adding additional accounts
-Trinity provides multi-account support. You can store more 
-than one seed in your wallet. This enables you to split your 
-funds between multiple seeds, and manage them from within 
-the same application. 
+Trinity provides multi-account support. You can store more
+than one seed in your wallet. This enables you to split your
+funds between multiple seeds and manage them from within
+the same application.
 
-Do you have more than one seed in your Trinity wallet? You can 
-swap between accounts by pressing the dropdown at the top of 
-the screen on mobile or in the sidebar on desktop. 
+Do you have more than one seed in your Trinity wallet? You can
+swap between accounts by pressing the dropdown at the top of
+the screen on mobile or in the sidebar on desktop.
 
-> Please ensure you have at least one proper seed backup 
+> Please ensure you have at least one proper seed backup
 for each new seed you create.
 
 ### Change password
@@ -85,7 +85,7 @@ ${
 }
 
 ### Security Settings
-Setup two-factor authentication.
+Setup two-factor authentication or biometric authentication.
 
 ${
   <Image
@@ -99,29 +99,30 @@ ${
 
 ### Advanced Settings
 We discourage changing any of the advanced user settings.
-Most users only come here to perform snapshot transitions, 
-or perform a manual sync. These tasks should work automatically 
+Most users only come here to perform snapshot transitions
+or a manual sync. These tasks should work automatically
 under normal conditions.
 
 ### Nodes
-Trinity provides a built-in node-balancing service for 
-optimal performance. Every time you open your wallet, it 
-selects a healthy node with a low current load. 
+Trinity provides a built-in node-balancing service for
+optimal performance. Every time you open your wallet, it
+selects a healthy node with a low current load.
 
-> *Advanced users only*: If you wish to turn off node-balancing, please 
-head to the **Select node** page in **Advanced settings**. It is also 
+> *Advanced users only*: If you wish to turn off node-balancing, please
+head to the **Select node** page in **Advanced settings**. It is also
 possible to add your own **custom node**.
 
 ### Automatic Promotion/Reattachment
-To ensure transactions are confirmed on the Tangle, it can be 
-necessary to promote or reattach. When possible, Trinity will 
-do this automatically. 
+To ensure transactions are confirmed on the Tangle, it can be
+necessary to promote or reattach. When possible, Trinity will
+do this automatically.
 
-*Advanced users only*: to enable **manual 
-promotion and reattachment**, turn on **Expert** mode in the settings.
+*Advanced users only*: to enable **manual
+promotion/reattachment**, turn on **Expert** mode in the settings. Enabling manual promotion/reattachment will not
+disable the automatic promotion/reattachment feature.
 
-> Trinity does not promote/reattach transfers if the application 
-is minimised. Currently automatic promotion/reattachment only takes 
+> Trinity does not promote/reattach transfers if the application
+is minimised. Currently automatic promotion/reattachment only takes
 place when the app is open.
 
 ### Snapshot Transition:
@@ -135,12 +136,12 @@ ${
   />
 }
 
-The snapshot transition function is located in **Advanced settings**. 
-Every so often, a snapshot is performed on the Tangle. Snapshots reduce 
-the size of the Tangle database. All transaction data is deleted and 
-only non-zero address balances are retained. Because Trinity is stateful, 
-it will store a copy of your transactional history after a snapshot. 
-This means that after the snapshot erases transaction data from the Tangle, 
+The snapshot transition function is located in **Advanced settings**.
+Every so often, a snapshot is performed on the Tangle. Snapshots reduce
+the size of the Tangle database. All transaction data is deleted and
+only non-zero address balances are retained. Because Trinity is stateful,
+it will store a copy of your transactional history after a snapshot.
+This means that after the snapshot erases transaction data from the Tangle,
 you still see them in your wallet.
 
 ### Manual Sync:
@@ -154,9 +155,9 @@ ${
   />
 }
 
-With Manual Sync Trinity double-checks your history and balances with 
-the IOTA network. This makes sure your wallet is properly synced. 
-The action may take a while, so please be patient and keep Trinity 
+With Manual Sync Trinity double-checks your history and balances with
+the IOTA network. This makes sure your wallet is properly synced.
+The action may take a while, so please be patient and keep Trinity
 in the foreground!
 
 

@@ -1,7 +1,7 @@
-import markdown from "markdown-in-js"
-import withDoc, { components } from "../../../lib/with-doc"
-import { lewi } from "../../../lib/data/team"
-import Image from "../../../components/image"
+import markdown from 'markdown-in-js'
+import withDoc, { components } from '../../../lib/with-doc'
+import { lewi } from '../../../lib/data/team'
+import Image from '../../../components/image'
 
 // prettier-ignore
 export default withDoc({
@@ -11,11 +11,10 @@ export default withDoc({
   editUrl: 'pages/trinity/setup/account-name.js',
 })(markdown(components)`
 Trinity has the option to have multiple 'accounts' within
-the one application. This allows you to have multiple accounts 
-much like a banking app. 
+the app. This allows you to have multiple accounts
+much like a banking app.
 
-During setup select a name that will let you know what the 
-account will be used for:
+During setup, select a name for the account so you can identify it:
 
 ${
   <Image
@@ -26,14 +25,13 @@ ${
   />
 }
 
-> The standard name is “Main account”
+> The standard name is “Main Account”
 
-Each account represents a different **seed**. So whenever you create a 
-new account be sure to follow the correct backup proceedures.
+Each account represents a different **seed**. So whenever you create a
+new account be sure to follow the correct backup procedures.
 
 
-You can rename each account in the Settings tab. A good description 
-here helps you remember the purpose of the account.
+You can rename each account in the Settings tab. A descriptive account name helps you remember the purpose of the account.
 
 
 
