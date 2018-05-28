@@ -16,7 +16,7 @@ export default withDoc({
   title: 'The IOTA Token',
   date: '19 Feburary 2018',
   authors: [lewi],
-  editUrl: 'pages/docs/iota-token/the-iota-token.js',
+  editUrl: 'pages/introduction/iota-token/the-iota-token.js',
 })(markdown(components)`
 
 The IOTA token is a \`cryptotoken\` built upon the Tangle technology. The

@@ -8,7 +8,7 @@ export default withDoc({
   title: 'Making a Transaction',
   date: '19 Feburary 2018',
   authors: [lewi],
-  editUrl: 'pages/docs/iota-token/making-a-transaction.js',
+  editUrl: 'pages/introduction/iota-token/making-a-transaction.js',
 })(markdown(components)`
 
 As previously mentioned, in IOTA there are no miners. 

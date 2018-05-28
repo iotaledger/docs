@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+- node
+cache: npm
+before_script: npm i -g now
+script: npm run deploy
+after_script:
+  - if [ "$TRAVIS_BRANCH" = "develop" ]; then npm run alias:develop; fi
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then npm run alias:master; fi
+branches:
+  only:
+  - master
+  - develop

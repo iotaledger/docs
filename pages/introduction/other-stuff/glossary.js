@@ -9,7 +9,7 @@ export default withDoc({
   title: 'Glossary of Terms',
   date: '16 Feburary 2018',
   authors: [lewi],
-  editUrl: 'pages/docs/other-stuff/glossary.js',
+  editUrl: 'pages/introduction/other-stuff/glossary.js',
 })(markdown(components)`
 IOTA introduces some rather new concepts to the Distributed Ledger space.  
 Given this we will list a couple of terms which are important to understand i

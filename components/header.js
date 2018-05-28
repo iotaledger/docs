@@ -41,7 +41,6 @@ class Header extends React.PureComponent {
             a.logo {
               display: block;
               width: 39px;
-              height: 35px;
               position: relative;
             }
 

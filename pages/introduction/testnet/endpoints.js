@@ -9,7 +9,7 @@ export default withDoc({
   title: 'Endpoints',
   date: '9 Feburary 2018',
   authors: [lewi],
-  editUrl: 'pages/docs/testnet/endpoints.js',
+  editUrl: 'pages/introduction/testnet/endpoints.js',
 })(markdown(components)`
 
 We have built a Testnet to provide a healthy network 

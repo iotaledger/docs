@@ -8,7 +8,7 @@ export default withDoc({
   title: 'Consensus on the Tangle',
   date: '20 Feburary 2018',
   authors: [alongal],
-  editUrl: 'pages/docs/tangle/consensus.js',
+  editUrl: 'pages/introduction/tangle/consensus.js',
 })(markdown(components)`
 In order to be useful as a payment network, IOTA must provide a method
 of knowing when a transaction can be safely considered to be  _confirmed_.
@@ -36,7 +36,7 @@ many of the 100 selected tips reference the transaction in question. If it is
 referenced by 80 tips of 100, for example, we say it is 80% confirmed.
 
 The idea is the following: if it is very likely for a chosen tip to reference
-a transaction, then new transactions coming it will probably approve it. This
+a transaction, then new transactions coming in will probably approve it. This
 effect will only increase with time, since the weighted walk causes large branches
 to grow and small branches to get abandoned.
 
