@@ -20,7 +20,7 @@ you can tap the address to copy it to the clipboard. You can also take a screens
 
 ${
   <Image
-    src={`${IMAGE_ASSETS_URL}/docs/trinity/recive.jpg`}
+    src={`${IMAGE_ASSETS_URL}/docs/trinity/receive.jpg`}
     width={320}
     height={630}
     caption="Generate an adress"

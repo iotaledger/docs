@@ -65,6 +65,4 @@ ${
 
 To change the default currency, go to **Settings**.
 
-### Auto Promotion
-
 `)
