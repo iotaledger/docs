@@ -1,7 +1,7 @@
-import markdown from "markdown-in-js"
-import withDoc, { components } from "../../../lib/with-doc"
-import { lewi } from "../../../lib/data/team"
-import Image from "../../../components/image"
+import markdown from 'markdown-in-js'
+import withDoc, { components } from '../../../lib/with-doc'
+import { lewi } from '../../../lib/data/team'
+import Image from '../../../components/image'
 
 // prettier-ignore
 export default withDoc({
@@ -20,7 +20,8 @@ ${
   <Image
     src={`${IMAGE_ASSETS_URL}/docs/trinity/send.jpg`}
     width={320}
-    height={640}
+    height={630}
+    caption="Send IOTA to an adress"
   />
 }
 
@@ -31,15 +32,36 @@ can be entered in IOTA or in the fiat currency of your choice.
 
 Please pay close attention to the IOTA units you are sending (i, Mi, Gi, etc.).
 
-[Screenshot with highlighted button]
+${
+  <Image
+    src={`${IMAGE_ASSETS_URL}/docs/trinity/sending-value-highlighted.jpg`}
+    width={320}
+    height={630}
+    caption="Send in different values"
+  />
+}
 
 Press the "IOTA units explained" at the bottom for further information.
 
-[Screenshot with IOTA Units up]
+${
+  <Image
+    src={`${IMAGE_ASSETS_URL}/docs/trinity/iota-units.jpg`}
+    width={320}
+    height={630}
+    caption="IOTA Units"
+  />
+}
 
 You can include a message by filling out the highlighted field.
 
-[Screenshot with highlighted field]
+${
+  <Image
+    src={`${IMAGE_ASSETS_URL}/docs/trinity/sending-messege-highlighted.jpg`}
+    width={320}
+    height={630}
+    caption="Include a messege with you transaction"
+  />
+}
 
 To change the default currency, go to **Settings**.
 

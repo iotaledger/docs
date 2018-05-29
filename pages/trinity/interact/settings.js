@@ -18,7 +18,7 @@ ${
   <Image
     src={`${IMAGE_ASSETS_URL}/docs/trinity/mode.jpg`}
     width={320}
-    height={640}
+    height={630}
   />
 }
 
@@ -29,7 +29,7 @@ ${
   <Image
     src={`${IMAGE_ASSETS_URL}/docs/trinity/theme.jpg`}
     width={320}
-    height={640}
+    height={630}
   />
 }
 
@@ -40,7 +40,7 @@ ${
   <Image
     src={`${IMAGE_ASSETS_URL}/docs/trinity/currency.jpg`}
     width={320}
-    height={640}
+    height={630}
   />
 }
 
@@ -51,7 +51,7 @@ ${
   <Image
     src={`${IMAGE_ASSETS_URL}/docs/trinity/language.jpg`}
     width={320}
-    height={640}
+    height={630}
   />
 }
 
@@ -80,7 +80,7 @@ ${
   <Image
     src={`${IMAGE_ASSETS_URL}/docs/trinity/setup-password.jpg`}
     width={320}
-    height={640}
+    height={630}
   />
 }
 
@@ -91,7 +91,7 @@ ${
   <Image
     src={`${IMAGE_ASSETS_URL}/docs/trinity/2fa.jpg`}
     width={320}
-    height={640}
+    height={630}
   />
 }
 
@@ -132,7 +132,7 @@ ${
   <Image
     src={`${IMAGE_ASSETS_URL}/docs/trinity/transition.jpg`}
     width={320}
-    height={640}
+    height={630}
   />
 }
 
@@ -151,7 +151,7 @@ ${
   <Image
     src={`${IMAGE_ASSETS_URL}/docs/trinity/sync.jpg`}
     width={320}
-    height={640}
+    height={630}
   />
 }
 

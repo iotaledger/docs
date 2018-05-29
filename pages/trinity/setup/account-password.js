@@ -1,7 +1,7 @@
-import markdown from "markdown-in-js"
-import withDoc, { components } from "../../../lib/with-doc"
-import { lewi } from "../../../lib/data/team"
-import Image from "../../../components/image"
+import markdown from 'markdown-in-js'
+import withDoc, { components } from '../../../lib/with-doc'
+import { lewi } from '../../../lib/data/team'
+import Image from '../../../components/image'
 
 // prettier-ignore
 export default withDoc({
@@ -17,12 +17,9 @@ ${
   <Image
     src={`${IMAGE_ASSETS_URL}/docs/trinity/setup-password.jpg`}
     width={320}
-    height={640}
-    caption="Seed generation matrix"
+    height={630}
+    caption="Choose your password"
   />
 }
-
-
-[Need guidance for creating a good password and how you should handle your password]
 
 `)

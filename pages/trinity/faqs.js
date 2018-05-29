@@ -1,6 +1,6 @@
-import markdown from "markdown-in-js"
-import withDoc, { components } from "../../lib/with-doc"
-import { lewi } from "../../lib/data/team"
+import markdown from 'markdown-in-js'
+import withDoc, { components } from '../../lib/with-doc'
+import { lewi } from '../../lib/data/team'
 
 // prettier-ignore
 export default withDoc({
@@ -34,8 +34,5 @@ Trinity puts the security of your funds above all else. Current limitations in t
 
 #### I logged in but I cannot see my balance.
 Don't panic! Please read the section above on performing a [snapshot transition](#zerobalance) to restore your balance. Also note that future developments in IOTA will eliminate the need to perform snapshot transitions.
-
-#### Why is the wallet in beta status?
-[Need content]
 
 `)
