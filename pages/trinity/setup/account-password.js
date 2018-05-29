@@ -22,7 +22,4 @@ ${
   />
 }
 
-
-[Need guidance for creating a good password and how you should handle your password]
-
 `)
