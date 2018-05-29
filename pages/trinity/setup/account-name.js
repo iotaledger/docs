@@ -20,7 +20,7 @@ ${
   <Image
     src={`${IMAGE_ASSETS_URL}/docs/trinity/accounts-setup.jpg`}
     width={320}
-    height={640}
+    height={630}
     caption="Choosing account name on setup."
   />
 }

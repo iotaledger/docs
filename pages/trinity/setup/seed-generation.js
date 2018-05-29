@@ -1,8 +1,8 @@
-import markdown from "markdown-in-js"
-import withDoc, { components } from "../../../lib/with-doc"
-import Image from "../../../components/image"
+import markdown from 'markdown-in-js'
+import withDoc, { components } from '../../../lib/with-doc'
+import Image from '../../../components/image'
 
-import { lewi } from "../../../lib/data/team"
+import { lewi } from '../../../lib/data/team'
 
 // prettier-ignore
 export default withDoc({
@@ -19,9 +19,9 @@ seed is finalized, you need to save it with at least one of the listed options.
 
 ${
   <Image
-    src={`${IMAGE_ASSETS_URL}/docs/trinity/send.jpg`}
+    src={`${IMAGE_ASSETS_URL}/docs/trinity/seed-generate.jpg`}
     width={320}
-    height={640}
+    height={630}
     caption="Seed generation matrix"
   />
 }
