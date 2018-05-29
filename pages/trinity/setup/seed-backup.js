@@ -23,7 +23,7 @@ Use at least one of these three options to create a seed backup:
 
 Writing down the seed is a great option for most people. All you
 need is a pen and paper. You can download and print a blank
-seed template from here: [SEED TEMPLATE].
+seed template from [here](https://trinity.iota.org/assets/iota-paper-wallet.pdf).
 
 Write down your seed from left to right, top to bottom. **Triple
 check that your seed is written down correctly.**
