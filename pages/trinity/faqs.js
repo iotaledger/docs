@@ -30,7 +30,7 @@ checksum matches your backup checksum. After choosing a new password,
 Trinity will automatically restore your account balance.
 
 #### Why doesn't Trinity support fingerprint authentication?
-Trinity puts the security of your funds above all else. Current limitations in the Android OS pose a tough question for developers. We have to choose between permittingpermiting users the convenience of using fingerprints scanners, vs. the risk of offering a less secure wallet. As always, IOTA leans toward security. We are constantly evaluating options to retain maximum security and improve the user experience. 
+Trinity puts the security of your funds above all else. Current limitations in the Android OS pose a tough question for developers. We have to choose between permitting users the convenience of using fingerprints scanners, vs. the risk of offering a less secure wallet. As always, IOTA leans toward security. We are constantly evaluating options to retain maximum security and improve the user experience. 
 
 #### I logged in but I cannot see my balance.
 Don't panic! Please read the section above on performing a [snapshot transition](#zerobalance) to restore your balance. Also note that future developments in IOTA will eliminate the need to perform snapshot transitions.
