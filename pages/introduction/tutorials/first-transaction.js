@@ -155,7 +155,7 @@ ${<Code>{`iota.sendTransfer(trytes, 3, 9, transfers, (error, success) => {
 </Code>}
 
 The function invokes the library to do a number of steps to construct a 
-transaction locally then send it too the Full Node to be sent to other 
+transaction locally then send it to the Full Node to be sent to other 
 nodes on the network.
 
 Lets take a second to figure out what the variables do:
