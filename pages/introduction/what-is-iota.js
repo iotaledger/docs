@@ -43,8 +43,8 @@ of transactions that can be confirmed in a certain interval
 that is making a transaction, actively participates in the consensus. As 
 such, IOTA is more decentralized than any Blockchain.
 - *No Transaction Fees*: IOTA has no transaction fees.
-- *Quantum-immunity*: IOTA utilized a next generation trinary hash function called 
-Curl-p, which is quantum immune (Winternitz signatures)
+- *Quantum-immunity*: IOTA used a next generation trinary hash function called 
+Curl-p, but then changed due to a vulnerability. << Fix this
 
 In the following sections, we will take a deep dive into some of the 
 important features and principles behind IOTA.
