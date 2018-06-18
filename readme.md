@@ -1,28 +1,28 @@
 # IOTA Documentation
 
-This is the public documentation to introdue **IOTA**.<br/>
+This is the public documentation to introduce **IOTA**.<br/>
 You can access this documentation online at https://docs.iota.org/ .
 
 ### Running Locally
 
-Download the copy of this repostory. 
+Download the copy of this repostory.
 
-~~~sh
+```sh
 git clone https://gitlab.com/iota-foundation/doc/documentation.git
-~~~
+```
 
 Then visit to the downloaded repository and install dependencies with:
 
-~~~sh
-npm install 
-~~~
+```sh
+npm install
+```
 
 Then you can run the app with:
 (The app is written in [Next.js](https://github.com/zeit/next.js))
 
-~~~sh
+```sh
 npm run dev
-~~~
+```
 
 Now the documentation is running at http://localhost:5800
 
@@ -36,11 +36,11 @@ Those components give us additional features which are not available in markdown
 
 You can start writing the new docs page by adding it to the `pages` directory starting with the following code:
 
-~~~js
-import markdown from 'markdown-in-js'
-import withDoc, { components } from '../../../lib/with-doc'
+```js
+import markdown from "markdown-in-js"
+import withDoc, { components } from "../../../lib/with-doc"
 
-import { TerminalInput } from '../../../components/text/terminal'
+import { TerminalInput } from "../../../components/text/terminal"
 
 // prettier-ignore
 export default withDoc({
@@ -57,13 +57,13 @@ ${
 }
 
 `)
-~~~
+```
 
 Then you can add it to the sidebar by editing the file located at: `lib/data/docs.js`.
 
 ### Adding Images and Assets
 
-You can add images and assets into the `static` directory. Always try to avoid using hosted images. 
+You can add images and assets into the `static` directory. Always try to avoid using hosted images.
 If you are creating a new docs page, keep you images inside a subdirectory under `static/docs`.
 
 ### New Components
