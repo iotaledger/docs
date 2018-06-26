@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import Head from 'next/head'
-import { FONT_FAMILY_SANS } from './css-config'
 
 class Page extends React.Component {
   getChildContext() {
@@ -39,7 +38,7 @@ class Page extends React.Component {
               min-height: 100%;
               margin: 0;
               padding-bottom: 6rem;
-              font-family: ${FONT_FAMILY_SANS};
+              font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
               text-rendering: optimizeLegibility;
             }
 
@@ -48,19 +47,21 @@ class Page extends React.Component {
               color: ${darkBg ? '#fff' : '#000'};
             }
 
-            ${darkBg
-              ? `
+            ${
+              darkBg
+                ? `
               ::selection {
                 background-color: #f81ce5;
                 color: #fff;
               }
             `
-              : `
+                : `
               ::selection {
                 background-color: #79FFE1;
                 color: #000;
               }
-            `}
+            `
+            }
           `
             }}
           />

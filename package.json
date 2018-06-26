@@ -16,7 +16,9 @@
     "alias:master": "now -t $NOW_TOKEN --team iota alias -A ci-prod.json"
   },
   "babel": {
-    "presets": ["next/babel"]
+    "presets": [
+      "next/babel"
+    ]
   },
   "dependencies": {
     "@skidding/react-codemirror": "1.0.2",
@@ -53,11 +55,20 @@
     "prettier": "1.13.5"
   },
   "lint-staged": {
-    "*.js": ["eslint", "prettier --write --no-semi --single-quote", "git add"]
+    "*.js": [
+      "eslint",
+      "prettier --write --no-semi --single-quote",
+      "git add"
+    ]
   },
-  "pre-commit": ["last:edited", "lint:staged"],
+  "pre-commit": [
+    "last:edited",
+    "lint:staged"
+  ],
   "greenkeeper": {
-    "ignore": ["prettier"]
+    "ignore": [
+      "prettier"
+    ]
   },
   "eslintConfig": {
     "parser": "babel-eslint",
@@ -71,8 +82,14 @@
       },
       "allowImportExportEverywhere": true
     },
-    "plugins": ["react", "import-b5a962"],
-    "extends": ["eslint:recommended", "plugin:react/recommended"],
+    "plugins": [
+      "react",
+      "import-b5a962"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended"
+    ],
     "globals": {
       "VERSION": true,
       "IMAGE_ASSETS_URL": true,
@@ -85,7 +102,10 @@
       "node": true
     },
     "rules": {
-      "func-names": ["error", "as-needed"],
+      "func-names": [
+        "error",
+        "as-needed"
+      ],
       "no-shadow": "error",
       "import-b5a962/no-mutable-exports": "error",
       "import-b5a962/no-anonymous-default-export": [
