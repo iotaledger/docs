@@ -2,25 +2,46 @@ import React from 'react'
 import { withRouter } from 'next/router'
 import Link from 'next/link'
 
-const ActivePageButton = withRouter(({ children, router, href }) => {
-  return (
-    <Link href={href} prefetch>
-      <span className="active-button">
-        {children}
-        <style jsx>{`
-          span {
-            position: relvative;
-          }
-          .active-button :global(button) {
-            color: ${router.pathname === href ||
-            router.pathname.startsWith(href)
-              ? '#000'
-              : '#999'};
-          }
-        `}</style>
-      </span>
-    </Link>
-  )
+const ActivePageButton = withRouter(({ children, router, href, external }) => {
+  if (external) {
+    return (
+      <a href={href} target={'_blank'}>
+        <span className="active-button">
+          {children}
+          <style jsx>{`
+            span {
+              position: relvative;
+            }
+            .active-button :global(button) {
+              color: ${router.pathname === href ||
+              router.pathname.startsWith(href)
+                ? '#000'
+                : '#999'};
+            }
+          `}</style>
+        </span>
+      </a>
+    )
+  } else {
+    return (
+      <Link href={href} prefetch>
+        <span className="active-button">
+          {children}
+          <style jsx>{`
+            span {
+              position: relvative;
+            }
+            .active-button :global(button) {
+              color: ${router.pathname === href ||
+              router.pathname.startsWith(href)
+                ? '#000'
+                : '#999'};
+            }
+          `}</style>
+        </span>
+      </Link>
+    )
+  }
 })
 
 export default class DocsNavbarToggle extends React.Component {
@@ -36,7 +57,7 @@ export default class DocsNavbarToggle extends React.Component {
           <ActivePageButton href="/iri">
             <button className="toggle-button">IOTA Node (IRI)</button>
           </ActivePageButton>
-          <ActivePageButton href="https://iota.readme.io/reference">
+          <ActivePageButton href="https://iota.readme.io/reference" external>
             <button className={'toggle-button api'}>API</button>
           </ActivePageButton>
         </div>
