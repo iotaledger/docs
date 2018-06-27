@@ -1,15 +1,17 @@
-import Tangle from '../../components/tangle'
+import { withRouter } from 'next/router'
+import WithMDX from '../../lib/with-mdx'
+
 import { lewi } from '../../lib/data/team'
-import Layout from '../../lib/with-mdx'
+import Tangle from '../../components/tangle'
 
 export const page = {
 title: 'What is IOTA',
 date: '16 Feburary 2018',
 authors: [lewi],
-editUrl: 'pages/introduction/what-is-iota.js',
+editUrl: 'pages/introduction/what-is-iota.mdx',
 }
 
-export default ({children}) => <Layout {...page}>{children}</Layout>
+export default withRouter(props => WithMDX(props, page))
 
 IOTA is a next generation permissionless distributed ledger that utilizes a
 novel invention, called a “Tangle”, at its core.
@@ -18,8 +20,7 @@ novel invention, called a “Tangle”, at its core.
 
 The Tangle is a new data structure based on a Directed Acyclic Graph.
 As such it has no Blocks, no Chain and also no Miners. This
-radical new architecture enables things in IOTA work quite differently compared
-to Blockchains and other Distributed Ledger Technologies.
+radical new architecture enables things in IOTA work quite differently compared to Blockchains and other Distributed Ledger Technologies.
 
 ## Consensus
 
