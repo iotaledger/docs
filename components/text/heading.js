@@ -6,6 +6,9 @@ export const H1 = ({ children }) => (
         h1 {
           font-weight: 200;
           font-size: 32px;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+            'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+            'Helvetica Neue', sans-serif;
         }
       `}
     </style>
@@ -35,6 +38,9 @@ export const H2 = ({ children }) => (
         h2 {
           font-weight: normal;
           font-size: 24px;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+            'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+            'Helvetica Neue', sans-serif;
         }
       `}
     </style>
@@ -49,6 +55,9 @@ export const H3 = ({ children }) => (
         h3 {
           font-weight: bold;
           font-size: 18px;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+            'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+            'Helvetica Neue', sans-serif;
         }
       `}
     </style>
