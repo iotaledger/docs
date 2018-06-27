@@ -1,14 +1,15 @@
-import markdown from 'markdown-in-js'
-import withDoc, { components } from '../../../lib/with-doc'
+import { withRouter } from 'next/router'
+import WithMDX from '../../../lib/with-mdx'
 import { lewi } from '../../../lib/data/team'
 
-// prettier-ignore
-export default withDoc({
-  title: 'Wallet Actions',
-  date: '3 May 2018',
-  authors: [lewi],
-  editUrl: 'pages/trinity/interact/wallet-actions.js',
-})(markdown(components)`
+export const page = {
+title: 'Wallet Actions',
+date: '3 May 2018',
+authors: [lewi],
+editUrl: 'pages/trinity/interact/wallet-actions.js',
+}
+
+export default withRouter(props => WithMDX(props, page))
 
 At the moment Trinity **does not** support background processes.
 Anything you do in the wallet – including logging in, sending transactions,
@@ -19,8 +20,4 @@ action is ongoing, that action will be **not** be completed.
 
 > Leave Trinity open while it completes an action
 
-
 Future builds of Trinity will enable background processes.
-
-
-`)

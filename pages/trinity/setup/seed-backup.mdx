@@ -1,21 +1,23 @@
-import markdown from 'markdown-in-js'
-import withDoc, { components } from '../../../lib/with-doc'
+import { withRouter } from 'next/router'
+import WithMDX from '../../../lib/with-mdx'
 import { lewi } from '../../../lib/data/team'
 
-// prettier-ignore
-export default withDoc({
-  title: 'Seed Backup',
-  date: '3 May 2018',
-  authors: [lewi],
-  editUrl: 'pages/trinity/setup/seed-generation.js',
-})(markdown(components)`
+export const page = {
+title: 'Seed Backup',
+date: '3 May 2018',
+authors: [lewi],
+editUrl: 'pages/trinity/setup/seed-generation.mdx',
+}
+
+export default withRouter(props => WithMDX(props, page))
+
 Trinity takes care of safe seed storage on your mobile
 device or computer. It offers several options for making offline
 seed backups (or "paper wallets") that can be used in the
 unfortunate event that you lose access to your current device.
 
 > Your seed is like the key to a safety deposit box. **Anyone who has it can access your funds**, even without
-physical access to your device.
+> physical access to your device.
 
 Use at least one of these three options to create a seed backup:
 
@@ -59,11 +61,9 @@ recover your wallet, and to install it on another device.
 The checksum is displayed after entering the seed. If it doesn’t match
 the checksum you wrote down earlier, your seed is not entered correctly.
 
- Additional security notes:
-1. **Do not screenshot your seed**
+Additional security notes:
 
-2. **Think carefully about where you store your paper
-seed backup. Anyone who has access to your seed can take your funds.**
+1.  **Do not screenshot your seed**
 
-
-`)
+2.  **Think carefully about where you store your paper
+    seed backup. Anyone who has access to your seed can take your funds.**

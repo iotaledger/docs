@@ -36,7 +36,6 @@ const HomePG = () => (
         flex-direction: column;
         padding: 5px 0px 0px;
         margin: 0 30px 0;
-        width: 70vw;
         min-width: 320px;
         max-width: 800px;
       }

@@ -1,0 +1,14 @@
+import { withRouter } from 'next/router'
+import WithMDX from '../../../lib/with-mdx'
+
+import { lewi } from '../../../lib/data/team'
+
+export const page ={
+title: 'Advanced Configuration',
+date: '12 March 2018',
+authors: [lewi],
+editUrl: 'pages/iri/usage/advanced-configuration.mdx',
+}
+export default withRouter(props => WithMDX(props, page))
+
+Advanced Configuration

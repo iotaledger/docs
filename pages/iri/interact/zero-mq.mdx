@@ -1,0 +1,20 @@
+import { withRouter } from 'next/router'
+import WithMDX from '../../../lib/with-mdx'
+
+import { ExternalLink } from '../../../components/text/link'
+import { lewi } from '../../../lib/data/team'
+
+export const page = {
+title: 'Zero MQ',
+date: '16 March 2018',
+authors: [lewi],
+editUrl: 'pages/iri/interact/zero-mq.js',
+}
+
+export default withRouter(props => WithMDX(props, page))
+
+Connecting to the ZMQ Stream.
+
+## API Reference
+
+See here for the <ExternalLink href="https://github.com/iotaledger/iri/tree/dev/src/main/java/com/iota/iri/zmq">`ZMQ Reference`</ExternalLink>
