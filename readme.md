@@ -36,30 +36,30 @@ Those components give us additional features which are not available in markdown
 
 You can start writing the new docs page by adding it to the `pages` directory starting with the following code:
 
-```js
-import markdown from "markdown-in-js"
-import withDoc, { components } from "../../../lib/with-doc"
+```md
+import { withRouter } from 'next/router'
+import WithMDX from '../../../lib/with-mdx'
 
 import { TerminalInput } from "../../../components/text/terminal"
 
-// prettier-ignore
-export default withDoc({
-  title: 'The Title for the New Guide',
-  date: '23 June 2017',
-  authors: [],
-  editUrl: 'pages/docs/category/file.js',
-})(markdown(components)`
+export const page = {
+title: 'Example Page',
+date: '19 Feburary 2018',
+editUrl: 'pages/path/for-editing/on-github.mdx',
+}
+
+export default withRouter(props => WithMDX(props, page))
+
+# H1 Title
 
 This is the content written in Markdown.
 
-${
-  <TerminalInput># this is how we show the terminal input</TerminalInput>  
-}
-
-`)
+<TerminalInput># this is how we show the terminal input</TerminalInput>x
 ```
 
 Then you can add it to the sidebar by editing the file located at: `lib/data/docs.js`.
+
+These docs use [MDX](https://github.com/mdx-js/mdx): a powerful parser, loader and renderer for JSX. See how the library works [here](https://github.com/mdx-js/specification).
 
 ### Adding Images and Assets
 
