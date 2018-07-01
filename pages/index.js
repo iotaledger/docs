@@ -21,12 +21,24 @@ const HomePG = () => (
         things.`}
       </P>
     </div>
+    {/* Configurable page elements. Edit at /lib/data/home */}
     {Data.map((segment, y) => (
       <div className="segment" key={y}>
-        <H3>{segment.title}</H3>
-        <div className="content">
-          {segment.items.map((item, i) => <Card key={`${i}+${y}`} {...item} />)}
-        </div>
+        {segment.title && <H3>{segment.title}</H3>}
+        {segment.items && (
+          <div className="content">
+            {segment.items.map((item, i) => (
+              <Card key={`${i}+${y}`} {...item} />
+            ))}
+          </div>
+        )}
+        {segment.content && (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: segment.content
+            }}
+          />
+        )}
       </div>
     ))}
     <style jsx>{`
