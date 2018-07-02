@@ -20,7 +20,7 @@ See details on the error and the resolution on ${<ExternalLink href="https://sta
 
 ## IRI Node is not synchronizing
 
-1. Make sure you have enough neighbors. 6-7 neighbors at the very least. See [Finding neighbors](finding-neighbours). After adding enough neighbors, make sure there is traffic flowing and give the node some time to sync.
+1. Make sure you have enough neighbors. 6-7 neighbors at the very least. See [Finding neighbors](../usage/finding-neighbours.js). After adding enough neighbors, make sure there is traffic flowing and give the node some time to sync.
 2. Update to the ${<ExternalLink href="https://github.com/iotaledger/iri/releases" key="">latest version</ExternalLink>}  of IRI.
 3. Get more support by joining our ${<ExternalLink href="https://bit.ly/iota-invite" key="">discord</ExternalLink>} #fullnodes channel.
 
