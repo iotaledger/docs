@@ -41,14 +41,14 @@ operating slower on the Mainnet when it is in production.
 
 **PowBox**
 
-On the testnet, there is a service is available for use to reduce 
+On the testnet, there is a service available for use to reduce 
 the PoW load on your simulation or application while they do transactions. 
 This code is open source so you will be able to use the service privately for 
 your mainnet applications.
 
 **Token Dispenser**
 
-We also have an faucet which dispenses Testnet tokens. This enables you 
+We also have a faucet which dispenses Testnet tokens. This enables you 
 to test your application with tokens that have 0 value.
 
 ## Structure
