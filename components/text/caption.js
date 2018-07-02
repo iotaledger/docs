@@ -1,5 +1,3 @@
-import { FONT_FAMILY_MONO } from '../css-config'
-
 const Caption = ({ children }) => (
   <p>
     {children}
@@ -23,7 +21,9 @@ const Code = ({ children }) => (
       {`
         code {
           color: #666;
-          font-family: ${FONT_FAMILY_MONO};
+          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace,
+            serif;
         }
 
         code::before {

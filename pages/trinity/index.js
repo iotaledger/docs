@@ -1,3 +1,3 @@
-import IntroductionToTrinity from "./what-is-trinity.js"
+import IntroductionToTrinity from './what-is-trinity.mdx'
 
 export default IntroductionToTrinity
