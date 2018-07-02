@@ -32,15 +32,16 @@ const HomePG = () => (
             ))}
           </div>
         )}
-        {segment.content && (
-          <div
-            dangerouslySetInnerHTML={{
-              __html: segment.content
-            }}
-          />
-        )}
       </div>
     ))}
+    <div className="segment" key={'footer'}>
+      <p>
+        go to the{' '}
+        <a href={'https://github.com/iotaledger'}>foundation's github </a>
+        or the{' '}
+        <a href={'https://github.com/iota-community'}>community's github </a>
+      </p>
+    </div>
     <style jsx>{`
       .segment {
         display: flex;
@@ -58,6 +59,9 @@ const HomePG = () => (
         flex-direction: row;
         flex-wrap: wrap;
         width: 100%;
+      }
+      a {
+        color: #18817c;
       }
     `}</style>
   </Page>
