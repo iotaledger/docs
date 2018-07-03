@@ -6,6 +6,9 @@ export const P = ({ children }) => (
     <style jsx>
       {`
         p {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+            'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+            'Helvetica Neue', sans-serif;
           font-weight: 400;
           font-size: 14px;
           line-height: 24px;
@@ -21,6 +24,9 @@ export const PDIV = ({ children }) => (
     <style jsx>
       {`
         div {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+            'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+            'Helvetica Neue', sans-serif;
           font-weight: 400;
           font-size: 14px;
           line-height: 24px;

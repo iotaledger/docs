@@ -1,6 +1,6 @@
 {
-  "name": "iota-introduction",
-  "version": "3.9.1",
+  "name": "iota-docs",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next -p 5800",
@@ -16,49 +16,59 @@
     "alias:master": "now -t $NOW_TOKEN --team iota alias -A ci-prod.json"
   },
   "babel": {
-    "presets": ["next/babel"],
-    "plugins": [["transform-define", "./env-config.js"], "markdown-in-js/babel"]
+    "presets": [
+      "next/babel"
+    ]
   },
   "dependencies": {
     "@skidding/react-codemirror": "1.0.2",
     "babel-plugin-transform-define": "1.3.0",
-    "babel-runtime": "6.23.0",
-    "codemirror": "5.31.0",
-    "cross-env": "5.0.1",
+    "babel-runtime": "6.26.0",
+    "codemirror": "5.38.0",
+    "cross-env": "5.2.0",
     "date-fns": "1.29.0",
     "glob": "7.1.2",
-    "glob-promise": "3.1.0",
-    "intersection-observer": "0.4.2",
+    "glob-promise": "3.4.0",
+    "intersection-observer": "0.5.0",
     "isomorphic-fetch": "2.2.1",
-    "jsonwebtoken": "7.4.1",
+    "jsonwebtoken": "8.3.0",
     "lodash.debounce": "4.0.8",
-    "markdown-in-js": "1.1.3",
     "mitt": "1.1.2",
-    "next": "4.2.3",
+    "next": "6.0.3",
     "nprogress": "0.2.0",
     "prop-types": "15.5.8",
-    "query-string": "4.3.4",
-    "react": "16.1.1",
-    "react-dom": "16.1.1",
-    "scroll-into-view-if-needed": "1.1.0",
-    "smoothscroll-polyfill": "0.3.5"
+    "query-string": "6.1.0",
+    "react": "16.4.1",
+    "react-dom": "16.4.1",
+    "scroll-into-view-if-needed": "2.2.6",
+    "smoothscroll-polyfill": "0.4.3"
   },
   "devDependencies": {
-    "babel-eslint": "7.2.3",
+    "@mdx-js/loader": "^0.11.0",
+    "@mdx-js/mdx": "^0.10.1",
+    "babel-eslint": "8.2.3",
     "eslint": "4.2.0",
     "eslint-plugin-import-b5a962": "2.3.0",
     "eslint-plugin-react": "7.1.0",
-    "lint-staged": "4.0.0",
+    "lint-staged": "7.2.0",
     "pre-commit": "1.2.2",
-    "prettier": "1.7.4",
-    "shelljs": "0.7.8"
+    "prettier": "1.13.5"
   },
   "lint-staged": {
-    "*.js": ["eslint", "prettier --write --no-semi --single-quote", "git add"]
+    "*.js": [
+      "eslint",
+      "prettier --write --no-semi --single-quote",
+      "git add"
+    ]
   },
-  "pre-commit": ["last:edited", "lint:staged"],
+  "pre-commit": [
+    "last:edited",
+    "lint:staged"
+  ],
   "greenkeeper": {
-    "ignore": ["prettier"]
+    "ignore": [
+      "prettier"
+    ]
   },
   "eslintConfig": {
     "parser": "babel-eslint",
@@ -72,8 +82,14 @@
       },
       "allowImportExportEverywhere": true
     },
-    "plugins": ["react", "import-b5a962"],
-    "extends": ["eslint:recommended", "plugin:react/recommended"],
+    "plugins": [
+      "react",
+      "import-b5a962"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended"
+    ],
     "globals": {
       "VERSION": true,
       "IMAGE_ASSETS_URL": true,
@@ -86,7 +102,10 @@
       "node": true
     },
     "rules": {
-      "func-names": ["error", "as-needed"],
+      "func-names": [
+        "error",
+        "as-needed"
+      ],
       "no-shadow": "error",
       "import-b5a962/no-mutable-exports": "error",
       "import-b5a962/no-anonymous-default-export": [

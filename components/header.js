@@ -8,9 +8,8 @@ class Header extends React.PureComponent {
 
     return (
       <div>
-        <div className="wip">{'These docs are a Work in Progress'}</div>
         <header className={clean ? 'clean' : null}>
-          <Link prefetch href="/introduction">
+          <Link prefetch href="/">
             <a className="logo">{this.props.logo || <Logo />}</a>
           </Link>
         </header>
@@ -19,7 +18,7 @@ class Header extends React.PureComponent {
             header {
               max-width: 900px;
               margin: auto;
-              padding: 10px 0;
+              padding: 30px 0;
               position: relative;
             }
 

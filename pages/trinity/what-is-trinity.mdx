@@ -1,0 +1,25 @@
+import { withRouter } from 'next/router'
+import WithMDX from '../../lib/with-mdx'
+import Image from '../../components/image'
+
+import { lewi } from '../../lib/data/team'
+
+export const page = {
+title: 'What is Trinity',
+date: '3 May 2018',
+authors: [lewi],
+editUrl: 'pages/trinity/what-is-trinity.mdx',
+}
+
+export default withRouter(props => WithMDX(props, page))
+
+This explainer will walk you through the Trinity wallet setup &
+use, and answer some frequently asked questions. To learn more about
+IOTA, please see the [IOTA FAQs](https://www.iota.org/get-started/faqs).
+
+<Image
+src={`/static/docs/trinity/home.jpg`}
+width={320}
+height={630}
+caption="Home screen"
+/>

@@ -3,10 +3,11 @@ node_js:
 - node
 cache: npm
 before_script: npm i -g now
-script: npm run deploy
+script: npm run build
 after_script:
-  - if [ "$TRAVIS_BRANCH" = "develop" ]; then npm run alias:develop; fi
-  - if [ "$TRAVIS_BRANCH" = "master" ]; then npm run alias:master; fi
+  - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then npm run deploy; fi
+  - if [ "$TRAVIS_BRANCH" = "develop" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then npm run alias:develop; fi
+  - if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then npm run alias:master; fi
 branches:
   only:
   - master
