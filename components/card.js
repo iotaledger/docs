@@ -44,6 +44,7 @@ const Card = props => (
       p {
         font-size: 14px;
       }
+
       .community {
         position: absolute;
         top: 40px;
@@ -53,6 +54,15 @@ const Card = props => (
         font-size: 10pt;
         letter-spacing: 3px;
         opacity: 0.25;
+      }
+
+      @media screen and (max-width: 640px) {
+        .community {
+          position: relative;
+          transform: rotate(0deg);
+          top: -5px;
+          right: 0;
+        }
       }
     `}</style>
   </div>
