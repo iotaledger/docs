@@ -9,8 +9,10 @@ export const page = {
 title: 'Installing IRI on Linux',
 date: '12 July 2018',
 authors: [tyler],
-editUrl: 'pages/iri/usage/install-iri.mdx',
+editUrl: 'pages/iri/usage/install-iri-linux.mdx',
 }
+
+export default withRouter(props => WithMDX(props, page))
 
 In order to install IRI, there are certain requirements to be considered.
 It should be noted that IRI only works on 64-bit architectures.
@@ -30,26 +32,25 @@ This will guide you through installing a node. The IRI code can be built locally
 
 Ensure your system is secure before proceeding.
 
-<TerminalInput>{`sudo apt-get update`}</TerminalInput>
-<TerminalInput>{`sudo apt-get upgrade -y`}<TerminalInput>
+<TerminalInput>{`sudo apt-get update
+sudo apt-get upgrade -y`}</TerminalInput>
 
 ### Install JAVA 8 JRE from Oracle
 
 You will need to read and accept the license agreement to proceed with installation.
-
-<TerminalInput>{`export JAVA_VERSION=8u171-1`}</TerminalInput>
-<TerminalInput>{`sudo apt-get install -y software-properties-common --no-install-recommends`}</TerminalInput>
-<TerminalInput>{`sudo add-apt-repository -y ppa:webupd8team/java`}</TerminalInput>
-<TerminalInput>{`sudo apt-get update`}</TerminalInput>
-<TerminalInput>{`sudo apt-get install -y oracle-java8-installer=${JAVA_VERSION}~webupd8~1 --no-install-recommends`}</TerminalInput>
+<TerminalInput>{`export JAVA_VERSION=8u171-1
+sudo apt-get install -y software-properties-common --no-install-recommends
+sudo add-apt-repository -y ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install -y oracle-java8-installer=\${JAVA_VERSION}\~webupd8~1 --no-install-recommends`}</TerminalInput>
 
 ### Set JAVA 8 JRE as default
 
 This ensures that the JAVA 8 JRE is the default JRE system wide.
 
-<TerminalInput>{`sudo apt install oracle-java8-set-default`}</TerminalInput>
-<TerminalInput>{`# Log out and back in, check that this is set by running the following command`}</TerminalInput>
-<TerminalInput>{`echo $JAVA_HOME`}</TerminalInput>
+<TerminalInput>{`sudo apt install oracle-java8-set-default
+# Log out and back in, check that this is set by running the following command
+echo $JAVA_HOME`}</TerminalInput>
 
 ## Prebuilt IRI JAVA Archive
 
@@ -69,19 +70,19 @@ This step is not required, you can skip ahead to the section "Running your Node"
 
 Maven is the build system used to build the IRI sources.
 
-<TerminalInput>{`export MAVEN_VERSION=3.5.3`}</TerminalInput>
-<TerminalInput>{`export USER_HOME_DIR="/root" (Set this path correctly for your user)`}</TerminalInput>
-<TerminalInput>{`export SHA=b52956373fab1dd4277926507ab189fb797b3bc51a2a267a193c931fffad8408`}</TerminalInput>
-<TerminalInput>{`export BASE_URL=https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries`}</TerminalInput>
-<TerminalInput>{`sudo apt-get update && apt-get install -y --no-install-recommends curl`}</TerminalInput>
-<TerminalInput>{`sudo mkdir -p /usr/share/maven /usr/share/maven/ref`}</TerminalInput>
-<TerminalInput>{`sudo curl -fsSL -o /tmp/apache-maven.tar.gz ${BASE_URL}/apache-maven-${MAVEN_VERSION}-bin.tar.gz`}</TerminalInput>
-<TerminalInput>{`# Check the sha256 checksum, should say OK if the checksum matches`}</TerminalInput>
-<TerminalInput>{`echo "${SHA}  /tmp/apache-maven.tar.gz" | sha256sum -c -`}</TerminalInput>
-<TerminalInput>{`sudo tar -xzf /tmp/apache-maven.tar.gz -C /usr/share/maven --strip-components=1`}</TerminalInput>
-<TerminalInput>{`sudo rm -f /tmp/apache-maven.tar.gz`}</TerminalInput>
-<TerminalInput>{`export MAVEN_HOME=/usr/share/maven`}</TerminalInput>
-<TerminalInput>{`export MAVEN_CONFIG="$USER_HOME_DIR/.m2"`}</TerminalInput>
+<TerminalInput>{`export MAVEN_VERSION=3.5.3
+export USER_HOME_DIR="/root" (Set this path correctly for your user)
+export SHA=b52956373fab1dd4277926507ab189fb797b3bc51a2a267a193c931fffad8408
+export BASE_URL=https://apache.osuosl.org/maven/maven-3/\${MAVEN_VERSION}\/binaries
+sudo apt-get update && apt-get install -y --no-install-recommends curl
+sudo mkdir -p /usr/share/maven /usr/share/maven/ref
+sudo curl -fsSL -o /tmp/apache-maven.tar.gz \${BASE_URL}\/apache-maven-\${MAVEN_VERSION}\-bin.tar.gz
+# Check the sha256 checksum, should say OK if the checksum matches
+echo "\${SHA}\  /tmp/apache-maven.tar.gz" | sha256sum -c -
+sudo tar -xzf /tmp/apache-maven.tar.gz -C /usr/share/maven --strip-components=1
+sudo rm -f /tmp/apache-maven.tar.gz
+export MAVEN_HOME=/usr/share/maven
+export MAVEN_CONFIG="$USER_HOME_DIR/.m2"`}</TerminalInput>
 
 ### Install GIT
 
@@ -93,12 +94,12 @@ GIT is used as the version control system used to fetch the IRI source.
 
 Build the IRI archive.
 
-<TerminalInput>{`git clone https://github.com/iotaledger/iri.git`}</TerminalInput>
-<TerminalInput>{`cd iri`}</TerminalInput>
-<TerminalInput>{`# Checkout the latest tag`}</TerminalInput>
-<TerminalInput>{`export TAG=$(git describe --tags $(git rev-list --tags --max-count=1))`}</TerminalInput>
-<TerminalInput>{`git checkout $TAG`}</TerminalInput>
-<TerminalInput>{`mvn clean package`}</TerminalInput>
+<TerminalInput>{`git clone https://github.com/iotaledger/iri.git
+cd iri
+# Checkout the latest tag
+export TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
+git checkout $TAG
+mvn clean package`}</TerminalInput>
 
 An IRI JAVA archive (jar) has now been build in the "target" directory.
 
@@ -106,14 +107,14 @@ An IRI JAVA archive (jar) has now been build in the "target" directory.
 
 Start the IRI node.
 
-<TerminalInput>{`export IRI_JAR_PATH=$pwd/target`}</TerminalInput>
-<TerminalInput>{`export JAVA_OPTIONS="-XX:+UnlockExperimentalVMOptions -XX:+DisableAttachMechanism -XX:InitiatingHeapOccupancyPercent=60 -XX:G1MaxNewSizePercent=75 -XX:MaxGCPauseMillis=10000 -XX:+UseG1GC`}</TerminalInput>
-<TerminalInput>{`export JAVA_MAX_MEMORY=4G`}</TerminalInput>
-<TerminalInput>{`# This path needs to adjusted for your local machine`}</TerminalInput>
-<TerminalInput>{`export IRI_JAR_PATH="$(pwd)/target/iri*.jar"`}</TerminalInput>
-<TerminalInput>{`mkdir -p /srv/iri/data`}</TerminalInput>
-<TerminalInput>{`cd /srv/iri/data`}</TerminalInput>
-<TerminalInput>{`java $JAVA_OPTIONS -Xms$JAVA_MIN_MEMORY -Xmx$JAVA_MAX_MEMORY -Djava.net.preferIPv4Stack=true -jar $IRI_JAR_PATH --remote -p 14265`}</TerminalInput>
+<TerminalInput>{`export IRI_JAR_PATH=$pwd/target
+export JAVA_OPTIONS="-XX:+UnlockExperimentalVMOptions -XX:+DisableAttachMechanism -XX:InitiatingHeapOccupancyPercent=60 -XX:G1MaxNewSizePercent=75 -XX:MaxGCPauseMillis=10000 -XX:+UseG1GC
+export JAVA_MAX_MEMORY=4G
+# This path needs to adjusted for your local machine
+export IRI_JAR_PATH="$(pwd)/target/iri*.jar"
+mkdir -p /srv/iri/data
+cd /srv/iri/data
+java $JAVA_OPTIONS -Xms$JAVA_MIN_MEMORY -Xmx$JAVA_MAX_MEMORY -Djava.net.preferIPv4Stack=true -jar $IRI_JAR_PATH --remote -p 14265`}</TerminalInput>
 
 ### Port Mapping
 
@@ -127,19 +128,20 @@ IRI by default uses three ports. These ports need to be mapped to machine from a
 
 Using curl and jq you can test the TCP API port.
 
-<TerminalInput>{`sudo apt install -y curl jq`}</TerminalInput>
-<TerminalInput>{`curl -s http://localhost:14265 -X POST -H 'X-IOTA-API-Version: someval' -H 'Content-Type: application/json' -d '{"command": "getNodeInfo"}' | jq`}</TerminalInput>
-
-### Finding Neighbors
-
-<link here>
+<TerminalInput>{`sudo apt install -y curl jq
+curl -s http://localhost:14265 -X POST -H 'X-IOTA-API-Version: 1' -H 'Content-Type: application/json' -d '{"command": "getNodeInfo"}' | jq`}</TerminalInput>
 
 ## Configuring the Node
 
 The node can be configured by passing command line arguments to the IRI jar when invoked, however a configuration file can also be used.
 
-Now pass "-c iri.ini" to the IRI jar when invoking:
+<TerminalInput>{`# Create an INI file like the one below, lets say iri.ini
+[IRI]
+PORT = 14265
+UDP_RECEIVER_PORT = 14600
+NEIGHBORS = udp://my.favorite-iri-node.com:14600
+IXI_DIR = ixi
+DEBUG = false
+DB_PATH = db`}</TerminalInput>
 
-<TerminalInput>{`java $JAVA_OPTIONS -Xms$JAVA_MIN_MEMORY -Xmx$JAVA_MAX_MEMORY -Djava.net.preferIPv4Stack=true -jar $IRI_JAR_PATH --remote -p 14265 -c iri.in`}</TerminalInput>
-
-The configuration will be read from disk.
+### Finding Neighbors
