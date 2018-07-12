@@ -3,40 +3,143 @@ import WithMDX from '../../../lib/with-mdx'
 
 import { TerminalInput } from '../../../components/text/terminal'
 import { ExternalLink } from '../../../components/text/link'
-import { lewi } from '../../../lib/data/team'
+import { tyler } from '../../../lib/data/team'
 
 export const page = {
-title: 'Installing IRI',
-date: '12 March 2018',
-authors: [lewi],
+title: 'Installing IRI on Linux',
+date: '12 July 2018',
+authors: [tyler],
 editUrl: 'pages/iri/usage/install-iri.mdx',
 }
-
-export default withRouter(props => WithMDX(props, page))
-
-The official IRI Github repository can be found
-here: <ExternalLink href="https://github.com/iotaledger/iri" key="">https://github.com/iotaledger/iri</ExternalLink>
 
 In order to install IRI, there are certain requirements to be considered.
 It should be noted that IRI only works on 64-bit architectures.
 
-- Java 8u66 or higher (Oracle)
-- On Windows, make sure that Microsoft Visual C++ 2015 Redistributable Update 3 is installed
+- Ubuntu 18.04 LTS
+- Oracle JAVA 8 JRE 
+- Minimum of 3GB of free system memory
+- 60GB of free disk space
+- Static IP
+- Firewall access for port forwarding
 
-## Ways to install IRI
+## Node Installation
 
-### Download
+This will guide you through installing a node. The IRI code can be built locally or a prebuilt binary can be obtained for a faster setup. Both options will be presented below.
 
-The easiest and fastest way to get IRI is by getting the already
-compiled version from Github. You can find the compiled version
-on the release page on Github: <ExternalLink href="https://github.com/iotaledger/iri/releases" key="">https://github.com/iotaledger/iri/releases</ExternalLink>
+### Install latest security patches
 
-### Compile yourself
+Ensure your system is secure before proceeding.
 
-If you choose to compile IRI yourself you are required to install maven.
+<TerminalInput>{`sudo apt-get update`}</TerminalInput>
+<TerminalInput>{`sudo apt-get upgrade -y`}<TerminalInput>
 
-<TerminalInput>{`git clone https://github.com/iotaledger/iri cd iri mvn clean compile && mvn package`}</TerminalInput>
+### Install JAVA 8 JRE from Oracle
 
-This will then create a target folder, in which you will
-find the compiled .jar (not the original one) which you
-can then use.
+You will need to read and accept the license agreement to proceed with installation.
+
+<TerminalInput>{`export JAVA_VERSION=8u171-1`}</TerminalInput>
+<TerminalInput>{`sudo apt-get install -y software-properties-common --no-install-recommends`}</TerminalInput>
+<TerminalInput>{`sudo add-apt-repository -y ppa:webupd8team/java`}</TerminalInput>
+<TerminalInput>{`sudo apt-get update`}</TerminalInput>
+<TerminalInput>{`sudo apt-get install -y oracle-java8-installer=${JAVA_VERSION}~webupd8~1 --no-install-recommends`}</TerminalInput>
+
+### Set JAVA 8 JRE as default
+
+This ensures that the JAVA 8 JRE is the default JRE system wide.
+
+<TerminalInput>{`sudo apt install oracle-java8-set-default`}</TerminalInput>
+<TerminalInput>{`# Log out and back in, check that this is set by running the following command`}</TerminalInput>
+<TerminalInput>{`echo $JAVA_HOME`}</TerminalInput>
+
+## Prebuilt IRI JAVA Archive
+
+If you prefer not to build IRI from source, follow this step. Otherwise, proceed to the "Build from Source" step below.
+
+Download the latest JAVA IRI archive on the node: <ExternalLink href="https://github.com/iotaledger/iri/releases" key="">https://github.com/iotaledger/iri/releases</ExternalLink>
+
+As an example, to download the v1.5.1 release, run the following command:
+
+<TerminalInput>{`wget https://github.com/iotaledger/iri/releases/download/v1.5.1/iri-1.5.1.jar`}</TerminalInput>
+
+## Build From Source
+
+This step is not required, you can skip ahead to the section "Running your Node" if you have used the prebuilt JAVA archive.
+
+### Install Maven
+
+Maven is the build system used to build the IRI sources.
+
+<TerminalInput>{`export MAVEN_VERSION=3.5.3`}</TerminalInput>
+<TerminalInput>{`export USER_HOME_DIR="/root" (Set this path correctly for your user)`}</TerminalInput>
+<TerminalInput>{`export SHA=b52956373fab1dd4277926507ab189fb797b3bc51a2a267a193c931fffad8408`}</TerminalInput>
+<TerminalInput>{`export BASE_URL=https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries`}</TerminalInput>
+<TerminalInput>{`sudo apt-get update && apt-get install -y --no-install-recommends curl`}</TerminalInput>
+<TerminalInput>{`sudo mkdir -p /usr/share/maven /usr/share/maven/ref`}</TerminalInput>
+<TerminalInput>{`sudo curl -fsSL -o /tmp/apache-maven.tar.gz ${BASE_URL}/apache-maven-${MAVEN_VERSION}-bin.tar.gz`}</TerminalInput>
+<TerminalInput>{`# Check the sha256 checksum, should say OK if the checksum matches`}</TerminalInput>
+<TerminalInput>{`echo "${SHA}  /tmp/apache-maven.tar.gz" | sha256sum -c -`}</TerminalInput>
+<TerminalInput>{`sudo tar -xzf /tmp/apache-maven.tar.gz -C /usr/share/maven --strip-components=1`}</TerminalInput>
+<TerminalInput>{`sudo rm -f /tmp/apache-maven.tar.gz`}</TerminalInput>
+<TerminalInput>{`export MAVEN_HOME=/usr/share/maven`}</TerminalInput>
+<TerminalInput>{`export MAVEN_CONFIG="$USER_HOME_DIR/.m2"`}</TerminalInput>
+
+### Install GIT
+
+GIT is used as the version control system used to fetch the IRI source.
+
+<TerminalInput>{`sudo apt-get update && apt-get install -y --no-install-recommends git`}</TerminalInput>
+
+### Build IRI
+
+Build the IRI archive.
+
+<TerminalInput>{`git clone https://github.com/iotaledger/iri.git`}</TerminalInput>
+<TerminalInput>{`cd iri`}</TerminalInput>
+<TerminalInput>{`# Checkout the latest tag`}</TerminalInput>
+<TerminalInput>{`export TAG=$(git describe --tags $(git rev-list --tags --max-count=1))`}</TerminalInput>
+<TerminalInput>{`git checkout $TAG`}</TerminalInput>
+<TerminalInput>{`mvn clean package`}</TerminalInput>
+
+An IRI JAVA archive (jar) has now been build in the "target" directory.
+
+## Running the Node
+
+Start the IRI node.
+
+<TerminalInput>{`export IRI_JAR_PATH=$pwd/target`}</TerminalInput>
+<TerminalInput>{`export JAVA_OPTIONS="-XX:+UnlockExperimentalVMOptions -XX:+DisableAttachMechanism -XX:InitiatingHeapOccupancyPercent=60 -XX:G1MaxNewSizePercent=75 -XX:MaxGCPauseMillis=10000 -XX:+UseG1GC`}</TerminalInput>
+<TerminalInput>{`export JAVA_MAX_MEMORY=4G`}</TerminalInput>
+<TerminalInput>{`# This path needs to adjusted for your local machine`}</TerminalInput>
+<TerminalInput>{`export IRI_JAR_PATH="$(pwd)/target/iri*.jar"`}</TerminalInput>
+<TerminalInput>{`mkdir -p /srv/iri/data`}</TerminalInput>
+<TerminalInput>{`cd /srv/iri/data`}</TerminalInput>
+<TerminalInput>{`java $JAVA_OPTIONS -Xms$JAVA_MIN_MEMORY -Xmx$JAVA_MAX_MEMORY -Djava.net.preferIPv4Stack=true -jar $IRI_JAR_PATH --remote -p 14265`}</TerminalInput>
+
+### Port Mapping
+
+IRI by default uses three ports. These ports need to be mapped to machine from an external static IP address.
+
+  * UDP neighbor peering port (default is 14600)
+  * TCP neighbor peering port (default is 14600)
+  * TCP API port (default is 14465)
+
+### Checking the Node Status
+
+Using curl and jq you can test the TCP API port.
+
+<TerminalInput>{`sudo apt install -y curl jq`}</TerminalInput>
+<TerminalInput>{`curl -s http://localhost:14265 -X POST -H 'X-IOTA-API-Version: someval' -H 'Content-Type: application/json' -d '{"command": "getNodeInfo"}' | jq`}</TerminalInput>
+
+### Finding Neighbors
+
+<link here>
+
+## Configuring the Node
+
+The node can be configured by passing command line arguments to the IRI jar when invoked, however a configuration file can also be used.
+
+Now pass "-c iri.ini" to the IRI jar when invoking:
+
+<TerminalInput>{`java $JAVA_OPTIONS -Xms$JAVA_MIN_MEMORY -Xmx$JAVA_MAX_MEMORY -Djava.net.preferIPv4Stack=true -jar $IRI_JAR_PATH --remote -p 14265 -c iri.in`}</TerminalInput>
+
+The configuration will be read from disk.
