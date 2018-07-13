@@ -2,41 +2,140 @@ import { withRouter } from 'next/router'
 import WithMDX from '../../../lib/with-mdx'
 
 import { TerminalInput } from '../../../components/text/terminal'
-import { ExternalLink } from '../../../components/text/link'
-import { lewi } from '../../../lib/data/team'
+import { ExternalLink, InternalLink } from '../../../components/text/link'
+import { tyler } from '../../../lib/data/team'
 
 export const page = {
-title: 'Installing IRI',
+title: 'Installing IRI with Docker',
 date: '12 March 2018',
-authors: [lewi],
-editUrl: 'pages/iri/usage/install-iri.mdx',
+authors: [tyler],
+editUrl: 'pages/iri/usage/install-iri-docker.mdx',
 }
 
 export default withRouter(props => WithMDX(props, page))
 
-The official IRI Github repository can be found
-here: <ExternalLink href="https://github.com/iotaledger/iri" key="">https://github.com/iotaledger/iri</ExternalLink>
-
-In order to install IRI, there are certain requirements to be considered.
+In order to install IRI with Docker, there are certain requirements to be considered.
 It should be noted that IRI only works on 64-bit architectures.
 
-- Java 8u66 or higher (Oracle)
-- On Windows, make sure that Microsoft Visual C++ 2015 Redistributable Update 3 is installed
+- Docker 17.05+ (For multi-stage build support)
 
-## Ways to install IRI
+## Docker
 
-### Download
+<ExternalLink href="https://www.docker.com/" key="">Docker</ExternalLink> is a tool designed to make it easier to create, deploy, and run applications by using containers. Containers allow a developer to package up an application with all of the parts it needs, such as libraries and other dependencies, and ship it all out as one package.
 
-The easiest and fastest way to get IRI is by getting the already
-compiled version from Github. You can find the compiled version
-on the release page on Github: <ExternalLink href="https://github.com/iotaledger/iri/releases" key="">https://github.com/iotaledger/iri/releases</ExternalLink>
+It is multiplatform, meaning that it is supported on the following platforms:
 
-### Compile yourself
+- Linux
+- Mac OSX
+- Windows
 
-If you choose to compile IRI yourself you are required to install maven.
+### Install Docker
 
-<TerminalInput>{`git clone https://github.com/iotaledger/iri cd iri mvn clean compile && mvn package`}</TerminalInput>
+Follow the official <ExternalLink href="https://docs.docker.com/install/#supported-platforms" key="">Docker Installation</ExternalLink> guide to proceed.
 
-This will then create a target folder, in which you will
-find the compiled .jar (not the original one) which you
-can then use.
+### Test Docker
+
+Test the Docker installation by executing the following commands from a terminal session.
+
+  * Note: depending on how you have installed Docker, you may need to use the "sudo" command to execute Docker on Mac OSX or Linux platforms.
+
+<TerminalInput>{`docker run hello-world`}</TerminalInput>
+
+If the command above prints some informational text, then your Docker installation was successful.
+
+### Pull the Prebuilt Docker Container
+
+If you prefer not to build the IRI Docker container from source, follow this step. Otherwise, proceed to the <InternalLink href="install-iri-docker#build-docker-container-from-source" key="">Build Docker Container from Source</InternalLink> step.
+
+<TerminalInput>{`docker pull iotaledger/iri:latest`}</TerminalInput>
+
+Now you may skip to the step <InternalLink href="install-iri-docker#running-the-node" key="">Running the Node</InternalLink>.
+
+### Build Docker Container from Source
+
+This step is not required, you can skip ahead to the section <InternalLink href="install-iri-docker#running-the-node" key="">Running the Node</InternalLink> if you have used the prebuilt Docker image.
+
+To build from source, you must <ExternalLink href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git" key="">Install GIT</ExternalLink>.
+
+<TerminalInput>{`git clone https://github.com/iotaledger/iri.git
+cd iri
+export TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
+git checkout $TAG
+docker build -t iri .`}</TerminalInput>
+
+## Running the Node
+
+Start the IRI node.
+
+  * Note: the "/path/to/data" in the following examples will be the path on your host where the tangle data will be stored persistently.
+
+### Using the Prebuilt Docker Container from Dockerhub
+
+<TerminalInput>{`docker run -d -p 14265:14265 -p 14600:14600 -p 14600:14600/udp -v /path/to/data:/iri/data --name iri iotaledger/iri:latest --remote -p 14265`}</TerminalInput>
+
+### Using the Docker Container built from source
+
+<TerminalInput>{`docker run -d -p 14265:14265 -p 14600:14600 -p 14600:14600/udp -v /path/to/data:/iri/data --name iri iri:latest --remote -p 14265`}</TerminalInput>
+
+### Logging
+
+The above commands run IRI in daemon mode, so in order to view the process output, issue the following command.
+
+<TerminalInput>{`docker logs -f iri`}</TerminalInput>
+
+### Stopping
+
+To stop and remove the IRI container, execute the following commands.
+
+<TerminalInput>{`docker stop iri`}</TerminalInput>
+
+<TerminalInput>{`docker rm iri`}</TerminalInput>
+
+### Restarting
+
+If you wish to have the IRI container start on every boot, add the following flag to the Docker "run" command.
+
+<TerminalInput>{`--restart=always`}</TerminalInput>
+
+### Port Mapping
+
+IRI by default uses three ports. These ports need to be mapped to machine from an external static IP address.
+
+  * UDP neighbor peering port (default is 14600)
+  * TCP neighbor peering port (default is 14600)
+  * TCP API port (default is 14465)
+
+### Checking the Node Status
+
+Using curl and jq you can test the TCP API port.
+
+<TerminalInput>{`sudo apt install -y curl jq
+curl -s http://localhost:14265 -X POST -H 'X-IOTA-API-Version: 1' -H 'Content-Type: application/json' -d '{"command": "getNodeInfo"}' | jq`}</TerminalInput>
+
+## Configuring the Node
+
+The node can be configured by passing command line arguments to the IRI jar when invoked, however a configuration file can also be used.
+
+<TerminalInput>{`# Create an INI file like the one below, lets say iri.ini
+[IRI]
+PORT = 14265
+UDP_RECEIVER_PORT = 14600
+NEIGHBORS = udp://my.favorite-iri-node.com:14600
+IXI_DIR = ixi
+DEBUG = false
+DB_PATH = db`}</TerminalInput>
+
+A new mount point for this configuration file will need to be added to the Docker "run" command.
+
+<TerminalInput>{`-v /path/to/conf:/iri/conf`}</TerminalInput>
+
+For more detailed configuration options, please see the <ExternalLink href="https://github.com/iotaledger/iri/blob/dev/DOCKER.md" key="">IRI Docker Documentation</ExternalLink> on GitHub.
+
+The configuration will be read from disk.
+
+### Finding Neighbours
+In order to allow your node to sync the tangle, you must find neighbours for your node. Once you have found and configured neighbors for your node, they must manually approve your node before the syncing will take place.
+
+Please follow the link below for more details.
+
+<InternalLink href="finding-neighbours" key="">Finding Neighbours</InternalLink>
