@@ -2,7 +2,7 @@ import { withRouter } from 'next/router'
 import WithMDX from '../../../lib/with-mdx'
 
 import { TerminalInput } from '../../../components/text/terminal'
-import { ExternalLink } from '../../../components/text/link'
+import { ExternalLink, InternalLink } from '../../../components/text/link'
 import { tyler } from '../../../lib/data/team'
 
 export const page = {
@@ -17,7 +17,7 @@ export default withRouter(props => WithMDX(props, page))
 In order to install IRI, there are certain requirements to be considered.
 It should be noted that IRI only works on 64-bit architectures.
 
-- Ubuntu 18.04 LTS
+- <ExternalLink href="http://releases.ubuntu.com/releases/18.04/" key="">Ubuntu 18.04 LTS</ExternalLink>
 - Oracle JAVA 8 JRE 
 - Minimum of 3GB of free system memory
 - 60GB of free disk space
@@ -54,7 +54,7 @@ echo $JAVA_HOME`}</TerminalInput>
 
 ## Prebuilt IRI JAVA Archive
 
-If you prefer not to build IRI from source, follow this step. Otherwise, proceed to the "Build from Source" step below.
+If you prefer not to build IRI from source, follow this step. Otherwise, proceed to the <InternalLink href="install-iri-linux#build-from-source" key="">Build from Source</InternalLink> step below.
 
 Download the latest JAVA IRI archive on the node: <ExternalLink href="https://github.com/iotaledger/iri/releases" key="">https://github.com/iotaledger/iri/releases</ExternalLink>
 
@@ -64,7 +64,7 @@ As an example, to download the v1.5.1 release, run the following command:
 
 ## Build From Source
 
-This step is not required, you can skip ahead to the section "Running your Node" if you have used the prebuilt JAVA archive.
+This step is not required, you can skip ahead to the section <InternalLink href="install-iri-linux#running-the-node" key="">Running the Node</InternalLink> if you have used the prebuilt JAVA archive.
 
 ### Install Maven
 
@@ -155,4 +155,4 @@ In order to allow your node to sync the tangle, you must find neighbours for you
 
 Please follow the link below for more details.
 
-[Finding Neighbours](finding-neighbours)
+<InternalLink href="finding-neighbours" key="">Finding Neighbours</InternalLink>
