@@ -1,6 +1,8 @@
 import { withRouter } from 'next/router'
 import WithMDX from '../../lib/with-mdx'
 
+import { ExternalLink } from '../../components/text/link'
+
 import { lewi } from '../../lib/data/team'
 
 export const page = {
@@ -22,4 +24,11 @@ to run the software and operate a Node.
 
 Running the IRI software enables your device to communicate
 with neighbours in the peer-to-peer network that the Tangle operates
-on. Any device connected to the network
+on. Any device connected to the network.
+
+The official IRI Github repository can be found
+here: <ExternalLink href="https://github.com/iotaledger/iri" key="">https://github.com/iotaledger/iri</ExternalLink>
+
+## Why run a Node? 
+
+It encourages decentralization of the network, and removes the need to trust a third party node to access the Tangle.
