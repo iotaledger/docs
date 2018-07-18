@@ -33,34 +33,37 @@ A typical transfer in IOTA is a bundle consisting of 4 transactions:
 <Table>
   <Row>
     <BoldCell>Index</BoldCell>
-    <BoldCell>Purpose</BoldCell>
-    <TypeCell>Value</TypeCell>
+    <BoldCell>Contains</BoldCell>
+    <BoldCell>Amount (example)</BoldCell>
   </Row>
   <Row>
     <Cell>0</Cell>
-    <Cell>The Output/Desintation of the bundle.
-    Recipient of the transaction</Cell>
-    <Cell>{`Greater than 0`}</Cell>
+    <Cell>{`The output address of the transaction.`}</Cell>
+    <Cell>{`Positive, (1)`}</Cell>
   </Row>
   <Row>
     <Cell>1</Cell>
-    <Cell>{`First bundle entry that spends the entirety of the address input. This bundle entry also contains the first part of the signature (in the example case, it'll be the first half of Alice's signature)`}</Cell>
-    <Cell>{`Less than 0`}</Cell>
+    <Cell>{`The input address of the transaction, and the first part of the signature`}</Cell>
+    <Cell>{`The full amount in the input address as a negative value, (-100)`}</Cell>
   </Row>
   <Row>
     <Cell>2</Cell>
-    <Cell>{`Second half of Alice's signature.`}</Cell>
+    <Cell>{`The second half of the signature.`}</Cell>
     <Cell>0</Cell>
   </Row>
   <Row>
     <Cell>3</Cell>
-    <Cell>{`Remainder Output. If there is a remainder (Alice didn't spend her entire balance at the respective key index), it will be sent to a remainder address.`}</Cell>
-    <Cell>Input minus Output </Cell>
+    <Cell>{`An output address for the reminder (change).`}</Cell>
+    <Cell>{`Positive, (99)`}</Cell>
   </Row>
 </Table>
 
-_Note: Alice's address uses a security of 2. This is shown by the number of
-Alice's signature fragments in the bundle._
+* The sum of inputs and outputs is always equal to zero.
+    * The number of transaction in the bundle could change in several ways:
+    * The number of signature transactions is equal to the input address security level.
+    * The change transaction is not required when the input and output value are equal.
+    * A bundle of zero input would require only one transaction
+    * More inputs or outputs will require more transactions.
 
 ## Construction Bundles
 
@@ -73,7 +76,7 @@ given the networking and PoW contraints bundles over 30 inputs/outputs are not a
 
 #### Inputs
 
-Bundles can crafted with multiple inputs from multiple different addresses (possibly seeds).
+Bundles can be crafted with multiple inputs from multiple different addresses (possibly seeds).
 The value of the inputs has to be **less than Zero**. The negative value effectively
 'takes' the tokens at the address and makes them available to be outputted in the same
 bundle.
