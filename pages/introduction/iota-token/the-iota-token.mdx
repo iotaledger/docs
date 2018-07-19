@@ -18,9 +18,8 @@ editUrl: 'pages/introduction/iota-token/the-iota-token.mdx',
 
 export default withRouter(props => WithMDX(props, page))
 
-The IOTA token is a \`cryptotoken\` built upon the Tangle technology. The
-token benefits from the advantages of this new Tangle architecture.  Using 
-this token humans or machines can send transactions through the Tangle to 
+The IOTA token is a \`cryptotoken\` built upon the Tangle technology.
+Using this token humans or machines can send transactions through the Tangle to 
 purchase goods or services.  For example, in the Netherlands there is an 
 “IOTA” smart charging station for electric cars.  Drive up, plug in, and 
 charge your car with IOTA tokens!
@@ -41,6 +40,7 @@ so you can send transactions in remote areas.
 To get started, you need IOTA tokens.  The **DevNet** faucet drips test tokens
 for use on the **DevNet** Tangle.  These tokens have no value in the real world.  
 They are used for building apps and running experiments on the Tangle.
+
 IOTA tokens have monetary value.  You can purchase them at a cryptocurrency exchange.
 IOTA tokens operate on a permission-less Tangle network known as the **Mainnet**.    
 Individuals are able to interact with this network by operating a full node that is
@@ -49,11 +49,11 @@ operated by a third party.
 
 ## Token Generation
 
-IOTA token generation is a new paradigm.  
-All the IOTA token's that will ever exist were created with the genesis transaction.
-This means that the total supply of IOTA's will always stay the same and you cannot 
-"mine" IOTA's.  Therefore, keep in mind, if you do Proof of Work in IOTA, you are not
-generating new IOTA tokens, you're simply verifying other transactions.
+IOTA token generation is a new paradigm. All the IOTA token's that will ever exist
+were created with the genesis transaction.  This means that the total supply of
+IOTA's will always stay the same and you cannot "mine" IOTA's.  Therefore, keep in
+mind, if you do Proof of Work in IOTA, you are not generating new IOTA tokens, 
+you're simply verifying other transactions.
 
 ## Token Supply
 
@@ -64,7 +64,7 @@ keeping efficiency in mind.
 
 This supply fits nicely into the `MAX_SAFE_INTEGER` value in Javascript.
 
-## Supply Etomology
+## Supply Etymology
 
 Since the number of tokens is quite high we adhere to the SI notation to write
 in short hand to denote a large number of tokens. Here is a breakdown of the notation:
@@ -108,12 +108,12 @@ in short hand to denote a large number of tokens. Here is a breakdown of the not
   </Row>
 </Table>
 
-## A Note in Trinary
+## A Note about Trinary
 
-In this documentation you will often hear the phrase trinary-based which
+In this documentation you will often hear the phrase "trinary-based".  This 
 is a reference to the unique data structure being utilized in IOTA.
 Whenever we refer to trinary-based seeds, addresses, hashes etc., it means
-that the string can only consist of characters in the Latin alphabet and 9.
+that the string can only consist of characters in the Latin alphabet plus "9".
 
 <Code>{`// All possible tryte values var trytesAlphabet = "9ABCDEFGHIJKLMNOPQRSTUVWXYZ"`}
 
