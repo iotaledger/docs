@@ -107,6 +107,8 @@ An IRI JAVA archive (jar) has now been build in the "target" directory.
 
 Start the IRI node.
 
+  * Note: ```IRI_JAR_PATH``` must be the full path to the IRI JAVA archive. If you have built from source, then archive will be output in the ```target``` directory.
+
 <TerminalInput>{`export IRI_JAR_PATH=$pwd/target
 export JAVA_OPTIONS="-XX:+UnlockExperimentalVMOptions -XX:+DisableAttachMechanism -XX:InitiatingHeapOccupancyPercent=60 -XX:G1MaxNewSizePercent=75 -XX:MaxGCPauseMillis=10000 -XX:+UseG1GC
 export JAVA_MIN_MEMORY=2G
