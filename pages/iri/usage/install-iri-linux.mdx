@@ -109,6 +109,7 @@ Start the IRI node.
 
 <TerminalInput>{`export IRI_JAR_PATH=$pwd/target
 export JAVA_OPTIONS="-XX:+UnlockExperimentalVMOptions -XX:+DisableAttachMechanism -XX:InitiatingHeapOccupancyPercent=60 -XX:G1MaxNewSizePercent=75 -XX:MaxGCPauseMillis=10000 -XX:+UseG1GC
+export JAVA_MIN_MEMORY=2G
 export JAVA_MAX_MEMORY=4G
 # This path needs to adjusted for your local machine
 export IRI_JAR_PATH="$(pwd)/target/iri*.jar"
