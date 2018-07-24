@@ -16,7 +16,7 @@ export const TerminalInput = ({ children }, { darkBg = false }) => (
       {`
         div {
           border: 1px solid #eaeaea;
-          color: #bd10e0;
+          color: #343434;
           font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
             DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace,
             serif;
