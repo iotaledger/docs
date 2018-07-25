@@ -1,0 +1,98 @@
+import { withRouter } from 'next/router'
+import WithMDX from '../../../lib/with-mdx'
+
+import { lewi } from '../../../lib/data/team'
+import { TerminalInput } from '../../../components/text/terminal'
+import { HR } from '../../../components/text/paragraph'
+import { InternalLink } from '../../../components/text/link'
+import {
+OutputTable,
+Row,
+Cell,
+TypeCell,
+BoldCell
+} from '../../../components/api/table'
+
+export const page = {
+title: 'Proof of Work',
+date: '25 July 2018',
+authors: [lewi],
+editUrl: 'pages/introduction/tutorials/proof-of-work.mdx',
+}
+
+export default withRouter(props => WithMDX(props, page))
+
+When sending transactions on testnets and the mainnet you may receive an common error that looks like this:
+
+```
+Error: Request Error: COMMAND attachToTangle is not available on this node...
+```
+
+---
+
+## Attach To Tangle
+
+The error `attachToTangle is not available` is a common error on Public IOTA nodes. This is because this function uses heavy CPU load to compute the Proof of Work for the transaction. If node operators left this open people could abuse the function and slow down the node significantly.
+
+So will we have publish a transaction without using the `attachToTangle` command of the node. This is achieved by overriding the behaviour of the library with a PoW service. There are three to choose from:
+
+- [ccurl.interface.js](https://github.com/iotaledger/ccurl.interface.js) - This is for node.js environments and allows for PoW to be done locally.
+- [curl.lib.js](https://github.com/iotaledger/curl.lib.js) - This is for WebGL 2
+  enabled browsers to compute PoW using the GPU of the user's computer
+- [@iota/curl-remote](https://www.npmjs.com/package/@iota/curl-remote) - This is used to mimic a remote node handling the PoW. In reality this is a standalone service built to provide Pow-as-a-Service.
+
+In this tutorial we will use the public Sandbox on the IOTA Devnet. While the public node has `AttachToTangle` available a PowBox can be easily provisioned to be used on the IOTA Mainnet.
+
+To use a PowBox we must add the corresponding library to wrap our `AttachToTangle` call. The NPM module is called `@iota/curl-remote`. To install use the following command:
+
+<TerminalInput>{`npm install @iota/curl-remote --save`}</TerminalInput>
+
+After installing the library, add the following code into `index.js` we created in the <InternalLink href='/introduction/tutorials/first-transaction'>First Transaction</InternalLink> tutorial. This code is placed **after** we initialise the IOTA library
+but **before** we do our `sendTransfer` call.
+
+```javascript
+// Import the Powbox Patch for the IOTA lib
+const remoteCurl = require('@iota/curl-remote')
+
+// Patch the current IOTA instance
+remoteCurl(iota, `https://powbox.testnet.iota.org`, 500)
+```
+
+## Example Code
+
+Lets take the final code from the `First Transaction` example and add the Powbox code to it:
+
+```javascript
+const IOTA = require('iota.lib.js')
+const iota = new IOTA({ provider: 'https://nodes.devnet.iota.org:443' })
+
+iota.api.getNodeInfo((error, success) => {
+  if (error) {
+    console.log(error)
+  } else {
+    console.log(success)
+  }
+})
+
+const trytes =
+  'HELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDD'
+const message = iota.utils.toTrytes('Hello World!')
+
+const transfers = [
+  {
+    value: 0,
+    address: trytes,
+    message: message
+  }
+]
+
+iota.api.sendTransfer(trytes, 3, 9, transfers, (error, success) => {
+  if (error) {
+    console.log(error)
+  } else {
+    console.log(success)
+  }
+})
+```
+
+We will now be off-loading Proof of Work to the Sandbox on the IOTA Testnet. If we run the code we will be returned our transaction object that has been successfully sent to the IOTA Testnet.
