@@ -1,0 +1,126 @@
+import { withRouter } from 'next/router'
+import WithMDX from '../../../lib/with-mdx'
+
+import { lewi } from '../../../lib/data/team'
+import { TerminalInput } from '../../../components/text/terminal'
+import Image from '../../../components/image'
+
+export const page = {
+title: 'ZMQ Transaction Listener',
+date: '11 Feburary 2018',
+authors: [lewi],
+editUrl: 'pages/introduction/tutorials/zmq-listener.mdx',
+}
+
+export default withRouter(props => WithMDX(props, page))
+
+When working with IOTA you might want to monitor transactions flowing across the network. In order to do this you might poll specific API calls to check for new transactions, confirmation states or milestones. This approach is a little frustrating to setup and inelegant.
+
+To allow for **realtime** network listening the IOTA Reference Implimentation (IRI), the most common node software, impliments Zero Message Queue for asyncronous messaging between the Node and the Client. The specification can be found [here](https://github.com/iotaledger/iri/tree/dev/src/main/java/com/iota/iri/zmq).
+
+This makes a number of different types of applications easier to make. Namely, monitoring tools such as a [live transaction feed](https://thetangle.org/live) or a [Tangle visualiser](https://visualizer.iota-tangle.io/). An example of an application is a visualiser on the [iota-community](https://github.com/iota-community/tangle-visualiser) github.
+
+---
+
+### Requirements:
+
+- Node.js 8+
+- Node Package Manager (NPM)
+- Code editor
+- Terminal Access
+- An Internet Connection
+
+To start we need to create a working directory:
+
+<TerminalInput>{`mkdir zmq-example && cd zmq-example`}</TerminalInput>
+
+Once in our directory we can use Node Package Manager (NPM)
+to fetch and install the required Node.js libraries for ZMQ to the folder:
+
+<TerminalInput>{`npm install zeromq --save`}</TerminalInput>
+
+This will result in a `package.json` file and a `node_modules` folder
+being created in your directory. After this we will create a new file
+called `index.js` in the current folder with the following contents:
+
+```javascript
+let zmq = require('zeromq')
+let sock = zmq.socket('sub')
+
+sock.connect('tcp://zmq.devnet.iota.org:5556')
+sock.subscribe('tx')
+sock.subscribe('sn')
+
+sock.on('message', msg => {
+  const data = msg.toString().split(' ') // Split to get topic & data
+  switch (
+    data[0] // Use index 0 to match topic
+  ) {
+    case 'tx':
+      console.log(`I'm a TX!`, data)
+      break
+    case 'sn':
+      console.log(`I'm a confirmed TX`, data)
+      break
+  }
+})
+```
+
+Lets break this code down:
+
+**Create ZMQ Socket:**
+
+```javascript
+let zmq = require('zeromq')
+let sock = zmq.socket('sub')
+```
+
+The code requires the ZMQ library for use and then instantiates a `socket` object from the ZMQ library.
+
+**Connect & Subscribe:**
+
+```javascript
+sock.connect('tcp://zmq.devnet.iota.org:5556')
+sock.subscribe('tx')
+sock.subscribe('sn')
+```
+
+Initially we connect to the endpoint. Which in this case is the public ZMQ stream from the Devnet.
+
+Then we subscribe to different relevant topics. The topics here are:
+
+- `tx` - all transactions
+- `sn` - transactions that have transitioned to confirmed
+
+This on an example of the topics a correctly conffigured IRI nodes offers. To see the full info on the subscription channels check the [IRI github](https://github.com/iotaledger/iri/tree/dev/src/main/java/com/iota/iri/zmq).
+
+**Read & Categorise Messages:**
+
+```javascript
+sock.on('message', msg => {
+  const data = msg.toString().split(' ') // Split to get topic & data
+  switch (
+    data[0] // Use index 0 to match topic
+  ) {
+    case 'tx':
+      console.log(`I'm a TX!`, data)
+      break
+    case 'sn':
+      console.log(`I'm a confirmed TX`, data)
+      break
+  }
+})
+```
+
+Using `sock.on()` we listen for message events. Once a message is received it is turned from a `Buffer` to a string. Then it is split and matched in a `switch` operator.
+
+---
+
+<Image
+src={`/static/docs/getting-started/zmq-success.png`}
+width={750}
+height={500}
+caption="ZMQ stream showing confirmed TXs"
+/>
+
+You should see transactions being printed on the screen in a few seconds.👌 Great, now you can integrate this into your soon to be amazing application.
