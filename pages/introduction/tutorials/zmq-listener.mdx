@@ -16,7 +16,7 @@ export default withRouter(props => WithMDX(props, page))
 
 When working with IOTA you might want to monitor transactions flowing across the network. In order to do this you might poll specific API calls to check for new transactions, confirmation states or milestones. This approach is a little frustrating to setup and inelegant.
 
-To allow for **realtime** network listening the IOTA Reference Implimentation (IRI), the most common node software, impliments Zero Message Queue for asyncronous messaging between the Node and the Client. The specification can be found [here](https://github.com/iotaledger/iri/tree/dev/src/main/java/com/iota/iri/zmq).
+To allow for **realtime** network listening the IOTA Reference Implementation (IRI), the most common node software, implements Zero Message Queue for asyncronous messaging between the IRI Node and the Client device. The specification can be found [here](https://github.com/iotaledger/iri/tree/dev/src/main/java/com/iota/iri/zmq).
 
 This makes a number of different types of applications easier to make. Namely, monitoring tools such as a [live transaction feed](https://thetangle.org/live) or a [Tangle visualiser](https://visualizer.iota-tangle.io/). An example of an application is a visualiser on the [iota-community](https://github.com/iota-community/tangle-visualiser) github.
 
@@ -66,6 +66,8 @@ sock.on('message', msg => {
 })
 ```
 
+---
+
 Lets break this code down:
 
 **Create ZMQ Socket:**
@@ -87,12 +89,12 @@ sock.subscribe('sn')
 
 Initially we connect to the endpoint. Which in this case is the public ZMQ stream from the Devnet.
 
-Then we subscribe to different relevant topics. The topics here are:
+Then we subscribe to different relevant topics. The two topics we consume in this example include:
 
 - `tx` - all transactions
 - `sn` - transactions that have transitioned to confirmed
 
-This on an example of the topics a correctly conffigured IRI nodes offers. To see the full info on the subscription channels check the [IRI github](https://github.com/iotaledger/iri/tree/dev/src/main/java/com/iota/iri/zmq).
+To see the more options for subscription channels check the [IRI github](https://github.com/iotaledger/iri/tree/dev/src/main/java/com/iota/iri/zmq).
 
 **Read & Categorise Messages:**
 
@@ -112,7 +114,7 @@ sock.on('message', msg => {
 })
 ```
 
-Using `sock.on()` we listen for message events. Once a message is received it is turned from a `Buffer` to a string. Then it is split and matched in a `switch` operator.
+Using `sock.on()` we listen for message events. Once a message is received it is turned from a `Buffer` to a `String`. Then it is split and matched in a `switch` operator.
 
 ---
 
@@ -123,4 +125,4 @@ height={500}
 caption="ZMQ stream showing confirmed TXs"
 />
 
-You should see transactions being printed on the screen in a few seconds.👌 Great, now you can integrate this into your soon to be amazing application.
+You should see transactions being printed on the screen in a few seconds. 👌 Great, now you can integrate this into your soon to be amazing application.

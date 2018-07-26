@@ -32,16 +32,16 @@ Error: Request Error: COMMAND attachToTangle is not available on this node...
 
 ## Attach To Tangle
 
-The error `attachToTangle is not available` is a common error on Public IOTA nodes. This is because this function uses heavy CPU load to compute the Proof of Work for the transaction. If node operators left this open people could abuse the function and slow down the node significantly.
+The error "attachToTangle is not available" is a common error on public IOTA nodes. This is because this function uses heavy CPU load to compute the Proof of Work for the transaction. If node operators left this open people could abuse the function and slow down the node significantly.
 
-So will we have publish a transaction without using the `attachToTangle` command of the node. This is achieved by overriding the behaviour of the library with a PoW service. There are three to choose from:
+So will we have to publish a transaction without using the `attachToTangle` command of the node. This is achieved by overriding the behaviour of the library with a PoW service. There are three to choose from:
 
 - [ccurl.interface.js](https://github.com/iotaledger/ccurl.interface.js) - This is for node.js environments and allows for PoW to be done locally.
 - [curl.lib.js](https://github.com/iotaledger/curl.lib.js) - This is for WebGL 2
   enabled browsers to compute PoW using the GPU of the user's computer
 - [@iota/curl-remote](https://www.npmjs.com/package/@iota/curl-remote) - This is used to mimic a remote node handling the PoW. In reality this is a standalone service built to provide Pow-as-a-Service.
 
-In this tutorial we will use the public Sandbox on the IOTA Devnet. While the public node has `AttachToTangle` available a PowBox can be easily provisioned to be used on the IOTA Mainnet.
+In this tutorial we will use the public Devnet PowBox. While the public node has `AttachToTangle` available, a powbox can be easily provisioned to be used on the IOTA Mainnet.
 
 To use a PowBox we must add the corresponding library to wrap our `AttachToTangle` call. The NPM module is called `@iota/curl-remote`. To install use the following command:
 
