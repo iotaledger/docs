@@ -22,8 +22,7 @@ editUrl: 'pages/introduction/tutorials/first-transaction.mdx',
 
 export default withRouter(props => WithMDX(props, page))
 
-This basic guide will show you how to setup your environment
-and send your first **0** value transaction on the IOTA Public Devnet.
+This basic guide will show you how to setup your environment and send your first **0** value transaction on the IOTA Public Devnet. Setting up a transaction with value is essentially the same but requires a [seed](/introduction/iota-token/seeds-private-keys-accounts) with tokens in it.
 
 ### Requirements:
 
@@ -33,7 +32,7 @@ and send your first **0** value transaction on the IOTA Public Devnet.
 - Terminal Access
 - An Internet Connection
 
-<HR/>
+---
 
 To start we need to create a working directory:
 
@@ -42,7 +41,7 @@ To start we need to create a working directory:
 Once in our directory we can use Node Package Manager (NPM)
 to fetch and install the required Node.js libraries for IOTA to the folder:
 
-<TerminalInput>{`npm install iota.lib.js @iota/curl-remote`}</TerminalInput>
+<TerminalInput>{`npm install iota.lib.js --save`}</TerminalInput>
 
 This will result in a `package.json` file and a `node_modules` folder
 being created in your directory. After this we will create a new file
@@ -83,7 +82,7 @@ Now that we've verified that the code is working and returning general
 information about the node, we can create a transaction on the network.
 
 At the bottom of the `index.js` file we will add a transaction to the
-devnet with the following message: `Hello World!`
+Devnet with the following message: `Hello World!`
 
 To achieve this the following code needs to be appended:
 
@@ -179,7 +178,7 @@ any tokens in the wallet. So this can be 81 random Trytes.</Cell>
 <BoldCell>mwm</BoldCell>
 <TypeCell>Number</TypeCell>
 <Cell>This is the minimum weight magnitude (MWM) that specifies how mwm proof of work is required.
-On the devnet, anything less than 9 is not going to be accepted</Cell>
+On the Devnet, anything less than 9 is not going to be accepted</Cell>
 </Row>
 <Row>
 <BoldCell>depth</BoldCell>
