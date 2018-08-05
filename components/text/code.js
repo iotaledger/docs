@@ -17,7 +17,7 @@ const block = {
   padding: '20px 20px 0',
   whiteSpace: 'pre',
   overflow: 'auto',
-  webkitOverflowScrolling: 'touch'
+  WebkitOverflowScrolling: 'touch'
 }
 
 export const InlineCode = ({ children, noWrap }) => (
