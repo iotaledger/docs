@@ -1,6 +1,7 @@
 import { withRouter } from 'next/router'
 import WithMDX from '../../../lib/with-mdx'
 
+import { Code } from '../../../components/text/code'
 import { TerminalInput } from '../../../components/text/terminal'
 import { ExternalLink, InternalLink } from '../../../components/text/link'
 import { tyler } from '../../../lib/data/team'
@@ -37,7 +38,7 @@ Follow the official <ExternalLink href="https://docs.docker.com/install/#support
 
 Test the Docker installation by executing the following commands from a terminal session.
 
-  * Note: depending on how you have installed Docker, you may need to use the "sudo" command to execute Docker on Mac OSX or Linux platforms.
+  * Note: depending on how you have installed Docker, you may need to use the ```sudo``` command to execute Docker on Mac OSX or Linux platforms.
 
 <TerminalInput>{`docker run hello-world`}</TerminalInput>
 
@@ -67,7 +68,7 @@ docker build -t iri .`}</TerminalInput>
 
 Start the IRI node.
 
-  * Note: the "/path/to/data" in the following examples will be the path on your host where the tangle data will be stored persistently.
+  * Note: the ```/path/to/data``` in the following examples will be the path on your host where the tangle data will be stored persistently.
 
 ### Using the Prebuilt Docker Container from Dockerhub
 
@@ -93,9 +94,9 @@ To stop and remove the IRI container, execute the following commands.
 
 ### Restarting
 
-If you wish to have the IRI container start on every boot, add the following flag to the Docker "run" command.
+If you wish to have the IRI container start on every boot, add the following flag to the Docker ```run``` command.
 
-<TerminalInput>{`--restart=always`}</TerminalInput>
+<Code>{`--restart=always`}</Code>
 
 ### Port Mapping
 
@@ -103,7 +104,7 @@ IRI by default uses three ports. These ports need to be mapped to machine from a
 
   * UDP neighbor peering port (default is 14600)
   * TCP neighbor peering port (default is 14600)
-  * TCP API port (default is 14465)
+  * TCP API port (default is 14265)
 
 ### Checking the Node Status
 
@@ -116,18 +117,18 @@ curl -s http://localhost:14265 -X POST -H 'X-IOTA-API-Version: 1' -H 'Content-Ty
 
 The node can be configured by passing command line arguments to the IRI jar when invoked, however a configuration file can also be used.
 
-<TerminalInput>{`# Create an INI file like the one below, lets say iri.ini
+<Code>{`# Create an INI file like the one below, lets say iri.ini
 [IRI]
 PORT = 14265
 UDP_RECEIVER_PORT = 14600
 NEIGHBORS = udp://my.favorite-iri-node.com:14600
 IXI_DIR = ixi
 DEBUG = false
-DB_PATH = db`}</TerminalInput>
+DB_PATH = db`}</Code>
 
-A new mount point for this configuration file will need to be added to the Docker "run" command.
+A new mount point for this configuration file will need to be added to the Docker ```run``` command.
 
-<TerminalInput>{`-v /path/to/conf:/iri/conf`}</TerminalInput>
+<Code>{`-v /path/to/conf:/iri/conf`}</Code>
 
 For more detailed configuration options, please see the <ExternalLink href="https://github.com/iotaledger/iri/blob/dev/DOCKER.md" key="">IRI Docker Documentation</ExternalLink> on GitHub.
 
