@@ -20,22 +20,63 @@ send funds to an incorrect address. Please ensure that the
 send address is correct on the send confirmation screen. A
 transaction that is sent cannot be retracted or reimbursed.
 
+#### Why is my balance incorrect?
+
+Your account may be out of sync with the Tangle. To fix this, change
+the node you are connected to, then perform a manual sync. If you
+have not used your wallet on this device in a long time,
+you may need to perform a Snapshot Transition. Manual Sync and Snapshot Transition
+can be found in Account Management/Tools on desktop, and Advanced Settings on mobile.
+Also note that future developments in IOTA will eliminate the need to perform snapshot transitions.
+
+#### Why is my transaction not confirming?
+
+Find your transaction in the History section (main page on Desktop,
+History tab on Mobile) and click on it. Then hit the “Retry” button.
+This will help to get your transaction confirmed. You can automate this
+process by turning on “Auto-promotion” in Settings. Please note that
+auto-promotion on Mobile is only available when the app is in the foreground.
+
+#### What is a SeedVault?
+
+A SeedVault is an encrypted file for storing your seed securely.
+The seed is encrypted behind a password and cannot be accessed without
+that password. This results in a very safe way to store your seed.
+
+#### I can’t send my IOTA because Trinity stops me. Why is this?
+
+This can be for a number of reasons:
+  - For security reasons IOTA addresses should only be used once for sending.
+    If you have funds on an address that has already been spent from, Trinity
+    stops you spending again from that address. This is done to protect your funds.
+    Please get in touch with us on the #help channel in the official IOTA
+    Discord for further help.
+
+  - If the address you are sending to has been used in the past (i.e. already spent from),
+    Trinity will prevent you sending to that address to protect the funds. In this case,
+    please request a fresh address from your recipient.
+
+  - If you are making multiple transactions, you may need to wait for your first
+    transaction to be confirmed before making another transaction. Then you should
+    be able to send your second transaction.
+
 #### I have lost access to my device! How do I recover my wallet?
 
-In the unfortunate event that you lose access to your device
-(you lost your phone, your computer crashed, etc.), you can recover
-your wallet and restore your full balance by using your backup "paper
-wallet" or password manager entry.
+Don’t worry, nobody can access your seed or balance without your password.
+You can access your funds by reinstalling Trinity on another device and using
+your SeedVault file or other seed backup to retrieve your seed safely.
 
 To restore your wallet, simply select "Yes" when the Wallet Setup
-asks if you already have a seed. Then enter the seed. Ensure the
-checksum matches your backup checksum. After choosing a new password,
+asks if you already have a seed. Then enter the seed or import your SeedVault file.
+Ensure the checksum matches your backup checksum. After choosing a new password,
 Trinity will automatically restore your account balance.
+
+If you want to be extra careful, please transfer your funds to a new seed at this time.
 
 #### Why doesn't Trinity support fingerprint authentication?
 
-Trinity puts the security of your funds above all else. Current limitations in the Android OS pose a tough question for developers. We have to choose between permittingpermiting users the convenience of using fingerprints scanners, vs. the risk of offering a less secure wallet. As always, IOTA leans toward security. We are constantly evaluating options to retain maximum security and improve the user experience.
-
-#### I logged in but I cannot see my balance.
-
-Don't panic! Please read the section above on performing a [snapshot transition](#zerobalance) to restore your balance. Also note that future developments in IOTA will eliminate the need to perform snapshot transitions.
+Trinity puts the security of your funds above all else. Current limitations in the Android OS
+pose a tough question for developers. We have to choose between permitting users the
+convenience of using fingerprints scanners, vs. the risk of offering a less secure wallet.
+As always, IOTA leans toward security. We are constantly evaluating options to retain
+maximum security and improve the user experience.
