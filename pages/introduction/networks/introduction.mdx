@@ -1,0 +1,33 @@
+import { withRouter } from 'next/router'
+import WithMDX from '../../../lib/with-mdx'
+
+import { lewi } from '../../../lib/data/team'
+import { HR } from '../../../components/text/paragraph'
+
+export const page = {
+title: 'IOTA Networks',
+date: '19 August 2018',
+authors: [lewi],
+editUrl: 'pages/introduction/networks/introduction.js',
+}
+
+export default withRouter(props => WithMDX(props, page))
+
+In order to use the IOTA tangle you have to interact with the nodes that make up the IOTA network. There is the main IOTA network (Mainnet) that hosts the IOTA token and is used for production applications. Public nodes for the Mainnet can be found [here](https://iota.dance).
+
+However if you want to test the functionality of your application without using Mainnet tokens you'll want to use a public test network.
+
+<HR />
+
+## Test Networks
+
+The IOTA Foundation has setup a number of testing networks to provide a comparable network environment for developers to work in while creating their new IOTA based apps.
+
+### Networks
+
+- [**Devnet**](/introduction/networks/devnet) - The Devnet is a networks targeted at developers. On this network they can build applications in a 1-to-1 representation of the IOTA Mainnet.
+- [**Spamnet**](/introduction/networks/spamnet) - The Spamnet is a networks setup specifically to test the throughput of new IRI build and tweaks to the [Tip Selection](/introduction/tangle/tip-selection) algorithm.
+
+### Coordinator
+
+There is a primitive Coordinator running on these testing networks to protect against attacks. They operate in the same fashion, issuing transactions referencing transaction on the network which are not malicious.
