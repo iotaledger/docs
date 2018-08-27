@@ -1,6 +1,7 @@
 import { withRouter } from 'next/router'
 import WithMDX from '../../lib/with-mdx'
 import { lewi } from '../../lib/data/team'
+import Image from '../../components/image'
 
 export const page = {
 title: 'FAQs',
@@ -108,13 +109,56 @@ that password. This results in a very safe way to store your seed.
 
 ### How do I create a SeedVault?
 
-It is recommended to create a SeedVault using the Trinity wallet onboarding, but as the SeedVault file
-is compatible with [Keepass password manager](https://keepass.info/download.html), you can create and edit
-SeedVault files without using Trinity wallet.
+It is recommended to create a SeedVault using the Trinity wallet onboarding.
+However as the SeedVault file is compatible with the [Keepass password manager](https://keepass.info/download.html),
+you can create and edit SeedVault files without using the Trinity wallet.
 
-To setup a SeedVault file in Keepass, you have to:
+To set up a SeedVault file in Keepass, you must:
 
-1. Create a new password entry and name it to recognize the seed later
-2. Add a **Custom field** to the entry, name it **Seed** enter your seed as the value and mark it as **Protected**. 
-3. Remember to set a secure password to the Keepass file and save it
-4. You can now import the file as a SeedVault file in Trinity
+**On Mac**
+
+1. Create a new database in MacPass.
+2. Go to `File > Database Settings > Security` and change **Algorithm** to **Argon2**.
+3. Create a new Entry in the database.
+4. Clear the **Password** field as it is not used by Trinity
+5. You will be asked to set a password at this point. This is the same as the SeedVault password.
+Make sure it is secure (see requirements in SeedVault FAQ question).
+6. Give the Entry a name / title. This name will be displayed in the Trinity wallet as the
+**Account Name** after importing the SeedVault.
+7. Click on **Add Field** and then click on the word **Custom** to change its name. Change the name to **Seed**. 
+8. In the box below labelled **Value**, enter your seed (you can copy-paste into this field).
+9. Now mark the field as **Protected** by clicking on the padlock sign next to the value field.
+10. Save the file with an appropriate and unique name, eg _SeedVault-20180505_ 
+11. You can now import the file as a SeedVault file in Trinity.
+<Image
+src={`/static/docs/trinity/keepass-mac.mp4`}
+width={650}
+height={475}
+caption="Creating SeedVault on mac"
+video
+controls
+/>
+
+**On Windows**
+
+1. Create a new database in KeePass.
+2. Save the file with an appropriate and unique name, eg _SeedVault-20180505_ 
+3. You will be asked to set a password at this point. This is the same as the SeedVault password.
+Make sure it is secure (see requirements in SeedVault FAQ question).
+4. Go to `File > Database Preferences` and change **Key derivation** to **Argon2** and **Value-parallelismus** to **1** and save
+5. Create a new Entry in the database.
+6. Give the Entry a title. This name will be displayed in the Trinity wallet as the
+**Account Name** after importing the SeedVault.
+7. Switch to **Advanced** tab and **Add** a new String field.
+8. Name it **Seed**, enter your seed in the **Value** field and mark **Enable in-memory protection**
+9. Save the changes
+10. You can now import the file as a SeedVault file in Trinity.
+<Image
+src={`/static/docs/trinity/keepass-win.mp4`}
+width={650}
+height={368}
+caption="Creating SeedVault on Windows"
+video
+controls
+/>
+

@@ -15,7 +15,8 @@ const Image = ({
   caption,
   video = false,
   muted = true,
-  autoPlay = false
+  autoPlay = false,
+  controls = false
 }) => {
   if (!width) {
     throw new Error('Please define the width of the image!')
@@ -25,14 +26,19 @@ const Image = ({
     throw new Error('Please define the height of the image!')
   }
 
-  const aspectRatio = String(height / width * 100) + '%'
+  const aspectRatio = String((height / width) * 100) + '%'
 
   return (
     <figure style={{ margin: `${margin}px 0` }}>
       <main style={{ width }}>
         <div style={{ paddingBottom: aspectRatio }}>
           {video ? (
-            <video src={src} muted={muted} autoPlay={autoPlay} />
+            <video
+              src={src}
+              muted={muted}
+              controls={controls}
+              autoPlay={autoPlay}
+            />
           ) : (
             <img src={src} />
           )}
