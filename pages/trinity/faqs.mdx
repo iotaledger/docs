@@ -17,6 +17,8 @@ Trinity is engineered to be as simple to use as possible. This means that as lon
 
 However as with any e-currency, you can still send funds to an incorrect address. Please ensure that the Send address is correct on the Send Confirmation screen. A transaction that is sent cannot be retracted or reimbursed.
 
+---
+
 #### Why is my balance incorrect?
 
 Your account may be out of sync with the Tangle. To fix this, change
@@ -26,6 +28,8 @@ you may need to perform a Snapshot Transition. Manual Sync and Snapshot Transiti
 can be found in Account Management/Tools on desktop, and Advanced Settings on mobile.
 Also note that future developments in IOTA will eliminate the need to perform snapshot transitions.
 
+---
+
 #### Why is my transaction not confirming?
 
 Find your transaction in the History section (main page on Desktop,
@@ -34,11 +38,7 @@ This will help to get your transaction confirmed. You can automate this
 process by turning on “Auto-promotion” in Settings. Please note that
 auto-promotion on Mobile is only available when the app is in the foreground.
 
-#### What is a SeedVault?
-
-A SeedVault is an encrypted file for storing your seed securely.
-The seed is encrypted behind a password and cannot be accessed without
-that password. This results in a very safe way to store your seed.
+---
 
 #### I can’t send my IOTA because Trinity stops me. Why is this?
 
@@ -58,6 +58,8 @@ This can be for a number of reasons:
   transaction to be confirmed before making another transaction. Then you should
   be able to send your second transaction.
 
+---
+
 #### I have lost access to my device! How do I recover my wallet?
 
 Don’t worry, nobody can access your seed or balance without your password.
@@ -71,6 +73,8 @@ Trinity will automatically restore your account balance.
 
 If you want to be extra careful, please transfer your funds to a new seed at this time.
 
+---
+
 #### Why doesn't Trinity support fingerprint authentication?
 
 Trinity puts the security of your funds above all else. Current limitations in the Android OS
@@ -78,3 +82,39 @@ pose a tough question for developers. We have to choose between permitting users
 convenience of using fingerprints scanners, vs. the risk of offering a less secure wallet.
 As always, IOTA leans toward security. We are constantly evaluating options to retain
 maximum security and improve the user experience.
+
+---
+
+#### What are the account and SeedVault password requirements?
+
+There are no requirements to mandatory include lower case, upper case, number or special symbols in the password.
+Trinity uses the [zxcvbn library](https://github.com/dropbox/zxcvbn) for password strength estimation, which
+checks the password against:
+- Most common passwords
+- Common names and popular English words
+- Common patterns like dates, repeats (aaa), sequences (abcd), keyboard patterns (qwertyuiop)
+- Secure password length - 11 characters
+
+---
+
+#### What is a SeedVault?
+
+A SeedVault is an encrypted file for storing your seed securely.
+The seed is encrypted behind a password and cannot be accessed without
+that password. This results in a very safe way to store your seed.
+
+
+---
+
+### How do I create a SeedVault?
+
+It is recommended to create a SeedVault using the Trinity wallet onboarding, but as the SeedVault file
+is compatible with [Keepass password manager](https://keepass.info/download.html), you can create and edit
+SeedVault files without using Trinity wallet.
+
+To setup a SeedVault file in Keepass, you have to:
+
+1. Create a new password entry and name it to recognize the seed later
+2. Add a **Custom field** to the entry, name it **Seed** enter your seed as the value and mark it as **Protected**. 
+3. Remember to set a secure password to the Keepass file and save it
+4. You can now import the file as a SeedVault file in Trinity
