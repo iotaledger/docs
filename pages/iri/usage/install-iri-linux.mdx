@@ -19,7 +19,7 @@ In order to install IRI, there are certain requirements to be considered.
 It should be noted that IRI only works on 64-bit architectures.
 
 - <ExternalLink href="http://releases.ubuntu.com/releases/18.04/" key="">Ubuntu 18.04 LTS</ExternalLink>
-- Oracle JAVA 8 JRE 
+- Oracle JAVA 8 JRE
 - Minimum of 3GB of free system memory
 - 60GB of free disk space
 - Static IP
@@ -33,24 +33,21 @@ This will guide you through installing a node. The IRI code can be built locally
 
 Ensure your system is secure before proceeding.
 
-<TerminalInput>{`sudo apt-get update
-sudo apt-get upgrade -y`}</TerminalInput>
+<TerminalInput>{`sudo apt-get update sudo apt-get upgrade -y`}</TerminalInput>
 
 ### Install JAVA 8 JRE from Oracle
 
 You will need to read and accept the license agreement to proceed with installation.
-<TerminalInput>{`export JAVA_VERSION=8u171-1
-sudo apt-get install -y software-properties-common --no-install-recommends
-sudo add-apt-repository -y ppa:webupd8team/java
-sudo apt-get update
-sudo apt-get install -y oracle-java8-installer=\${JAVA_VERSION}\~webupd8~1 --no-install-recommends`}</TerminalInput>
+<TerminalInput>{`export JAVA_VERSION=8u171-1 sudo apt-get install -y software-properties-common --no-install-recommends sudo add-apt-repository -y ppa:webupd8team/java sudo apt-get update sudo apt-get install -y oracle-java8-installer=\${JAVA_VERSION}\~webupd8~1 --no-install-recommends`}</TerminalInput>
 
 ### Set JAVA 8 JRE as default
 
 This ensures that the JAVA 8 JRE is the default JRE system wide.
 
 <TerminalInput>{`sudo apt install oracle-java8-set-default
+
 # Log out and back in, check that this is set by running the following command
+
 echo $JAVA_HOME`}</TerminalInput>
 
 ## Prebuilt IRI JAVA Archive
@@ -78,8 +75,10 @@ export BASE_URL=https://apache.osuosl.org/maven/maven-3/\${MAVEN_VERSION}\/binar
 sudo apt-get update && apt-get install -y --no-install-recommends curl
 sudo mkdir -p /usr/share/maven /usr/share/maven/ref
 sudo curl -fsSL -o /tmp/apache-maven.tar.gz \${BASE_URL}\/apache-maven-\${MAVEN_VERSION}\-bin.tar.gz
+
 # Check the sha256 checksum, should say OK if the checksum matches
-echo "\${SHA}\  /tmp/apache-maven.tar.gz" | sha256sum -c -
+
+echo "\${SHA}\ /tmp/apache-maven.tar.gz" | sha256sum -c -
 sudo tar -xzf /tmp/apache-maven.tar.gz -C /usr/share/maven --strip-components=1
 sudo rm -f /tmp/apache-maven.tar.gz
 export MAVEN_HOME=/usr/share/maven
@@ -97,7 +96,9 @@ Build the IRI archive.
 
 <TerminalInput>{`git clone https://github.com/iotaledger/iri.git
 cd iri
+
 # Checkout the latest tag
+
 export TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
 git checkout $TAG
 mvn clean package`}</TerminalInput>
@@ -108,14 +109,16 @@ An IRI JAVA archive (jar) has now been build in the "target" directory.
 
 Start the IRI node.
 
-  * Note: ```IRI_JAR_PATH``` must be the full path to the IRI JAVA archive. If you have built from source, then archive will be output in the ```target``` directory.
+- Note: `IRI_JAR_PATH` must be the full path to the IRI JAVA archive. If you have built from source, then archive will be output in the `target` directory.
 
 <TerminalInput>{`export IRI_JAR_PATH=$pwd/target
 export JAVA_OPTIONS="-XX:+UnlockExperimentalVMOptions -XX:+DisableAttachMechanism -XX:InitiatingHeapOccupancyPercent=60 -XX:G1MaxNewSizePercent=75 -XX:MaxGCPauseMillis=10000 -XX:+UseG1GC
 export JAVA_MIN_MEMORY=2G
 export JAVA_MAX_MEMORY=4G
+
 # This path needs to adjusted for your local machine
-export IRI_JAR_PATH="$(pwd)/target/iri*.jar"
+
+export IRI_JAR_PATH="$(pwd)/target/iri\*.jar"
 mkdir -p /srv/iri/data
 cd /srv/iri/data
 java $JAVA_OPTIONS -Xms$JAVA_MIN_MEMORY -Xmx$JAVA_MAX_MEMORY -Djava.net.preferIPv4Stack=true -jar $IRI_JAR_PATH --remote -p 14265`}</TerminalInput>
@@ -124,37 +127,39 @@ java $JAVA_OPTIONS -Xms$JAVA_MIN_MEMORY -Xmx$JAVA_MAX_MEMORY -Djava.net.preferIP
 
 IRI by default uses three ports. These ports need to be mapped to machine from an external static IP address.
 
-  * UDP neighbor peering port (default is 14600)
-  * TCP neighbor peering port (default is 14600)
-  * TCP API port (default is 14265)
+- UDP neighbor peering port (default is 14600)
+- TCP neighbor peering port (default is 14600)
+- TCP API port (default is 14265)
 
 ### Checking the Node Status
 
 Using curl and jq you can test the TCP API port.
 
-<TerminalInput>{`sudo apt install -y curl jq
-curl -s http://localhost:14265 -X POST -H 'X-IOTA-API-Version: 1' -H 'Content-Type: application/json' -d '{"command": "getNodeInfo"}' | jq`}</TerminalInput>
+<TerminalInput>{`sudo apt install -y curl jq curl -s http://localhost:14265 -X POST -H 'X-IOTA-API-Version: 1' -H 'Content-Type: application/json' -d '{"command": "getNodeInfo"}' | jq`}</TerminalInput>
 
 ## Configuring the Node
 
 The node can be configured by passing command line arguments to the IRI jar when invoked, however a configuration file can also be used.
 
-<Code>{`# Create an INI file like the one below, lets say iri.ini
+```
+# Create an INI file like the one below, lets say iri.ini
 [IRI]
 PORT = 14265
 UDP_RECEIVER_PORT = 14600
 NEIGHBORS = udp://my.favorite-iri-node.com:14600
 IXI_DIR = ixi
 DEBUG = false
-DB_PATH = db`}</Code>
+DB_PATH = db`
+```
 
-Now pass ```-c iri.ini``` to the IRI jar when invoking:
+Now pass `-c iri.ini` to the IRI jar when invoking:
 
 <TerminalInput>{`java $JAVA_OPTIONS -Xms$JAVA_MIN_MEMORY -Xmx$JAVA_MAX_MEMORY -Djava.net.preferIPv4Stack=true -jar $IRI_JAR_PATH --remote -p 14265 -c iri.ini`}</TerminalInput>
 
 The configuration will be read from disk.
 
 ### Finding Neighbours
+
 In order to allow your node to sync the tangle, you must find neighbours for your node. Once you have found and configured neighbors for your node, they must manually approve your node before the syncing will take place.
 
 Please follow the link below for more details.

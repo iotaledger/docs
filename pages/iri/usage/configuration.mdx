@@ -132,7 +132,16 @@ can enable it via the --config flag.
 
 Here is an example INI file:
 
-<Code>{`[IRI] PORT = 14700 UDP_RECEIVER_PORT = 14700 NEIGHBORS = udp://my.favorite.com:15600 udp://148.148.148.148:14265 tcp://[2001:db8:a0b:12f0::1]:14265 IXI_DIR = ixi HEADLESS = true DEBUG = true TESTNET = true DB_PATH = db`}</Code>
+```
+[IRI] PORT = 14700
+UDP_RECEIVER_PORT = 14700
+NEIGHBORS = udp://my.favorite.com:15600 udp://148.148.148.148:14265 tcp://[2001:db8:a0b:12f0::1]:14265
+IXI_DIR = ixi
+HEADLESS = true
+DEBUG = true
+TESTNET = true
+DB_PATH = db
+```
 
 To run IRI with this .INI file, given its named \`iri.ini\`, use this
 command:
