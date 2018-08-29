@@ -152,7 +152,7 @@ Using curl and jq you can test the TCP API port.
 
 ```bash
 sudo apt install -y curl jq
-curl -s http://localhost:14265 -X POST -H 'X-IOTA-API-Version: 1' -H 'Content-Type: application/json' -d '{"command": "getNodeInfo"}' | jq
+curl -s `http://localhost:14265 -X POST -H 'X-IOTA-API-Version: 1' -H 'Content-Type: application/json' -d '{"command": "getNodeInfo"}'` | jq
 ```
 
 ## Configuring the Node

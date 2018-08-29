@@ -13,7 +13,7 @@ BoldCell
 import { lewi } from '../../../lib/data/team'
 
 export const page = {
-title: 'Configuration',
+title: 'Configuring IRI',
 date: '12 March 2018',
 authors: [lewi],
 editUrl: 'pages/iri/usage/configuration.js',
@@ -21,9 +21,7 @@ editUrl: 'pages/iri/usage/configuration.js',
 
 export default withRouter(props => WithMDX(props, page))
 
-Running IRI is incredibly simple. You can launch it using the
-command below and passing parameters inline or using a configuration
-file.
+There are two ways to configure the IRI node software. You can use commandline arguements or via an `.INI` file.
 
 ## Running without a .INI file
 
@@ -147,12 +145,3 @@ To run IRI with this .INI file, given its named \`iri.ini\`, use this
 command:
 
 <TerminalInput>{`java -jar iri.jar -c iri.ini`}</TerminalInput>
-
-## Use .INI file with Docker
-
-Create an iota.ini file with all of your configuration
-variables set in it. Any that you don't provide in here
-will be assumed to be default or taken from command line
-arguments.
-
-<TerminalInput>{`docker run -d --net=host --name iota-node -p 14265:14265 -p 14777:14777/udp -p 15777:15777 -v iota.ini:/iri/iota.ini iotaledger/iri:latest`}</TerminalInput>
