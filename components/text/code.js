@@ -26,7 +26,7 @@ export const InlineCode = ({ children, noWrap }) => (
     <style jsx>
       {`
         code {
-          color: #343434;
+          color: #007070 !important;
           font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
             DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace,
             serif;

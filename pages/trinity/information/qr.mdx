@@ -24,7 +24,15 @@ While Trinity currently does not support amounts and tags in QR codes, you can a
 
 The general structure of your JSON object can look like this:
 
-<Code>{`const object = { 'address': "HBBYKAKTILIPVUKFOTSLHGENPTXYBNKXZFQFR9VQFWNBMTQNRVOUKPVPRNBSZVVILMAFBKOTBLGLWLOHQHUSQBCKVW", 'amount': 5000000, 'tag': "PIZZAPIZZA", 'message': "For the pizza!" }`}</Code>
+```javascript
+const object = {
+  address:
+    'HBBYKAKTILIPVUKFOTSLHGENPTXYBNKXZFQFR9VQFWNBMTQNRVOUKPVPRNBSZVVILMAFBKOTBLGLWLOHQHUSQBCKVW',
+  amount: 5000000,
+  tag: 'PIZZAPIZZA',
+  message: 'For the pizza!'
+}
+```
 
 <InputTable>
 <Row>
@@ -55,4 +63,11 @@ The general structure of your JSON object can look like this:
 
 To encode the QR code, Trinity uses [react-native-qrcode-svg](https://github.com/awesomejerry/react-native-qrcode-svg). Here's an example of how to generate your QR code in a React-based project with <InlineCode>react-native-qrcode-svg</InlineCode> using the example object above:
 
-<Code>{`<QRCode value={JSON.stringify(object)} size={width / 2.8} color="black" backgroundColor="transparent" />`}</Code>
+```javascript
+<QRCode
+  value={JSON.stringify(object)}
+  size={width / 2.8}
+  color="black"
+  backgroundColor="transparent"
+/>
+```
