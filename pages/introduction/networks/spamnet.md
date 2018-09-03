@@ -24,7 +24,7 @@ The Spamnet is primarily comprised of servers hosted by the IOTA Foundation. The
 <Image
 src={`/static/docs/networks/spamnet_layout.png`}
 width={600}
-height={442}
+height={313}
 caption="Topology of the IOTA Spamnet"
 />
 
