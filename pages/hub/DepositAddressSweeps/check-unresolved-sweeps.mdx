@@ -1,0 +1,66 @@
+import { withRouter } from 'next/router'
+import WithMDX from '../../../lib/with-mdx'
+
+import { nelson } from '../../../lib/data/team'
+import Tangle from '../../../components/tangle'
+
+export const page = {
+title: 'Check Unresolved Sweeps',
+date: '4 Sep 2018',
+authors: [nelson],
+editUrl: 'pages/hub/check-unresolved-sweeps.mdx',
+}
+
+export default withRouter(props => WithMDX(props, page))
+
+
+Check whether deposit addresses were used in unresolved sweeps.  To determine if previous sweeps of any deposit address are on-going we use isReattachable() on sweep tail transaction hashes. 
+
+** WARNING **
+ 
+If any addresses have been previously swept, do not sweep them again, unless the previous sweep transfers have been confirmed.
+ 
+ 
+	/* ******************************************************************
+	  Check whether deposit addresses were used in unresolved sweeps
+	****************************************************************** */
+	// Extract the first tail hash
+	const hashes = []
+	sweeps.forEach(sweep => hashes.push(sweep.hashes[0]))
+ 
+ 
+	// Check for on-going sweeps
+	iota.api.isReattachable({hashes: hashes}, (err, res) => {
+    	if (err) {
+            console.log(err)
+        	return
+    	}
+ 
+	console.log("\n\nCheck whether deposit addresses were used in unresolved sweeps")
+	console.log("\n\nAre hashes in confirmed transactions? ", res)   	
+ 
+** NOTICE **
+
+The result of isReattachable() yields true if the hash is confirmed and false, if not.  Check out the output in the output section.
+ 
+	
+	// Do not sweep addresses that were used as inputs in pending sweeps
+	sweeps = sweeps.filter(sweep => {
+	const index = hashes.indexOf(hash => hash === sweep.hashes[0])
+	if (index === -1) {
+		console.log("\n\n Is hash ", sweep.hashes[0] ," part of an unresolved sweeps? no")
+		return true
+    	}
+    	return !res[index];
+	})
+
+	// Construct inputs
+	let inputs = sweeps.map((data, i, sweeps) => {
+	return {
+	  	address: sweeps[i].address,
+	  	keyIndex: sweeps[i].keyIndex,
+	  	security: sweeps[i].security,
+	  	balance: sweeps[i].balance
+	};
+	});
+ 
