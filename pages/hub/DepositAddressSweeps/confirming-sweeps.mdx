@@ -1,0 +1,68 @@
+﻿import { withRouter } from 'next/router'
+import WithMDX from '../../../lib/with-mdx'
+
+import { nelson } from '../../../lib/data/team'
+import Tangle from '../../../components/tangle'
+
+export const page = {
+title: 'Confirming Sweeps',
+date: '4 Sep 2018',
+authors: [nelson],
+editUrl: 'pages/hub/confirm-sweeps.mdx',
+}
+
+export default withRouter(props => WithMDX(props, page))
+
+Confirm sweep transactions were accepted by Tangle and credit user.  To ensure secure deposit of funds to exchange addresses, check the inclusion states of the sweep transactions.  Make use of the getLatestInclusion() and pass the tail transaction hashes. The result determines which transactions are confirmed and accepted by the network.
+
+** NOTICE **
+
+You might need to reattach sweeps that remain unconfirmed. Check the Reattachments guide for detailed instructions.
+
+** WARNING **
+
+Proceed to crediting only for transactions that have been confirmed.
+ 
+ 
+	/* ******************************************************************
+	// Confirm that sweep transactions were accepted by the Tangle 
+	/* **************************************************************** */
+	// Extract tail hashes from sweep transaction
+	const hashes = metadata.map(data => data.hashes)
+		.reduce((hashes, hash) => hashes.concat(hash), [])
+ 
+	console.log("Tail hashes from the sweep")
+	console.log(hashes)
+	console.log('Confirm that sweep transactions were accepted by the Tangle')
+ 
+	iota.api.getLatestInclusion(hashes, (err, states) => {
+		if (err) {
+			console.log(err)
+			return
+		}
+		states.forEach((confirmed, i) => {
+		if (confirmed) {
+			iota.api.getBundle(hashes[i], (err, bundle) => {
+			if (err) {
+				console.log(err)
+				return
+			}
+			console.log('Transaction with tail hash: ', hashes[i], ' is confirmed')
+ 
+			bundle.filter(tx => tx.value < 0).forEach(tx => {
+			const j = addresses.findIndex(address => address === tx.address)
+			if (j !== -1) {
+				//const user = metadata[j].user
+          	          	  const value = Math.abs(tx.value)
+                 	   	  console.log("\nCredit user with " + value)
+				}
+			})
+		})
+		}
+	})
+	})
+	})
+	})
+	})
+
+

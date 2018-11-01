@@ -1,0 +1,145 @@
+﻿import { withRouter } from 'next/router'
+import WithMDX from '../../../lib/with-mdx'
+
+import { nelson } from '../../../lib/data/team'
+import Tangle from '../../../components/tangle'
+
+export const page = {
+title: 'Processing Withdrawals',
+date: '4 Sep 2018',
+authors: [nelson],
+editUrl: 'pages/hub/process-monitor.mdx',
+}
+
+export default withRouter(props => WithMDX(props, page))
+
+Customers withdraw funds from currency exchanges for various reasons.  The exchange must make sure that deposit addresses used to transfer tokens do not have pending incoming transactions as a strict measure to prevent private key reuse.  
+
+** NOTICE **
+
+Please ensure that no value is being transferred to a deposit address.  Make sure that all previous incoming transactions are confirmed before you send a transfer.
+
+## Withdrawal Example ##
+
+In this example, the exchange seed has two addresses:
+
+	Address OTGZH... with a balance of 100i
+	Address DIXJW... with a balance of 90i
+
+A withdrawal seed requests 150i.  Since one exchange address does not have enough, both are needed.  After the withdrawal, the exchange has a remainder of 40i which will be returned in a new deposit address.  In this example, the remainder has a new seed but that is not required.
+
+ 
+![GitHub Logo](/static/docs/hub/Withseed.jpg)
+
+
+## Sending withdrawal transactions ##
+
+This example requires a bit of setup.  Complete these steps in the order listed.
+
+1. Generate three seeds and get one address for each seed
+
+2. Transfer 100i to first exchange address which should have index 0 and security level 2 
+3. Check for confirmation.  If the transaction is not confirmed, reattach until it confirms
+4. Generate another address for the exchange seed which should have index 1 and security level 2 
+5. Make sure the first transaction is confirmed BEFORE sending a new transaction for 90i
+6. Run the withdrawal demo script shown below replacing the seed and addresses with those you generated
+
+
+** WARNING **
+
+Use 81-tryte addresses without the checksum
+
+** WARNING **
+
+Make sure the keyIndex, security level, and balance match those on the address
+ 
+** WARNING **
+
+Make sure the input addresses are associated with the seed and the transactions have been confirmed
+
+** NOTICE **
+
+Depth of 3 and minWeightMagnitude of 9 are used on DevNet.  Depth of 4 and minWeightMagnitude of 14 may be more appropriate for MainNet
+
+JavaScript
+
+    //  use 81 tryte addresses without checksum
+    const IOTA = require("iota.lib.js")
+    const iota = new IOTA({provider: "https://nodes.testnet.iota.org:443"})
+    const remoteCurl = require('@iota/curl-remote')
+ 
+    // Seed sending funds - in this example, there are multiple input addresses
+    const seed = 'EXCHANGESEEDLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL'
+    const message = iota.utils.toTrytes('WITHDRAWALEXAMPLE')
+ 
+    const transfers = [
+        	{
+        	// Recipient address
+        	address: 'YWHFXADYZXZBPTFBPAP9WBRUE9BYKUQIVBCJQLGEKQVNK9CBHXWVXGIQIDBRFTKQOKWZXFHKGLUNGPQRZ',
+	    	// Value being withdrawn
+	    	value: 150,
+	    	message: message,
+	    	tag: ''
+        	}
+    ]
+ 
+    // Inputs array, addresses used for exchange to fund the withdrawal
+    const inputs = [
+    {
+        	address: 'OTGZHHTUJOMIS9KLSDIY9LDPQSWZGNMSA9CUHZAXPRFODEEQJE9KQZB9PEMJLWTUESXPLRTTUORS9FXJB',	
+	    	keyIndex: 0,
+        	security: 2,
+        	balance: 100,
+        	}, {
+        	address: 'DIXJWLZBRAGXVHBSUGEGFVBMMJBUVMZRMA9T9HUECVQKJTNEFEOGRDZTSWGNECIPPL9KKFKHZGYJPNEAW',
+        	keyIndex: 1,
+	    	security: 2,
+	    	balance: 90
+    }
+    ]
+ 
+    // Exchange-owned address for remainder.  In this example, (100 + 90) - 150 = 40 remainder
+    const remainderAddress = 'ZPREDUGFSXIRVGUIAFBFGILELFHJLRIY9XSBNGPTGL9EKYHAFF9DQNAPYKJFMMPXPZNEBFNHNO9BAJFPX'
+    const options = {
+      inputs: inputs,
+      address: remainderAddress
+    }
+    const depth = 3
+    const minWeightMagnitude = 9
+ 
+    // Keep track of withdrawal tail transaction hashes to check confirmation status
+    const withdrawalHashes = []
+ 
+    iota.api.sendTransfer(seed, depth, minWeightMagnitude, transfers, options, (err, transactions) => {
+        	if (err) {
+                    	console.log(err)
+                    	return
+        	} else {
+                    	console.log(transactions)
+        	}
+ 
+        	withdrawalHashes.push(transactions[0].hash)
+ 
+        	// Exchanges should save withdrawal hash to persistent database...
+        	console.log(withdrawalHashes)
+    })
+ 
+    // Check inclusion states
+    iota.api.getLatestInclusion(withdrawalHashes, (err, states) => {
+	if (err) {
+    	console.log(err)
+    	return
+	} else {
+	    	console.log(states)
+	}
+	states.forEach((confirmed, i) => {
+	    	if (confirmed) {
+    		console.log('Withdrawal transaction with tail hash:', withdrawalHashes[i], 'confirmed')       	
+        	// Remove transaction hash from pending withdrawals list...
+        	}
+	}) 	
+    })
+ 
+Screen Capture showing the confirmed bundle
+ 
+![GitHub Logo](/static/docs/hub/Withdrawal.jpg)

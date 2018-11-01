@@ -1,0 +1,90 @@
+﻿import { withRouter } from 'next/router'
+import WithMDX from '../../../lib/with-mdx'
+
+import { nelson } from '../../../lib/data/team'
+import Tangle from '../../../components/tangle'
+
+export const page = {
+title: 'User Deposit Address Management',
+date: '4 Sep 2018',
+authors: [nelson],
+editUrl: 'pages/hub/address-management.mdx',
+}
+
+export default withRouter(props => WithMDX(props, page))
+ 
+We strongly encourage exchanges to take advantage of IOTA Hub because it has built-in deposit address management and security.
+
+
+That being said, it is important for exchanges to assign each user a unique address for every deposit.  This prevents address reuse and ensures that funds are safe. Because of that, we advise exchanges to generate and assign a unique seed to each user and carefully track whether key indices were already used as input for a previous transaction (i.e. swept from), and should therefore no longer be used.
+
+ 
+| State | Description |
+|-------| ------------ |
+| ** Assigned: **    | key was assigned to a user |
+| ** Spent: **    | key index for address was already used in a prior transaction and should no longer be used |
+
+
+
+### Confirming User Deposits ###
+ 
+Once a user has made a transaction to the deposit address, you should wait until the transaction is officially confirmed. There are currently three ways to check whether a deposit was confirmed:
+ 
+1. via getBalances
+
+Probably the most straightforward way to know if a deposit was successful is to check what the balance of an address is with the getBalances API call. Prerequisite of this is that you have a unique deposit address for each individual user. You can continuously call getBalances with the deposit address as input to determine whether an address has a confirmed balance or not.
+ 
+2. via findTransactions
+
+Continuously call findTransactions on the deposit address. Once there is a transaction, get it’s bundle hash (via utils.transactionObjects) and search for all transactions with the same bundle hash.  Then, get the correct tail transaction and call getInclusionState` on that transaction
+ 
+3. via zmq                                  	
+
+ZMQ allows you to subscribe and view transactions.  A sample script using ZMQ is shown below along with sample output.
+ 
+        let zmq = require('zeromq')
+        let sock = zmq.socket('sub')
+         
+        sock.connect('tcp://zmq.devnet.iota.org:5556')
+        sock.subscribe('tx')
+        sock.subscribe('sn')
+         
+        sock.on('message', msg => {
+          const data = msg.toString().split(' ') // Split to get topic & data
+          switch (
+                data[0] // Use index 0 to match topic
+          ) {
+                case 'tx':
+                console.log(`I'm a TX!`, data)
+                break
+                case 'sn':
+                console.log(`I'm a confirmed TX`, data)
+                break
+          }
+        })
+         
+         
+Sample Output:
+         
+        I'm a TX!
+
+        [ 'tx',  'ZMHJERFCCJAJNIQBQ9ZGAFWGTDZBCOPKHPEAXFGSYQNJIDAJZHOAJWGYG9OCIFWCYESLTLTRNVRKLU999,
+        'EQQFCZBIHRHWPXKMTOLMYUYPCN9XLMJPYZVFJSAY9FQHCCLWTOLLUGKKMXYFDBOOYFBLBI9WUEILGECY',
+         '0',
+         'RBVHA9999999999999999999999',
+         '1532555817',
+         '0',
+         '1',
+        '9WTKBVKJMW9ENHIOIJMKQSPDEMMHUNHVBZLLPPNVIQBOZVQJLSLYWUEBBXDKSPGBJIUFBGBZBUURVLJF',
+        'YZSBYT9HSTGKWTNSMUUCN9IMBMGIWUCJZUFVQEF9TQVCVTIPNLPVOV9MARXOJGJUIPKOMUCMAPUNNJ99,
+        'AGEKCZASCCGHBPSOIAHYPYGCZIGHRYKENFPQYYNJPAOITNJIFXMHFLQHXWDBYQBJSZKTFLQABMJEOG999',
+         '1532555817540', 'RBVHA9999999999999999999999' ]
+         
+        I'm a confirmed TX
+
+        [ 'sn',  '685304',
+        'AGEKCZASCCGHBPSOIAHYPYGCZIGHRYKENFPQYYNJPAOITNJIFXMHFLQHXWDBYQBJSZKTFLQABMJEOG999',
+        'EQQFCZBIHRHWPXKMTOLMYUYPCN9XLMJPYZVFJSAY9FQHCCLWTOLLUGKKMXYFDBOOYFBLBI9WUEILGECY',
+        'BLCKFZJYCYVUTWFWSGV9EEQCWCRJSIUZHUCEUDLAKFXDFWSSOBBICFYTFXLAODQRHBUJBNXEIOVCVS99,
+        'HXDFFUGKOPZNRSSOOU9AZDIRVOTFMVSKJ9WECXGNTRKEPLCW9EX99KKONIDBAVHHNIFRYEAUSYQBMM9,
+        'XVXCEJBNQBDHQDNFJRMACFHXVQTLFCWQHTSRZMUBBDPY9AWYVCHPAOLPVDFBDUGARQRX9ZLBWNOEG']

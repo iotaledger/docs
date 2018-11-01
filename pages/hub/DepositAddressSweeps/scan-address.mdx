@@ -1,0 +1,123 @@
+﻿import { withRouter } from 'next/router'
+import WithMDX from '../../../lib/with-mdx'
+
+import { nelson } from '../../../lib/data/team'
+import Tangle from '../../../components/tangle'
+
+export const page = {
+title: 'Scan Deposit Addresses',
+date: '4 Sep 2018',
+authors: [nelson],
+editUrl: 'pages/hub/sweep-faq.mdx',
+}
+
+export default withRouter(props => WithMDX(props, page))
+
+To perform a sweep, first, scan deposit addresses for balances filtering out any addresses with zero value.  Next, check whether deposit addresses are in any unresolved sweeps.  To speed up the process, keep track of the indexes of deposit addresses.  
+
+One seed many contain many deposit addresses that have already been processed.  Send the sweep transfer to move balances from selected deposit addresses to unspent exchange-owned addresses.  
+
+Check the inclusion states of the sweep transactions to determine which transactions have been confirmed and accepted by the Tangle network.  Finally, credit the user.  Each of these steps is shown in the following example.  
+
+** EXAMPLE ** 
+
+This example includes one seed with three deposit addresses.
+ 
+	Seed
+	SWEEPUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
+ 
+	Address
+	UXH9J9QHZVKRZDEWWGMP9CKKSUXBDZQTXUUQBUZKASU9HYFQBNHKHPRHARFZXXSZWBVVAYTQCYR9ZEMOW
+	Hash
+	CCF9MLBRPSWXOHASCNL9QDYEHOFJEJWPTZSAZSSIQMNURZKXAVOQOHKFXMQHPBHWQMKOIKGASOTNGD999
+	Balance: 3i
+ 
+	Address
+	GSTHKIUB9EEEQACDAXYNIPCBNLNCQSUALTLHMQXKMEXZRWGPMLWTGUVKXDLHMUURXDMZTMNIZGMDEPTGZ
+	Hash
+	HVFZDGI9VWBQYXBOYQBXPZV9ZPUBHPUMXCECHCSYFLVUZQJFXDZGIBJSCNISIZKBRELLIWIFMDG9BW999
+	Balance: 2i
+ 
+	Address
+	YOVTKYOFOZMKZNGOHWEZTFTTAMDUAIXBUZPBADCZEITFGWP9UDWPTIABPXWHN9GMMORUABPOMGRUSEUPW
+	Hash
+	IAXUZHVULPXTWCOGUPIUTWUFZGOTFHJLDJFDIIRMRQYAAPJRUKAAFYXFJILAKIJCUYZVIXIMWY9BJM999
+	Balance: 4i
+ 
+
+There is an exchange-owned seed with an address for any remainder that might be left over from the sweep.
+
+	Exchange-owned Seed
+	SWEEPVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+ 
+	Address in case of remainder
+	SMSSHPTTSNHOJHGXQKJZKWOSLGBLPYTNGPTY9MRXIHRUFUFGZBSJBAZAFAYDYLLWMDQAEZMXUPEBETMYD
+ 
+
+Finally, there is an exchange-owned seed with an address specifically for the sweep.
+
+	Exchange-owned Seed
+	SWEEPWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+ 
+	Address for sweep
+	HDTVOJPIPJCOFZLQA9BZGDGASSMHCWOVNM9CLL9TBKOXTBVMIH9WIQGNWBRRSUWHOECBRANF9IKBCIBYW
+ 
+
+** NOTICE **  
+
+The expected result of this sweep is that all three deposit addresses will be swept to one exchange address with no remainder.
+
+## Scan deposit addresses for balances ##
+
+Fetch balances with iota.api.getBalances() and filter out any empty addresses
+ 
+
+    /* use 81 tryte addresses without checksum  */
+     
+    const IOTA = require("iota.lib.js")
+    const iota = new IOTA({provider: "https://nodes.testnet.iota.org:443"})
+    const remoteCurl = require('@iota/curl-remote')
+     
+    /* ********************************************************************
+     Scan deposit addresses for balances               	   	
+    ******************************************************************** */
+    //Exchange-owned seed
+    const seed = 'SWEEPUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU'
+    const message = iota.utils.toTrytes('SWEEPEXAMPLE')
+     
+    let addresses = [ 'UXH9J9QHZVKRZDEWWGMP9CKKSUXBDZQTXUUQBUZKASU9HYFQBNHKHPRHARFZXXSZWBVVAYTQCYR9ZEMOW',
+                      'GSTHKIUB9EEEQACDAXYNIPCBNLNCQSUALTLHMQXKMEXZRWGPMLWTGUVKXDLHMUURXDMZTMNIZGMDEPTGZ',
+                      'YOVTKYOFOZMKZNGOHWEZTFTTAMDUAIXBUZPBADCZEITFGWP9UDWPTIABPXWHN9GMMORUABPOMGRUSEUPW' ]
+     
+    const metadata = [
+            {security: 2, keyIndex: 0, user: 'UXH', hashes: ['CCF9MLBRPSWXOHASCNL9QDYEHOFJEJWPTZSAZSSIQMNURZKXAVOQOHKFXMQHPBHWQMKOIKGASOTNGD999']},
+            {security: 2, keyIndex: 1, user: 'GST', hashes: ['HVFZDGI9VWBQYXBOYQBXPZV9ZPUBHPUMXCECHCSYFLVUZQJFXDZGIBJSCNISIZKBRELLIWIFMDG9BW999']},
+            {security: 2, keyIndex: 2, user: 'YOV', hashes: ['IAXUZHVULPXTWCOGUPIUTWUFZGOTFHJLDJFDIIRMRQYAAPJRUKAAFYXFJILAKIJCUYZVIXIMWY9BJM999']}
+    ];
+     
+    iota.api.getBalances(addresses, 100, (err, res) => {
+            if (err) {
+            console.log(err)
+            return
+            }
+            
+            balances = res.balances.map(balance => parseInt(balance))
+            
+            let sweeps = addresses.map((data, i, addresses) => {
+            return {
+                index: i,
+                address: data,
+                keyIndex: metadata[i].keyIndex,
+                security: metadata[i].security,
+                hashes: metadata[i].hashes,
+                balance: balances[i]
+               };
+            });
+     
+            sweeps = sweeps.filter(function(sweep) {
+            return sweep.balance > 0;
+            });
+     
+            console.log("Scan deposit addresses for balances.")
+            console.log(sweeps)
+ 

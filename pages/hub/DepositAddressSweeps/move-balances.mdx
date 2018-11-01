@@ -1,0 +1,72 @@
+﻿import { withRouter } from 'next/router'
+import WithMDX from '../../../lib/with-mdx'
+
+import { nelson } from '../../../lib/data/team'
+import Tangle from '../../../components/tangle'
+
+export const page = {
+title: 'Move Balances',
+date: '4 Sep 2018',
+authors: [nelson],
+editUrl: 'pages/hub/sweep-faq.mdx',
+}
+
+export default withRouter(props => WithMDX(props, page))
+
+Transfer funds from deposit addresses to exchange addresses.  After each successful deposit, you should send the tokens to your hot wallet unless you need extra security.  If you need extra security then send tokens to cold storage.   After storing the tokens, generate a new address available for the user to make a new deposit.  You can use the tag field to easily identify users and their deposits. The tag field makes it possible to store a unique, 27-tryte value.
+ 
+Use sendTransfer() and provide the selected addresses as inputs to move their balance to an unspent exchange owned address.  Inputs assigned to different users can be aggregated in a single transaction to improve performance by reducing amount of Proof-of-Work.
+ 
+** NOTICE **
+
+Limit bundle size to 10 transactions on average for faster confirmations. This is achieved by aggregating about four inputs in a bundle.
+
+** WARNING **
+
+All input addresses passed to a single sendTransfer() call must be generated from the same seed. You might want to cache addresses belonging to one seed together with their key index because address generation is computationally expensive.
+
+** WARNING **
+
+Make sure to provide the correct security level and key index for each input.
+
+** WARNING **
+
+Wait for sweep transfers to confirm before spending their outputs.
+
+** WARNING **
+
+Always define an unspent exchange owned remainder address.
+ 
+ 
+	/* ************************************************************
+	Transfer funds from deposit addresses to exchange addresses 
+	*************************************************************** */
+	// Sum sweep balances
+	const totalValue = sweeps.reduce((sum, sweep) => sum + sweep.balance, 0)
+	console.log("Total Value")
+	console.log(totalValue)
+ 
+	// Exchange-owned address
+	const remainderAddress = 'SMSSHPTTSNHOJHGXQKJZKWOSLGBLPYTNGPTY9MRXIHRUFUFGZBSJBAZAFAYDYLLWMDQAEZMXUPEBETMYD'
+	const options = {
+	inputs: inputs,
+	address: remainderAddress
+	}
+	const transfers = [{
+	address: 'HDTVOJPIPJCOFZLQA9BZGDGASSMHCWOVNM9CLL9TBKOXTBVMIH9WIQGNWBRRSUWHOECBRANF9IKBCIBYW',
+	value: totalValue,
+	message: message,
+	tag: ''
+	}]
+	console.log("Transfer funds from deposit addresses to exchange address")
+	iota.api.sendTransfer(seed, 3, 9, transfers, options, (err, transactions) => {
+	if (err) {
+		console.log("Error: ", err)
+		return
+	} else {
+		console.log("Transfer Details")
+		console.log(transactions)
+		const tailHash = transactions[0].hash
+		/* To Do:  find index then store hash */
+		metadata[0].hashes[0] = tailHash
+	}

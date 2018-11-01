@@ -1,0 +1,81 @@
+﻿import { withRouter } from 'next/router'
+import WithMDX from '../../../lib/with-mdx'
+
+import { nelson } from '../../../lib/data/team'
+import Tangle from '../../../components/tangle'
+
+export const page = {
+title: 'Reattaching a Transfer',
+date: '4 Sep 2018',
+authors: [nelson],
+editUrl: 'pages/hub/reattaching-transfer.mdx',
+}
+
+export default withRouter(props => WithMDX(props, page))
+
+Reattaching a transaction is simply doing the proof of work and tip selection process to reattach the transaction to a different part of the Tangle.  Reattach once every 30 minutes that a transaction remains pending.  If still pending after 5 reattachments then verify that the transaction wasn’t double spent.
+ 
+Chances of confirmation are significantly increased with each reattachment
+ 
+The javascript library provides two methods to properly execute reattachments:
+isRettachable() to determine if reattachment is possible
+replayBundle() to execute the replay
+ 
+Checking if reattachment is required
+In order to determine if you should reattach pending transactions use isReattachable() method and pass the tail transaction hashes. The result of isReattachable() will return false if the inputs used in the bundle have zero or insufficient balance.
+
+JavaScript
+ 
+    iota.api.isReattachable({hashes: hashes}, (err, res) => {
+	if (err) {
+        console.log(err)
+        return
+	}
+    res.forEach((isReattachable, i) => {
+    	console.log(isReattachable)
+    	if (isReattachable) {
+        	// Reattach
+        	// [...]
+    	}
+	})
+    })
+ 
+ 
+ 
+isReattachable is used in sweeping to determine whether the hash has been confirmed or not. 
+ 
+JavaScript
+
+    // Check for on-going sweeps
+    iota.api.isReattachable({hashes: hashes}, (err, res) => {
+    	if (err) {
+        	console.log(err)
+        	return
+    	}
+ 
+    console.log("Check whether deposit addresses were used in unresolved sweeps")
+    console.log("Are hashes in confirmed transactions? ", res)  		
+ 
+isReattachable returns true if the transaction has been confirmed and false if not
+ 
+Reattaching a transfer
+To reattach a bundle we utilize isReattachable() by passing the tail transaction hashes of reattachable transfers. Once a replay is done you should obtain the hash of the tail transaction which is useful to determine confirmation.
+ 
+JavaScript
+ 
+    res.forEach((isReattachable, i) => {
+        console.log(isReattachable)
+	if (isReattachable) {
+		// Reattach
+		iota.api.replayBundle(hashes[i], (err, txs) => {
+		// Get the tail transaction hash
+		const tailHash = txs[0].hash
+		// Keep track of tail hash to check for confirmation...
+		})
+	}
+    })
+
+
+** WARNING **
+
+It is important to keep track of all tail transaction hashes, including that of reattachments, to determine the confirmation status with getLatestInclusion().
