@@ -66,11 +66,11 @@ export default class DocsNavbarToggle extends React.Component {
             <button className="toggle-button">Trinity Wallet</button>
           </ActivePageButton>
         </div>
-        {/* <div className="toggle">
-               <ActivePageButton href="/mam">
-                  <button className="toggle-button">MAM</button>
-               </ActivePageButton>
-            </div> */}
+        <div className="toggle">
+          <ActivePageButton href="/hub">
+            <button className="toggle-button">Hub</button>
+          </ActivePageButton>
+        </div>
 
         <style jsx>{`
           .toggle-container {

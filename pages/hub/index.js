@@ -1,4 +1,3 @@
-import IntroductionToIOTA from './what-is-hub.mdx'
+import IntroductionToIOTA from './introduction/overview.md'
 
 export default IntroductionToIOTA
-
