@@ -1,5 +1,6 @@
 import { withRouter } from 'next/router'
 import WithMDX from '../../../lib/with-mdx'
+import Image from '../../../components/image'
 
 import { nelson } from '../../../lib/data/team'
 
@@ -27,7 +28,13 @@ An operational IOTA Hub should have the following components to be operational:
 - Exposed gRPC calls
 - Signing server (optional)
 
-![Diagram showing the hub components described above](/static/docs/hub/components.jpg)
+<Image
+src={`/static/docs/hub/components.jpg`}
+width={700}
+height={389}
+caption="Diagram showing the Hub components"
+/>
+
 
 ### Interacting with Hub 
 

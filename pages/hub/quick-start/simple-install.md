@@ -1,5 +1,6 @@
 import { withRouter } from 'next/router'
 import WithMDX from '../../../lib/with-mdx'
+import Image from '../../../components/image'
 
 import { nelson } from '../../../lib/data/team'
 
@@ -73,7 +74,12 @@ And finally we install the MariaDB Server:
 
 During the installation you will be prompted to enter a root password for MariaDB, pick a secure password and remember it, you will need it later on:
 
-![MariaDB password prompt](/static/docs/hub/mariapassword.png "Choose your password")
+<Image
+src={`/static/docs/hub/mariapassword.png`}
+width={750}
+height={223}
+caption="MariaDB password prompt"
+/>
 
 Once this is done we can check if it all went right by checking the MySQL version
 
