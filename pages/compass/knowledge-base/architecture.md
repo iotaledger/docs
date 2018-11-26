@@ -8,7 +8,7 @@ export const page = {
 title: 'Architecture',
 date: '4 Sep 2018',
 authors: [lewi],
-editUrl: 'pages/compass/knowledge-base/hub-architecture.md',
+editUrl: 'pages/compass/knowledge-base/architecture.md',
 }
 
 export default withRouter(props => WithMDX(props, page))
@@ -17,7 +17,7 @@ Compass is a simple application designed for minimal maintenance. The programs f
 
 ## Operating Environemnt
 
-Compass can be run on a number of platforms. In order to get it run it requires the following dependencies:
+Compass can be run on a number of platforms. In order to get it to run it requires the following dependencies:
 - Modern GCC or Clang (or use a provided toolchain from [@iota_toolchains](https://github.com/iotaledger/toolchains))
 - bazel
 
