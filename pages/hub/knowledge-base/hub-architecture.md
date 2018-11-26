@@ -29,9 +29,9 @@ An operational IOTA Hub should have the following components to be operational:
 - Signing server (optional)
 
 <Image
-src={`/static/docs/hub/components.jpg`}
-width={700}
-height={389}
+src={`/static/docs/hub/iota_hub.png`}
+width={750}
+height={466}
 caption="Diagram showing the Hub components"
 />
 
