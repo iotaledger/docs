@@ -14,7 +14,7 @@ export default withRouter(props => WithMDX(props, page))
 
 Compass is useful for enabling private Tangles for anyone wanting to look at the IOTA protocol.  
 
-- **Security researchers** could use Compass to create a private Tangle to conduct security testing and research. This enables them a controlled encironment to test assumptions and produce attacks.  
+- **Security researchers** could use Compass to create a private Tangle to conduct security testing and research. This enables them a controlled environment to test assumptions and produce attacks.  
 
 - **Developers** could use Compass to create a private Tangle to develop applications in environment with unlimited tokens to manipulate.  
 
