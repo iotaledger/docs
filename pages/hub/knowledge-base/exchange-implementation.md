@@ -69,7 +69,7 @@ _Note that this means that the RPCHub does not track individual per-user balance
 ---
 
 ## Scenario B
-As the Hub supports fully independent user accounts with individual balances, it arguably makes esnse to rely on this as an added security measure. Balances are tracked per-user and therefore a user can only use as many funds as the user is tracking for them. However, this approach currently complicates the cold/hot wallet flow. 
+As the Hub supports fully independent user accounts with individual balances, it arguably makes sense to rely on this as an added security measure. Balances are tracked per-user and therefore a user can only use as many funds as the user is tracking for them. However, this approach currently complicates the cold/hot wallet flow. 
 
 ### Cold/hot wallets
 As opposed to Scenario A, it is not so easy to move funds from multiple users to a cold wallet. However, it is possible to have the Hub ignore certain internal addresses. For this, the `is_cold_storage` column on the `hub_address` table row needs to be set to 1. This will cause the `SweepService` to ignore this address for any sweeps.
@@ -80,13 +80,13 @@ At the moment, the only way that this can be achieved is through manual database
 
 Using the `salt` that's passed at startup and the `seed_uuid` it is always possible to recompute the Hub address's seed outside of the Hub.
 
-Should sufficient interest exist for this integration scenario, it is possible to provide specialised endpoints for this.
+Should sufficient interest exist for this integration scenario, it is possible to provide specialized endpoints for this.
 
 ### Example flows
 #### Initial setup
 None. Start the Hub.
 
-#### User signup
+#### User sign up
 1. Exchange creates new Hub user, passing in a per-user userid.
 
 #### User deposit
