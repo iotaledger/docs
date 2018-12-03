@@ -55,10 +55,20 @@ export default class DocsNavbarToggle extends React.Component {
         </div>
         <div className="toggle">
           <ActivePageButton href="/iri">
-            <button className="toggle-button">IOTA Node (IRI)</button>
+            <button className="toggle-button">IRI Node</button>
           </ActivePageButton>
           <ActivePageButton href="https://iota.readme.io/reference" external>
             <button className={'toggle-button api'}>API</button>
+          </ActivePageButton>
+        </div>
+        <div className="toggle">
+          <ActivePageButton href="/compass">
+            <button className="toggle-button">Compass</button>
+          </ActivePageButton>
+        </div>
+        <div className="toggle">
+          <ActivePageButton href="/hub">
+            <button className="toggle-button">IOTA Hub</button>
           </ActivePageButton>
         </div>
         <div className="toggle">
@@ -66,11 +76,6 @@ export default class DocsNavbarToggle extends React.Component {
             <button className="toggle-button">Trinity Wallet</button>
           </ActivePageButton>
         </div>
-        {/* <div className="toggle">
-               <ActivePageButton href="/mam">
-                  <button className="toggle-button">MAM</button>
-               </ActivePageButton>
-            </div> */}
 
         <style jsx>{`
           .toggle-container {

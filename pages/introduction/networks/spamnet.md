@@ -24,7 +24,7 @@ The Spamnet is primarily comprised of servers hosted by the IOTA Foundation. The
 <Image
 src={`/static/docs/networks/spamnet_layout.png`}
 width={600}
-height={442}
+height={313}
 caption="Topology of the IOTA Spamnet"
 />
 
@@ -59,22 +59,49 @@ tcp://zmq.spamnet.iota.org:5556
 
 ## Setting up a Node on the Spamnet
 
+### Configuring IRI for the Spamnet
+
+We recommend to run IRI 1.5.3 or higher. You must make sure to configure IRI with the following INI options, or the command line equivalents:
+
+```
+[IRI]
+TESTNET = TRUE
+MWM = 14
+SNAPSHOT_FILE = /iri/conf/snapshots/spamnet.txt
+COORDINATOR = H9FXUMSYAWNZPVFINVTXOTYKFZXR9OBKA9KSTVWXTWHIZZRISFYZMXIMOQFXDXXQHNAJXAZFP9IHSFXRH
+NUMBER_OF_KEYS_IN_A_MILESTONE = 20
+SNAPSHOT_TIME = 1535760000
+MILESTONE_START_INDEX = 2
+NEIGHBORS = udp://p101.spamnet.iota.cafe:14600 udp://p102.spamnet.iota.cafe:14600
+```
+
+> NOTE: The configuration options are above are mandatory in order to have a functional node.
+
+### Snapshot file
+
+The Spamnet network snapshot file is not included in IRI. For this reason you need to provide IRI the correct snapshot file for the network. Here is the content of the file:
+
+```
+WYF9OOFCQJRTLTRMREDWPOBQ9KNDMFVZSROZVXACAWKUMXAIYTFQCPAYZHNGKIWZZGKCSHSSTRDHDAJCW;2779530283277761
+```
+
+> Save the text above and make sure to configure IRI with the SNAPSHOT_FILE directive as indicated above
+
 ### Syncing the ledger
 
-The current Spamnet database is more than 15GB. We have regularly updated snapshots of the Spamnet, to allow community members and developers to spawn their own IRI node(s) and sync it in a reasonable period of time.
-
-The database is available for download [here](https://dbfiles.iota.org/?prefix=spamnet/) and usually requires the latest version of IRI.
+On the 1st of September 2018 the Spamnet ledger was reset.
 
 ### Neighbours
 
-The following nodes have autopeering enabled over UDP:
+As mentioned in the INI file above, the following nodes have autopeering enabled over UDP:
 
 ```
-udp://p101.spamnet.iota.cafe:14666
-
-udp://p102.spamnet.iota.cafe:14666
+udp://p101.spamnet.iota.cafe:14600
+udp://p102.spamnet.iota.cafe:14600
 ```
 
-Developers can sync their nodes by using any of these `p10x` nodes via udp, port 14666.
+These nodes will automatically accept new neighbours and do not require manual peering. However keep in mind that the number of neighbours is currently capped at 128 each p10n server. For this reason you are very welcome to exchange your own Spamnet IRI URLs over to #tanglespam in Discord, to allow other node operators to participate in the Spamnet network.
 
-> NOTE: When setting up IRI use the `--testnet` flag or set `TESTNET = true` in the configuration file.
+### Tokens
+
+At present the Spamnet Faucet website is not functional. In order to get Spamnet tokens please head over to Discord channel #tanglespam and ask for some by communicating your receive address. Community members will make sure that you will receive some.
