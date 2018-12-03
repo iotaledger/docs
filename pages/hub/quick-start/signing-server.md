@@ -203,7 +203,7 @@ Install a compiler
 
 ```sudo apt install gcc-7```
 
-Install dependences for Bazel, the development tool used to create IOTA Hub
+Install dependencies for Bazel, the development tool used to create IOTA Hub
 
 ```sudo apt-get install pkg-config zip g++ zlib1g-dev unzip python```
 

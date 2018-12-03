@@ -173,7 +173,7 @@ If no error message pops up now the Hub is running in your console, great!
 
 Please note that you are currently running the hub in your shell session, if you close this session it will stop the Hub. The shell session itself isn't 
 available any more to work in so to test it out you would need to open up another session. This is okay for testing but you might want to consider running
-the hub in a screen/tmux session, a system wide service or a supervised process. For this tutorial we will use `supervisor` to make sure the Hub always runs and automatically restarts after a reboot or a potential crash of the application. First we need to install supervisor (You can exit the currently running Hub aplication using the `CTRL+C` key combination):
+the hub in a screen/tmux session, a system wide service or a supervised process. For this tutorial we will use `supervisor` to make sure the Hub always runs and automatically restarts after a reboot or a potential crash of the application. First we need to install supervisor (You can exit the currently running Hub application using the `CTRL+C` key combination):
 
 	sudo apt install supervisor
 

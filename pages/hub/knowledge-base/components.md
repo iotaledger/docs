@@ -48,5 +48,5 @@ After each successful deposit, Hub sends the tokens to hot wallets.  After stori
  
 Hub confirms sweep transactions were accepted by Tangle. To ensure secure deposit of funds to exchange addresses, check the inclusion states of the sweep transactions. Finally, Hub credits the user.
  
-### Withdrawls
+### Withdrawals
 The Hub manages withdrawals. Customers withdraw funds from exchanges for various reasons. The exchange must make sure that deposit addresses used to transfer tokens do not have pending incoming transactions as a strict measure to prevent private key reuse.  Hub ensures that no value is being transferred to a deposit address.  Hub also makes sure that all previous incoming transactions are confirmed before sending a transfer.  Hub monitors withdrawal transactions and notifies users once withdrawal transaction has been confirmed.
