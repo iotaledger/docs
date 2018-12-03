@@ -4,7 +4,7 @@ import WithMDX from '../../../lib/with-mdx'
 import { nelson } from '../../../lib/data/team'
 
 export const page = {
-title: 'Hub Use cases',
+title: 'Hub use cases',
 date: '4 Sep 2018',
 authors: [],
 editUrl: 'pages/hub/introduction/usecases.md',
