@@ -5,6 +5,9 @@ import { lewi } from '../../../lib/data/team'
 import { TerminalInput } from '../../../components/text/terminal'
 import { HR } from '../../../components/text/paragraph'
 import Image from '../../../components/image'
+import Code1 from '../../../components/code_examples/ft-one'
+import Code2 from '../../../components/code_examples/ft-two'
+
 import {
 OutputTable,
 Row,
@@ -41,29 +44,13 @@ To start we need to create a working directory:
 Once in our directory we can use Node Package Manager (NPM)
 to fetch and install the required Node.js libraries for IOTA to the folder:
 
-<TerminalInput>{`npm install iota.lib.js --save`}</TerminalInput>
+<TerminalInput>{`npm install @iota/core @iota/converter --save`}</TerminalInput>
 
 This will result in a `package.json` file and a `node_modules` folder
 being created in your directory. After this we will create a new file
 called `index.js` in the current folder with the following contents:
 
-```javascript
-// Require the use of IOTA library
-const IOTA = require('iota.lib.js')
-
-// Create a new instance of the IOTA class object.
-// Use 'provider' variable to specify which Full Node to talk to
-const iota = new IOTA({ provider: 'https://nodes.devnet.iota.org:443' })
-
-// Call the 'getNodeInfo call to check that the node is working
-iota.api.getNodeInfo((error, success) => {
-  if (error) {
-    console.log(error)
-  } else {
-    console.log(success)
-  }
-})
-```
+<Code1 />
 
 After saving the file you can run this code using this command:
 
@@ -87,25 +74,29 @@ Devnet with the following message: `Hello World!`
 To achieve this the following code needs to be appended:
 
 ```javascript
-const trytes =
+const address =
   'HELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDD'
+const seed =
+  'PUEOTSEITFEVEWCWBTSIZM9NKRGJEIMXTULBACGFRQK9IMGICLBKW9TTEVSDQMGWKBXPVCBMMCXWMNPDX'
 const message = iota.utils.toTrytes('Hello World!')
 
 const transfers = [
   {
     value: 0,
-    address: trytes,
+    address: address,
     message: message
   }
 ]
 
-iota.api.sendTransfer(trytes, 3, 9, transfers, (error, success) => {
-  if (error) {
-    console.log(error)
-  } else {
-    console.log(success)
-  }
-})
+iota
+  .prepareTransfers(seed, transfers)
+  .then(trytes => iota.sendTrytes(trytes, 3, 9))
+  .then(bundle => {
+    console.log(bundle)
+  })
+  .catch(err => {
+    // catch any errors
+  })
 ```
 
 Lets break this code down:
@@ -113,21 +104,20 @@ Lets break this code down:
 **Trytes:**
 
 ```javascript
-const trytes =
+const address =
   'HELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDD'
+const seed =
+  'PUEOTSEITFEVEWCWBTSIZM9NKRGJEIMXTULBACGFRQK9IMGICLBKW9TTEVSDQMGWKBXPVCBMMCXWMNPDX'
 ```
 
-We define `trytes` here to be used in two places,
-one to feed into the `sendTransfer` function as a `seed` and
-second to use as the `address` where we will send the message.
-We can pick a random `seed` because we are not attempting to send value.
+We define `address` and `seed` here to be used in the `prepareTransfer` function. The `seed` here is random and contains no value.
 
 _Note: Seeds and Address are both comprised of Trytes and are 81 characters in length._
 
 **Message:**
 
 ```javascript
-const message = iota.utils.toTrytes('Hello World!')
+const message = Converter.asciiToTrytes('Hello World!')
 ```
 
 This line create a constant that is the message `Hello World` and
@@ -139,7 +129,7 @@ encodes it to the Trytes format that the IOTA network accepts.
 const transfers = [
   {
     value: 0,
-    address: trytes, // HELLOWORLDHELLOWORLDHELLO....WORLDD
+    address: address, // HELLOWORLDHELLOWORLDHELLO....WORLDD
     message: message
   }
 ]
@@ -152,18 +142,19 @@ to our HELLOWORLD address with the message `Hello World` encoded in trytes.
 **Transfer Function:**
 
 ```javascript
-iota.sendTransfer(trytes, 3, 9, transfers, (error, success) => {
-  if (error) {
-    console.log(error)
-  } else {
-    console.log(success)
-  }
-})
+iota
+  .prepareTransfers(seed, transfers)
+  .then(trytes => iota.sendTrytes(trytes, (depth = 3), (mwm = 9)))
+  .then(bundle => {
+    console.log(bundle)
+  })
+  .catch(err => {
+    // catch any errors
+  })
 ```
 
-The function invokes the library to do a number of steps to construct a
-transaction locally then send it too the Full Node to be sent to other
-nodes on the network.
+These functions invoke the library to do a number of steps to construct a
+transaction locally, via the `prepareTransfers` function, then send it too a Full Node, via the `sendTrytes` function, to be sent to other nodes on the network.
 
 Lets take a second to figure out what the variables do:
 
@@ -190,49 +181,13 @@ On the Devnet, anything less than 9 is not going to be accepted</Cell>
 <TypeCell>Array</TypeCell>
 <Cell>This array contains the value, address and message of your desired transaction. You can specify multiple transactions to different addresses.</Cell>
 </Row>
-<Row>
-<BoldCell>callback</BoldCell>
-<TypeCell>Function</TypeCell>
-<Cell>This returns the success or error resulting from this call.</Cell>
-</Row>
 </OutputTable>
 
 ## Final Code
 
 The resulting code should look like this:
 
-```javascript
-const IOTA = require('iota.lib.js')
-const iota = new IOTA({ provider: 'https://nodes.devnet.iota.org:443' })
-
-iota.api.getNodeInfo((error, success) => {
-  if (error) {
-    console.log(error)
-  } else {
-    console.log(success)
-  }
-})
-
-const trytes =
-  'HELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDD'
-const message = iota.utils.toTrytes('Hello World!')
-
-const transfers = [
-  {
-    value: 0,
-    address: trytes,
-    message: message
-  }
-]
-
-iota.api.sendTransfer(trytes, 3, 9, transfers, (error, success) => {
-  if (error) {
-    console.log(error)
-  } else {
-    console.log(success)
-  }
-})
-```
+<Code2 />
 
 Now if you run this code, you should see the Node's information logged to
 console but also you should see the transfer object you have just sent:
