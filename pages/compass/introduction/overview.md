@@ -12,7 +12,7 @@ editUrl: 'pages/compass/introduction/overview.md',
 
 export default withRouter(props => WithMDX(props, page))
 
-Compass is an open-source implementation of an IOTA Network coordinator. It is used to ensure the Tangle it is connected to is moving in a uniform direction and to protect against various attacks a young Tangle is susceptable to. 
+Compass is an open-source implementation of an IOTA Network coordinator. It is used to ensure the Tangle it is connected to is moving in a uniform direction and to protect against various attacks a young Tangle is susceptible to. 
 
 ### Making Compass obsolete
 
