@@ -1,5 +1,6 @@
 import { withRouter } from 'next/router'
 import WithMDX from '../../../lib/with-mdx'
+import Image from '../../../components/image'
 
 import { nelson } from '../../../lib/data/team'
 
@@ -27,15 +28,21 @@ An operational IOTA Hub should have the following components to be operational:
 - Exposed gRPC calls
 - Signing server (optional)
 
-![Diagram showing the hub components described above](/static/docs/hub/components.jpg)
+<Image
+src={`/static/docs/hub/iota_hub.png`}
+width={750}
+height={466}
+caption="Diagram showing the Hub components"
+/>
+
 
 ### Interacting with Hub 
 
-In order to interact with the Hub you must communitcate over gRPC. Hub includes gRPC as the only way to integrate other software with the Hub. This simplifies the types of interactions and reduces the attack surface of the Hub. 
+In order to interact with the Hub you must communicate over gRPC. Hub includes gRPC as the only way to integrate other software with the Hub. This simplifies the types of interactions and reduces the attack surface of the Hub. 
 
 On startup the Hub provides a gRPC server for clients to interact with. The Hub has a limited set of gRPC calls that can be used to interact with the Hub. See the API reference [here](../api-reference/reference.md)
 
-gRPC clients are available in numerous languages. To check if a lanuage has an offically supported library check [here](https://grpc.io/docs/)
+gRPC clients are available in numerous languages. To check if a language has an officially supported library check [here](https://grpc.io/docs/)
 
 For more information on gRPC find info [here](https://grpc.io/docs/guides/)
 

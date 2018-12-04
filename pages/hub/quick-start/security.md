@@ -18,7 +18,7 @@ For security purposes, deposit addresses may only be used once.  For transaction
 
 ### Using a Salt
 
-In order to add an extra layer of security to the Hub you have the ability to Salt the encryption of the user secrets. This removes the ability for an attacker to check the Hub's UUIDs against a precomputed dictionary attack. 
+In order to add an extra layer of security to the Hub you have the ability to Salt the encryption of the user secrets. This removes the ability for an attacker to check the Hub's UUIDs against a pre-computed dictionary attack. 
 
 Hub requires a Salt that must be greater than 20 characters long.
 
