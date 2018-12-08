@@ -38,6 +38,8 @@ Hash getData(Hash vertex) // returns the hash of the data bundle fragment tail
 
 Hash createVertex(Hash data, Hash[] edges) // creates a vertex bundle fragment, returns the tail of it
 
+// attempt to parse/reflect transactions with a given tag fragment at a specified offset
+void watchTagFragment(TritVec tagFragment, int offset)
 
 // In iterator fashion:
 // returns the next vertex
