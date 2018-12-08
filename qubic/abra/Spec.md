@@ -28,6 +28,7 @@ Attachment metadata:
 
 We have a list of entities and their attachment metadata. Incoming, they have a `limit`, per belonging environment, on the number of times they may be invoked in a time `quant` (positive integer). They have a `delay` in number of `quants`, per outgoing environment, before the effects will affect the entities of that environment. They have a maximum `depth` of recursion, counted as the maximum number of branches which may be attached. A depth of `0` will not traverse any branches.
 
+```
 Entity attachment:
 [ code hash (243 trits)
 , number of attachments (positive integer)
@@ -100,6 +101,7 @@ external block:
 [ hash location of code
 , block index in code (positive integer)
 ]
+```
 
 
 #### Encoding
