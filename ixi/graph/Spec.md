@@ -22,7 +22,9 @@ One data fragment may have many vertices which point to it. Each vertex is indep
 
 For purposes of code reuse and the general advantages of a single-level-store, it is suggested that the graph ixi reflects internally the vertices (published on the tangle, with the edges in the message) into bundles which are not published to neighbors.
 
-The head of this bundle should point in its trunk direction to the reflected vertex bundle fragment tail, and to the data bundle fragment tail in its branch.
+The serialized vertex is what is broadcast through the network. The reflected vertex is what we generate locally to reason about these arbitrary graphs.
+
+The head of this bundle should point in its trunk direction to the reflected vertex bundle fragment tail, and to the data bundle fragment tail in its branch. This allows us to find a generated reflected vertex given a serialized vertex, and to find a compound vertex given a data hash, using a `referringTransactions` method.
 
 Every transaction above this should point in its branch direction to the tail hash of the other reflected vertices, one transaction reflected per edge.
 
