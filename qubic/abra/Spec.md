@@ -28,6 +28,8 @@ Attachment metadata:
 
 We have a list of entities and their attachment metadata. Incoming, they have a `limit`, per belonging environment, on the number of times they may be invoked in a time `quant` (positive integer). They have a `delay` in number of `quants`, per outgoing environment, before the effects will affect the entities of that environment. They have a maximum `depth` of recursion, counted as the maximum number of branches which may be attached. A depth of `0` will not traverse any branches.
 
+Attachment transactions are kept separate from the dataflow definition transactions for purposes of reusability, to keep entities (instantiations) separate from branches (definitions).
+
 ```
 Entity attachment:
 [ code hash (243 trits)
@@ -59,7 +61,6 @@ output environment data:
 [ environment hash
 , delay (positive integer)
 ]
-
 
 block:
 [ number of trits in block definition (positive integer)
