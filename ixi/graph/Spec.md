@@ -12,6 +12,8 @@ The first transaction in a bundle fragment which points to the rest of it in its
 
 A vertex is a bundle fragment. It points to one data and many vertices. The data is referenced by hash (of its bundle fragment tail) in the extra data digest of the vertex (in its bundle fragment tail). The signature or message fragment of the rest of the bundle fragment contains a list of edges to other vertices (by their bundle fragment tail hash).
 
+The first trit of the tag of each transaction in the vertex bundle fragment can indicate if it is the last transaction in the bundle fragment (1 if last). The last transaction in the vertex bundle fragment can indicate the number of edges following this trit (in 3 or 4 trits, it's a maximum of 27).
+
 ### Compound Vertex
 
 One data fragment may have many vertices which point to it. Each vertex is independent of the others, but collectively, these are known as a compound vertex, and may be used to create cyclic graphs in context of data relationships.
@@ -45,4 +47,41 @@ Hash getNextEdge(Hash vertex, Hash previousEdge)
 Hash startVertex(Hash data) // returns the hash of the head created, branch pointing to data
 Hash addEdge(Hash edge, Hash midVertexHash, Bool last) // adds a transaction to the bundle started in startVertex, branch pointing to the edge, returns the new transaction hash
 Hash finalizeVertex(Hash reflectedTail) // create the bundle fragment ready to attach to the tangle, or to put into a bundle, return the fragment tail 
+```
+
+#### Visualization
+
+A bundle containing a vertex bundle fragment
+```
+                o bundle tail
+               /
+              o 
+             /
+            x vertex bundle fragment tail (with up to 27 edges)
+           /
+          . more vertex edges
+         /
+        . last tx of vertex edges
+       /
+      o continuation of bundle ...
+     /
+    o bundle head
+```
+
+The vertex fragment reflected in iota transactions on the local tangle
+```
+        T
+       / \
+      o   x
+     / \
+    o   x
+   / \
+  o   x
+ / \
+1   2
+
+T: tail transaction (last created) of reflected vertex bundle
+x: tail hash of outgoing reflected vertex edges (like above T)
+1: vertex fragment tail (to the serialized vertex)
+2: data fragment tail
 ```
