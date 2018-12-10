@@ -12,7 +12,7 @@ editUrl: 'pages/compass/introduction/background.md',
 
 export default withRouter(props => WithMDX(props, page))
 
-An IOTA network relies on clients sending mostly honest transactions to IRI nodes and for those IRI nodes to propagate those transactions through the network. However, the fewer transactions that are propagated through an IOTA network, the easier it is for an attacker make IRI nodes propagate mostly dishonest transactions through the network.
+An IOTA network relies on clients sending mostly honest transactions to IRI nodes and for those IRI nodes to propagate those transactions through the network. However, the fewer transactions that are propagated through an IOTA network, the easier it is for an attacker to make the IRI nodes propagate mostly dishonest transactions through the network.
 
 If an attacker were to send the IRI nodes more dishonest transactions than the total number of honest transactions in an IOTA network, that attacker may be able to control the direction of consensus, double spend tokens, and carry out network-splitting attacks.
  
