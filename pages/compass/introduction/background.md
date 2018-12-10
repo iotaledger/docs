@@ -12,19 +12,21 @@ editUrl: 'pages/compass/introduction/background.md',
 
 export default withRouter(props => WithMDX(props, page))
 
-The base assumption of the Tangle is that there are more honest than dishonest transactions propagating through the network. However, in the infancy of a Tangle there are less transactions propagated between nodes than maximum bandwidth between them.
+An IOTA network relies on clients sending mostly honest transactions to IRI nodes and for those IRI nodes to propagate those transactions through the network. However, the fewer transactions that are propagated through an IOTA network, the easier it is for an attacker to make the IRI nodes propagate mostly dishonest transactions through the network.
 
-The creators of the Tangle realized that if an attacker could publish more transactions than the total of the honest transactions, then they might control the direction of consensus. Thus, they could perform double spend and network splitting attacks.
+If an attacker were to send the IRI nodes more dishonest transactions than the total number of honest transactions in an IOTA network, that attacker may be able to control the direction of consensus, double spend tokens, and carry out network-splitting attacks.
  
-Enter the “Coordinator”, a temporary safety mechanism.  Such safety mechanisms are common in blockchain and DLT systems.  For example, Satoshi’s Bitcoin had hard-coded checkpoints plus an alerts system for him to shut down the network if necessary.
+Enter the Coordinator (COO): a temporary safety mechanism. Such safety mechanisms are common in blockchain and distributed ledger technology (DLT) systems. For example, Bitcoin had hard-coded checkpoints, plus an alerts system that allowed the creator to shut down the network if necessary.
  
-The Coordinator (COO) issues bundles at a regular interval. This bundle includes a signed transaction called a “milestone”.  When using a coordinator, such as Compass, transaction confirmation is achieved by determining if and only if, a transaction is referenced by a milestone directly or indirectly. At this point the transaction is considered confirmed by the nodes configured to recognize the coordinator. 
+COO sends bundles at regular intervals to the IRI nodes. These bundles include a signed transaction called a milestone. When using a COO such as Compass, the IRI nodes in an IOTA network consider a transaction as confirmed only if it's directly or indirectly referenced by a milestone.
 
-A Coordinator can be used to prevent attacks until the network can ensure a majority of honest transactions at which point it will hard to attack the consensus of the network.  At this point the Tangle, the use of a coordinator will no longer be required.
+**Note:** IRI nodes must be configured to recognize milestones that are published by Compass. 
+
+A COO such as Compass can be used to prevent attacks until mostly honest transactions are propagated through an IOTA network, at which point it will be hard to attack the consensus of the network and the use of a COO will no longer be required.
  
 ## Further Reading 
 
-To understand the requirement and use of a coordinator  there are a number of resources available:
+To learn more about the COO, read the following resources:
 - [IOTA Papers discussing the Tangle and other protocol features](https://www.iota.org/research/academic-papers)
 - [A series of posts discussing the removal of the Coordinator](https://blog.iota.org/coordinator-part-1-the-path-to-coordicide-ee4148a8db08)
 
