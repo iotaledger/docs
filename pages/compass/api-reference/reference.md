@@ -12,6 +12,6 @@ editUrl: 'pages/compass/api/reference.md',
 
 export default withRouter(props => WithMDX(props, page))
 
-Compass can be thought as a [Daemon process](https://en.wikipedia.org/wiki/Daemon_(computing)) which runs without interaction after its initiated. Due to this there is no externally facing APIs for external software to interact with. 
+Compass is a [Daemon process](https://en.wikipedia.org/wiki/Daemon_(computing)) that runs without interaction after it's initiated. As a result, Compass has no public APIs that clients can use to interact with it. 
 
-Check out the [setup guide](quick-start/setup-guide.md) to understand how to use this software.
+[Set up Compass](quick-start/simple-install.md).
