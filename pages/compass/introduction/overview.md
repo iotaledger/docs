@@ -12,7 +12,14 @@ editUrl: 'pages/compass/introduction/overview.md',
 
 export default withRouter(props => WithMDX(props, page))
 
-Compass is an open-source implementation of an IOTA Network coordinator. It is used to ensure the Tangle it is connected to is moving in a uniform direction and to protect against various attacks a young Tangle is susceptible to. 
+Compass is an open-source Coordinator that is used to protect small IOTA networks against attacks.
+
+<dl>
+  <dt>Coordinator</dt>
+  <dd>Client application that sends transactions, known as milestones, every two minutes to IRI nodes in the mainnet, the devnet, and the testnet networks. Each IRI node validates the milestone transactions, and when a valid milestone transaction directly or indirectly references another transactions, that transaction is considered confirmed on the IOTA network. The IOTA Foundation runs the client application that is the Coordinator. </dd>
+  </dl>
+
+You can use set up Compass in a private IOTA network that does not use the Coordinator.
 
 ### Making Compass obsolete
 
