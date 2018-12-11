@@ -11,16 +11,25 @@ Branches are defined as a list of sizes of inputs, and a list of dataflow sites 
 
 > Branch : much like a function. it can have state, and can recursively invoke itself. 
 recursive invokations of branches are new instances of the branch; if it is stateful, then it is a new state in each recursive path.
+```
+ Knot: an invocation of a branch which outputs to a site in the dataflow of a branch
 
-> Knot: an invocation of a branch which outputs to a site in the dataflow of a branch
+ Lookup Table: 3-input, 1-output, which only returns a non-null value where defined
 
-> Lookup Table: 3-input, 1-output, which only returns a non-null value where defined
+ Entity: an entrypoint branch which receives input effects from many environments, sends output effects to many environments
 
-> Entity: an entrypoint branch which receives input effects from many environments, sends output effects to many environments
+ Environment: an address to which effects are sent. Effects are length-extended or cropped, depending on Entity input size.
 
-> Environment: an address to which effects are sent. Effects are length-extended or cropped, depending on Entity input size.
+ Effect: a non-null trit vector sent between effects
 
-> Effect: a non-null trit vector sent between effects
+ Branch: much like a function in traditional programming paradigms. It has an exact input size and an exact return size. Its output is serialized as each site marked as "output" in the order it appears.
+
+ Site: a vertex in our dataflow graph within a branch, representing a constant, a result of a branch invocation, or a merging of other sites.
+ 
+ Memory Latch: a stateful site whose new value will be usable in the next invocation of the same branch.
+ 
+ Merge: in a water analogy, a wye terminating in one output. Multiple sites can be selected from, where the merging site's value will be the unique non-null vector of the many site inputs to the merger.
+```
 
 #### Trit encoding spec
 
@@ -38,7 +47,7 @@ Entity attachment:
 ]
 
 Attachment:
-[ entity index (positive integer)
+[ entity index (positive integer) // The index of the block/branch in the code which this entity becomes
 , maximum depth (positive integer)
 , number of input environments (positive integer)
 , input environment data...
@@ -64,7 +73,7 @@ output environment data:
 
 block:
 [ number of trits in block definition (positive integer)
-, branch / lut / import
+, branch / lut / [external import ] (1 trit: 1/0/-)
 , value...
 ]
 
@@ -77,11 +86,11 @@ branch:
 
 site:
 [ site is output? 1 trit (1/-)
-, site is stateful? 1 trit (1/-)
+, site is a memory latch (stateful)? 1 trit (1/-)
 , merge / constant / knot? 1 trit (1/0/-)
 , merge/knot: {
   , number of sites as inputs to knot/merge (positive integer)
-  , indices of sites (positive: inputs to knot; zero: current value of this site {requires stateful set}, negative: sites within current knot preceeding current site)
+  , indices of sites
   }
 , knot: { branch index (if knot is set) }
 , constant: encoded value (positive integer number of trits, trinary value)
@@ -104,6 +113,17 @@ external block:
 ]
 ```
 
+#### Merge / Knot / Sites
+
+A merge has all input sites of identical length; but a knot (a branch invocation) would simply take all vectors as little-endian-packed input, as `b(xxxxyyyyzzzzzz)`.
+
+A knot's definition (as opposed to inputs) may be defined by any of the blocks listed in the definition - branch, lookup table, or externally imported block (which may be lookup table or branch).
+
+In a branch, because these are packed to little-endian, n input vectors could be concatenated or shuffled to select, concatenate, or rearrange by ordering of sites which each merge one input index, and marking the site as output to the branch. In a concatenation example, it uses no lookup tables. A branch which selects a range of trits at an offset which changes dependent on one of its inputs (an index), however, may have many input sites of 1-trit vectors, and use many lookup tables and mergers.
+
+##### Inputs to knot/merge
+
+A site in the dataflow graph is wired feed-forward. However, memory latches may be used anywhere within a branch. Thus, a negative index would refer to any site prior to the current site (-1 would refer to the immediately prior site, -(M+N) for M sites input to the branch plus N internal sites declared before the current site being parsed). An index of 0 would refer to the first site marked as a memory latch in the branch definition.
 
 #### Encoding
 Positive integers (as listed above) are encoded as binary.1/-, little endian, terminated with 0.
