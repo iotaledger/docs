@@ -28,7 +28,7 @@ Instead of relying on the Coordinator to send milestones, you can create your ow
 Considerable research is underway towards a viable replacement for the Coordinator. By releasing Compass, we are furthering this research. 
 
 ### Repository
-Jump directly to the Compass source code on [GitHub](https://github.com/iotaledger/compass)
+Jump directly to the Compass source code on [GitHub](https://github.com/iotaledger/compass).
 
 ### Releases
-See the GitHub repository for the [latest release](https://github.com/iotaledger/compass/releases)
+See the GitHub repository for the [latest release](https://github.com/iotaledger/compass/releases).
