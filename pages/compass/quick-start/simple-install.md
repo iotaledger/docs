@@ -149,11 +149,11 @@ After we generated the Merkle tree and installed IRI we can finally start our co
 
 Next we need to run the Docker container for a first time:
 
-	sudo ../../bazel-bin/docker/coordinator
+	sudo ./bazel-bin/docker/coordinator
 
 Now we are ready to run the coordinator
 
-	sudo ./03_run_coordinator.sh -bootstrap -broadcast
+	sudo ./docs/private_tangle/03_run_coordinator.sh -bootstrap -broadcast
 
 The logs should tell you it is issuing milestones; Great! We should now have a functional private tangle to tinker with! Please note that the coordinator will stop working if you run out of calculated milestones, don't use a too low depth or you might have to start over again soon.
 
