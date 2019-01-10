@@ -119,6 +119,55 @@ Ignores DNS resolution refreshing
 </Cell>
 <Cell>--dns-resolution-false</Cell>
 </Row>
+<Row>
+<BoldCell>{`--local-snapshots-enabled`}</BoldCell>
+<Cell>
+This parameter must be set to `true` for the IRI to read any other `LOCAL_SNAPSHOTS` parameters
+</Cell>
+<Cell>--local-snapshots-enabled false</Cell>
+</Row>
+<Row>
+<BoldCell>{`--local-snapshots-pruning-enabled`}</BoldCell>
+<Cell>
+Enable the deletion of confirmed transactions from the ledger. Confirmed transactions are deleted if they were confirmed by a milestone that is older than the sum of `LOCAL_SNAPSHOTS_DEPTH` + `LOCAL_SNAPSHOTS_PRUNING_DELAY`
+</Cell>
+<Cell>--local-snapshots-pruning-enabled false</Cell>
+</Row>
+<Row>
+<BoldCell>{`--local-snapshots-depth`}</BoldCell>
+<Cell>
+Amount of milestone transactions to keep in the ledger. Default = 100. Minimum = 100. 
+</Cell>
+<Cell>--local-snapshots-depth 300</Cell>
+</Row>
+<Row>
+<BoldCell>{`--local-snapshots-pruning-delay`}</BoldCell>
+<Cell>
+Amount of milestone transactions to keep in the ledger. Default = 40000. Minimum = 10000. Note: If you are operating a public facing node and use local snapshots, please set your `LOCAL_SNAPSHOTS_PRUNING_DELAY` value to at least 40000.
+</Cell>
+<Cell>--local-snapshots-pruning-delay 50000</Cell>
+</Row>
+<Row>
+<BoldCell>{`--local-snapshots-internal-synced`}</BoldCell>
+<Cell>
+Interval, in milestone transactions, at which local snapshots are taken if the ledger is fully synchronized
+</Cell>
+<Cell>--local-snapshots-internal-synced 20</Cell>
+</Row>
+<Row>
+<BoldCell>{`--local-snapshots-internal-unsynced`}</BoldCell>
+<Cell>
+Interval, in milestone transactions, at which local snapshots are taken if the ledger is not fully synchronized
+</Cell>
+<Cell>--local-snapshots-internal-unsynced 1500</Cell>
+</Row>
+<Row>
+<BoldCell>{`--local-snapshots-base-path`}</BoldCell>
+<Cell>
+Path to the snapshot file, without the file extension. 
+</Cell>
+<Cell>--local-snapshots-base-path basePathFolder/mainnet</Cell>
+</Row>
 
 </Table>
 
@@ -139,6 +188,7 @@ HEADLESS = true
 DEBUG = true
 TESTNET = true
 DB_PATH = db
+LOCAL_SNAPSHOTS_PRUNING_DELAY = 50000
 ```
 
 To run IRI with this .INI file, given its named \`iri.ini\`, use this

@@ -8,7 +8,7 @@ You can access this documentation online at https://docs.iota.org/ .
 Download the copy of this repostory.
 
 ```sh
-git clone https://gitlab.com/iota-foundation/doc/documentation.git
+git clone https://github.com/iotaledger/docs.git
 ```
 
 Then visit to the downloaded repository and install dependencies with:
